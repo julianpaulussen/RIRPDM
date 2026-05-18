@@ -62,6 +62,31 @@ rirpdo:ResearchDataRepository
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
     rdfs:seeAlso nfdicore:NFDI_0001201 .       # nfdicore:research data repository
 
+rirpdo:ResearchGroup
+    a owl:Class ;
+    rdfs:label "Research Group" ;
+    rdfs:subClassOf foaf:Group .
+
+rirpdo:Journal
+    a owl:Class ;
+    rdfs:label "Journal" ;
+    rdfs:subClassOf bibo:Journal .
+
+rirpdo:Conference
+    a owl:Class ;
+    rdfs:label "Conference" ;
+    rdfs:seeAlso nfdicore:NFDI_0010020 .       # nfdicore:conference
+
+rirpdo:Dataset
+    a owl:Class ;
+    rdfs:label "Dataset" ;
+    rdfs:seeAlso nfdicore:NFDI_0001203 .       # nfdicore:experimental dataset
+
+rirpdo:Funding
+    a owl:Class ;
+    rdfs:label "Funding" ;
+    rdfs:seeAlso nfdicore:NFDI_0001051 .       # nfdicore:funding specification
+
 # ── Object properties ────────────────────────────────────────────────────────
 
 rirpdo:hasAuthor
@@ -93,6 +118,36 @@ rirpdo:usesInfrastructure
     rdfs:label "usesInfrastructure" ;
     rdfs:domain rirpdo:Project ;
     rdfs:range  rirpdo:ResearchInfrastructure .
+
+rirpdo:memberOf
+    a owl:ObjectProperty ;
+    rdfs:label "memberOf" ;
+    rdfs:domain rirpdo:Researcher ;
+    rdfs:range  rirpdo:ResearchGroup .
+
+rirpdo:fundedBy
+    a owl:ObjectProperty ;
+    rdfs:label "fundedBy" ;
+    rdfs:domain rirpdo:Project ;
+    rdfs:range  rirpdo:Funding .
+
+rirpdo:producedDataset
+    a owl:ObjectProperty ;
+    rdfs:label "producedDataset" ;
+    rdfs:domain rirpdo:Project ;
+    rdfs:range  rirpdo:Dataset .
+
+rirpdo:publishedIn
+    a owl:ObjectProperty ;
+    rdfs:label "publishedIn" ;
+    rdfs:domain rirpdo:Publication ;
+    rdfs:range  rirpdo:Journal .
+
+rirpdo:presentedAt
+    a owl:ObjectProperty ;
+    rdfs:label "presentedAt" ;
+    rdfs:domain rirpdo:Publication ;
+    rdfs:range  rirpdo:Conference .
 
 # ── Data properties ──────────────────────────────────────────────────────────
 
