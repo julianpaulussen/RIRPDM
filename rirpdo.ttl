@@ -87,13 +87,38 @@ rirpdo:Funding
     rdfs:label "Funding" ;
     rdfs:seeAlso nfdicore:NFDI_0001051 .       # nfdicore:funding specification
 
+# ── Disjoint classes ──────────────────────────────────────────────────────────
+
+rirpdo:Researcher owl:disjointWith rirpdo:Publication .
+rirpdo:Researcher owl:disjointWith rirpdo:ResearchInfrastructure .
+rirpdo:Researcher owl:disjointWith rirpdo:ResearchTopic .
+rirpdo:Publication owl:disjointWith rirpdo:ResearchInfrastructure .
+rirpdo:Publication owl:disjointWith rirpdo:Project .
+rirpdo:Institution owl:disjointWith rirpdo:Publication .
+
+# ── Cardinality restrictions ──────────────────────────────────────────────────
+
+rirpdo:Project
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty rirpdo:hasParticipant ;
+        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onClass rirpdo:Researcher
+    ] .
+
 # ── Object properties ────────────────────────────────────────────────────────
 
 rirpdo:hasAuthor
     a owl:ObjectProperty ;
     rdfs:label "hasAuthor" ;
     rdfs:domain rirpdo:Publication ;
-    rdfs:range  rirpdo:Researcher .
+    rdfs:range  rirpdo:Researcher ;
+    owl:inverseOf rirpdo:authorOf .
+
+rirpdo:authorOf
+    a owl:ObjectProperty ;
+    rdfs:label "authorOf" ;
+    owl:inverseOf rirpdo:hasAuthor .
 
 rirpdo:affiliatedWith
     a owl:ObjectProperty ;

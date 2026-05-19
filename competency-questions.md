@@ -20,7 +20,7 @@ WHERE {
                   rirpdo:title          ?publicationTitle .
     ?topic        rirpdo:name           ?topicName .
     FILTER(?institutionName = "Fraunhofer FOKUS")
-    FILTER(?topicName = "Knowledge Graphs")
+    FILTER(?topicName = "Semantic Web")
 }
 ```
 
@@ -63,18 +63,16 @@ WHERE {
 
 ---
 
-## CQ04 [Infrastructure] — Which datasets were produced by project X and stored in which repository?
+## CQ04 [Infrastructure] — Which datasets were produced by each project and via which infrastructure?
 
 ```sparql
-SELECT ?datasetName ?repoName
+SELECT ?projectName ?datasetName ?infraName
 WHERE {
     ?project  rirpdo:name               ?projectName ;
               rirpdo:producedDataset    ?dataset ;
-              rirpdo:usesInfrastructure ?repo .
+              rirpdo:usesInfrastructure ?infra .
     ?dataset  rirpdo:name               ?datasetName .
-    ?repo     a                         rirpdo:ResearchDataRepository ;
-              rirpdo:name               ?repoName .
-    FILTER(?projectName = "LOPDF Project")
+    ?infra    rirpdo:name               ?infraName .
 }
 ```
 
