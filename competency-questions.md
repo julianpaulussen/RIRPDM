@@ -92,3 +92,33 @@ WHERE {
     FILTER (STR(?r1) < STR(?r2))
 }
 ```
+
+---
+
+## CQ06 [Publications] — Which research topic has the most publications?
+
+```sparql
+SELECT ?topicName (COUNT(?publication) AS ?publicationCount)
+WHERE {
+    ?publication a rirpdo:Publication ;
+                 rirpdo:hasTopic ?topic .
+    ?topic rirpdo:name ?topicName .
+}
+GROUP BY ?topicName
+ORDER BY DESC(?publicationCount)
+```
+
+---
+
+## CQ07 [Infrastructure] — Which institution hosts the most researchers?
+
+```sparql
+SELECT ?institutionName (COUNT(?researcher) AS ?researcherCount)
+WHERE {
+    ?researcher a rirpdo:Researcher ;
+                rirpdo:affiliatedWith ?institution .
+    ?institution rirpdo:name ?institutionName .
+}
+GROUP BY ?institutionName
+ORDER BY DESC(?researcherCount)
+```

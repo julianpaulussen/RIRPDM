@@ -86,6 +86,8 @@ See `competency-questions.md` for all 5 CQs with SPARQL translations.
 | CQ03 | Which publications share a topic with a given publication? |
 | CQ04 | Which datasets were produced by each project and via which infrastructure? |
 | CQ05 | Which researchers have co-authored a publication? |
+| CQ06 | Which research topic has the most publications? |
+| CQ07 | Which institution hosts the most researchers? |
 
 ## Query script
 
