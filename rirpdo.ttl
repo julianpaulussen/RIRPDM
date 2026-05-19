@@ -8,6 +8,7 @@
 @prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
 @prefix bibo:     <http://purl.org/ontology/bibo/> .
 @prefix nfdicore: <https://nfdi.fiz-karlsruhe.de/ontology/> .
+@prefix vivo:     <http://vivoweb.org/ontology/core#> .
 
 # ── Ontology declaration ─────────────────────────────────────────────────────
 
@@ -86,6 +87,18 @@ rirpdo:Funding
     a owl:Class ;
     rdfs:label "Funding" ;
     rdfs:seeAlso nfdicore:NFDI_0001051 .       # nfdicore:funding specification
+
+# ── VIVO alignment ───────────────────────────────────────────────────────────
+
+rirpdo:Researcher        owl:equivalentClass    vivo:Researcher .
+rirpdo:ResearchGroup     owl:equivalentClass    vivo:ResearchGroup .
+rirpdo:Laboratory        owl:equivalentClass    vivo:Laboratory .
+rirpdo:Project           owl:equivalentClass    vivo:Project .
+
+rirpdo:hasAuthor         owl:equivalentProperty vivo:hasAuthor .
+rirpdo:affiliatedWith    owl:equivalentProperty vivo:affiliatedWith .
+rirpdo:fundedBy          owl:equivalentProperty vivo:fundedBy .
+rirpdo:memberOf          owl:equivalentProperty vivo:memberOf .
 
 # ── Disjoint classes ──────────────────────────────────────────────────────────
 
