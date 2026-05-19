@@ -63,6 +63,30 @@ rirpdo:ResearchDataRepository
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
     rdfs:seeAlso nfdicore:NFDI_0001201 .       # nfdicore:research data repository
 
+rirpdo:GitRepository
+    a owl:Class ;
+    rdfs:label "Git Repository" ;
+    rdfs:subClassOf rirpdo:ResearchDataRepository ;
+    skos:definition "A version-controlled repository hosting research code and software artifacts (e.g. GitHub, GitLab)." .
+
+rirpdo:ComputingEnvironment
+    a owl:Class ;
+    rdfs:label "Computing Environment" ;
+    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    skos:definition "Any computational resource used to execute research workloads, including clusters and cloud platforms." .
+
+rirpdo:ComputeCluster
+    a owl:Class ;
+    rdfs:label "Compute Cluster" ;
+    rdfs:subClassOf rirpdo:ComputingEnvironment ;
+    skos:definition "A set of linked compute nodes used for high-performance or parallel computing in research (e.g. HPC clusters)." .
+
+rirpdo:CloudInfrastructure
+    a owl:Class ;
+    rdfs:label "Cloud Infrastructure" ;
+    rdfs:subClassOf rirpdo:ComputingEnvironment ;
+    skos:definition "On-demand cloud computing resources used for research workloads (e.g. AWS, Azure, Google Cloud)." .
+
 rirpdo:ResearchGroup
     a owl:Class ;
     rdfs:label "Research Group" ;
