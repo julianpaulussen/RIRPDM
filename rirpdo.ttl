@@ -23,28 +23,33 @@
 rirpdo:Researcher
     a owl:Class ;
     rdfs:label "Researcher" ;
-    rdfs:subClassOf foaf:Person .
+    rdfs:subClassOf foaf:Person ;
+    skos:definition "A person who conducts scientific research, typically affiliated with an institution." .
 
 rirpdo:Institution
     a owl:Class ;
     rdfs:label "Institution" ;
-    rdfs:subClassOf foaf:Organization .
+    rdfs:subClassOf foaf:Organization ;
+    skos:definition "An organization that conducts, funds, or supports research activities, such as a university or research institute." .
 
 rirpdo:Publication
     a owl:Class ;
     rdfs:label "Publication" ;
-    rdfs:subClassOf bibo:Document .
+    rdfs:subClassOf bibo:Document ;
+    skos:definition "A scholarly work published and shared with the research community, such as a journal article, conference paper, or technical report." .
 
 rirpdo:ResearchTopic
     a owl:Class ;
     rdfs:label "Research Topic" ;
     rdfs:subClassOf skos:Concept ;
-    rdfs:seeAlso nfdicore:NFDI_0000100 .       # nfdicore:academic discipline
+    rdfs:seeAlso nfdicore:NFDI_0000100 ;       # nfdicore:academic discipline
+    skos:definition "A subject area or field that a publication or research project addresses." .
 
 rirpdo:Project
     a owl:Class ;
     rdfs:label "Project" ;
-    rdfs:seeAlso nfdicore:NFDI_0000002 .       # nfdicore:project
+    rdfs:seeAlso nfdicore:NFDI_0000002 ;       # nfdicore:project
+    skos:definition "A funded research activity with defined goals, participants, and a start and end date." .
 
 rirpdo:ResearchInfrastructure
     a owl:Class ;
@@ -55,13 +60,15 @@ rirpdo:Laboratory
     a owl:Class ;
     rdfs:label "Laboratory" ;
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
-    rdfs:seeAlso nfdicore:NFDI_0001208 .       # nfdicore:laboratory
+    rdfs:seeAlso nfdicore:NFDI_0001208 ;       # nfdicore:laboratory
+    skos:definition "A physical or virtual space where researchers conduct experiments and empirical work." .
 
 rirpdo:ResearchDataRepository
     a owl:Class ;
     rdfs:label "Research Data Repository" ;
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
-    rdfs:seeAlso nfdicore:NFDI_0001201 .       # nfdicore:research data repository
+    rdfs:seeAlso nfdicore:NFDI_0001201 ;       # nfdicore:research data repository
+    skos:definition "A storage system for archiving and sharing research datasets, typically with persistent identifiers (e.g. Zenodo, Figshare)." .
 
 rirpdo:GitRepository
     a owl:Class ;
@@ -90,27 +97,32 @@ rirpdo:CloudInfrastructure
 rirpdo:ResearchGroup
     a owl:Class ;
     rdfs:label "Research Group" ;
-    rdfs:subClassOf foaf:Group .
+    rdfs:subClassOf foaf:Group ;
+    skos:definition "A team of researchers collaborating on a shared scientific topic, typically within an institution." .
 
 rirpdo:Journal
     a owl:Class ;
     rdfs:label "Journal" ;
-    rdfs:subClassOf bibo:Journal .
+    rdfs:subClassOf bibo:Journal ;
+    skos:definition "A periodical publication in which researchers publish peer-reviewed articles." .
 
 rirpdo:Conference
     a owl:Class ;
     rdfs:label "Conference" ;
-    rdfs:seeAlso nfdicore:NFDI_0010020 .       # nfdicore:conference
+    rdfs:seeAlso nfdicore:NFDI_0010020 ;       # nfdicore:conference
+    skos:definition "An academic event where researchers present and discuss their work." .
 
 rirpdo:Dataset
     a owl:Class ;
     rdfs:label "Dataset" ;
-    rdfs:seeAlso nfdicore:NFDI_0001203 .       # nfdicore:experimental dataset
+    rdfs:seeAlso nfdicore:NFDI_0001203 ;       # nfdicore:experimental dataset
+    skos:definition "A structured collection of data produced or used in a research project." .
 
 rirpdo:Funding
     a owl:Class ;
     rdfs:label "Funding" ;
-    rdfs:seeAlso nfdicore:NFDI_0001051 .       # nfdicore:funding specification
+    rdfs:seeAlso nfdicore:NFDI_0001051 ;       # nfdicore:funding specification
+    skos:definition "Financial support granted to a research project, typically by a government body or foundation." .
 
 # ── VIVO alignment ───────────────────────────────────────────────────────────
 
