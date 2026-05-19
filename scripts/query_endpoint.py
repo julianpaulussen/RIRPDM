@@ -1,3 +1,4 @@
+from typing import Any, cast
 from SPARQLWrapper import SPARQLWrapper, JSON
 
 ENDPOINT = "http://localhost:7200/repositories/rirpdo"
@@ -66,6 +67,28 @@ WHERE {{
     FILTER (STR(?r1) < STR(?r2))
 }}
 """,
+    "CQ06 — Research topics ranked by publication count": f"""
+{PREFIX}
+SELECT ?topicName (COUNT(?publication) AS ?publicationCount)
+WHERE {{
+    ?publication a rirpdo:Publication ;
+                 rirpdo:hasTopic ?topic .
+    ?topic rirpdo:name ?topicName .
+}}
+GROUP BY ?topicName
+ORDER BY DESC(?publicationCount)
+""",
+    "CQ07 — Institutions ranked by researcher count": f"""
+{PREFIX}
+SELECT ?institutionName (COUNT(?researcher) AS ?researcherCount)
+WHERE {{
+    ?researcher a rirpdo:Researcher ;
+                rirpdo:affiliatedWith ?institution .
+    ?institution rirpdo:name ?institutionName .
+}}
+GROUP BY ?institutionName
+ORDER BY DESC(?researcherCount)
+""",
 }
 
 
@@ -79,7 +102,7 @@ def run_queries():
         print('='*60)
 
         sparql.setQuery(query)
-        results = sparql.query().convert()
+        results = cast(dict[str, Any], sparql.query().convert())
         bindings = results["results"]["bindings"]
 
         if not bindings:

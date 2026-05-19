@@ -44,6 +44,10 @@ Fetch `nfdicore.owl` before opening in Protégé:
 curl -o nfdicore.owl https://raw.githubusercontent.com/ISE-FIZKarlsruhe/nfdicore/main/nfdicore.owl
 ```
 
+## Ontology visualization
+
+Open [WebVOWL](https://service.tib.eu/webvowl/) → Upload → select `rirpdo.ttl` to render the full schema as an interactive graph.
+
 ## Loading in Protégé
 
 ```bash
