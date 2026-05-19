@@ -12,11 +12,29 @@ prefix rirpdo: <http://www.example.org/rirpdo#>
 
 | Prefix | Source | Used for |
 |--------|--------|----------|
-| `foaf:` | FOAF | Persons, organizations |
-| `bibo:` | BIBO | Publications, journals |
-| `dc:` | Dublin Core | Metadata terms |
-| `skos:` | SKOS | Research topics, keywords |
-| `nfdicore:` | NFDIcore | Research infrastructure, projects, labs |
+| `foaf:` | FOAF | Persons, organizations (`owl:imports`) |
+| `bibo:` | BIBO | Publications, journals (`owl:imports`) |
+| `dc:` | Dublin Core | Metadata terms (`owl:imports`) |
+| `skos:` | SKOS | Research topics, keywords (`owl:imports`) |
+| `nfdicore:` | NFDIcore | Research infrastructure reference (`rdfs:seeAlso`) |
+| `vivo:` | VIVO | Ontology alignment (`owl:equivalentClass` / `owl:equivalentProperty`) |
+
+### VIVO alignment
+
+RIRPDO declares equivalence with VIVO terms, enabling interoperability with VIVO-based systems:
+
+| RIRPDO | VIVO |
+|--------|------|
+| `rirpdo:Researcher` | `vivo:Researcher` |
+| `rirpdo:ResearchGroup` | `vivo:ResearchGroup` |
+| `rirpdo:Laboratory` | `vivo:Laboratory` |
+| `rirpdo:Project` | `vivo:Project` |
+| `rirpdo:hasAuthor` | `vivo:hasAuthor` |
+| `rirpdo:affiliatedWith` | `vivo:affiliatedWith` |
+| `rirpdo:fundedBy` | `vivo:fundedBy` |
+| `rirpdo:memberOf` | `vivo:memberOf` |
+
+Querying with VIVO terms returns results inferred from RIRPDO data — no extra triples needed.
 
 ## Setup
 

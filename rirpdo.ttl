@@ -192,17 +192,58 @@ rirpdo:presentedAt
 rirpdo:name
     a owl:DatatypeProperty ;
     rdfs:label "name" ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    owl:equivalentProperty foaf:name .
 
 rirpdo:title
     a owl:DatatypeProperty ;
     rdfs:label "title" ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    owl:equivalentProperty dc:title .
 
 rirpdo:year
     a owl:DatatypeProperty ;
     rdfs:label "year" ;
-    rdfs:range xsd:gYear .
+    rdfs:range xsd:gYear ;
+    owl:equivalentProperty dc:date .
+
+rirpdo:doi
+    a owl:DatatypeProperty ;
+    rdfs:label "doi" ;
+    rdfs:domain rirpdo:Publication ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty bibo:doi .
+
+rirpdo:abstract
+    a owl:DatatypeProperty ;
+    rdfs:label "abstract" ;
+    rdfs:domain rirpdo:Publication ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty dc:abstract .
+
+rirpdo:startDate
+    a owl:DatatypeProperty ;
+    rdfs:label "startDate" ;
+    rdfs:domain rirpdo:Project ;
+    rdfs:range xsd:date .
+
+rirpdo:endDate
+    a owl:DatatypeProperty ;
+    rdfs:label "endDate" ;
+    rdfs:domain rirpdo:Project ;
+    rdfs:range xsd:date .
+
+rirpdo:amount
+    a owl:DatatypeProperty ;
+    rdfs:label "amount" ;
+    rdfs:domain rirpdo:Funding ;
+    rdfs:range xsd:decimal .
+
+rirpdo:orcid
+    a owl:DatatypeProperty ;
+    rdfs:label "orcid" ;
+    rdfs:domain rirpdo:Researcher ;
+    rdfs:range xsd:string .
 
 # ── Sample individuals ───────────────────────────────────────────────────────
 
