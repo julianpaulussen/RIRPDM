@@ -107,6 +107,8 @@ rirpdo:Project_LOPDF
     rirpdo:name "LOPDF Project" ;
     rirpdo:hasParticipant     rirpdo:Researcher_Aslam ;
     rirpdo:usesInfrastructure rirpdo:Lab_FOKUS_SemanticTech ;
+    rirpdo:usesInfrastructure rirpdo:Cloud_FOKUS_AWS ;
+    rirpdo:usesInfrastructure rirpdo:Git_LOPDF ;
     rirpdo:producedDataset    rirpdo:Dataset_LOPDFCorpus ;
     rirpdo:fundedBy           rirpdo:Funding_BMBF_2020 .
 
@@ -116,6 +118,8 @@ rirpdo:Project_KGSurvey
     rirpdo:hasParticipant     rirpdo:Researcher_Smith ;
     rirpdo:hasParticipant     rirpdo:Researcher_Mueller ;
     rirpdo:usesInfrastructure rirpdo:Repo_TUBerlin_OpenData ;
+    rirpdo:usesInfrastructure rirpdo:Cluster_TUBerlin ;
+    rirpdo:usesInfrastructure rirpdo:Git_KGSurvey ;
     rirpdo:producedDataset    rirpdo:Dataset_KGBenchmark .
 
 # ── Journals ──────────────────────────────────────────────────────────────────
@@ -123,3 +127,43 @@ rirpdo:Project_KGSurvey
 rirpdo:Journal_SWJ
     a rirpdo:Journal ;
     rirpdo:name "Semantic Web Journal" .
+
+rirpdo:Journal_JODS
+    a rirpdo:Journal ;
+    rirpdo:name "Journal of Data Semantics" .
+
+# ── Compute clusters ──────────────────────────────────────────────────────────
+
+rirpdo:Cluster_HLRN
+    a rirpdo:ComputeCluster ;
+    rirpdo:name "HLRN Berlin HPC Cluster" .
+
+rirpdo:Cluster_TUBerlin
+    a rirpdo:ComputeCluster ;
+    rirpdo:name "TU Berlin High-Performance Computing Cluster" .
+
+# ── Cloud infrastructure ──────────────────────────────────────────────────────
+
+rirpdo:Cloud_FOKUS_AWS
+    a rirpdo:CloudInfrastructure ;
+    rirpdo:name "Fraunhofer FOKUS AWS Research Environment" .
+
+# ── Git repositories ──────────────────────────────────────────────────────────
+
+rirpdo:Git_LOPDF
+    a rirpdo:GitRepository ;
+    rirpdo:name "LOPDF GitHub Repository" .
+
+rirpdo:Git_KGSurvey
+    a rirpdo:GitRepository ;
+    rirpdo:name "KG Survey Code Repository" .
+
+# ── Conferences ───────────────────────────────────────────────────────────────
+
+rirpdo:Conf_ISWC2022
+    a rirpdo:Conference ;
+    rirpdo:name "International Semantic Web Conference 2022" .
+
+rirpdo:Conf_ESWC2023
+    a rirpdo:Conference ;
+    rirpdo:name "Extended Semantic Web Conference 2023" .
