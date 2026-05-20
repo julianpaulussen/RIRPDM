@@ -1,10 +1,10 @@
 # RIRPDO - Research Infrastructure and Research Publications Data Ontology
 
 <p align="center">
-  <img src="https://img.shields.io/badge/OWL_2-005A9C?style=for-the-badge&logoColor=white" alt="OWL 2"/>
-  <img src="https://img.shields.io/badge/SPARQL-E43A2A?style=for-the-badge&logoColor=white" alt="SPARQL"/>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/VIVO-4B0082?style=for-the-badge&logoColor=white" alt="VIVO"/>
+  <img src="https://img.shields.io/badge/OWL_2-000000?style=for-the-badge&logoColor=white" alt="OWL 2"/>
+  <img src="https://img.shields.io/badge/SPARQL-000000?style=for-the-badge&logoColor=white" alt="SPARQL"/>
+  <img src="https://img.shields.io/badge/Python-000000?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/VIVO-000000?style=for-the-badge&logoColor=white" alt="VIVO"/>
 </p>
 
 A semantically enriched data model for representation and reasoning about research infrastructure.
