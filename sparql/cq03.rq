@@ -1,0 +1,12 @@
+PREFIX rirpdo: <http://www.example.org/rirpdo#>
+
+SELECT ?publicationTitle ?projectName ?infraName
+WHERE {
+    ?project      rirpdo:name                ?projectName ;
+                  rirpdo:usesInfrastructure  ?infra ;
+                  rirpdo:hasParticipant      ?researcher .
+    ?infra        a                          rirpdo:Laboratory ;
+                  rirpdo:name                ?infraName .
+    ?publication  rirpdo:hasAuthor           ?researcher ;
+                  rirpdo:title               ?publicationTitle .
+}

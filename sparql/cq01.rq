@@ -1,0 +1,14 @@
+PREFIX rirpdo: <http://www.example.org/rirpdo#>
+
+SELECT ?researcherName ?publicationTitle
+WHERE {
+    ?researcher   rirpdo:name           ?researcherName ;
+                  rirpdo:affiliatedWith  ?institution .
+    ?institution  rirpdo:name           ?institutionName .
+    ?publication  rirpdo:hasAuthor      ?researcher ;
+                  rirpdo:hasTopic       ?topic ;
+                  rirpdo:title          ?publicationTitle .
+    ?topic        rirpdo:name           ?topicName .
+    FILTER(?institutionName = "Fraunhofer FOKUS")
+    FILTER(?topicName = "Semantic Web")
+}

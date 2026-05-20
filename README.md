@@ -36,22 +36,41 @@ RIRPDO declares equivalence with VIVO terms, enabling interoperability with VIVO
 
 Querying with VIVO terms returns results inferred from RIRPDO data — no extra triples needed.
 
+## Repository structure
+
+```
+ontology/
+  rirpdo.ttl              ← TBox (classes, properties, axioms)
+  rirpdo-individuals.ttl  ← ABox (instance data)
+  rirpdo.owl              ← RDF/XML export (generated)
+  nfdicore.owl            ← external dependency (fetched separately)
+sparql/
+  cq01.rq … cq07.rq      ← standalone SPARQL query files
+scripts/
+  query_endpoint.py       ← runs all CQs against GraphDB
+  convert_to_owl.py       ← converts rirpdo.ttl → rirpdo.owl
+  requirements.txt
+docs/
+  competency-questions.md
+  NOTES.md
+```
+
 ## Setup
 
 Fetch `nfdicore.owl` before opening in Protégé:
 
 ```bash
-curl -o nfdicore.owl https://raw.githubusercontent.com/ISE-FIZKarlsruhe/nfdicore/main/nfdicore.owl
+curl -o ontology/nfdicore.owl https://raw.githubusercontent.com/ISE-FIZKarlsruhe/nfdicore/main/nfdicore.owl
 ```
 
 ## Ontology visualization
 
-Open [WebVOWL](https://service.tib.eu/webvowl/) → Upload → select `rirpdo.ttl` to render the full schema as an interactive graph.
+Open [WebVOWL](https://service.tib.eu/webvowl/) → Upload → select `ontology/rirpdo.ttl` to render the full schema as an interactive graph.
 
 ## Loading in Protégé
 
 ```bash
-/path/to/protege/run.sh rirpdo.ttl
+/path/to/protege/run.sh ontology/rirpdo.ttl
 ```
 
 Run HermiT reasoner (Reasoner → Start Reasoner) to check consistency and compute inferred hierarchy.
@@ -68,7 +87,7 @@ Run HermiT reasoner (Reasoner → Start Reasoner) to check consistency and compu
 
 1. Open GraphDB Desktop
 2. Create repository: ID `rirpdo`, ruleset `OWL2-RL (Optimized)`
-3. Import → Upload RDF files → select `rirpdo.ttl`, format Turtle
+3. Import → Upload RDF files → select `ontology/rirpdo.ttl` and `ontology/rirpdo-individuals.ttl`, format Turtle
 
 Endpoint: `http://localhost:7200/repositories/rirpdo`
 
@@ -76,12 +95,16 @@ Load via curl:
 ```bash
 curl -X POST http://localhost:7200/repositories/rirpdo/statements \
   -H "Content-Type: text/turtle" \
-  --data-binary @rirpdo.ttl
+  --data-binary @ontology/rirpdo.ttl
+
+curl -X POST http://localhost:7200/repositories/rirpdo/statements \
+  -H "Content-Type: text/turtle" \
+  --data-binary @ontology/rirpdo-individuals.ttl
 ```
 
 ## Competency questions
 
-See `competency-questions.md` for all 5 CQs with SPARQL translations.
+See `docs/competency-questions.md` for all CQs with SPARQL translations. Standalone query files are in `sparql/`.
 
 | CQ | Question |
 |----|----------|
@@ -95,7 +118,7 @@ See `competency-questions.md` for all 5 CQs with SPARQL translations.
 
 ## Query script
 
-Runs all 5 CQs against the GraphDB endpoint and prints results.
+Runs all 7 CQs against the GraphDB endpoint and prints results.
 
 ```bash
 python -m venv .venv

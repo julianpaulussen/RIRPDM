@@ -1,0 +1,13 @@
+PREFIX rirpdo: <http://www.example.org/rirpdo#>
+
+SELECT ?infraName ?infraType
+WHERE {
+    ?researcher   rirpdo:affiliatedWith   ?institution .
+    ?institution  rirpdo:name             ?institutionName .
+    ?project      rirpdo:hasParticipant   ?researcher ;
+                  rirpdo:usesInfrastructure ?infra .
+    ?infra        rirpdo:name             ?infraName ;
+                  a                       ?infraType .
+    FILTER(?institutionName = "Technische Universität Berlin")
+    FILTER(?infraType IN (rirpdo:Laboratory, rirpdo:ResearchDataRepository))
+}
