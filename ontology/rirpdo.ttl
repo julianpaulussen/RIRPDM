@@ -126,15 +126,15 @@ rirpdo:Funding
 
 # ── VIVO alignment ───────────────────────────────────────────────────────────
 
-rirpdo:Researcher        owl:equivalentClass    vivo:Researcher .
-rirpdo:ResearchGroup     owl:equivalentClass    vivo:ResearchGroup .
-rirpdo:Laboratory        owl:equivalentClass    vivo:Laboratory .
-rirpdo:Project           owl:equivalentClass    vivo:Project .
+rirpdo:Researcher        rdfs:seeAlso           vivo:ResearcherRole .
+rirpdo:ResearchGroup     rdfs:seeAlso           vivo:ResearchOrganization .
+rirpdo:Laboratory        rdfs:seeAlso           vivo:Laboratory .
+rirpdo:Project           rdfs:seeAlso           vivo:Project .
 
-rirpdo:hasAuthor         owl:equivalentProperty vivo:hasAuthor .
-rirpdo:affiliatedWith    owl:equivalentProperty vivo:affiliatedWith .
-rirpdo:fundedBy          owl:equivalentProperty vivo:fundedBy .
-rirpdo:memberOf          owl:equivalentProperty vivo:memberOf .
+rirpdo:hasAuthor         rdfs:seeAlso           vivo:hasAuthor .
+rirpdo:affiliatedWith    rdfs:seeAlso           vivo:affiliatedWith .
+rirpdo:fundedBy          rdfs:seeAlso           vivo:fundedBy .
+rirpdo:memberOf          rdfs:seeAlso           vivo:memberOf .
 
 # ── Disjoint classes ──────────────────────────────────────────────────────────
 

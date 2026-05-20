@@ -28,20 +28,18 @@ prefix rirpdo: <http://www.example.org/rirpdo#>
 
 ### VIVO alignment
 
-RIRPDO declares equivalence with VIVO terms, enabling interoperability with VIVO-based systems:
+RIRPDO uses `rdfs:seeAlso` to reference related VIVO terms as informational pointers. No `owl:equivalentClass` is declared — VIVO term semantics and IRI stability were not fully verified.
 
-| RIRPDO | VIVO |
+| RIRPDO | VIVO (rdfs:seeAlso) |
 |--------|------|
-| `rirpdo:Researcher` | `vivo:Researcher` |
-| `rirpdo:ResearchGroup` | `vivo:ResearchGroup` |
+| `rirpdo:Researcher` | `vivo:ResearcherRole` |
+| `rirpdo:ResearchGroup` | `vivo:ResearchOrganization` |
 | `rirpdo:Laboratory` | `vivo:Laboratory` |
 | `rirpdo:Project` | `vivo:Project` |
 | `rirpdo:hasAuthor` | `vivo:hasAuthor` |
 | `rirpdo:affiliatedWith` | `vivo:affiliatedWith` |
 | `rirpdo:fundedBy` | `vivo:fundedBy` |
 | `rirpdo:memberOf` | `vivo:memberOf` |
-
-Querying with VIVO terms returns results inferred from RIRPDO data — no extra triples needed.
 
 ## Repository structure
 
