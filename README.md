@@ -111,15 +111,16 @@ curl -X POST http://localhost:7200/repositories/rirpdo/statements \
 
 Standalone SPARQL query files are in `sparql/cq01.rq … cq07.rq`.
 
-| CQ | Question |
-|----|----------|
-| CQ01 | Which researchers at institution X published on topic Y? |
-| CQ02 | Which projects use which research infrastructure? |
-| CQ03 | Which publications share a topic with a given publication? |
-| CQ04 | Which datasets were produced by each project and via which infrastructure? |
-| CQ05 | Which researchers have co-authored a publication? |
-| CQ06 | Which research topic has the most publications? |
-| CQ07 | Which institution hosts the most researchers? |
+| CQ | Domain | Question |
+|----|--------|----------|
+| CQ00 | Test | List all researchers and their affiliations. |
+| CQ01 | Publications | Which researchers at institution X published on topic Y? |
+| CQ02 | Both (bridge) | Which publications resulted from projects using research infrastructure? |
+| CQ03 | Publications | Which publications share a topic with a given publication? |
+| CQ04 | Both (bridge) | Which datasets were produced by each project and via which infrastructure? |
+| CQ05 | Publications | Which researchers have co-authored a publication? |
+| CQ06 | Publications | Which research topic has the most publications? (aggregation) |
+| CQ07 | Infrastructure | Which institution hosts the most researchers? (aggregation) |
 
 ## Query script
 

@@ -1,13 +1,18 @@
 PREFIX rirpdo: <http://www.example.org/rirpdo#>
 
-SELECT ?infraName ?infraType
+# Which publications resulted from projects that used research infrastructure?
+# Bridges Publications <-> Infrastructure via Researcher participation in Projects.
+
+SELECT ?publicationTitle ?projectName ?infraName ?infraType
 WHERE {
-    ?researcher   rirpdo:affiliatedWith   ?institution .
-    ?institution  rirpdo:name             ?institutionName .
-    ?project      rirpdo:hasParticipant   ?researcher ;
-                  rirpdo:usesInfrastructure ?infra .
-    ?infra        rirpdo:name             ?infraName ;
-                  a                       ?infraType .
-    FILTER(?institutionName = "Technische Universität Berlin")
-    FILTER(?infraType IN (rirpdo:Laboratory, rirpdo:ResearchDataRepository))
+    ?project a rirpdo:Project ;
+             rirpdo:name ?projectName ;
+             rirpdo:usesInfrastructure ?infra ;
+             rirpdo:hasParticipant ?researcher .
+    ?infra   rirpdo:name ?infraName ;
+             a ?infraType .
+    ?publication rirpdo:hasAuthor ?researcher ;
+                 rirpdo:title ?publicationTitle .
+    FILTER(?infraType IN (rirpdo:Laboratory, rirpdo:ComputeCluster, rirpdo:CloudInfrastructure, rirpdo:ResearchDataRepository, rirpdo:GitRepository))
 }
+ORDER BY ?projectName ?infraName

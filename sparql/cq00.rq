@@ -1,0 +1,12 @@
+PREFIX rirpdo: <http://www.example.org/rirpdo#>
+
+# Simple introductory query: list all researchers and their affiliations.
+
+SELECT ?researcherName ?institutionName
+WHERE {
+    ?researcher  a rirpdo:Researcher ;
+                 rirpdo:name           ?researcherName ;
+                 rirpdo:affiliatedWith ?institution .
+    ?institution rirpdo:name           ?institutionName .
+}
+ORDER BY ?researcherName
