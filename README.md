@@ -1,4 +1,4 @@
-# RIRPDO - Research Infrastructure and Research Publications Data Ontology
+# RIRPDM - Research Infrastructure and Research Publications Data Model
 
 <p align="center">
   <img src="https://img.shields.io/badge/OWL_2-000000?style=for-the-badge&logoColor=white" alt="OWL 2"/>
