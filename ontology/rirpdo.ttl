@@ -158,7 +158,7 @@ rirpdo:Project
 # ── Object properties ────────────────────────────────────────────────────────
 
 rirpdo:hasAuthor
-    a owl:ObjectProperty ;
+    a owl:ObjectProperty, owl:IrreflexiveProperty ;
     rdfs:label "hasAuthor" ;
     rdfs:domain rirpdo:Publication ;
     rdfs:range  rirpdo:Researcher ;
@@ -200,7 +200,7 @@ rirpdo:memberOf
     rdfs:range  rirpdo:ResearchGroup .
 
 rirpdo:fundedBy
-    a owl:ObjectProperty ;
+    a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:label "fundedBy" ;
     rdfs:domain rirpdo:Project ;
     rdfs:range  rirpdo:Funding .
@@ -244,7 +244,7 @@ rirpdo:year
     owl:equivalentProperty dc:date .
 
 rirpdo:doi
-    a owl:DatatypeProperty ;
+    a owl:DatatypeProperty, owl:InverseFunctionalProperty ;
     rdfs:label "doi" ;
     rdfs:domain rirpdo:Publication ;
     rdfs:range xsd:string ;
@@ -276,7 +276,7 @@ rirpdo:amount
     rdfs:range xsd:decimal .
 
 rirpdo:orcid
-    a owl:DatatypeProperty ;
+    a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "orcid" ;
     rdfs:domain rirpdo:Researcher ;
     rdfs:range xsd:string .
