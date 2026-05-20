@@ -103,7 +103,7 @@ rirpdo:ResearchGroup
 rirpdo:Journal
     a owl:Class ;
     rdfs:label "Journal" ;
-    rdfs:subClassOf bibo:Journal ;
+    owl:equivalentClass bibo:Journal ;
     skos:definition "A periodical publication in which researchers publish peer-reviewed articles." .
 
 rirpdo:Conference
