@@ -167,3 +167,175 @@ rirpdo:Conf_ISWC2022
 rirpdo:Conf_ESWC2023
     a rirpdo:Conference ;
     rirpdo:name "Extended Semantic Web Conference 2023" .
+
+# ── Additional institutions ───────────────────────────────────────────────────
+
+rirpdo:HumboldtUniversity
+    a rirpdo:Institution ;
+    rirpdo:name "Humboldt-Universität zu Berlin" .
+
+rirpdo:FraunhoferAISEC
+    a rirpdo:Institution ;
+    rirpdo:name "Fraunhofer AISEC" .
+
+rirpdo:DFKI
+    a rirpdo:Institution ;
+    rirpdo:name "German Research Center for Artificial Intelligence (DFKI)" .
+
+# ── Additional research topics ────────────────────────────────────────────────
+
+rirpdo:OpenData
+    a rirpdo:ResearchTopic ;
+    rirpdo:name "Open Data" .
+
+rirpdo:NaturalLanguageProcessing
+    a rirpdo:ResearchTopic ;
+    rirpdo:name "Natural Language Processing" .
+
+rirpdo:DataIntegration
+    a rirpdo:ResearchTopic ;
+    rirpdo:name "Data Integration" .
+
+rirpdo:MachineLearning
+    a rirpdo:ResearchTopic ;
+    rirpdo:name "Machine Learning" .
+
+# ── Additional researchers ────────────────────────────────────────────────────
+
+rirpdo:Researcher_Wagner
+    a rirpdo:Researcher ;
+    rirpdo:name "Claudia Wagner" ;
+    rirpdo:affiliatedWith rirpdo:DFKI .
+
+rirpdo:Researcher_Lehmann
+    a rirpdo:Researcher ;
+    rirpdo:name "Jens Lehmann" ;
+    rirpdo:affiliatedWith rirpdo:HumboldtUniversity .
+
+rirpdo:Researcher_Auer
+    a rirpdo:Researcher ;
+    rirpdo:name "Sören Auer" ;
+    rirpdo:affiliatedWith rirpdo:DFKI .
+
+rirpdo:Researcher_Bizer
+    a rirpdo:Researcher ;
+    rirpdo:name "Christian Bizer" ;
+    rirpdo:affiliatedWith rirpdo:HumboldtUniversity .
+
+rirpdo:Researcher_Ngomo
+    a rirpdo:Researcher ;
+    rirpdo:name "Axel-Cyrille Ngonga Ngomo" ;
+    rirpdo:affiliatedWith rirpdo:DFKI .
+
+# ── Additional publications ───────────────────────────────────────────────────
+
+rirpdo:Pub_DBpedia
+    a rirpdo:Publication ;
+    rirpdo:title "DBpedia: A Nucleus for a Web of Open Data" ;
+    rirpdo:year "2022"^^xsd:gYear ;
+    rirpdo:hasAuthor rirpdo:Researcher_Lehmann ;
+    rirpdo:hasAuthor rirpdo:Researcher_Bizer ;
+    rirpdo:hasTopic rirpdo:LinkedData ;
+    rirpdo:hasTopic rirpdo:OpenData ;
+    rirpdo:publishedIn rirpdo:Journal_SWJ ;
+    rirpdo:presentedAt rirpdo:Conf_ISWC2022 .
+
+rirpdo:Pub_NLPInfra
+    a rirpdo:Publication ;
+    rirpdo:title "NLP Infrastructure for Research Data Management" ;
+    rirpdo:year "2023"^^xsd:gYear ;
+    rirpdo:hasAuthor rirpdo:Researcher_Wagner ;
+    rirpdo:hasAuthor rirpdo:Researcher_Auer ;
+    rirpdo:hasTopic rirpdo:NaturalLanguageProcessing ;
+    rirpdo:hasTopic rirpdo:DataIntegration ;
+    rirpdo:publishedIn rirpdo:Journal_JODS .
+
+rirpdo:Pub_KGEmbeddings
+    a rirpdo:Publication ;
+    rirpdo:title "Knowledge Graph Embeddings for Entity Alignment" ;
+    rirpdo:year "2023"^^xsd:gYear ;
+    rirpdo:hasAuthor rirpdo:Researcher_Lehmann ;
+    rirpdo:hasAuthor rirpdo:Researcher_Ngomo ;
+    rirpdo:hasTopic rirpdo:KnowledgeGraphs ;
+    rirpdo:hasTopic rirpdo:MachineLearning ;
+    rirpdo:presentedAt rirpdo:Conf_ESWC2023 .
+
+rirpdo:Pub_OpenDataQuality
+    a rirpdo:Publication ;
+    rirpdo:title "Quality Assessment for Open Research Data" ;
+    rirpdo:year "2024"^^xsd:gYear ;
+    rirpdo:hasAuthor rirpdo:Researcher_Auer ;
+    rirpdo:hasAuthor rirpdo:Researcher_Bizer ;
+    rirpdo:hasTopic rirpdo:OpenData ;
+    rirpdo:hasTopic rirpdo:SemanticWeb ;
+    rirpdo:publishedIn rirpdo:Journal_SWJ .
+
+rirpdo:Pub_LinkedDataIntegration
+    a rirpdo:Publication ;
+    rirpdo:title "Scalable Linked Data Integration for Scientific Workflows" ;
+    rirpdo:year "2022"^^xsd:gYear ;
+    rirpdo:hasAuthor rirpdo:Researcher_Bizer ;
+    rirpdo:hasTopic rirpdo:LinkedData ;
+    rirpdo:hasTopic rirpdo:DataIntegration .
+
+# ── Additional infrastructure ─────────────────────────────────────────────────
+
+rirpdo:Lab_DFKI_KG
+    a rirpdo:Laboratory ;
+    rirpdo:name "DFKI Knowledge Graph Lab" .
+
+rirpdo:Repo_Zenodo_DFKI
+    a rirpdo:ResearchDataRepository ;
+    rirpdo:name "DFKI Zenodo Research Repository" .
+
+rirpdo:Cloud_DFKI_Azure
+    a rirpdo:CloudInfrastructure ;
+    rirpdo:name "DFKI Azure Research Cloud" .
+
+rirpdo:Git_DBpedia
+    a rirpdo:GitRepository ;
+    rirpdo:name "DBpedia GitHub Repository" .
+
+# ── Additional datasets ───────────────────────────────────────────────────────
+
+rirpdo:Dataset_DBpedia
+    a rirpdo:Dataset ;
+    rirpdo:name "DBpedia Linked Dataset" .
+
+rirpdo:Dataset_NLPCorpus
+    a rirpdo:Dataset ;
+    rirpdo:name "Research NLP Corpus" .
+
+# ── Additional funding ────────────────────────────────────────────────────────
+
+rirpdo:Funding_DFG_2022
+    a rirpdo:Funding ;
+    rirpdo:name "DFG Research Grant 2022" .
+
+rirpdo:Funding_EU_Horizon
+    a rirpdo:Funding ;
+    rirpdo:name "EU Horizon Europe Grant" .
+
+# ── Additional projects ───────────────────────────────────────────────────────
+
+rirpdo:Project_DBpedia
+    a rirpdo:Project ;
+    rirpdo:name "DBpedia Open Data Project" ;
+    rirpdo:hasParticipant     rirpdo:Researcher_Lehmann ;
+    rirpdo:hasParticipant     rirpdo:Researcher_Bizer ;
+    rirpdo:usesInfrastructure rirpdo:Lab_DFKI_KG ;
+    rirpdo:usesInfrastructure rirpdo:Git_DBpedia ;
+    rirpdo:usesInfrastructure rirpdo:Repo_Zenodo_DFKI ;
+    rirpdo:producedDataset    rirpdo:Dataset_DBpedia ;
+    rirpdo:fundedBy           rirpdo:Funding_DFG_2022 .
+
+rirpdo:Project_NLPInfra
+    a rirpdo:Project ;
+    rirpdo:name "NLP Research Infrastructure Project" ;
+    rirpdo:hasParticipant     rirpdo:Researcher_Wagner ;
+    rirpdo:hasParticipant     rirpdo:Researcher_Auer ;
+    rirpdo:hasParticipant     rirpdo:Researcher_Ngomo ;
+    rirpdo:usesInfrastructure rirpdo:Cloud_DFKI_Azure ;
+    rirpdo:usesInfrastructure rirpdo:Cluster_HLRN ;
+    rirpdo:producedDataset    rirpdo:Dataset_NLPCorpus ;
+    rirpdo:fundedBy           rirpdo:Funding_EU_Horizon .
