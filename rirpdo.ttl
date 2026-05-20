@@ -84,7 +84,7 @@ rirpdo:ComputingEnvironment
 
 rirpdo:ComputeCluster
     a owl:Class ;
-    rdfs:label "Compute Cluster" ;
+    rdfs:label "High-Performance Computing (HPC) Cluster" ;
     rdfs:subClassOf rirpdo:ComputingEnvironment ;
     skos:definition "A set of linked compute nodes used for high-performance or parallel computing in research (e.g. HPC clusters)." .
 
