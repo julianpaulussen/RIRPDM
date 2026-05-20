@@ -104,7 +104,7 @@ curl -X POST http://localhost:7200/repositories/rirpdo/statements \
 
 ## Competency questions
 
-See `docs/competency-questions.md` for all CQs with SPARQL translations. Standalone query files are in `sparql/`.
+Standalone SPARQL query files are in `sparql/cq01.rq … cq07.rq`.
 
 | CQ | Question |
 |----|----------|
