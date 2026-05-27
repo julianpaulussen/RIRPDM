@@ -34,6 +34,35 @@ rirpdo:Institution
     rdfs:subClassOf foaf:Organization ;
     skos:definition "An organization that conducts, funds, or supports research activities, such as a university or research institute." .
 
+# Institution type subclasses — from CERIF OrganisationTypes vocab
+rirpdo:University
+    a owl:Class ;
+    rdfs:label "University" ;
+    rdfs:subClassOf rirpdo:Institution ;
+    dc:source cerif:OrganisationTypes ;
+    skos:definition "An institution of higher education and research which grants academic degrees in a variety of subjects." .
+
+rirpdo:ResearchInstitute
+    a owl:Class ;
+    rdfs:label "Research Institute" ;
+    rdfs:subClassOf rirpdo:Institution ;
+    dc:source cerif:OrganisationTypes ;
+    skos:definition "An establishment endowed for doing research, which may specialize in basic or applied research." .
+
+rirpdo:Company
+    a owl:Class ;
+    rdfs:label "Company" ;
+    rdfs:subClassOf rirpdo:Institution ;
+    dc:source cerif:OrganisationTypes ;
+    skos:definition "A form of business organization carrying on industrial or commercial enterprise." .
+
+rirpdo:GovernmentBody
+    a owl:Class ;
+    rdfs:label "Government Body" ;
+    rdfs:subClassOf rirpdo:Institution ;
+    dc:source cerif:OrganisationTypes ;
+    skos:definition "An organization through which a political unit exercises authority and administers public policy." .
+
 rirpdo:Publication
     a owl:Class ;
     rdfs:label "Publication" ;
@@ -47,6 +76,50 @@ rirpdo:Patent
     skos:exactMatch cerif-m:cfResPat ;
     skos:definition "A form of intellectual property consisting of exclusive rights granted to an inventor for a limited period in exchange for public disclosure of an invention." ;
     dc:source cerif-m:cfResPat .
+
+# Publication subclasses — from CERIF OutputTypes vocab
+rirpdo:JournalArticle
+    a owl:Class ;
+    rdfs:label "Journal Article" ;
+    rdfs:subClassOf rirpdo:Publication ;
+    skos:exactMatch bibo:AcademicArticle ;
+    dc:source cerif:OutputTypes ;
+    skos:definition "A self-contained nonfiction prose composition on a fairly narrow topic published in a journal." .
+
+rirpdo:ConferencePaper
+    a owl:Class ;
+    rdfs:label "Conference Paper" ;
+    rdfs:subClassOf rirpdo:Publication ;
+    dc:source cerif:OutputTypes ;
+    skos:definition "An article presented at a conference and published in conference proceedings." .
+
+rirpdo:Thesis
+    a owl:Class ;
+    rdfs:label "Thesis" ;
+    rdfs:subClassOf rirpdo:Publication ;
+    dc:source cerif:OutputTypes ;
+    skos:definition "A dissertation or thesis submitted for an academic degree, such as a PhD or doctoral degree." .
+
+rirpdo:WorkingPaper
+    a owl:Class ;
+    rdfs:label "Working Paper" ;
+    rdfs:subClassOf rirpdo:Publication ;
+    dc:source cerif:OutputTypes ;
+    skos:definition "A preliminary version of an article that has not undergone peer review but is shared for comment." .
+
+rirpdo:Report
+    a owl:Class ;
+    rdfs:label "Report" ;
+    rdfs:subClassOf rirpdo:Publication ;
+    dc:source cerif:OutputTypes ;
+    skos:definition "A separately published record of research findings, research still in progress, or other technical findings." .
+
+rirpdo:Software
+    a owl:Class ;
+    rdfs:label "Software" ;
+    rdfs:subClassOf rirpdo:ResearchProduct ;
+    dc:source cerif:OutputTypes ;
+    skos:definition "A research software artefact — computer programs and associated documentation produced as part of a research activity." .
 
 rirpdo:ResearchTopic
     a owl:Class ;
@@ -64,7 +137,7 @@ rirpdo:Project
 rirpdo:ResearchInfrastructure
     a owl:Class ;
     rdfs:label "Research Infrastructure" ;
-    skos:definition "A facility, equipment, or service used by research communities to conduct research and foster innovation — including physical labs, major instruments, knowledge-based resources, e-infrastructures, and distributed observatories." ;
+    skos:definition "A facility or (virtual) platform that provides the scientific community with resources and services to conduct top-level research in their respective fields. These research infrastructures can be single-sited or distributed or an e-infrastructure, and can be part of a national or international network of facilities, or of interconnected scientific instrument networks." ;
     skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure> ;
     dc:source cerif:ResearchInfrastructure .
 
@@ -130,6 +203,47 @@ rirpdo:CloudInfrastructure
     rdfs:subClassOf rirpdo:ComputingEnvironment ;
     skos:definition "On-demand cloud computing resources used for research workloads (e.g. AWS, Azure, Google Cloud)." .
 
+# CERIF ResearchInfrastructureTypes — subclasses of ResearchInfrastructure
+rirpdo:DistributedInfrastructure
+    a owl:Class ;
+    rdfs:label "Distributed Infrastructure" ;
+    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Distributed> ;
+    dc:source cerif:ResearchInfrastructureTypes ;
+    skos:definition "A distributed RI constituted by geographically distributed implementations or facilities but managed by a single body." .
+
+rirpdo:NetworkInfrastructure
+    a owl:Class ;
+    rdfs:label "Network Infrastructure" ;
+    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Network> ;
+    dc:source cerif:ResearchInfrastructureTypes ;
+    skos:definition "A network of RIs comprising several RIs connected in some respect, but each with its own governance or management body." .
+
+rirpdo:VirtualInfrastructure
+    a owl:Class ;
+    rdfs:label "Virtual Infrastructure" ;
+    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Virtual> ;
+    dc:source cerif:ResearchInfrastructureTypes ;
+    skos:definition "A virtual RI defined as e-infrastructure, either a distributed e-infrastructure that connects several RIs or a single-sited electronic RI." .
+
+rirpdo:ClusterInfrastructure
+    a owl:Class ;
+    rdfs:label "Cluster Infrastructure" ;
+    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Cluster> ;
+    dc:source cerif:ResearchInfrastructureTypes ;
+    skos:definition "A grouping of RIs based on certain similarities such as scientific domain or geographical region." .
+
+rirpdo:SingleSiteInfrastructure
+    a owl:Class ;
+    rdfs:label "Single Site Infrastructure" ;
+    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#SingleLocation> ;
+    dc:source cerif:ResearchInfrastructureTypes ;
+    skos:definition "A research infrastructure located at a single physical site." .
+
 rirpdo:ResearchGroup
     a owl:Class ;
     rdfs:label "Research Group" ;
@@ -167,6 +281,28 @@ rirpdo:Funding
     rdfs:label "Funding" ;
     rdfs:seeAlso nfdicore:NFDI_0001051 ;       # nfdicore:funding specification
     skos:definition "Financial support granted to a research project, typically by a government body or foundation." .
+
+# Funding type subclasses — from CERIF ActivityFundingTypes vocab
+rirpdo:Grant
+    a owl:Class ;
+    rdfs:label "Grant" ;
+    rdfs:subClassOf rirpdo:Funding ;
+    dc:source cerif:ActivityFundingTypes ;
+    skos:definition "A funding mechanism where a proposed activity is submitted for consideration and funding is approved upon merit." .
+
+rirpdo:Award
+    a owl:Class ;
+    rdfs:label "Award" ;
+    rdfs:subClassOf rirpdo:Funding ;
+    dc:source cerif:ActivityFundingTypes ;
+    skos:definition "Discretionary funds awarded based on an achievement or recognized contribution." .
+
+rirpdo:Contract
+    a owl:Class ;
+    rdfs:label "Contract" ;
+    rdfs:subClassOf rirpdo:Funding ;
+    dc:source cerif:ActivityFundingTypes ;
+    skos:definition "A funding mechanism where funding is approved and allocated upon successful delivery of proposed outputs." .
 
 # ── CERIF alignment ──────────────────────────────────────────────────────────
 
@@ -277,6 +413,34 @@ rirpdo:presentedAt
     rdfs:domain rirpdo:Publication ;
     rdfs:range  rirpdo:Conference .
 
+# Researcher project role subproperties — from CERIF PersonProjectEngagements
+rirpdo:hasPrincipalInvestigator
+    a owl:ObjectProperty ;
+    rdfs:label "hasPrincipalInvestigator" ;
+    rdfs:subPropertyOf rirpdo:hasParticipant ;
+    rdfs:domain rirpdo:Project ;
+    rdfs:range  rirpdo:Researcher ;
+    dc:source cerif:PersonProjectEngagements ;
+    skos:definition "The lead researcher directing the project and responsible for reporting to funders." .
+
+rirpdo:hasCoInvestigator
+    a owl:ObjectProperty ;
+    rdfs:label "hasCoInvestigator" ;
+    rdfs:subPropertyOf rirpdo:hasParticipant ;
+    rdfs:domain rirpdo:Project ;
+    rdfs:range  rirpdo:Researcher ;
+    dc:source cerif:PersonProjectEngagements ;
+    skos:definition "A fellow researcher collaborating on the project, often from a different organization." .
+
+rirpdo:hasCollaborator
+    a owl:ObjectProperty ;
+    rdfs:label "hasCollaborator" ;
+    rdfs:subPropertyOf rirpdo:hasParticipant ;
+    rdfs:domain rirpdo:Project ;
+    rdfs:range  rirpdo:Researcher ;
+    dc:source cerif:PersonProjectEngagements ;
+    skos:definition "A researcher formally participating in the project consortium." .
+
 rirpdo:containsEquipment
     a owl:ObjectProperty ;
     rdfs:label "containsEquipment" ;
@@ -366,5 +530,30 @@ rirpdo:orcid
     rdfs:label "orcid" ;
     rdfs:domain rirpdo:Researcher ;
     rdfs:range xsd:string .
+
+rirpdo:hasStatus
+    a owl:AnnotationProperty ;
+    rdfs:label "hasStatus" ;
+    rdfs:domain rirpdo:ResearchInfrastructure ;
+    rdfs:range skos:Concept ;
+    dc:source cerif:ResearchInfrastructureStatuses ;
+    skos:definition "Operational status of a research infrastructure." .
+
+# ── RI Status concepts (CERIF ResearchInfrastructureStatuses) ────────────────
+
+rirpdo:UnderConstruction
+    a skos:Concept ;
+    rdfs:label "Under Construction" ;
+    skos:inScheme cerif:ResearchInfrastructureStatuses .
+
+rirpdo:BeingUpgraded
+    a skos:Concept ;
+    rdfs:label "Being Upgraded" ;
+    skos:inScheme cerif:ResearchInfrastructureStatuses .
+
+rirpdo:InOperation
+    a skos:Concept ;
+    rdfs:label "In Operation" ;
+    skos:inScheme cerif:ResearchInfrastructureStatuses .
 
 # ABox (individuals) is in rirpdo-individuals.ttl — load both files into GraphDB.
