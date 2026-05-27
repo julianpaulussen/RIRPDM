@@ -408,6 +408,21 @@ rirpdo:usesInfrastructure
     rdfs:domain rirpdo:Project ;
     rdfs:range  rirpdo:ResearchInfrastructure .
 
+rirpdo:producedUsing
+    a owl:ObjectProperty ;
+    rdfs:label "producedUsing" ;
+    skos:definition "Relates a publication to the research infrastructure that enabled its production." ;
+    rdfs:domain rirpdo:Publication ;
+    rdfs:range  rirpdo:ResearchInfrastructure ;
+    # Chain instead of direct property
+    # the same researcher authored the paper AND participated in the project using the infrastructure.
+    # Publication -> [inv hasAuthor] -> Researcher -> [inv hasParticipant] -> Project -> [usesInfrastructure] -> Infrastructure
+    owl:propertyChainAxiom (
+        [ owl:inverseOf rirpdo:hasAuthor ]
+        [ owl:inverseOf rirpdo:hasParticipant ]
+        rirpdo:usesInfrastructure
+    ) .
+
 rirpdo:memberOf
     a owl:ObjectProperty ;
     rdfs:label "memberOf" ;
