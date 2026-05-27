@@ -50,7 +50,10 @@ ontology/
   rirpdo.owl              ← RDF/XML export (generated)
   nfdicore.owl            ← external dependency (fetched separately)
 sparql/
-  cq01.rq … cq07.rq      ← standalone SPARQL query files
+  cq00.rq                 ← test query (researchers + affiliations)
+  cq01.rq                 ← CQ01 (infrastructure → publications bridge)
+  cq02.rq                 ← CQ02 (infrastructure fragility / single point of failure)
+  cq03.rq                 ← CQ03 (latent collaboration discovery)
 scripts/
   query_endpoint.py       ← runs all CQs against GraphDB
   convert_to_owl.py       ← converts rirpdo.ttl → rirpdo.owl
@@ -109,22 +112,18 @@ curl -X POST http://localhost:7200/repositories/rirpdo/statements \
 
 ## Competency questions
 
-Standalone SPARQL query files are in `sparql/cq01.rq … cq07.rq`.
+Standalone SPARQL query files are in `sparql/`.
 
 | CQ | Domain | Question |
 |----|--------|----------|
 | CQ00 | Test | List all researchers and their affiliations. |
-| CQ01 | Publications | Which researchers at institution X published on topic Y? |
-| CQ02 | Both (bridge) | Which publications resulted from projects using research infrastructure? |
-| CQ03 | Publications | Which publications share a topic with a given publication? |
-| CQ04 | Both (bridge) | Which datasets were produced by each project and via which infrastructure? |
-| CQ05 | Publications | Which researchers have co-authored a publication? |
-| CQ06 | Publications | Which research topic has the most publications? (aggregation) |
-| CQ07 | Infrastructure | Which institution hosts the most researchers? (aggregation) |
+| CQ01 | Both (bridge) | Which research infrastructures enabled the most publications on a given topic, and what institutions operated them? |
+| CQ02 | Both (bridge) | Which research topics depend on a single research infrastructure for all their publication output? (fragility analysis) |
+| CQ03 | Both (bridge) | Which pairs of institutions have co-used the same research infrastructure but never co-authored a publication? (latent collaboration) |
 
 ## Query script
 
-Runs all 7 CQs against the GraphDB endpoint and prints results.
+Runs all CQs against the GraphDB endpoint and prints results.
 
 ```bash
 python -m venv .venv

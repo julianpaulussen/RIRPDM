@@ -1,14 +1,4 @@
-PREFIX rirpdo: <http://www.example.org/rirpdo#>
+# CQ01: Which research infrastructures enabled the most publications on a given topic,
+#        and what institutions operated them?
 
-SELECT ?researcherName ?publicationTitle
-WHERE {
-    ?researcher   rirpdo:name           ?researcherName ;
-                  rirpdo:affiliatedWith  ?institution .
-    ?institution  rirpdo:name           ?institutionName .
-    ?publication  rirpdo:hasAuthor      ?researcher ;
-                  rirpdo:hasTopic       ?topic ;
-                  rirpdo:title          ?publicationTitle .
-    ?topic        rirpdo:name           ?topicName .
-    FILTER(?institutionName = "Fraunhofer FOKUS")
-    FILTER(?topicName = "Semantic Web")
-}
+# SPARQL: TODO

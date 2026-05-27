@@ -1,12 +1,5 @@
-PREFIX rirpdo: <http://www.example.org/rirpdo#>
+# CQ03: Which pairs of institutions have co-used the same research infrastructure
+#        across different projects but have never co-authored a publication?
+#        (latent collaboration discovery / missing edges in collaboration network)
 
-SELECT ?publicationTitle ?projectName ?infraName
-WHERE {
-    ?project      rirpdo:name                ?projectName ;
-                  rirpdo:usesInfrastructure  ?infra ;
-                  rirpdo:hasParticipant      ?researcher .
-    ?infra        a                          rirpdo:Laboratory ;
-                  rirpdo:name                ?infraName .
-    ?publication  rirpdo:hasAuthor           ?researcher ;
-                  rirpdo:title               ?publicationTitle .
-}
+# SPARQL: TODO
