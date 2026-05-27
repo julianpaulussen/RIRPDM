@@ -61,13 +61,6 @@ rirpdo:Company
     dc:source cerif:OrganisationTypes ;
     skos:definition "A form of business organization carrying on industrial or commercial enterprise." .
 
-rirpdo:Government
-    a owl:Class ;
-    rdfs:label "Government" ;
-    rdfs:subClassOf rirpdo:Institution ;
-    skos:exactMatch <https://w3id.org/cerif/vocab/OrganisationTypes#Government> ;
-    dc:source cerif:OrganisationTypes ;
-    skos:definition "An organization through which a political unit exercises authority and administers public policy." .
 
 rirpdo:Publication
     a owl:Class ;
@@ -76,13 +69,6 @@ rirpdo:Publication
     rdfs:subClassOf rirpdo:ResearchProduct ;
     skos:definition "A scholarly work published and shared with the research community, such as a journal article, conference paper, or technical report." .
 
-rirpdo:Patent
-    a owl:Class ;
-    rdfs:label "Patent" ;
-    rdfs:subClassOf rirpdo:Publication ;
-    skos:exactMatch cerif-m:cfResPat ;
-    skos:definition "A form of intellectual property consisting of exclusive rights granted to an inventor for a limited period in exchange for public disclosure of an invention." ;
-    dc:source cerif-m:cfResPat .
 
 # Publication subclasses — from CERIF OutputTypes vocab
 rirpdo:JournalArticle
