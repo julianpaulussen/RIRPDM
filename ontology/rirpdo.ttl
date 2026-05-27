@@ -18,7 +18,7 @@
     a owl:Ontology ;
     dc:title "Research Infrastructure and Research Publications Data Ontology (RIRPDO)" ;
     dc:description "Core ontology for representing research infrastructure and scientific publications." ;
-    owl:versionInfo "0.4.0" .
+    owl:versionInfo "0.5.0" .
 
 # ── Classes ──────────────────────────────────────────────────────────────────
 
@@ -39,6 +39,13 @@ rirpdo:Publication
     rdfs:label "Publication" ;
     rdfs:subClassOf bibo:Document ;
     skos:definition "A scholarly work published and shared with the research community, such as a journal article, conference paper, or technical report." .
+
+rirpdo:Patent
+    a owl:Class ;
+    rdfs:label "Patent" ;
+    rdfs:subClassOf rirpdo:Publication ;
+    skos:exactMatch cerif-m:cfResPat ;
+    skos:definition "A patent granted for a research-derived invention, documenting the invention and its legal protection." .
 
 rirpdo:ResearchTopic
     a owl:Class ;
@@ -64,7 +71,7 @@ rirpdo:Facility
     a owl:Class ;
     rdfs:label "Facility" ;
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
-    rdfs:seeAlso cerif-m:cfFacility ;
+    skos:exactMatch cerif-m:cfFacil ;
     skos:definition "A physical or virtual space that hosts research activities, such as a laboratory or observatory." .
 
 rirpdo:Laboratory
@@ -78,14 +85,14 @@ rirpdo:Equipment
     a owl:Class ;
     rdfs:label "Equipment" ;
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
-    rdfs:seeAlso cerif-m:cfEquipment ;
+    skos:exactMatch cerif-m:cfEquip ;
     skos:definition "Major scientific instruments, sensors, or devices used to conduct research experiments or measurements." .
 
 rirpdo:InfrastructureService
     a owl:Class ;
     rdfs:label "Infrastructure Service" ;
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
-    rdfs:seeAlso cerif-m:cfService ;
+    skos:exactMatch cerif-m:cfSrv ;
     skos:definition "A service or digital resource provided to the research community, including computing platforms, data repositories, and communication networks." .
 
 rirpdo:ResearchDataRepository
@@ -137,9 +144,16 @@ rirpdo:Conference
     rdfs:seeAlso nfdicore:NFDI_0010020 ;       # nfdicore:conference
     skos:definition "An academic event where researchers present and discuss their work." .
 
+rirpdo:ResearchProduct
+    a owl:Class ;
+    rdfs:label "Research Product" ;
+    skos:exactMatch cerif-m:cfResProd ;
+    skos:definition "Any digital or physical output of a research activity, including datasets, software, and other artefacts." .
+
 rirpdo:Dataset
     a owl:Class ;
     rdfs:label "Dataset" ;
+    rdfs:subClassOf rirpdo:ResearchProduct ;
     rdfs:seeAlso nfdicore:NFDI_0001203 ;       # nfdicore:experimental dataset
     skos:definition "A structured collection of data produced or used in a research project." .
 
@@ -152,9 +166,11 @@ rirpdo:Funding
 # ── CERIF alignment ──────────────────────────────────────────────────────────
 
 rirpdo:ResearchInfrastructure  skos:exactMatch  <https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure> .
-rirpdo:Facility                rdfs:seeAlso     cerif-m:cfFacility .
-rirpdo:Equipment               rdfs:seeAlso     cerif-m:cfEquipment .
-rirpdo:InfrastructureService   rdfs:seeAlso     cerif-m:cfService .
+rirpdo:Facility                skos:exactMatch  cerif-m:cfFacil .
+rirpdo:Equipment               skos:exactMatch  cerif-m:cfEquip .
+rirpdo:InfrastructureService   skos:exactMatch  cerif-m:cfSrv .
+rirpdo:ResearchProduct         skos:exactMatch  cerif-m:cfResProd .
+rirpdo:Patent                  skos:exactMatch  cerif-m:cfResPat .
 
 # ── VIVO alignment ───────────────────────────────────────────────────────────
 
@@ -237,11 +253,12 @@ rirpdo:fundedBy
     rdfs:domain rirpdo:Project ;
     rdfs:range  rirpdo:Funding .
 
-rirpdo:producedDataset
+rirpdo:producedOutput
     a owl:ObjectProperty ;
-    rdfs:label "producedDataset" ;
+    rdfs:label "producedOutput" ;
     rdfs:domain rirpdo:Project ;
-    rdfs:range  rirpdo:Dataset .
+    rdfs:range  rirpdo:ResearchProduct ;
+    skos:narrowMatch cerif-m:cfProj_ResProd .
 
 rirpdo:publishedIn
     a owl:ObjectProperty ;
@@ -254,6 +271,38 @@ rirpdo:presentedAt
     rdfs:label "presentedAt" ;
     rdfs:domain rirpdo:Publication ;
     rdfs:range  rirpdo:Conference .
+
+rirpdo:containsEquipment
+    a owl:ObjectProperty ;
+    rdfs:label "containsEquipment" ;
+    rdfs:domain rirpdo:Facility ;
+    rdfs:range  rirpdo:Equipment ;
+    skos:exactMatch cerif-m:cfFacil_Equip .
+
+rirpdo:providesService
+    a owl:ObjectProperty ;
+    rdfs:label "providesService" ;
+    rdfs:domain rirpdo:ResearchInfrastructure ;
+    rdfs:range  rirpdo:InfrastructureService ;
+    skos:narrowMatch cerif-m:cfFacil_Srv ;
+    skos:narrowMatch cerif-m:cfEquip_Srv .
+
+rirpdo:owns
+    a owl:ObjectProperty ;
+    rdfs:label "owns" ;
+    rdfs:domain rirpdo:Institution ;
+    rdfs:range  rirpdo:ResearchInfrastructure ;
+    skos:narrowMatch cerif-m:cfOrgUnit_Equip ;
+    skos:narrowMatch cerif-m:cfOrgUnit_Facil ;
+    skos:narrowMatch cerif-m:cfOrgUnit_Srv .
+
+rirpdo:usedInfrastructure
+    a owl:ObjectProperty ;
+    rdfs:label "usedInfrastructure" ;
+    rdfs:domain rirpdo:Publication ;
+    rdfs:range  rirpdo:ResearchInfrastructure ;
+    skos:narrowMatch cerif-m:cfResPubl_Equip ;
+    skos:narrowMatch cerif-m:cfResPubl_Facil .
 
 # ── Data properties ──────────────────────────────────────────────────────────
 
