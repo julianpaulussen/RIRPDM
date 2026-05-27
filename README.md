@@ -54,6 +54,7 @@ sparql/
   cq01.rq                 ← CQ01 (infrastructure → publications bridge)
   cq02.rq                 ← CQ02 (infrastructure fragility / single point of failure)
   cq03.rq                 ← CQ03 (latent collaboration discovery)
+  cq04.rq                 ← CQ04 (projects → infrastructure → funding)
 scripts/
   query_endpoint.py       ← runs all CQs against GraphDB
   convert_to_owl.py       ← converts rirpdo.ttl → rirpdo.owl
@@ -120,6 +121,7 @@ Standalone SPARQL query files are in `sparql/`.
 | CQ01 | Both (bridge) | Which research infrastructures enabled the most publications on a given topic, and what institutions operated them? |
 | CQ02 | Both (bridge) | Which research topics depend on a single research infrastructure for all their publication output? (fragility analysis) |
 | CQ03 | Both (bridge) | Which pairs of institutions have co-used the same research infrastructure but never co-authored a publication? (latent collaboration) |
+| CQ04 | Infrastructure | Which projects use research infrastructure, and who funds them? |
 
 ## Query script
 

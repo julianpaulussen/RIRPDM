@@ -11,6 +11,8 @@
 @prefix vivo:     <http://vivoweb.org/ontology/core#> .
 @prefix cerif:    <https://w3id.org/cerif/vocab/> .
 @prefix cerif-m:  <https://w3id.org/cerif/model#> .
+@prefix swrl:     <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla:    <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
 
 # ── Ontology declaration ─────────────────────────────────────────────────────
 
@@ -686,3 +688,32 @@ rirpdo:InOperation
     skos:definition "A research infrastructure that is currently active and available to the research community." .
 
 # ABox (individuals) is in rirpdo-individuals.ttl — load both files into GraphDB.
+
+# ── SWRL Rules ───────────────────────────────────────────────────────────────
+
+# producedUsing bridge: Publication ← hasAuthor ← Researcher ← hasParticipant ← Project → usesInfrastructure → Infrastructure
+# Mirrors the owl:propertyChainAxiom above; needed for GraphDB (OWL2-RL doesn't support property chains).
+rirpdo:rule_producedUsing
+    a swrl:Imp ;
+    swrla:isRuleEnabled "true"^^xsd:boolean ;
+    rdfs:label "producedUsing bridge" ;
+    swrl:body [
+        a swrl:AtomList ;
+        rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:propertyPredicate rirpdo:usesInfrastructure ;
+                    swrl:argument1 rirpdo:p ; swrl:argument2 rirpdo:i ] ;
+        rdf:rest [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                        swrl:propertyPredicate rirpdo:hasParticipant ;
+                        swrl:argument1 rirpdo:p ; swrl:argument2 rirpdo:r ] ;
+            rdf:rest [ a swrl:AtomList ;
+                rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:propertyPredicate rirpdo:hasAuthor ;
+                            swrl:argument1 rirpdo:pub ; swrl:argument2 rirpdo:r ] ;
+                rdf:rest rdf:nil ] ] ] ;
+    swrl:head [
+        a swrl:AtomList ;
+        rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:propertyPredicate rirpdo:producedUsing ;
+                    swrl:argument1 rirpdo:pub ; swrl:argument2 rirpdo:i ] ;
+        rdf:rest rdf:nil ] .
