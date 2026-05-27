@@ -133,16 +133,6 @@ rirpdo:ResearchTopic
     rdfs:seeAlso nfdicore:NFDI_0000100 ;       # nfdicore:academic discipline
     skos:definition "A subject area or field that a publication or research project addresses." .
 
-rirpdo:Keyword
-    a owl:Class ;
-    rdfs:label "Keyword" ;
-    skos:definition "A free-text term or phrase assigned by an author to characterize the content of a publication or dataset." .
-
-rirpdo:Domain
-    a owl:Class ;
-    rdfs:label "Domain" ;
-    skos:closeMatch skos:Concept ;
-    skos:definition "A broad scientific or academic discipline to which a publication, project, or researcher belongs (e.g. Computer Science, Biology)." .
 
 rirpdo:Project
     a owl:Class ;
@@ -534,13 +524,6 @@ rirpdo:ownedBy
     rdfs:range  rirpdo:Institution ;
     owl:inverseOf rirpdo:owns .
 
-rirpdo:usedInfrastructure
-    a owl:ObjectProperty ;
-    rdfs:label "usedInfrastructure" ;
-    rdfs:domain rirpdo:Publication ;
-    rdfs:range  rirpdo:ResearchInfrastructure ;
-    skos:narrowMatch cerif-m:cfResPubl_Equip ;
-    skos:narrowMatch cerif-m:cfResPubl_Facil .
 
 rirpdo:hostedBy
     a owl:ObjectProperty ;
@@ -550,18 +533,12 @@ rirpdo:hostedBy
     skos:definition "The institution at which a research group or laboratory is located and operates." .
 
 rirpdo:hasKeyword
-    a owl:ObjectProperty ;
+    a owl:DatatypeProperty ;
     rdfs:label "hasKeyword" ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdo:Publication rirpdo:Dataset ) ] ;
-    rdfs:range  rirpdo:Keyword ;
+    rdfs:range  xsd:string ;
     skos:definition "Associates a free-text keyword with a publication or dataset." .
 
-rirpdo:belongsToDomain
-    a owl:ObjectProperty ;
-    rdfs:label "belongsToDomain" ;
-    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdo:Publication rirpdo:Project rirpdo:Researcher ) ] ;
-    rdfs:range  rirpdo:Domain ;
-    skos:definition "The broad scientific domain to which a publication, project, or researcher belongs." .
 
 rirpdo:isPartOf
     a owl:ObjectProperty, owl:TransitiveProperty, owl:IrreflexiveProperty ;
