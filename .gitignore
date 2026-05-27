@@ -5,3 +5,4 @@ nfdicore.owl
 venv
 .venv
 __pycache__
+ontology/CERIF.txp

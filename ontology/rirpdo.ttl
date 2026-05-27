@@ -9,6 +9,8 @@
 @prefix bibo:     <http://purl.org/ontology/bibo/> .
 @prefix nfdicore: <https://nfdi.fiz-karlsruhe.de/ontology/> .
 @prefix vivo:     <http://vivoweb.org/ontology/core#> .
+@prefix cerif:    <https://w3id.org/cerif/vocab/> .
+@prefix cerif-m:  <https://w3id.org/cerif/model#> .
 
 # ── Ontology declaration ─────────────────────────────────────────────────────
 
@@ -16,7 +18,7 @@
     a owl:Ontology ;
     dc:title "Research Infrastructure and Research Publications Data Ontology (RIRPDO)" ;
     dc:description "Core ontology for representing research infrastructure and scientific publications." ;
-    owl:versionInfo "0.3.0" .
+    owl:versionInfo "0.4.0" .
 
 # ── Classes ──────────────────────────────────────────────────────────────────
 
@@ -54,19 +56,42 @@ rirpdo:Project
 rirpdo:ResearchInfrastructure
     a owl:Class ;
     rdfs:label "Research Infrastructure" ;
-    skos:definition "A facility or resource supporting research — covers labs, repositories, and large-scale facilities." .
+    skos:definition "A facility, equipment, or service used by research communities to conduct research and foster innovation — including physical labs, major instruments, knowledge-based resources, e-infrastructures, and distributed observatories." ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure> ;
+    dc:source cerif:ResearchInfrastructure .
+
+rirpdo:Facility
+    a owl:Class ;
+    rdfs:label "Facility" ;
+    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    rdfs:seeAlso cerif-m:cfFacility ;
+    skos:definition "A physical or virtual space that hosts research activities, such as a laboratory or observatory." .
 
 rirpdo:Laboratory
     a owl:Class ;
     rdfs:label "Laboratory" ;
-    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    rdfs:subClassOf rirpdo:Facility ;
     rdfs:seeAlso nfdicore:NFDI_0001208 ;       # nfdicore:laboratory
     skos:definition "A physical or virtual space where researchers conduct experiments and empirical work." .
+
+rirpdo:Equipment
+    a owl:Class ;
+    rdfs:label "Equipment" ;
+    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    rdfs:seeAlso cerif-m:cfEquipment ;
+    skos:definition "Major scientific instruments, sensors, or devices used to conduct research experiments or measurements." .
+
+rirpdo:InfrastructureService
+    a owl:Class ;
+    rdfs:label "Infrastructure Service" ;
+    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    rdfs:seeAlso cerif-m:cfService ;
+    skos:definition "A service or digital resource provided to the research community, including computing platforms, data repositories, and communication networks." .
 
 rirpdo:ResearchDataRepository
     a owl:Class ;
     rdfs:label "Research Data Repository" ;
-    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    rdfs:subClassOf rirpdo:InfrastructureService ;
     rdfs:seeAlso nfdicore:NFDI_0001201 ;       # nfdicore:research data repository
     skos:definition "A storage system for archiving and sharing research datasets, typically with persistent identifiers (e.g. Zenodo, Figshare)." .
 
@@ -79,7 +104,7 @@ rirpdo:GitRepository
 rirpdo:ComputingEnvironment
     a owl:Class ;
     rdfs:label "Computing Environment" ;
-    rdfs:subClassOf rirpdo:ResearchInfrastructure ;
+    rdfs:subClassOf rirpdo:InfrastructureService ;
     skos:definition "Any computational resource used to execute research workloads, including clusters and cloud platforms." .
 
 rirpdo:ComputeCluster
@@ -123,6 +148,13 @@ rirpdo:Funding
     rdfs:label "Funding" ;
     rdfs:seeAlso nfdicore:NFDI_0001051 ;       # nfdicore:funding specification
     skos:definition "Financial support granted to a research project, typically by a government body or foundation." .
+
+# ── CERIF alignment ──────────────────────────────────────────────────────────
+
+rirpdo:ResearchInfrastructure  skos:exactMatch  <https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure> .
+rirpdo:Facility                rdfs:seeAlso     cerif-m:cfFacility .
+rirpdo:Equipment               rdfs:seeAlso     cerif-m:cfEquipment .
+rirpdo:InfrastructureService   rdfs:seeAlso     cerif-m:cfService .
 
 # ── VIVO alignment ───────────────────────────────────────────────────────────
 
