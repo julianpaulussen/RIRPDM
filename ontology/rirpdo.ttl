@@ -131,6 +131,17 @@ rirpdo:ResearchTopic
     rdfs:seeAlso nfdicore:NFDI_0000100 ;       # nfdicore:academic discipline
     skos:definition "A subject area or field that a publication or research project addresses." .
 
+rirpdo:Keyword
+    a owl:Class ;
+    rdfs:label "Keyword" ;
+    skos:definition "A free-text term or phrase assigned by an author to characterize the content of a publication or dataset." .
+
+rirpdo:Domain
+    a owl:Class ;
+    rdfs:label "Domain" ;
+    skos:closeMatch skos:Concept ;
+    skos:definition "A broad scientific or academic discipline to which a publication, project, or researcher belongs (e.g. Computer Science, Biology)." .
+
 rirpdo:Project
     a owl:Class ;
     rdfs:label "Project" ;
@@ -520,6 +531,36 @@ rirpdo:hostedBy
     rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdo:ResearchGroup rirpdo:Laboratory ) ] ;
     rdfs:range  rirpdo:Institution ;
     skos:definition "The institution at which a research group or laboratory is located and operates." .
+
+rirpdo:hasKeyword
+    a owl:ObjectProperty ;
+    rdfs:label "hasKeyword" ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdo:Publication rirpdo:Dataset ) ] ;
+    rdfs:range  rirpdo:Keyword ;
+    skos:definition "Associates a free-text keyword with a publication or dataset." .
+
+rirpdo:belongsToDomain
+    a owl:ObjectProperty ;
+    rdfs:label "belongsToDomain" ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdo:Publication rirpdo:Project rirpdo:Researcher ) ] ;
+    rdfs:range  rirpdo:Domain ;
+    skos:definition "The broad scientific domain to which a publication, project, or researcher belongs." .
+
+rirpdo:isPartOf
+    a owl:ObjectProperty, owl:TransitiveProperty, owl:IrreflexiveProperty ;
+    rdfs:label "isPartOf" ;
+    rdfs:domain rirpdo:ResearchInfrastructure ;
+    rdfs:range  rirpdo:ResearchInfrastructure ;
+    owl:inverseOf rirpdo:hasPart ;
+    skos:definition "A research infrastructure is a component of a larger research infrastructure." .
+
+rirpdo:hasPart
+    a owl:ObjectProperty, owl:TransitiveProperty, owl:IrreflexiveProperty ;
+    rdfs:label "hasPart" ;
+    rdfs:domain rirpdo:ResearchInfrastructure ;
+    rdfs:range  rirpdo:ResearchInfrastructure ;
+    owl:inverseOf rirpdo:isPartOf ;
+    skos:definition "A research infrastructure contains another as a component part." .
 
 rirpdo:storedIn
     a owl:ObjectProperty ;
