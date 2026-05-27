@@ -45,7 +45,8 @@ rirpdo:Patent
     rdfs:label "Patent" ;
     rdfs:subClassOf rirpdo:Publication ;
     skos:exactMatch cerif-m:cfResPat ;
-    skos:definition "A patent granted for a research-derived invention, documenting the invention and its legal protection." .
+    skos:definition "A form of intellectual property consisting of exclusive rights granted to an inventor for a limited period in exchange for public disclosure of an invention." ;
+    dc:source cerif-m:cfResPat .
 
 rirpdo:ResearchTopic
     a owl:Class ;
@@ -72,7 +73,8 @@ rirpdo:Facility
     rdfs:label "Facility" ;
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
     skos:exactMatch cerif-m:cfFacil ;
-    skos:definition "A physical or virtual space that hosts research activities, such as a laboratory or observatory." .
+    skos:definition "A space or equipment necessary for conducting research, such as a laboratory or observatory." ;
+    dc:source cerif-m:cfFacil .
 
 rirpdo:Laboratory
     a owl:Class ;
@@ -86,14 +88,16 @@ rirpdo:Equipment
     rdfs:label "Equipment" ;
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
     skos:exactMatch cerif-m:cfEquip ;
-    skos:definition "Major scientific instruments, sensors, or devices used to conduct research experiments or measurements." .
+    skos:definition "An instrumentality needed for an undertaking or to perform a service, such as scientific instruments and devices used in research." ;
+    dc:source cerif-m:cfEquip .
 
 rirpdo:InfrastructureService
     a owl:Class ;
     rdfs:label "Infrastructure Service" ;
     rdfs:subClassOf rirpdo:ResearchInfrastructure ;
     skos:exactMatch cerif-m:cfSrv ;
-    skos:definition "A service or digital resource provided to the research community, including computing platforms, data repositories, and communication networks." .
+    skos:definition "A service or digital resource provided to the research community, including computing platforms, data repositories, and communication networks." ;
+    dc:source cerif-m:cfSrv .
 
 rirpdo:ResearchDataRepository
     a owl:Class ;
@@ -148,7 +152,8 @@ rirpdo:ResearchProduct
     a owl:Class ;
     rdfs:label "Research Product" ;
     skos:exactMatch cerif-m:cfResProd ;
-    skos:definition "Any digital or physical output of a research activity, including datasets, software, and other artefacts." .
+    skos:definition "Any digital or physical output of a research activity, including datasets, software, and other artefacts." ;
+    dc:source cerif-m:cfResProd .
 
 rirpdo:Dataset
     a owl:Class ;
