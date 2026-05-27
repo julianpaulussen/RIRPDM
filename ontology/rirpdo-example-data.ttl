@@ -78,11 +78,13 @@ rirpdo:Pub_LinkedResearch
 
 rirpdo:Lab_FOKUS_SemanticTech
     a rirpdo:Laboratory ;
-    rirpdo:name "FOKUS Semantic Technologies Lab" .
+    rirpdo:name "FOKUS Semantic Technologies Lab" ;
+    rirpdo:ownedBy rirpdo:FraunhoferFOKUS .
 
 rirpdo:Repo_TUBerlin_OpenData
     a rirpdo:ResearchDataRepository ;
-    rirpdo:name "TU Berlin Open Research Data Repository" .
+    rirpdo:name "TU Berlin Open Research Data Repository" ;
+    rirpdo:ownedBy rirpdo:TUBerlin .
 
 # ── Datasets ──────────────────────────────────────────────────────────────────
 
@@ -136,27 +138,32 @@ rirpdo:Journal_JODS
 
 rirpdo:Cluster_HLRN
     a rirpdo:ComputeCluster ;
-    rirpdo:name "HLRN Berlin HPC Cluster" .
+    rirpdo:name "HLRN Berlin HPC Cluster" ;
+    rirpdo:ownedBy rirpdo:TUBerlin .
 
 rirpdo:Cluster_TUBerlin
     a rirpdo:ComputeCluster ;
-    rirpdo:name "TU Berlin High-Performance Computing Cluster" .
+    rirpdo:name "TU Berlin High-Performance Computing Cluster" ;
+    rirpdo:ownedBy rirpdo:TUBerlin .
 
 # ── Cloud infrastructure ──────────────────────────────────────────────────────
 
 rirpdo:Cloud_FOKUS_AWS
     a rirpdo:CloudInfrastructure ;
-    rirpdo:name "Fraunhofer FOKUS AWS Research Environment" .
+    rirpdo:name "Fraunhofer FOKUS AWS Research Environment" ;
+    rirpdo:ownedBy rirpdo:FraunhoferFOKUS .
 
 # ── Git repositories ──────────────────────────────────────────────────────────
 
 rirpdo:Git_LOPDF
     a rirpdo:GitRepository ;
-    rirpdo:name "LOPDF GitHub Repository" .
+    rirpdo:name "LOPDF GitHub Repository" ;
+    rirpdo:ownedBy rirpdo:FraunhoferFOKUS .
 
 rirpdo:Git_KGSurvey
     a rirpdo:GitRepository ;
-    rirpdo:name "KG Survey Code Repository" .
+    rirpdo:name "KG Survey Code Repository" ;
+    rirpdo:ownedBy rirpdo:TUBerlin .
 
 # ── Conferences ───────────────────────────────────────────────────────────────
 
@@ -282,19 +289,23 @@ rirpdo:Pub_LinkedDataIntegration
 
 rirpdo:Lab_DFKI_KG
     a rirpdo:Laboratory ;
-    rirpdo:name "DFKI Knowledge Graph Lab" .
+    rirpdo:name "DFKI Knowledge Graph Lab" ;
+    rirpdo:ownedBy rirpdo:DFKI .
 
 rirpdo:Repo_Zenodo_DFKI
     a rirpdo:ResearchDataRepository ;
-    rirpdo:name "DFKI Zenodo Research Repository" .
+    rirpdo:name "DFKI Zenodo Research Repository" ;
+    rirpdo:ownedBy rirpdo:DFKI .
 
 rirpdo:Cloud_DFKI_Azure
     a rirpdo:CloudInfrastructure ;
-    rirpdo:name "DFKI Azure Research Cloud" .
+    rirpdo:name "DFKI Azure Research Cloud" ;
+    rirpdo:ownedBy rirpdo:DFKI .
 
 rirpdo:Git_DBpedia
     a rirpdo:GitRepository ;
-    rirpdo:name "DBpedia GitHub Repository" .
+    rirpdo:name "DBpedia GitHub Repository" ;
+    rirpdo:ownedBy rirpdo:DFKI .
 
 # ── Additional datasets ───────────────────────────────────────────────────────
 

@@ -171,11 +171,11 @@ rirpdo:ResearchDataRepository
     rdfs:seeAlso nfdicore:NFDI_0001201 ;       # nfdicore:research data repository
     skos:definition "A storage system for archiving and sharing research datasets, typically with persistent identifiers (e.g. Zenodo, Figshare)." .
 
-rirpdo:GitRepository
-    a owl:Class ;
-    rdfs:label "Git Repository" ;
-    rdfs:subClassOf rirpdo:ResearchDataRepository ;
-    skos:definition "A version-controlled repository hosting research code and software artifacts (e.g. GitHub, GitLab)." .
+# rirpdo:GitRepository
+#     a owl:Class ;
+#     rdfs:label "Git Repository" ;
+#     rdfs:subClassOf rirpdo:ResearchDataRepository ;
+#     skos:definition "A version-controlled repository hosting research code and software artifacts (e.g. GitHub, GitLab)." .
 
 rirpdo:ComputingEnvironment
     a owl:Class ;
@@ -447,36 +447,6 @@ rirpdo:presentedAt
     rdfs:domain rirpdo:Publication ;
     rdfs:range  rirpdo:Conference .
 
-# Researcher project role subproperties — from CERIF PersonProjectEngagements
-rirpdo:hasPrincipalInvestigator
-    a owl:ObjectProperty ;
-    rdfs:label "hasPrincipalInvestigator" ;
-    rdfs:subPropertyOf rirpdo:hasParticipant ;
-    rdfs:domain rirpdo:Project ;
-    rdfs:range  rirpdo:Researcher ;
-    skos:exactMatch <https://w3id.org/cerif/vocab/PersonProjectEngagements#PrincipalInvestigator> ;
-    dc:source cerif:PersonProjectEngagements ;
-    skos:definition "The lead researcher directing the project and responsible for reporting to funders." .
-
-rirpdo:hasCoInvestigator
-    a owl:ObjectProperty ;
-    rdfs:label "hasCoInvestigator" ;
-    rdfs:subPropertyOf rirpdo:hasParticipant ;
-    rdfs:domain rirpdo:Project ;
-    rdfs:range  rirpdo:Researcher ;
-    skos:exactMatch <https://w3id.org/cerif/vocab/PersonProjectEngagements#Co-Investigator> ;
-    dc:source cerif:PersonProjectEngagements ;
-    skos:definition "A fellow researcher collaborating on the project, often from a different organization." .
-
-rirpdo:hasCollaborator
-    a owl:ObjectProperty ;
-    rdfs:label "hasCollaborator" ;
-    rdfs:subPropertyOf rirpdo:hasParticipant ;
-    rdfs:domain rirpdo:Project ;
-    rdfs:range  rirpdo:Researcher ;
-    skos:exactMatch <https://w3id.org/cerif/vocab/PersonProjectEngagements#Collaborator> ;
-    dc:source cerif:PersonProjectEngagements ;
-    skos:definition "A researcher formally participating in the project consortium." .
 
 rirpdo:containsEquipment
     a owl:ObjectProperty ;
@@ -658,12 +628,19 @@ rirpdo:InOperation
 # Mirrors the owl:propertyChainAxiom above; needed for GraphDB (OWL2-RL doesn't support property chains).
 rirpdo:rule_producedUsing
     a swrl:Imp ;
-    swrla:isRuleEnabled "true"^^xsd:boolean ;
-    rdfs:label "producedUsing bridge" ;
+    swrla:isRuleEnabled "true"^^xsd:boolean ; # ^^^xsd:boolean is required for GraphDB to recognize the rule as enabled
+    rdfs:label "producedUsing bridge" ; 
     swrl:body [
-        a swrl:AtomList ;
+        # AtomList is used to represent the conjunction of atoms in the rule body
+        # The rule body states that if there exists a publication (pub), a researcher (r), a project (p), and an infrastructure (i) such that:
+        # - the researcher (r) is an author of the publication (pub)
+        # - the researcher (r) is a participant in the project (p)
+        # - the project (p) uses the infrastructure (i)
+        # then we can infer that the publication (pub) was produced using the infrastructure (i).
+        a swrl:AtomList ; 
         rdf:first [ a swrl:IndividualPropertyAtom ;
-                    swrl:propertyPredicate rirpdo:usesInfrastructure ;
+                    # A property atom states that a certain property holds between two arguments (which can be variables or individuals).
+                    swrl:propertyPredicate rirpdo:usesInfrastructure ; 
                     swrl:argument1 rirpdo:p ; swrl:argument2 rirpdo:i ] ;
         rdf:rest [ a swrl:AtomList ;
             rdf:first [ a swrl:IndividualPropertyAtom ;
