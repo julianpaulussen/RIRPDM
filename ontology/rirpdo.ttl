@@ -39,6 +39,7 @@ rirpdo:University
     a owl:Class ;
     rdfs:label "University" ;
     rdfs:subClassOf rirpdo:Institution ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OrganisationTypes#University> ;
     dc:source cerif:OrganisationTypes ;
     skos:definition "An institution of higher education and research which grants academic degrees in a variety of subjects." .
 
@@ -46,6 +47,7 @@ rirpdo:ResearchInstitute
     a owl:Class ;
     rdfs:label "Research Institute" ;
     rdfs:subClassOf rirpdo:Institution ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OrganisationTypes#ResearchInstitute> ;
     dc:source cerif:OrganisationTypes ;
     skos:definition "An establishment endowed for doing research, which may specialize in basic or applied research." .
 
@@ -53,6 +55,7 @@ rirpdo:Company
     a owl:Class ;
     rdfs:label "Company" ;
     rdfs:subClassOf rirpdo:Institution ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OrganisationTypes#Company> ;
     dc:source cerif:OrganisationTypes ;
     skos:definition "A form of business organization carrying on industrial or commercial enterprise." .
 
@@ -60,6 +63,7 @@ rirpdo:GovernmentBody
     a owl:Class ;
     rdfs:label "Government Body" ;
     rdfs:subClassOf rirpdo:Institution ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OrganisationTypes#Government> ;
     dc:source cerif:OrganisationTypes ;
     skos:definition "An organization through which a political unit exercises authority and administers public policy." .
 
@@ -82,6 +86,7 @@ rirpdo:JournalArticle
     a owl:Class ;
     rdfs:label "Journal Article" ;
     rdfs:subClassOf rirpdo:Publication ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#JournalArticle> ;
     skos:exactMatch bibo:AcademicArticle ;
     dc:source cerif:OutputTypes ;
     skos:definition "A self-contained nonfiction prose composition on a fairly narrow topic published in a journal." .
@@ -90,6 +95,7 @@ rirpdo:ConferencePaper
     a owl:Class ;
     rdfs:label "Conference Paper" ;
     rdfs:subClassOf rirpdo:Publication ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#ConferenceProceedingsArticle> ;
     dc:source cerif:OutputTypes ;
     skos:definition "An article presented at a conference and published in conference proceedings." .
 
@@ -97,6 +103,7 @@ rirpdo:Thesis
     a owl:Class ;
     rdfs:label "Thesis" ;
     rdfs:subClassOf rirpdo:Publication ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#PhDThesis> ;
     dc:source cerif:OutputTypes ;
     skos:definition "A dissertation or thesis submitted for an academic degree, such as a PhD or doctoral degree." .
 
@@ -104,6 +111,7 @@ rirpdo:WorkingPaper
     a owl:Class ;
     rdfs:label "Working Paper" ;
     rdfs:subClassOf rirpdo:Publication ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#WorkingPaper> ;
     dc:source cerif:OutputTypes ;
     skos:definition "A preliminary version of an article that has not undergone peer review but is shared for comment." .
 
@@ -111,6 +119,7 @@ rirpdo:Report
     a owl:Class ;
     rdfs:label "Report" ;
     rdfs:subClassOf rirpdo:Publication ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#Report> ;
     dc:source cerif:OutputTypes ;
     skos:definition "A separately published record of research findings, research still in progress, or other technical findings." .
 
@@ -118,6 +127,7 @@ rirpdo:Software
     a owl:Class ;
     rdfs:label "Software" ;
     rdfs:subClassOf rirpdo:ResearchProduct ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#Software> ;
     dc:source cerif:OutputTypes ;
     skos:definition "A research software artefact — computer programs and associated documentation produced as part of a research activity." .
 
@@ -287,6 +297,7 @@ rirpdo:Grant
     a owl:Class ;
     rdfs:label "Grant" ;
     rdfs:subClassOf rirpdo:Funding ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ActivityFundingTypes#Grant> ;
     dc:source cerif:ActivityFundingTypes ;
     skos:definition "A funding mechanism where a proposed activity is submitted for consideration and funding is approved upon merit." .
 
@@ -294,6 +305,7 @@ rirpdo:Award
     a owl:Class ;
     rdfs:label "Award" ;
     rdfs:subClassOf rirpdo:Funding ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ActivityFundingTypes#Award> ;
     dc:source cerif:ActivityFundingTypes ;
     skos:definition "Discretionary funds awarded based on an achievement or recognized contribution." .
 
@@ -301,6 +313,7 @@ rirpdo:Contract
     a owl:Class ;
     rdfs:label "Contract" ;
     rdfs:subClassOf rirpdo:Funding ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ActivityFundingTypes#Contract> ;
     dc:source cerif:ActivityFundingTypes ;
     skos:definition "A funding mechanism where funding is approved and allocated upon successful delivery of proposed outputs." .
 
@@ -420,6 +433,7 @@ rirpdo:hasPrincipalInvestigator
     rdfs:subPropertyOf rirpdo:hasParticipant ;
     rdfs:domain rirpdo:Project ;
     rdfs:range  rirpdo:Researcher ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/PersonProjectEngagements#PrincipalInvestigator> ;
     dc:source cerif:PersonProjectEngagements ;
     skos:definition "The lead researcher directing the project and responsible for reporting to funders." .
 
@@ -429,6 +443,7 @@ rirpdo:hasCoInvestigator
     rdfs:subPropertyOf rirpdo:hasParticipant ;
     rdfs:domain rirpdo:Project ;
     rdfs:range  rirpdo:Researcher ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/PersonProjectEngagements#Co-Investigator> ;
     dc:source cerif:PersonProjectEngagements ;
     skos:definition "A fellow researcher collaborating on the project, often from a different organization." .
 
@@ -438,6 +453,7 @@ rirpdo:hasCollaborator
     rdfs:subPropertyOf rirpdo:hasParticipant ;
     rdfs:domain rirpdo:Project ;
     rdfs:range  rirpdo:Researcher ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/PersonProjectEngagements#Collaborator> ;
     dc:source cerif:PersonProjectEngagements ;
     skos:definition "A researcher formally participating in the project consortium." .
 
