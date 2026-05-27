@@ -71,6 +71,7 @@ rirpdo:Publication
     a owl:Class ;
     rdfs:label "Publication" ;
     rdfs:subClassOf bibo:Document ;
+    rdfs:subClassOf rirpdo:ResearchProduct ;
     skos:definition "A scholarly work published and shared with the research community, such as a journal article, conference paper, or technical report." .
 
 rirpdo:Patent
@@ -330,9 +331,13 @@ rirpdo:memberOf          rdfs:seeAlso           vivo:memberOf .
 rirpdo:Researcher owl:disjointWith rirpdo:Publication .
 rirpdo:Researcher owl:disjointWith rirpdo:ResearchInfrastructure .
 rirpdo:Researcher owl:disjointWith rirpdo:ResearchTopic .
+rirpdo:Researcher owl:disjointWith rirpdo:Institution .
 rirpdo:Publication owl:disjointWith rirpdo:ResearchInfrastructure .
 rirpdo:Publication owl:disjointWith rirpdo:Project .
 rirpdo:Institution owl:disjointWith rirpdo:Publication .
+rirpdo:Project owl:disjointWith rirpdo:ResearchInfrastructure .
+rirpdo:Funding owl:disjointWith rirpdo:Publication .
+rirpdo:Funding owl:disjointWith rirpdo:Researcher .
 
 # ── Cardinality restrictions ──────────────────────────────────────────────────
 
@@ -354,20 +359,30 @@ rirpdo:hasAuthor
     owl:inverseOf rirpdo:authorOf .
 
 rirpdo:authorOf
-    a owl:ObjectProperty ;
+    a owl:ObjectProperty, owl:IrreflexiveProperty ;
     rdfs:label "authorOf" ;
+    rdfs:domain rirpdo:Researcher ;
+    rdfs:range  rirpdo:Publication ;
     owl:inverseOf rirpdo:hasAuthor .
 
 rirpdo:affiliatedWith
     a owl:ObjectProperty ;
     rdfs:label "affiliatedWith" ;
     rdfs:domain rirpdo:Researcher ;
-    rdfs:range  rirpdo:Institution .
+    rdfs:range  rirpdo:Institution ;
+    owl:inverseOf rirpdo:hasAffiliate .
+
+rirpdo:hasAffiliate
+    a owl:ObjectProperty ;
+    rdfs:label "hasAffiliate" ;
+    rdfs:domain rirpdo:Institution ;
+    rdfs:range  rirpdo:Researcher ;
+    owl:inverseOf rirpdo:affiliatedWith .
 
 rirpdo:hasTopic
     a owl:ObjectProperty ;
     rdfs:label "hasTopic" ;
-    rdfs:domain rirpdo:Publication ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdo:Publication rirpdo:Project ) ] ;
     rdfs:range  rirpdo:ResearchTopic .
 
 rirpdo:hasParticipant
@@ -479,9 +494,17 @@ rirpdo:owns
     rdfs:label "owns" ;
     rdfs:domain rirpdo:Institution ;
     rdfs:range  rirpdo:ResearchInfrastructure ;
+    owl:inverseOf rirpdo:ownedBy ;
     skos:narrowMatch cerif-m:cfOrgUnit_Equip ;
     skos:narrowMatch cerif-m:cfOrgUnit_Facil ;
     skos:narrowMatch cerif-m:cfOrgUnit_Srv .
+
+rirpdo:ownedBy
+    a owl:ObjectProperty ;
+    rdfs:label "ownedBy" ;
+    rdfs:domain rirpdo:ResearchInfrastructure ;
+    rdfs:range  rirpdo:Institution ;
+    owl:inverseOf rirpdo:owns .
 
 rirpdo:usedInfrastructure
     a owl:ObjectProperty ;
@@ -490,6 +513,20 @@ rirpdo:usedInfrastructure
     rdfs:range  rirpdo:ResearchInfrastructure ;
     skos:narrowMatch cerif-m:cfResPubl_Equip ;
     skos:narrowMatch cerif-m:cfResPubl_Facil .
+
+rirpdo:hostedBy
+    a owl:ObjectProperty ;
+    rdfs:label "hostedBy" ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdo:ResearchGroup rirpdo:Laboratory ) ] ;
+    rdfs:range  rirpdo:Institution ;
+    skos:definition "The institution at which a research group or laboratory is located and operates." .
+
+rirpdo:storedIn
+    a owl:ObjectProperty ;
+    rdfs:label "storedIn" ;
+    rdfs:domain rirpdo:Dataset ;
+    rdfs:range  rirpdo:ResearchDataRepository ;
+    skos:definition "The repository in which a dataset is archived and made accessible." .
 
 # ── Data properties ──────────────────────────────────────────────────────────
 
@@ -501,11 +538,13 @@ rirpdo:name
 rirpdo:title
     a owl:DatatypeProperty ;
     rdfs:label "title" ;
+    rdfs:domain rirpdo:Publication ;
     rdfs:range xsd:string .
 
 rirpdo:year
     a owl:DatatypeProperty ;
     rdfs:label "year" ;
+    rdfs:domain rirpdo:Publication ;
     rdfs:range xsd:gYear .
 
 rirpdo:doi
@@ -537,6 +576,13 @@ rirpdo:amount
     rdfs:label "amount" ;
     rdfs:domain rirpdo:Funding ;
     rdfs:range xsd:decimal .
+
+rirpdo:currency
+    a owl:DatatypeProperty ;
+    rdfs:label "currency" ;
+    rdfs:domain rirpdo:Funding ;
+    rdfs:range xsd:string ;
+    skos:definition "ISO 4217 currency code for the funding amount (e.g. EUR, USD)." .
 
 rirpdo:orcid
     a owl:DatatypeProperty, owl:FunctionalProperty ;
