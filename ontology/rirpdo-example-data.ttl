@@ -5,6 +5,9 @@
 @prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix dc:       <http://purl.org/dc/terms/> .
+@prefix bibo:     <http://purl.org/ontology/bibo/> .
 
 # ABox — load alongside rirpdo.ttl in GraphDB
 
@@ -12,48 +15,48 @@
 
 rirpdo:FraunhoferFOKUS # subject: prefix:localname -> identifier 
     a rirpdo:Institution ; # predicate: "a" = rdf:type -> instace of a class    
-    rirpdo:name "Fraunhofer FOKUS" . # prefix:name -> name attached to subject
+    foaf:name "Fraunhofer FOKUS" . # prefix:name -> name attached to subject
 
 rirpdo:TUBerlin
     a rirpdo:Institution ;
-    rirpdo:name "Technische Universität Berlin" .
+    foaf:name "Technische Universität Berlin" .
 
 # ── Research topics ───────────────────────────────────────────────────────────
 
 rirpdo:SemanticWeb
     a rirpdo:ResearchTopic ;
-    rirpdo:name "Semantic Web" .
+    foaf:name "Semantic Web" .
 
 rirpdo:KnowledgeGraphs
     a rirpdo:ResearchTopic ;
-    rirpdo:name "Knowledge Graphs" .
+    foaf:name "Knowledge Graphs" .
 
 rirpdo:LinkedData
     a rirpdo:ResearchTopic ;
-    rirpdo:name "Linked Data" .
+    foaf:name "Linked Data" .
 
 # ── Researchers ───────────────────────────────────────────────────────────────
 
 rirpdo:Researcher_Aslam
     a rirpdo:Researcher ;
-    rirpdo:name "Muhammad Ahtisham Aslam" ;
+    foaf:name "Muhammad Ahtisham Aslam" ;
     rirpdo:affiliatedWith rirpdo:FraunhoferFOKUS .
 
 rirpdo:Researcher_Smith
     a rirpdo:Researcher ;
-    rirpdo:name "Jane Smith" ;
+    foaf:name "Jane Smith" ;
     rirpdo:affiliatedWith rirpdo:TUBerlin .
 
 rirpdo:Researcher_Mueller
     a rirpdo:Researcher ;
-    rirpdo:name "Hans Mueller" ;
+    foaf:name "Hans Mueller" ;
     rirpdo:affiliatedWith rirpdo:TUBerlin .
 
 # ── Publications ──────────────────────────────────────────────────────────────
 
 rirpdo:Pub_LOPDF
     a rirpdo:Publication ;
-    rirpdo:title "LOPDF: A Framework for Extracting and Producing Open Data of Scientific Documents" ;
+    dc:title "LOPDF: A Framework for Extracting and Producing Open Data of Scientific Documents" ;
     rirpdo:year "2021"^^xsd:gYear ;
     rirpdo:hasAuthor rirpdo:Researcher_Aslam ;
     rirpdo:hasTopic rirpdo:LinkedData ;
@@ -61,7 +64,7 @@ rirpdo:Pub_LOPDF
 
 rirpdo:Pub_KGSurvey
     a rirpdo:Publication ;
-    rirpdo:title "A Survey on Knowledge Graph Construction" ;
+    dc:title "A Survey on Knowledge Graph Construction" ;
     rirpdo:year "2023"^^xsd:gYear ;
     rirpdo:hasAuthor rirpdo:Researcher_Smith ;
     rirpdo:hasAuthor rirpdo:Researcher_Mueller ;
@@ -69,7 +72,7 @@ rirpdo:Pub_KGSurvey
 
 rirpdo:Pub_LinkedResearch
     a rirpdo:Publication ;
-    rirpdo:title "Linked Open Data for Research Infrastructure" ;
+    dc:title "Linked Open Data for Research Infrastructure" ;
     rirpdo:year "2022"^^xsd:gYear ;
     rirpdo:hasAuthor rirpdo:Researcher_Mueller ;
     rirpdo:hasTopic rirpdo:LinkedData ;
@@ -80,137 +83,133 @@ rirpdo:Pub_LinkedResearch
 
 rirpdo:Lab_FOKUS_SemanticTech
     a rirpdo:Laboratory ;
-    rirpdo:name "FOKUS Semantic Technologies Lab" ;
+    foaf:name "FOKUS Semantic Technologies Lab" ;
     rirpdo:ownedBy rirpdo:FraunhoferFOKUS .
 
 rirpdo:Repo_TUBerlin_OpenData
     a rirpdo:ResearchDataRepository ;
-    rirpdo:name "TU Berlin Open Research Data Repository" ;
+    foaf:name "TU Berlin Open Research Data Repository" ;
     rirpdo:ownedBy rirpdo:TUBerlin .
 
 # ── Datasets ──────────────────────────────────────────────────────────────────
 
 rirpdo:Dataset_LOPDFCorpus
     a rirpdo:Dataset ;
-    rirpdo:name "LOPDF Scientific Document Corpus" .
+    foaf:name "LOPDF Scientific Document Corpus" .
 
 rirpdo:Dataset_KGBenchmark
     a rirpdo:Dataset ;
-    rirpdo:name "Knowledge Graph Construction Benchmark" .
+    foaf:name "Knowledge Graph Construction Benchmark" .
 
 # ── Funding ───────────────────────────────────────────────────────────────────
 
 rirpdo:Funding_BMBF_2020
     a rirpdo:Funding ;
-    rirpdo:name "BMBF Open Science Grant 2020" .
+    foaf:name "BMBF Open Science Grant 2020" .
 
 # ── Projects ──────────────────────────────────────────────────────────────────
 
 rirpdo:Project_LOPDF
     a rirpdo:Project ;
-    rirpdo:name "LOPDF Project" ;
+    foaf:name "LOPDF Project" ;
     rirpdo:hasParticipant     rirpdo:Researcher_Aslam ;
     rirpdo:usesInfrastructure rirpdo:Lab_FOKUS_SemanticTech ;
-    rirpdo:usesInfrastructure rirpdo:Cloud_FOKUS_AWS ;
-    rirpdo:usesInfrastructure rirpdo:Git_LOPDF ;
-    rirpdo:producedDataset    rirpdo:Dataset_LOPDFCorpus ;
+    rirpdo:producedOutput     rirpdo:Dataset_LOPDFCorpus ;
     rirpdo:fundedBy           rirpdo:Funding_BMBF_2020 .
 
 rirpdo:Project_KGSurvey
     a rirpdo:Project ;
-    rirpdo:name "Knowledge Graph Survey Project" ;
+    foaf:name "Knowledge Graph Survey Project" ;
     rirpdo:hasParticipant     rirpdo:Researcher_Smith ;
     rirpdo:hasParticipant     rirpdo:Researcher_Mueller ;
     rirpdo:usesInfrastructure rirpdo:Repo_TUBerlin_OpenData ;
-    rirpdo:usesInfrastructure rirpdo:Cluster_TUBerlin ;
-    rirpdo:usesInfrastructure rirpdo:Git_KGSurvey ;
-    rirpdo:producedDataset    rirpdo:Dataset_KGBenchmark .
+    rirpdo:producedOutput     rirpdo:Dataset_KGBenchmark .
 
 # ── Journals ──────────────────────────────────────────────────────────────────
 
 rirpdo:Journal_SWJ
     a rirpdo:Journal ;
-    rirpdo:name "Semantic Web Journal" .
+    foaf:name "Semantic Web Journal" .
 
 rirpdo:Journal_JODS
     a rirpdo:Journal ;
-    rirpdo:name "Journal of Data Semantics" .
+    foaf:name "Journal of Data Semantics" .
 
 
 # ── Conferences ───────────────────────────────────────────────────────────────
 
 rirpdo:Conf_ISWC2022
     a rirpdo:Conference ;
-    rirpdo:name "International Semantic Web Conference 2022" .
+    foaf:name "International Semantic Web Conference 2022" .
 
 rirpdo:Conf_ESWC2023
     a rirpdo:Conference ;
-    rirpdo:name "Extended Semantic Web Conference 2023" .
+    foaf:name "Extended Semantic Web Conference 2023" .
 
 # ── Additional institutions ───────────────────────────────────────────────────
 
 rirpdo:HumboldtUniversity
     a rirpdo:Institution ;
-    rirpdo:name "Humboldt-Universität zu Berlin" .
+    foaf:name "Humboldt-Universität zu Berlin" .
 
 rirpdo:FraunhoferAISEC
     a rirpdo:Institution ;
-    rirpdo:name "Fraunhofer AISEC" .
+    foaf:name "Fraunhofer AISEC" .
 
 rirpdo:DFKI
     a rirpdo:Institution ;
-    rirpdo:name "German Research Center for Artificial Intelligence (DFKI)" .
+    foaf:name "German Research Center for Artificial Intelligence (DFKI)" .
 
 # ── Additional research topics ────────────────────────────────────────────────
 
 rirpdo:OpenData
     a rirpdo:ResearchTopic ;
-    rirpdo:name "Open Data" .
+    foaf:name "Open Data" .
 
 rirpdo:NaturalLanguageProcessing
     a rirpdo:ResearchTopic ;
-    rirpdo:name "Natural Language Processing" .
+    foaf:name "Natural Language Processing" .
 
 rirpdo:DataIntegration
     a rirpdo:ResearchTopic ;
-    rirpdo:name "Data Integration" .
+    foaf:name "Data Integration" .
 
 rirpdo:MachineLearning
     a rirpdo:ResearchTopic ;
-    rirpdo:name "Machine Learning" .
+    foaf:name "Machine Learning" .
 
 # ── Additional researchers ────────────────────────────────────────────────────
 
 rirpdo:Researcher_Wagner
     a rirpdo:Researcher ;
-    rirpdo:name "Claudia Wagner" ;
+    foaf:name "Claudia Wagner" ;
     rirpdo:affiliatedWith rirpdo:DFKI .
 
 rirpdo:Researcher_Lehmann
     a rirpdo:Researcher ;
-    rirpdo:name "Jens Lehmann" ;
+    foaf:name "Jens Lehmann" ;
     rirpdo:affiliatedWith rirpdo:HumboldtUniversity .
 
 rirpdo:Researcher_Auer
     a rirpdo:Researcher ;
-    rirpdo:name "Sören Auer" ;
+    foaf:name "Sören Auer" ;
     rirpdo:affiliatedWith rirpdo:DFKI .
 
 rirpdo:Researcher_Bizer
     a rirpdo:Researcher ;
-    rirpdo:name "Christian Bizer" ;
+    foaf:name "Christian Bizer" ;
     rirpdo:affiliatedWith rirpdo:HumboldtUniversity .
 
 rirpdo:Researcher_Ngomo
     a rirpdo:Researcher ;
-    rirpdo:name "Axel-Cyrille Ngonga Ngomo" ;
+    foaf:name "Axel-Cyrille Ngonga Ngomo" ;
     rirpdo:affiliatedWith rirpdo:DFKI .
 
 # ── Additional publications ───────────────────────────────────────────────────
 
 rirpdo:Pub_DBpedia
     a rirpdo:Publication ;
-    rirpdo:title "DBpedia: A Nucleus for a Web of Open Data" ;
+    dc:title "DBpedia: A Nucleus for a Web of Open Data" ;
     rirpdo:year "2022"^^xsd:gYear ;
     rirpdo:hasAuthor rirpdo:Researcher_Lehmann ;
     rirpdo:hasAuthor rirpdo:Researcher_Bizer ;
@@ -221,7 +220,7 @@ rirpdo:Pub_DBpedia
 
 rirpdo:Pub_NLPInfra
     a rirpdo:Publication ;
-    rirpdo:title "NLP Infrastructure for Research Data Management" ;
+    dc:title "NLP Infrastructure for Research Data Management" ;
     rirpdo:year "2023"^^xsd:gYear ;
     rirpdo:hasAuthor rirpdo:Researcher_Wagner ;
     rirpdo:hasAuthor rirpdo:Researcher_Auer ;
@@ -231,7 +230,7 @@ rirpdo:Pub_NLPInfra
 
 rirpdo:Pub_KGEmbeddings
     a rirpdo:Publication ;
-    rirpdo:title "Knowledge Graph Embeddings for Entity Alignment" ;
+    dc:title "Knowledge Graph Embeddings for Entity Alignment" ;
     rirpdo:year "2023"^^xsd:gYear ;
     rirpdo:hasAuthor rirpdo:Researcher_Lehmann ;
     rirpdo:hasAuthor rirpdo:Researcher_Ngomo ;
@@ -241,7 +240,7 @@ rirpdo:Pub_KGEmbeddings
 
 rirpdo:Pub_OpenDataQuality
     a rirpdo:Publication ;
-    rirpdo:title "Quality Assessment for Open Research Data" ;
+    dc:title "Quality Assessment for Open Research Data" ;
     rirpdo:year "2024"^^xsd:gYear ;
     rirpdo:hasAuthor rirpdo:Researcher_Auer ;
     rirpdo:hasAuthor rirpdo:Researcher_Bizer ;
@@ -251,7 +250,7 @@ rirpdo:Pub_OpenDataQuality
 
 rirpdo:Pub_LinkedDataIntegration
     a rirpdo:Publication ;
-    rirpdo:title "Scalable Linked Data Integration for Scientific Workflows" ;
+    dc:title "Scalable Linked Data Integration for Scientific Workflows" ;
     rirpdo:year "2022"^^xsd:gYear ;
     rirpdo:hasAuthor rirpdo:Researcher_Bizer ;
     rirpdo:hasTopic rirpdo:LinkedData ;
@@ -261,12 +260,12 @@ rirpdo:Pub_LinkedDataIntegration
 
 rirpdo:Lab_DFKI_KG
     a rirpdo:Laboratory ;
-    rirpdo:name "DFKI Knowledge Graph Lab" ;
+    foaf:name "DFKI Knowledge Graph Lab" ;
     rirpdo:ownedBy rirpdo:DFKI .
 
 rirpdo:Repo_Zenodo_DFKI
     a rirpdo:ResearchDataRepository ;
-    rirpdo:name "DFKI Zenodo Research Repository" ;
+    foaf:name "DFKI Zenodo Research Repository" ;
     rirpdo:ownedBy rirpdo:DFKI .
 
 
@@ -274,42 +273,39 @@ rirpdo:Repo_Zenodo_DFKI
 
 rirpdo:Dataset_DBpedia
     a rirpdo:Dataset ;
-    rirpdo:name "DBpedia Linked Dataset" .
+    foaf:name "DBpedia Linked Dataset" .
 
 rirpdo:Dataset_NLPCorpus
     a rirpdo:Dataset ;
-    rirpdo:name "Research NLP Corpus" .
+    foaf:name "Research NLP Corpus" .
 
 # ── Additional funding ────────────────────────────────────────────────────────
 
 rirpdo:Funding_DFG_2022
     a rirpdo:Funding ;
-    rirpdo:name "DFG Research Grant 2022" .
+    foaf:name "DFG Research Grant 2022" .
 
 rirpdo:Funding_EU_Horizon
     a rirpdo:Funding ;
-    rirpdo:name "EU Horizon Europe Grant" .
+    foaf:name "EU Horizon Europe Grant" .
 
 # ── Additional projects ───────────────────────────────────────────────────────
 
 rirpdo:Project_DBpedia
     a rirpdo:Project ;
-    rirpdo:name "DBpedia Open Data Project" ;
+    foaf:name "DBpedia Open Data Project" ;
     rirpdo:hasParticipant     rirpdo:Researcher_Lehmann ;
     rirpdo:hasParticipant     rirpdo:Researcher_Bizer ;
     rirpdo:usesInfrastructure rirpdo:Lab_DFKI_KG ;
-    rirpdo:usesInfrastructure rirpdo:Git_DBpedia ;
     rirpdo:usesInfrastructure rirpdo:Repo_Zenodo_DFKI ;
-    rirpdo:producedDataset    rirpdo:Dataset_DBpedia ;
+    rirpdo:producedOutput     rirpdo:Dataset_DBpedia ;
     rirpdo:fundedBy           rirpdo:Funding_DFG_2022 .
 
 rirpdo:Project_NLPInfra
     a rirpdo:Project ;
-    rirpdo:name "NLP Research Infrastructure Project" ;
+    foaf:name "NLP Research Infrastructure Project" ;
     rirpdo:hasParticipant     rirpdo:Researcher_Wagner ;
     rirpdo:hasParticipant     rirpdo:Researcher_Auer ;
     rirpdo:hasParticipant     rirpdo:Researcher_Ngomo ;
-    rirpdo:usesInfrastructure rirpdo:Cloud_DFKI_Azure ;
-    rirpdo:usesInfrastructure rirpdo:Cluster_HLRN ;
-    rirpdo:producedDataset    rirpdo:Dataset_NLPCorpus ;
+    rirpdo:producedOutput     rirpdo:Dataset_NLPCorpus ;
     rirpdo:fundedBy           rirpdo:Funding_EU_Horizon .

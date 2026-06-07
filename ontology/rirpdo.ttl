@@ -472,21 +472,6 @@ rirpdo:hasKeyword
     skos:definition "Associates a free-text keyword with a publication or dataset." .
 
 
-rirpdo:isPartOf
-    a owl:ObjectProperty, owl:TransitiveProperty, owl:IrreflexiveProperty ;
-    rdfs:label "isPartOf" ;
-    rdfs:domain rirpdo:ResearchInfrastructure ;
-    rdfs:range  rirpdo:ResearchInfrastructure ;
-    owl:inverseOf rirpdo:hasPart ;
-    skos:definition "A research infrastructure is a component of a larger research infrastructure." .
-
-rirpdo:hasPart
-    a owl:ObjectProperty, owl:TransitiveProperty, owl:IrreflexiveProperty ;
-    rdfs:label "hasPart" ;
-    rdfs:domain rirpdo:ResearchInfrastructure ;
-    rdfs:range  rirpdo:ResearchInfrastructure ;
-    owl:inverseOf rirpdo:isPartOf ;
-    skos:definition "A research infrastructure contains another as a component part." .
 
 rirpdo:storedIn
     a owl:ObjectProperty ;
@@ -497,16 +482,6 @@ rirpdo:storedIn
 
 # ── Data properties ──────────────────────────────────────────────────────────
 
-rirpdo:name
-    a owl:DatatypeProperty ;
-    rdfs:label "name" ;
-    rdfs:range xsd:string .
-
-rirpdo:title
-    a owl:DatatypeProperty ;
-    rdfs:label "title" ;
-    rdfs:domain rirpdo:Publication ;
-    rdfs:range xsd:string .
 
 rirpdo:year
     a owl:DatatypeProperty ;
@@ -514,17 +489,6 @@ rirpdo:year
     rdfs:domain rirpdo:Publication ;
     rdfs:range xsd:gYear .
 
-rirpdo:doi
-    a owl:DatatypeProperty ;
-    rdfs:label "doi" ;
-    rdfs:domain rirpdo:Publication ;
-    rdfs:range xsd:string .
-
-rirpdo:abstract
-    a owl:DatatypeProperty ;
-    rdfs:label "abstract" ;
-    rdfs:domain rirpdo:Publication ;
-    rdfs:range xsd:string .
 
 rirpdo:startDate
     a owl:DatatypeProperty ;
@@ -551,11 +515,6 @@ rirpdo:currency
     rdfs:range xsd:string ;
     skos:definition "ISO 4217 currency code for the funding amount (e.g. EUR, USD)." .
 
-rirpdo:orcid
-    a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "orcid" ;
-    rdfs:domain rirpdo:Researcher ;
-    rdfs:range xsd:string .
 
 rirpdo:hasType
     a owl:ObjectProperty ;
