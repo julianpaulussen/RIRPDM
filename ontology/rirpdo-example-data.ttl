@@ -1,3 +1,5 @@
+# rirpdo: prefix label -> expands to full namespace
+# <http:...>: namespace#[localname]
 @prefix rirpdo:   <http://www.example.org/rirpdo#> .
 @prefix owl:      <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8,9 +10,9 @@
 
 # ── Institutions ──────────────────────────────────────────────────────────────
 
-rirpdo:FraunhoferFOKUS
-    a rirpdo:Institution ;
-    rirpdo:name "Fraunhofer FOKUS" .
+rirpdo:FraunhoferFOKUS # subject: prefix:localname -> identifier 
+    a rirpdo:Institution ; # predicate: "a" = rdf:type -> instace of a class    
+    rirpdo:name "Fraunhofer FOKUS" . # prefix:name -> name attached to subject
 
 rirpdo:TUBerlin
     a rirpdo:Institution ;
@@ -134,36 +136,6 @@ rirpdo:Journal_JODS
     a rirpdo:Journal ;
     rirpdo:name "Journal of Data Semantics" .
 
-# ── Compute clusters ──────────────────────────────────────────────────────────
-
-rirpdo:Cluster_HLRN
-    a rirpdo:ComputeCluster ;
-    rirpdo:name "HLRN Berlin HPC Cluster" ;
-    rirpdo:ownedBy rirpdo:TUBerlin .
-
-rirpdo:Cluster_TUBerlin
-    a rirpdo:ComputeCluster ;
-    rirpdo:name "TU Berlin High-Performance Computing Cluster" ;
-    rirpdo:ownedBy rirpdo:TUBerlin .
-
-# ── Cloud infrastructure ──────────────────────────────────────────────────────
-
-rirpdo:Cloud_FOKUS_AWS
-    a rirpdo:CloudInfrastructure ;
-    rirpdo:name "Fraunhofer FOKUS AWS Research Environment" ;
-    rirpdo:ownedBy rirpdo:FraunhoferFOKUS .
-
-# ── Git repositories ──────────────────────────────────────────────────────────
-
-rirpdo:Git_LOPDF
-    a rirpdo:GitRepository ;
-    rirpdo:name "LOPDF GitHub Repository" ;
-    rirpdo:ownedBy rirpdo:FraunhoferFOKUS .
-
-rirpdo:Git_KGSurvey
-    a rirpdo:GitRepository ;
-    rirpdo:name "KG Survey Code Repository" ;
-    rirpdo:ownedBy rirpdo:TUBerlin .
 
 # ── Conferences ───────────────────────────────────────────────────────────────
 
@@ -297,15 +269,6 @@ rirpdo:Repo_Zenodo_DFKI
     rirpdo:name "DFKI Zenodo Research Repository" ;
     rirpdo:ownedBy rirpdo:DFKI .
 
-rirpdo:Cloud_DFKI_Azure
-    a rirpdo:CloudInfrastructure ;
-    rirpdo:name "DFKI Azure Research Cloud" ;
-    rirpdo:ownedBy rirpdo:DFKI .
-
-rirpdo:Git_DBpedia
-    a rirpdo:GitRepository ;
-    rirpdo:name "DBpedia GitHub Repository" ;
-    rirpdo:ownedBy rirpdo:DFKI .
 
 # ── Additional datasets ───────────────────────────────────────────────────────
 
