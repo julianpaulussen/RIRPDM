@@ -151,12 +151,21 @@ rirpdm:Operation      a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label
 rirpdm:Termination    a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Termination"@en .
 
 #################################################################
-#    Scientific Case (enumerated)
+#    Scientific Case  (per-proposal/per-RI assessment object)
+#    The six scientific dimensions are modelled separately as the
+#    enumerated class ScientificDimension; an Evaluation links a
+#    case to a dimension, score and lifecycle phase.
 #################################################################
 
 rirpdm:ScientificCase a owl:Class ;
     rdfs:label "Scientific Case"@en ;
-    rdfs:comment "The six-dimension assessment of an RI's scientific merit."@en ;
+    rdfs:comment "The six-dimension assessment of an RI's scientific merit, attached to a Proposal or Research Infrastructure."@en ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:ScientificDimension a owl:Class ;
+    rdfs:label "Scientific Dimension"@en ;
+    rdfs:comment "One of the six dimensions along which a Scientific Case is assessed."@en ;
     owl:equivalentClass [ a owl:Class ;
         owl:oneOf ( rirpdm:ScientificExcellence rirpdm:PanEuropeanRelevance
                     rirpdm:SocioEconomicImpact rirpdm:UserStrategyAndAccessPolicy
@@ -164,31 +173,39 @@ rirpdm:ScientificCase a owl:Class ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
-rirpdm:ScientificExcellence        a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "Scientific Excellence"@en .
-rirpdm:PanEuropeanRelevance        a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "Pan-European Relevance"@en .
-rirpdm:SocioEconomicImpact         a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "Socio-Economic Impact"@en .
-rirpdm:UserStrategyAndAccessPolicy a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "User Strategy & Access Policy"@en .
-rirpdm:ENeedsAndData               a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "E-Needs & Data"@en .
-rirpdm:EnvironmentalConsiderations a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "Environmental Considerations"@en .
+rirpdm:ScientificExcellence        a owl:NamedIndividual , rirpdm:ScientificDimension ; rdfs:label "Scientific Excellence"@en .
+rirpdm:PanEuropeanRelevance        a owl:NamedIndividual , rirpdm:ScientificDimension ; rdfs:label "Pan-European Relevance"@en .
+rirpdm:SocioEconomicImpact         a owl:NamedIndividual , rirpdm:ScientificDimension ; rdfs:label "Socio-Economic Impact"@en .
+rirpdm:UserStrategyAndAccessPolicy a owl:NamedIndividual , rirpdm:ScientificDimension ; rdfs:label "User Strategy & Access Policy"@en .
+rirpdm:ENeedsAndData               a owl:NamedIndividual , rirpdm:ScientificDimension ; rdfs:label "E-Needs & Data"@en .
+rirpdm:EnvironmentalConsiderations a owl:NamedIndividual , rirpdm:ScientificDimension ; rdfs:label "Environmental Considerations"@en .
 
 #################################################################
-#    Implementation Case (enumerated)
+#    Implementation Case  (per-proposal/per-RI assessment object)
+#    The five implementation dimensions are the enumerated class
+#    ImplementationDimension.
 #################################################################
 
 rirpdm:ImplementationCase a owl:Class ;
     rdfs:label "Implementation Case"@en ;
-    rdfs:comment "The five-dimension assessment of an RI's feasibility and delivery."@en ;
+    rdfs:comment "The five-dimension assessment of an RI's feasibility and delivery, attached to a Proposal or Research Infrastructure."@en ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:ImplementationDimension a owl:Class ;
+    rdfs:label "Implementation Dimension"@en ;
+    rdfs:comment "One of the five dimensions along which an Implementation Case is assessed."@en ;
     owl:equivalentClass [ a owl:Class ;
         owl:oneOf ( rirpdm:StakeholderCommitment rirpdm:PreparatoryWorkAndPlanning
                     rirpdm:GovernanceManagementAndHR rirpdm:Finances rirpdm:Risks ) ] ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
-rirpdm:StakeholderCommitment      a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Stakeholder Commitment"@en .
-rirpdm:PreparatoryWorkAndPlanning a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Preparatory Work & Planning"@en .
-rirpdm:GovernanceManagementAndHR  a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Governance Management & HR"@en .
-rirpdm:Finances                   a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Finances"@en .
-rirpdm:Risks                      a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Risks"@en .
+rirpdm:StakeholderCommitment      a owl:NamedIndividual , rirpdm:ImplementationDimension ; rdfs:label "Stakeholder Commitment"@en .
+rirpdm:PreparatoryWorkAndPlanning a owl:NamedIndividual , rirpdm:ImplementationDimension ; rdfs:label "Preparatory Work & Planning"@en .
+rirpdm:GovernanceManagementAndHR  a owl:NamedIndividual , rirpdm:ImplementationDimension ; rdfs:label "Governance Management & HR"@en .
+rirpdm:Finances                   a owl:NamedIndividual , rirpdm:ImplementationDimension ; rdfs:label "Finances"@en .
+rirpdm:Risks                      a owl:NamedIndividual , rirpdm:ImplementationDimension ; rdfs:label "Risks"@en .
 
 #################################################################
 #    Evaluation & Score
@@ -511,3 +528,156 @@ rirpdm:hasNode a owl:ObjectProperty ;
 rirpdm:DistributedRI rdfs:subClassOf [ a owl:Restriction ;
     owl:onProperty rirpdm:hasNode ;
     owl:minCardinality 1 ] .
+
+# --- Agent involvement -------------------------------------------------------
+# Top-level pair, kept explicit so sub-properties inherit a domain/range anchor
+# (prevents a reasoner inferring agent-to-agent participation triples).
+
+rirpdm:involvesAgent a owl:ObjectProperty ;
+    rdfs:label "involvesAgent"@en ;
+    rdfs:comment "An agent is involved in this research infrastructure."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range foaf:Agent ;
+    owl:inverseOf rirpdm:participatesIn ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:participatesIn a owl:ObjectProperty ;
+    rdfs:label "participatesIn"@en ;
+    rdfs:comment "An agent participates in a research infrastructure."@en ;
+    rdfs:domain foaf:Agent ;
+    rdfs:range rirpdm:ResearchInfrastructure ;
+    owl:inverseOf rirpdm:involvesAgent ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:hasLeadEntity a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "hasLeadEntity"@en ;
+    rdfs:comment "The agent leading the research infrastructure."@en ;
+    rdfs:subPropertyOf rirpdm:involvesAgent ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range foaf:Agent ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:hasMemberEntity a owl:ObjectProperty ;
+    rdfs:label "hasMemberEntity"@en ;
+    rdfs:comment "An agent that is a member of the research infrastructure."@en ;
+    rdfs:subPropertyOf rirpdm:involvesAgent ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range foaf:Agent ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:hasObserver a owl:ObjectProperty ;
+    rdfs:label "hasObserver"@en ;
+    rdfs:comment "An agent observing the research infrastructure."@en ;
+    rdfs:subPropertyOf rirpdm:involvesAgent ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range foaf:Agent ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:hasParticipant a owl:ObjectProperty ;
+    rdfs:label "hasParticipant"@en ;
+    rdfs:comment "An agent participating in the research infrastructure."@en ;
+    rdfs:subPropertyOf rirpdm:involvesAgent ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range foaf:Agent ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:hasProspectiveMember a owl:ObjectProperty ;
+    rdfs:label "hasProspectiveMember"@en ;
+    rdfs:comment "An agent that is a prospective member of the research infrastructure."@en ;
+    rdfs:subPropertyOf rirpdm:involvesAgent ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range foaf:Agent ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+# --- Assessment cases --------------------------------------------------------
+
+rirpdm:hasScientificCase a owl:ObjectProperty ;
+    rdfs:label "hasScientificCase"@en ;
+    rdfs:comment "Links a Proposal or Research Infrastructure to its Scientific Case assessment."@en ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdm:Proposal rirpdm:ResearchInfrastructure ) ] ;
+    rdfs:range rirpdm:ScientificCase ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:hasImplementationCase a owl:ObjectProperty ;
+    rdfs:label "hasImplementationCase"@en ;
+    rdfs:comment "Links a Proposal or Research Infrastructure to its Implementation Case assessment."@en ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdm:Proposal rirpdm:ResearchInfrastructure ) ] ;
+    rdfs:range rirpdm:ImplementationCase ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:resultsInProject a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "resultsInProject"@en ;
+    rdfs:comment "The transition from a Proposal to the resulting selected RI; carries ex ante to ex post."@en ;
+    rdfs:domain rirpdm:Proposal ;
+    rdfs:range [ a owl:Class ; owl:unionOf ( rirpdm:ESFRIProject rirpdm:ESFRILandmark ) ] ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:upgradesRI a owl:ObjectProperty ;
+    rdfs:label "upgradesRI"@en ;
+    rdfs:comment "The operational RI that a Major Upgrade proposal targets."@en ;
+    rdfs:domain rirpdm:MajorUpgrade ;
+    rdfs:range rirpdm:ResearchInfrastructure ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+# --- Evaluation --------------------------------------------------------------
+
+rirpdm:hasEvaluation a owl:ObjectProperty ;
+    rdfs:label "hasEvaluation"@en ;
+    rdfs:comment "Links a case to one of its per-dimension evaluations."@en ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdm:ScientificCase rirpdm:ImplementationCase ) ] ;
+    rdfs:range rirpdm:Evaluation ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:evaluatesDimension a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "evaluatesDimension"@en ;
+    rdfs:comment "The scientific or implementation dimension that an Evaluation assesses."@en ;
+    rdfs:domain rirpdm:Evaluation ;
+    rdfs:range [ a owl:Class ; owl:unionOf ( rirpdm:ScientificDimension rirpdm:ImplementationDimension ) ] ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:assessedAtPhase a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "assessedAtPhase"@en ;
+    rdfs:comment "The lifecycle phase at which an Evaluation was made."@en ;
+    rdfs:domain rirpdm:Evaluation ;
+    rdfs:range rirpdm:LifecyclePhase ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:hasScore a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "hasScore"@en ;
+    rdfs:comment "The score attributed by an Evaluation."@en ;
+    rdfs:domain rirpdm:Evaluation ;
+    rdfs:range rirpdm:Score ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+# --- Outputs & lifecycle -----------------------------------------------------
+
+rirpdm:producesResearchOutput a owl:ObjectProperty ;
+    rdfs:label "producesResearchOutput"@en ;
+    rdfs:comment "A research output produced by the research infrastructure."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range rirpdm:ResearchOutput ;
+    rirpdm:status "New" ;
+    dcterms:source "EU Reg 2021 Art 2(22); Annex I(1)(c)" .
+
+rirpdm:isInPhase a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "isInPhase"@en ;
+    rdfs:comment "The current lifecycle phase of the research infrastructure."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range rirpdm:LifecyclePhase ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
