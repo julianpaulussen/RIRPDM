@@ -1,0 +1,305 @@
+@prefix rirpdm:  <http://www.example.org/rirpdm#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@base <http://www.example.org/rirpdm> .
+
+#################################################################
+#    Ontology
+#################################################################
+
+<http://www.example.org/rirpdm> a owl:Ontology ;
+    dcterms:title "Research Infrastructure and Research Publications Data Model (RIRPDM)"@en ;
+    dcterms:description "OWL 2 ontology for knowledge representation and reasoning over scientific research infrastructure and publications."@en ;
+    owl:versionInfo "0.1.0" ;
+    dcterms:creator "Julian Paulussen" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+rirpdm:status a owl:AnnotationProperty ;
+    rdfs:label "status"@en ;
+    rdfs:comment "Editorial status of the term: New, Extended, or Adopted."@en .
+
+#################################################################
+#    Reused external classes
+#################################################################
+
+foaf:Agent a owl:Class ;
+    rdfs:label "Agent"@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FOAF" .
+
+org:Organization a owl:Class ;
+    rdfs:label "Organization"@en ;
+    rdfs:subClassOf foaf:Agent ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "W3C ORG" .
+
+#################################################################
+#    Research Infrastructure hierarchy
+#################################################################
+
+rirpdm:ResearchInfrastructure a owl:Class ;
+    rdfs:label "Research Infrastructure"@en ;
+    rdfs:comment "A facility (or set of resources/services) enabling research and innovation."@en ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" , "EU Regulation 2021 Art 2" .
+
+rirpdm:SingleSitedRI a owl:Class ;
+    rdfs:label "Single-sited RI"@en ;
+    rdfs:comment "An RI concentrated geographically at one site (or a few complementary sites) designed for user access. (ESFRI Roadmap 2026, p.15)"@en ;
+    rdfs:subClassOf rirpdm:ResearchInfrastructure ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:DistributedRI a owl:Class ;
+    rdfs:label "Distributed RI"@en ;
+    rdfs:subClassOf rirpdm:ResearchInfrastructure ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:VirtualRI a owl:Class ;
+    rdfs:label "Virtual RI"@en ;
+    rdfs:subClassOf rirpdm:ResearchInfrastructure ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( rirpdm:SingleSitedRI rirpdm:DistributedRI rirpdm:VirtualRI ) .
+
+rirpdm:CentralHub a owl:Class ;
+    rdfs:label "Central Hub"@en ;
+    rdfs:comment "The coordinating international organisation of a distributed RI that mediates between the nodes."@en ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:NationalNode a owl:Class ;
+    rdfs:label "National Node"@en ;
+    rdfs:comment "A national/institutional component of a distributed RI whose RI-dedicated capacity and resources are identified, coordinated and managed by the Central Hub."@en ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+#################################################################
+#    ESFRI Roadmap status classes
+#################################################################
+
+rirpdm:ESFRIProject a owl:Class ;
+    rdfs:label "ESFRI Project"@en ;
+    rdfs:comment "A selected RI in its Preparation Phase, expected to reach Implementation within ten years."@en ;
+    rdfs:subClassOf rirpdm:ResearchInfrastructure ;
+    owl:disjointWith rirpdm:ESFRILandmark ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:ESFRILandmark a owl:Class ;
+    rdfs:label "ESFRI Landmark"@en ;
+    rdfs:comment "An implemented (or near-implemented) RI established as a major asset of the European Research Area, periodically monitored."@en ;
+    rdfs:subClassOf rirpdm:ResearchInfrastructure ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+#################################################################
+#    Proposals
+#################################################################
+
+rirpdm:Proposal a owl:Class ;
+    rdfs:label "Proposal"@en ;
+    rdfs:comment "Abstract parent for candidate submissions to the Roadmap."@en ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:NewProposal a owl:Class ;
+    rdfs:label "New Proposal"@en ;
+    rdfs:comment "A candidate RI project submitted for selection onto the Roadmap."@en ;
+    rdfs:subClassOf rirpdm:Proposal ;
+    owl:disjointWith rirpdm:MajorUpgrade ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:MajorUpgrade a owl:Class ;
+    rdfs:label "Major Upgrade"@en ;
+    rdfs:comment "A transformative (not routine) upgrade to an operational RI."@en ;
+    rdfs:subClassOf rirpdm:Proposal ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+#################################################################
+#    Lifecycle Phase (enumerated)
+#################################################################
+
+rirpdm:LifecyclePhase a owl:Class ;
+    rdfs:label "Lifecycle Phase"@en ;
+    rdfs:comment "Reference to understand the needs and targets of RIs at a given time and at various levels."@en ;
+    owl:equivalentClass [ a owl:Class ;
+        owl:oneOf ( rirpdm:Concept rirpdm:Design rirpdm:Preparation
+                    rirpdm:Implementation rirpdm:Operation rirpdm:Termination ) ] ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+# Declaring individuals for each lifecycle phase, because a RI can only be in one phase at a time 
+rirpdm:Concept        a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Concept"@en .
+rirpdm:Design         a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Design"@en .
+rirpdm:Preparation    a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Preparation"@en .
+rirpdm:Implementation a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Implementation"@en .
+rirpdm:Operation      a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Operation"@en .
+rirpdm:Termination    a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Termination"@en .
+
+#################################################################
+#    Scientific Case (enumerated)
+#################################################################
+
+rirpdm:ScientificCase a owl:Class ;
+    rdfs:label "Scientific Case"@en ;
+    rdfs:comment "The six-dimension assessment of an RI's scientific merit."@en ;
+    owl:equivalentClass [ a owl:Class ;
+        owl:oneOf ( rirpdm:ScientificExcellence rirpdm:PanEuropeanRelevance
+                    rirpdm:SocioEconomicImpact rirpdm:UserStrategyAndAccessPolicy
+                    rirpdm:ENeedsAndData rirpdm:EnvironmentalConsiderations ) ] ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:ScientificExcellence        a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "Scientific Excellence"@en .
+rirpdm:PanEuropeanRelevance        a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "Pan-European Relevance"@en .
+rirpdm:SocioEconomicImpact         a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "Socio-Economic Impact"@en .
+rirpdm:UserStrategyAndAccessPolicy a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "User Strategy & Access Policy"@en .
+rirpdm:ENeedsAndData               a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "E-Needs & Data"@en .
+rirpdm:EnvironmentalConsiderations a owl:NamedIndividual , rirpdm:ScientificCase ; rdfs:label "Environmental Considerations"@en .
+
+#################################################################
+#    Implementation Case (enumerated)
+#################################################################
+
+rirpdm:ImplementationCase a owl:Class ;
+    rdfs:label "Implementation Case"@en ;
+    rdfs:comment "The five-dimension assessment of an RI's feasibility and delivery."@en ;
+    owl:equivalentClass [ a owl:Class ;
+        owl:oneOf ( rirpdm:StakeholderCommitment rirpdm:PreparatoryWorkAndPlanning
+                    rirpdm:GovernanceManagementAndHR rirpdm:Finances rirpdm:Risks ) ] ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:StakeholderCommitment      a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Stakeholder Commitment"@en .
+rirpdm:PreparatoryWorkAndPlanning a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Preparatory Work & Planning"@en .
+rirpdm:GovernanceManagementAndHR  a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Governance Management & HR"@en .
+rirpdm:Finances                   a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Finances"@en .
+rirpdm:Risks                      a owl:NamedIndividual , rirpdm:ImplementationCase ; rdfs:label "Risks"@en .
+
+#################################################################
+#    Evaluation & Score
+#################################################################
+
+rirpdm:Evaluation a owl:Class ;
+    rdfs:label "Evaluation"@en ;
+    rdfs:comment "An assessment of a case dimension, producing a score at a given lifecycle phase."@en ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:Score a owl:Class ;
+    rdfs:label "Score"@en ;
+    rdfs:comment "Grading attributed to a dimension."@en ;
+    owl:equivalentClass [ a owl:Class ;
+        owl:oneOf ( rirpdm:VeryHigh rirpdm:High rirpdm:Medium rirpdm:Low ) ] ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:VeryHigh a owl:NamedIndividual , rirpdm:Score ; rdfs:label "Very High"@en .
+rirpdm:High     a owl:NamedIndividual , rirpdm:Score ; rdfs:label "High"@en .
+rirpdm:Medium   a owl:NamedIndividual , rirpdm:Score ; rdfs:label "Medium"@en .
+rirpdm:Low      a owl:NamedIndividual , rirpdm:Score ; rdfs:label "Low"@en .
+
+#################################################################
+#    Research Output
+#################################################################
+
+rirpdm:ResearchOutput a owl:Class ;
+    rdfs:label "Research Output"@en ;
+    rdfs:comment "Results of an action accessible as scientific publications, data, software, algorithms, protocols, etc."@en ;
+    rirpdm:status "New" ;
+    dcterms:source "EU Reg 2021 Art 2(22)" .
+
+rirpdm:ScientificPublication a owl:Class ;
+    rdfs:label "Scientific Publication"@en ;
+    rdfs:comment "A peer-reviewed publication output to which open access applies."@en ;
+    rdfs:subClassOf rirpdm:ResearchOutput ;
+    owl:disjointWith rirpdm:ResearchData ;
+    rirpdm:status "New" ;
+    dcterms:source "EU Reg 2021 Art 2(22), Art 14(1)(a), Art 39(3)" .
+
+rirpdm:ResearchData a owl:Class ;
+    rdfs:label "Research Data"@en ;
+    rdfs:comment "Data, including those underlying scientific publications, managed per FAIR principles."@en ;
+    rdfs:subClassOf rirpdm:ResearchOutput ;
+    rirpdm:status "New" ;
+    dcterms:source "EU Reg 2021 Art 14(1)(b), Art 39(4)" .
+
+#################################################################
+#    Organisations
+#################################################################
+
+rirpdm:ResearchInstitution a owl:Class ;
+    rdfs:label "Research Institution"@en ;
+    rdfs:comment "Organization that participates as a partner in an RI Consortium."@en ;
+    rdfs:subClassOf org:Organization ;
+    rirpdm:status "Extended" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:RPO a owl:Class ;
+    rdfs:label "Research Performing Organisation (RPO)"@en ;
+    rdfs:comment "Legal entity from a MS/AC/third country that performs research and can take binding decisions to support an RI."@en ;
+    rdfs:subClassOf org:Organization ;
+    rirpdm:status "Extended" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:RFO a owl:Class ;
+    rdfs:label "Research Funding Organisation (RFO)"@en ;
+    rdfs:comment "Legal entity that can take binding decisions to financially support an RI."@en ;
+    rdfs:subClassOf org:Organization ;
+    rirpdm:status "Extended" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:RIConsortium a owl:Class ;
+    rdfs:label "RI Consortium"@en ;
+    rdfs:subClassOf org:Organization ;
+    rirpdm:status "Extended" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+#################################################################
+#    Countries
+#################################################################
+
+rirpdm:Country a owl:Class ;
+    rdfs:label "Country"@en ;
+    rdfs:comment "A nation eligible to participate in an RI."@en ;
+    rdfs:subClassOf foaf:Agent ;
+    rirpdm:status "Extended" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:MemberState a owl:Class ;
+    rdfs:label "Member State"@en ;
+    rdfs:comment "Member state of the European Union."@en ;
+    rdfs:subClassOf rirpdm:Country ;
+    rirpdm:status "Extended" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:AssociatedCountry a owl:Class ;
+    rdfs:label "Associated Country"@en ;
+    rdfs:comment "Country associated to the Framework Programme (FP)."@en ;
+    rdfs:subClassOf rirpdm:Country ;
+    rirpdm:status "Extended" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:ThirdCountry a owl:Class ;
+    rdfs:label "Third Country"@en ;
+    rdfs:comment "Country outside Member State / Associated Country."@en ;
+    rdfs:subClassOf rirpdm:Country ;
+    rirpdm:status "Extended" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( rirpdm:MemberState rirpdm:AssociatedCountry rirpdm:ThirdCountry ) .
