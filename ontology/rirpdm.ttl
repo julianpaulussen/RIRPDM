@@ -303,3 +303,211 @@ rirpdm:ThirdCountry a owl:Class ;
 
 [] a owl:AllDisjointClasses ;
     owl:members ( rirpdm:MemberState rirpdm:AssociatedCountry rirpdm:ThirdCountry ) .
+
+#################################################################
+#    Data properties
+#################################################################
+
+rirpdm:uniqueName a owl:DatatypeProperty ;
+    rdfs:label "uniqueName"@en ;
+    rdfs:comment "The RI's unique specific name."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:legalStatus a owl:DatatypeProperty ;
+    rdfs:label "legalStatus"@en ;
+    rdfs:comment "The legal status of the RI."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:governanceStructure a owl:DatatypeProperty ;
+    rdfs:label "governanceStructure"@en ;
+    rdfs:comment "The RI's governance structure with defined responsibilities, reporting lines and advisory/supervisory bodies."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:serviceOffer a owl:DatatypeProperty ;
+    rdfs:label "serviceOffer"@en ;
+    rdfs:comment "Service offer to the user community."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:accessPolicy a owl:DatatypeProperty ;
+    rdfs:label "accessPolicy"@en ;
+    rdfs:comment "Policy governing external user access."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:accessPoint a owl:DatatypeProperty ;
+    rdfs:label "accessPoint"@en ;
+    rdfs:comment "The RI's entry point for external users to submit access proposals."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:userProgramme a owl:DatatypeProperty ;
+    rdfs:label "userProgramme"@en ;
+    rdfs:comment "A user programme using a relevant fraction of the RI's total capacity."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:dataManagementSystem a owl:DatatypeProperty ;
+    rdfs:label "dataManagementSystem"@en ;
+    rdfs:comment "The RI's system for metadata, storage, retrieval and data reduction/analysis."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:hasKPI a owl:DatatypeProperty ;
+    rdfs:label "hasKPI"@en ;
+    rdfs:comment "Measurable KPIs covering scientific-service excellence and sustainability."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:humanResourcesPolicy a owl:DatatypeProperty ;
+    rdfs:label "humanResourcesPolicy"@en ;
+    rdfs:comment "HR policy ensuring competences via equal-opportunity hiring, secondments, education and training."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:userSupportStructure a owl:DatatypeProperty ;
+    rdfs:label "userSupportStructure"@en ;
+    rdfs:comment "A single-sited RI's structure (office, ancillary laboratories, accommodation, logistics, etc.) to support user access."@en ;
+    rdfs:domain rirpdm:SingleSitedRI ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:longTermSitePlanning a owl:DatatypeProperty ;
+    rdfs:label "longTermSitePlanning"@en ;
+    rdfs:comment "Long-term plan for the site across its lifecycle."@en ;
+    rdfs:domain rirpdm:SingleSitedRI ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:jointInvestmentStrategy a owl:DatatypeProperty ;
+    rdfs:label "jointInvestmentStrategy"@en ;
+    rdfs:comment "Joint investment strategy aimed to strengthen nodes and shared facilities."@en ;
+    rdfs:domain rirpdm:DistributedRI ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:totalInvestmentCosts a owl:DatatypeProperty ;
+    rdfs:label "totalInvestmentCosts"@en ;
+    rdfs:comment "Sum of all lifecycle investments to fully implement a RI."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:decimal ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:designCosts a owl:DatatypeProperty ;
+    rdfs:label "designCosts"@en ;
+    rdfs:comment "Costs of conceptual design, technical design, feasibility study and proposal drafting."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:decimal ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:preparationCosts a owl:DatatypeProperty ;
+    rdfs:label "preparationCosts"@en ;
+    rdfs:comment "Real/estimated costs of the Preparation Phase."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:decimal ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:implementationCosts a owl:DatatypeProperty ;
+    rdfs:label "implementationCosts"@en ;
+    rdfs:comment "Real or estimated costs for the Implementation Phase of an RI."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:decimal ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:terminationCosts a owl:DatatypeProperty ;
+    rdfs:label "terminationCosts"@en ;
+    rdfs:comment "Decommissioning and environmental-mitigation costs at end of a lifecycle of an RI."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:decimal ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:averageAnnualOperationCosts a owl:DatatypeProperty ;
+    rdfs:label "averageAnnualOperationCosts"@en ;
+    rdfs:comment "Annual cost of running the RI, operating access and delivering services."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range xsd:decimal ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+rirpdm:providesOpenAccess a owl:DatatypeProperty ;
+    rdfs:label "providesOpenAccess"@en ;
+    rdfs:comment "Whether open access is ensured for the output (publications and underlying data)."@en ;
+    rdfs:domain rirpdm:ResearchOutput ;
+    rdfs:range xsd:boolean ;
+    rirpdm:status "New" ;
+    dcterms:source "EU Reg 2021 Art 14(1)(a), Art 39(3)" .
+
+rirpdm:ensuresLongTermPreservation a owl:DatatypeProperty ;
+    rdfs:label "ensuresLongTermPreservation"@en ;
+    rdfs:comment "Whether long-term preservation of the data is ensured."@en ;
+    rdfs:domain rirpdm:ResearchData ;
+    rdfs:range xsd:boolean ;
+    rirpdm:status "New" ;
+    dcterms:source "EU Reg 2021 Art 14(3)" .
+
+rirpdm:compliesWithFAIR a owl:DatatypeProperty ;
+    rdfs:label "compliesWithFAIR"@en ;
+    rdfs:comment "Whether the data adhere to the FAIR principles."@en ;
+    rdfs:domain rirpdm:ResearchData ;
+    rdfs:range xsd:boolean ;
+    rirpdm:status "New" ;
+    dcterms:source "EU Reg 2021 Art 14(3)" .
+
+#################################################################
+#    Object properties
+#################################################################
+
+rirpdm:hasCentralHub a owl:ObjectProperty ;
+    rdfs:label "hasCentralHub"@en ;
+    rdfs:domain rirpdm:DistributedRI ;
+    rdfs:range rirpdm:CentralHub ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+# Each distributed RI must have exactly one Central Hub.
+rirpdm:DistributedRI rdfs:subClassOf [ a owl:Restriction ;
+    owl:onProperty rirpdm:hasCentralHub ;
+    owl:cardinality 1 ] .
+
+rirpdm:hasNode a owl:ObjectProperty ;
+    rdfs:label "hasNode"@en ;
+    rdfs:domain rirpdm:DistributedRI ;
+    rdfs:range rirpdm:NationalNode ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+# A distributed RI must have one or more National Nodes.
+rirpdm:DistributedRI rdfs:subClassOf [ a owl:Restriction ;
+    owl:onProperty rirpdm:hasNode ;
+    owl:minCardinality 1 ] .
