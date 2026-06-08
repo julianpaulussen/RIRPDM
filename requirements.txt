@@ -1,0 +1,6 @@
+# RIRPDM tooling dependencies
+# scripts/query.py          — local rdflib + OWL2-RL reasoning runner
+# scripts/query_endpoint.py — live GraphDB SPARQL endpoint runner
+rdflib==7.6.0
+owlrl==7.1.4
+SPARQLWrapper==2.0.0

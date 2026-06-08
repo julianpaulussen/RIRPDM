@@ -1,0 +1,213 @@
+@prefix rirpdm: <http://www.example.org/rirpdm#> .
+@prefix data:   <http://www.example.org/rirpdm/data#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@base <http://www.example.org/rirpdm/data> .
+
+#################################################################
+#    Sample data (ABox) for the RIRPDM ontology — IT domain
+#    Max 3 individuals per class.
+#################################################################
+
+<http://www.example.org/rirpdm/data> a owl:Ontology ;
+    rdfs:label "RIRPDM sample data (IT domain)"@en ;
+    owl:imports <http://www.example.org/rirpdm> .
+
+#################################################################
+#    Countries
+#################################################################
+
+data:Germany a owl:NamedIndividual , rirpdm:MemberState ;
+    rdfs:label "Germany"@en .
+
+data:France a owl:NamedIndividual , rirpdm:MemberState ;
+    rdfs:label "France"@en .
+
+data:Switzerland a owl:NamedIndividual , rirpdm:AssociatedCountry ;
+    rdfs:label "Switzerland"@en .
+
+data:UnitedStates a owl:NamedIndividual , rirpdm:ThirdCountry ;
+    rdfs:label "United States"@en .
+
+#################################################################
+#    Organisations
+#################################################################
+
+data:FraunhoferFOKUS a owl:NamedIndividual , rirpdm:ResearchInstitution ;
+    rdfs:label "Fraunhofer FOKUS"@en ;
+    rirpdm:participatesIn data:EGIFederation .
+
+data:LeibnizSupercomputingCentre a owl:NamedIndividual , rirpdm:RPO ;
+    rdfs:label "Leibniz Supercomputing Centre"@en .
+
+data:INRIA a owl:NamedIndividual , rirpdm:RPO ;
+    rdfs:label "INRIA"@en .
+
+data:DFG a owl:NamedIndividual , rirpdm:RFO ;
+    rdfs:label "Deutsche Forschungsgemeinschaft (DFG)"@en .
+
+data:EGIConsortium a owl:NamedIndividual , rirpdm:RIConsortium ;
+    rdfs:label "EGI Consortium"@en .
+
+#################################################################
+#    Research Infrastructures (one of each kind)
+#################################################################
+
+# Single-sited RI
+data:LRZ a owl:NamedIndividual , rirpdm:SingleSitedRI , rirpdm:ESFRILandmark ;
+    rdfs:label "LRZ HPC Facility"@en ;
+    rirpdm:uniqueName "Leibniz-Rechenzentrum HPC" ;
+    rirpdm:legalStatus "Public research institute" ;
+    rirpdm:governanceStructure "Directorate reporting to the Bavarian Academy of Sciences, with scientific steering committee" ;
+    rirpdm:serviceOffer "HPC compute time, data storage, visualisation and consultancy" ;
+    rirpdm:accessPolicy "Peer-reviewed open access for European academic users" ;
+    rirpdm:accessPoint "https://www.lrz.de/hpc-application" ;
+    rirpdm:userProgramme "GAUSS Large-Scale Compute Programme" ;
+    rirpdm:hasKPI "Core-hours delivered; mean time between failures; user satisfaction index" ;
+    rirpdm:humanResourcesPolicy "Equal-opportunity hiring with secondment and training scheme" ;
+    rirpdm:isInPhase rirpdm:Operation ;
+    rirpdm:hasLeadEntity data:LeibnizSupercomputingCentre ;
+    rirpdm:hasMemberEntity data:DFG ;
+    rirpdm:userSupportStructure "On-site HPC user office and training labs" ;
+    rirpdm:longTermSitePlanning "10-year roadmap for exascale upgrade" ;
+    rirpdm:totalInvestmentCosts "450000000.00"^^xsd:decimal ;
+    rirpdm:designCosts "8000000.00"^^xsd:decimal ;
+    rirpdm:preparationCosts "25000000.00"^^xsd:decimal ;
+    rirpdm:implementationCosts "300000000.00"^^xsd:decimal ;
+    rirpdm:terminationCosts "12000000.00"^^xsd:decimal ;
+    rirpdm:averageAnnualOperationCosts "38000000.00"^^xsd:decimal ;
+    rirpdm:producesResearchOutput data:PubHPCBenchmark , data:DatasetClimateSim .
+
+# Distributed RI — needs exactly 1 hub and >=1 node
+data:EGIFederation a owl:NamedIndividual , rirpdm:DistributedRI , rirpdm:ESFRILandmark ;
+    rdfs:label "EGI Federated Cloud"@en ;
+    rirpdm:uniqueName "EGI Federation" ;
+    rirpdm:isInPhase rirpdm:Operation ;
+    rirpdm:hasLeadEntity data:EGIConsortium ;
+    rirpdm:hasMemberEntity data:FraunhoferFOKUS , data:INRIA ;
+    rirpdm:hasObserver data:Switzerland ;
+    rirpdm:hasParticipant data:DFG ;
+    rirpdm:hasProspectiveMember data:UnitedStates ;
+    rirpdm:hasCentralHub data:EGICentralHub ;
+    rirpdm:hasNode data:EGINodeDE , data:EGINodeFR ;
+    rirpdm:jointInvestmentStrategy "Shared funding pool across national nodes" ;
+    rirpdm:totalInvestmentCosts "120000000.00"^^xsd:decimal ;
+    rirpdm:producesResearchOutput data:DatasetGenomics .
+
+# Virtual RI
+data:EOSC a owl:NamedIndividual , rirpdm:VirtualRI , rirpdm:ESFRIProject ;
+    rdfs:label "European Open Science Cloud"@en ;
+    rirpdm:uniqueName "EOSC" ;
+    rirpdm:isInPhase rirpdm:Implementation ;
+    rirpdm:hasLeadEntity data:EGIConsortium ;
+    rirpdm:dataManagementSystem "Federated FAIR metadata catalogue" ;
+    rirpdm:designCosts "5000000.00"^^xsd:decimal ;
+    rirpdm:implementationCosts "90000000.00"^^xsd:decimal .
+
+#################################################################
+#    Central hub & national nodes (for the distributed RI)
+#################################################################
+
+data:EGICentralHub a owl:NamedIndividual , rirpdm:CentralHub ;
+    rdfs:label "EGI Central Hub (Amsterdam)"@en .
+
+data:EGINodeDE a owl:NamedIndividual , rirpdm:NationalNode ;
+    rdfs:label "EGI National Node Germany"@en .
+
+data:EGINodeFR a owl:NamedIndividual , rirpdm:NationalNode ;
+    rdfs:label "EGI National Node France"@en .
+
+#################################################################
+#    Proposals
+#################################################################
+
+data:AIFactoryProposal a owl:NamedIndividual , rirpdm:NewProposal ;
+    rdfs:label "AI Factory RI Proposal"@en ;
+    rirpdm:hasScientificCase data:SciCaseAIFactoryExAnte ;
+    rirpdm:hasImplementationCase data:ImplCaseAIFactory ;
+    rirpdm:resultsInProject data:AIFactory .
+
+data:LRZUpgradeProposal a owl:NamedIndividual , rirpdm:MajorUpgrade ;
+    rdfs:label "LRZ Exascale Upgrade"@en ;
+    rirpdm:upgradesRI data:LRZ ;
+    rirpdm:hasScientificCase data:SciCaseLRZUpgrade .
+
+#################################################################
+#    Selected RIs resulting from proposals
+#################################################################
+
+data:AIFactory a owl:NamedIndividual , rirpdm:SingleSitedRI , rirpdm:ESFRIProject ;
+    rdfs:label "European AI Factory"@en ;
+    rirpdm:uniqueName "AI Factory" ;
+    rirpdm:isInPhase rirpdm:Preparation ;
+    rirpdm:hasScientificCase data:SciCaseAIFactoryExPost .
+
+#################################################################
+#    Scientific cases & evaluations
+#    Ex ante (proposal) vs ex post (project) for AI Factory
+#################################################################
+
+data:SciCaseAIFactoryExAnte a owl:NamedIndividual , rirpdm:ScientificCase ;
+    rdfs:label "AI Factory Scientific Case (ex ante)"@en ;
+    rirpdm:hasEvaluation data:EvalAIFactoryExcellenceExAnte .
+
+data:EvalAIFactoryExcellenceExAnte a owl:NamedIndividual , rirpdm:Evaluation ;
+    rdfs:label "Scientific Excellence — ex ante"@en ;
+    rirpdm:evaluatesDimension rirpdm:ScientificExcellence ;
+    rirpdm:hasScore rirpdm:High ;
+    rirpdm:assessedAtPhase rirpdm:Concept .
+
+data:SciCaseAIFactoryExPost a owl:NamedIndividual , rirpdm:ScientificCase ;
+    rdfs:label "AI Factory Scientific Case (ex post)"@en ;
+    rirpdm:hasEvaluation data:EvalAIFactoryExcellenceExPost .
+
+data:EvalAIFactoryExcellenceExPost a owl:NamedIndividual , rirpdm:Evaluation ;
+    rdfs:label "Scientific Excellence — ex post"@en ;
+    rirpdm:evaluatesDimension rirpdm:ScientificExcellence ;
+    rirpdm:hasScore rirpdm:VeryHigh ;
+    rirpdm:assessedAtPhase rirpdm:Preparation .
+
+data:SciCaseLRZUpgrade a owl:NamedIndividual , rirpdm:ScientificCase ;
+    rdfs:label "LRZ Upgrade Scientific Case"@en ;
+    rirpdm:hasEvaluation data:EvalLRZRelevance .
+
+data:EvalLRZRelevance a owl:NamedIndividual , rirpdm:Evaluation ;
+    rdfs:label "Pan-European Relevance — LRZ"@en ;
+    rirpdm:evaluatesDimension rirpdm:PanEuropeanRelevance ;
+    rirpdm:hasScore rirpdm:Medium ;
+    rirpdm:assessedAtPhase rirpdm:Design .
+
+#################################################################
+#    Implementation case & evaluation
+#################################################################
+
+data:ImplCaseAIFactory a owl:NamedIndividual , rirpdm:ImplementationCase ;
+    rdfs:label "AI Factory Implementation Case"@en ;
+    rirpdm:hasEvaluation data:EvalAIFactoryFinances .
+
+data:EvalAIFactoryFinances a owl:NamedIndividual , rirpdm:Evaluation ;
+    rdfs:label "Finances — AI Factory"@en ;
+    rirpdm:evaluatesDimension rirpdm:Finances ;
+    rirpdm:hasScore rirpdm:High ;
+    rirpdm:assessedAtPhase rirpdm:Preparation .
+
+#################################################################
+#    Research outputs
+#################################################################
+
+data:PubHPCBenchmark a owl:NamedIndividual , rirpdm:ScientificPublication ;
+    rdfs:label "Exascale HPC Benchmark Study"@en ;
+    rirpdm:providesOpenAccess "true"^^xsd:boolean .
+
+data:DatasetClimateSim a owl:NamedIndividual , rirpdm:ResearchData ;
+    rdfs:label "Climate Simulation Dataset"@en ;
+    rirpdm:providesOpenAccess "true"^^xsd:boolean ;
+    rirpdm:compliesWithFAIR "true"^^xsd:boolean ;
+    rirpdm:ensuresLongTermPreservation "true"^^xsd:boolean .
+
+data:DatasetGenomics a owl:NamedIndividual , rirpdm:ResearchData ;
+    rdfs:label "Federated Genomics Dataset"@en ;
+    rirpdm:providesOpenAccess "false"^^xsd:boolean ;
+    rirpdm:compliesWithFAIR "true"^^xsd:boolean ;
+    rirpdm:ensuresLongTermPreservation "false"^^xsd:boolean .

@@ -1,12 +1,12 @@
-PREFIX rirpdo: <http://www.example.org/rirpdo#>
+PREFIX rirpdm: <http://www.example.org/rirpdm#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 
-# Simple introductory query: list all researchers and their affiliations.
+# CQ00 — Simple test: list every Research Infrastructure, its label and current lifecycle phase.
 
-SELECT ?researcherName ?institutionName
+SELECT ?ri ?label ?phase
 WHERE {
-    ?researcher  a rirpdo:Researcher ;
-                 rirpdo:name           ?researcherName ;
-                 rirpdo:affiliatedWith ?institution .
-    ?institution rirpdo:name           ?institutionName .
+    ?ri   a                rirpdm:ResearchInfrastructure ;
+          rdfs:label       ?label ;
+          rirpdm:isInPhase ?phase .
 }
-ORDER BY ?researcherName
+ORDER BY ?label
