@@ -70,6 +70,7 @@ rirpdm:VirtualRI a owl:Class ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
+# [] is doing the work of declaring the three RI types as mutually disjoint, without needing to repeat the disjointWith axiom for each pair.
 [] a owl:AllDisjointClasses ;
     owl:members ( rirpdm:SingleSitedRI rirpdm:DistributedRI rirpdm:VirtualRI ) .
 
