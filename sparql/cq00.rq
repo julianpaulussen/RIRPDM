@@ -5,8 +5,8 @@ PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?ri ?label ?phase
 WHERE {
-    ?ri   a                rirpdm:ResearchInfrastructure ;
-          rdfs:label       ?label ;
-          rirpdm:isInPhase ?phase .
+    ?ri   a                rirpdm:ResearchInfrastructure.
+    ?ri   rdfs:label       ?label .
+    ?ri   rirpdm:isInPhase ?phase .
 }
 ORDER BY ?label

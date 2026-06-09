@@ -1,8 +1,7 @@
 """Run SPARQL queries against the live GraphDB endpoint.
 
-Reasoning is whatever the GraphDB repository ruleset provides (use
-RDFS-Plus or OWL2-RL when creating the `rirpdm` repo so subclass /
-inverse / functional axioms are inferred).
+Before running this script, make sure a repository is created in GraphDB (Here it's called "rirpdm").
+As a ruleset choose OWL2-RL (Optimized) so subclass / inverse / functional axioms are inferred).
 
 Usage:
     python3 scripts/query_endpoint.py                 # run every sparql/*.rq
@@ -11,22 +10,32 @@ Usage:
 import sys
 from pathlib import Path
 from typing import Any, cast
-
 from SPARQLWrapper import SPARQLWrapper, JSON
 from SPARQLWrapper.SPARQLExceptions import SPARQLWrapperException
 
+# Update this if your GraphDB endpoint is different
 ENDPOINT = "http://localhost:7200/repositories/rirpdm"
 SPARQL_DIR = Path(__file__).parent.parent / "sparql"
 
 
 def load_queries(only: Path | None = None) -> dict[str, str]:
+    """Load SPARQL query texts keyed by an upper-cased title."""
     if only is not None:
         return {only.stem.upper(): only.read_text()}
     return {f.stem.upper(): f.read_text() for f in sorted(SPARQL_DIR.glob("*.rq"))}
 
 
+def strip_prefix(cell: dict[str, Any]) -> str:
+    """Return a binding's value, reduced to the local name if it is an IRI."""
+    value = cell.get("value", "")
+    if cell.get("type") == "uri":
+        return value.rsplit("#", 1)[-1].rsplit("/", 1)[-1]
+    return value
+
+
 def print_table(vars_: list[str], bindings: list[dict[str, Any]]) -> None:
-    rows = [[row.get(v, {}).get("value", "") for v in vars_] for row in bindings]
+    """Print SPARQL SELECT results as a left-aligned, padded text table."""
+    rows = [[strip_prefix(row.get(v, {})) for v in vars_] for row in bindings]
     widths = [len(v) for v in vars_]
     for r in rows:
         widths = [max(w, len(c)) for w, c in zip(widths, r)]
@@ -39,6 +48,7 @@ def print_table(vars_: list[str], bindings: list[dict[str, Any]]) -> None:
 
 
 def run_queries(only: Path | None = None) -> None:
+    """Execute each loaded query against the endpoint and print the results."""
     sparql = SPARQLWrapper(ENDPOINT)
     sparql.setReturnFormat(JSON)
 

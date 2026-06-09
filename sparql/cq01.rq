@@ -11,8 +11,8 @@ WHERE {
               rirpdo:hasTopic           ?topic ;             # bind topic to ?topic  to filter the given topic later
               rirpdo:hasAuthor          ?researcher .        # bind author to ?researcher 
 
-    # [] is an anonymous node (blank node) that is used to bridge the gap between publication and infrastructure via the project
-    []        rirpdo:hasParticipant     ?researcher ;
+    # ?project bridges publication and infrastructure: the researcher participates in a project that uses the infrastructure
+    ?project  rirpdo:hasParticipant     ?researcher ;
               rirpdo:usesInfrastructure ?infra .
 
     ?topic    rirpdo:name               ?topicName .
