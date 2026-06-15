@@ -8,6 +8,7 @@
 @prefix org:     <http://www.w3.org/ns/org#> .
 @prefix frapo:   <http://purl.org/cerif/frapo/> .
 @prefix fabio:   <http://purl.org/spar/fabio/> .
+@prefix cito:    <http://purl.org/spar/cito/> .
 @base <http://www.example.org/rirpdm> .
 
 #################################################################
@@ -290,7 +291,7 @@ rirpdm:ResearchOutput a owl:Class ;
 rirpdm:ScientificPublication a owl:Class ;
     rdfs:label "Scientific Publication"@en ;
     rdfs:comment "A peer-reviewed publication output to which open access applies."@en ;
-    rdfs:subClassOf rirpdm:ResearchOutput ;
+    rdfs:subClassOf rirpdm:ResearchOutput , fabio:Expression ;
     owl:disjointWith rirpdm:ResearchData ;
     rirpdm:status "New" ;
     dcterms:source "EU Reg 2021 Art 2(22), Art 14(1)(a), Art 39(3)" .
@@ -303,6 +304,12 @@ rirpdm:ResearchData a owl:Class ;
     dcterms:source "EU Reg 2021 Art 14(1)(b), Art 39(4)" .
 
 #    Publication types (FaBiO) ────────────────────────────────────
+
+fabio:Expression a owl:Class ;
+    rdfs:label "Expression"@en ;
+    rdfs:comment "A FaBiO/FRBR expression — the intellectual realisation of a work, the bibliographic superclass of all publication types."@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .
 
 fabio:JournalArticle a owl:Class ;
     rdfs:label "Journal Article"@en ;
@@ -826,3 +833,54 @@ fabio:hasDOI a owl:DatatypeProperty , owl:FunctionalProperty ;
     rdfs:range xsd:string ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
+
+# --- Citations (CiTO) --------------------------------------------------------
+
+cito:cites a owl:ObjectProperty ;
+    rdfs:label "cites"@en ;
+    rdfs:comment "The citing entity cites the cited entity."@en ;
+    rdfs:domain rirpdm:ScientificPublication ;
+    rdfs:range rirpdm:ResearchOutput ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "CiTO" .
+
+cito:isCitedBy a owl:ObjectProperty ;
+    rdfs:label "is cited by"@en ;
+    owl:inverseOf cito:cites ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "CiTO" .
+
+cito:extends a owl:ObjectProperty ;
+    rdfs:label "extends"@en ;
+    rdfs:comment "The citing entity extends the cited work."@en ;
+    rdfs:subPropertyOf cito:cites ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "CiTO" .
+
+cito:usesDataFrom a owl:ObjectProperty ;
+    rdfs:label "uses data from"@en ;
+    rdfs:comment "The citing entity uses data from the cited entity."@en ;
+    rdfs:subPropertyOf cito:cites ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "CiTO" .
+
+cito:usesMethodIn a owl:ObjectProperty ;
+    rdfs:label "uses method in"@en ;
+    rdfs:comment "The citing entity uses a method described in the cited entity."@en ;
+    rdfs:subPropertyOf cito:cites ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "CiTO" .
+
+cito:citesAsEvidence a owl:ObjectProperty ;
+    rdfs:label "cites as evidence"@en ;
+    rdfs:comment "The citing entity cites the cited entity as evidence."@en ;
+    rdfs:subPropertyOf cito:cites ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "CiTO" .
+
+cito:disputes a owl:ObjectProperty ;
+    rdfs:label "disputes"@en ;
+    rdfs:comment "The citing entity disputes a statement in the cited entity."@en ;
+    rdfs:subPropertyOf cito:cites ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "CiTO" .

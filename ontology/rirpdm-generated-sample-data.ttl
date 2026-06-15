@@ -1,6 +1,7 @@
 @prefix rirpdm: <http://www.example.org/rirpdm#> .
 @prefix frapo:  <http://purl.org/cerif/frapo/> .
 @prefix fabio:  <http://purl.org/spar/fabio/> .
+@prefix cito:   <http://purl.org/spar/cito/> .
 @prefix data:   <http://www.example.org/rirpdm/data#> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
@@ -277,3 +278,13 @@ data:ProjectAIFactory a owl:NamedIndividual , frapo:Project ;
 data:LRZ frapo:isFundedBy data:GrantLRZ .
 data:EGIFederation frapo:isFundedBy data:GrantEGI .
 data:AIFactory frapo:isFundedBy data:GrantAIFactory .
+
+#################################################################
+#    Citations (CiTO)
+#################################################################
+
+data:PubFederatedAI   cito:extends         data:PubHPCBenchmark ;
+                      cito:usesDataFrom     data:DatasetGenomics .
+
+data:PubHPCBenchmark  cito:usesDataFrom     data:DatasetClimateSim ;
+                      cito:citesAsEvidence  data:PubFederatedAI .
