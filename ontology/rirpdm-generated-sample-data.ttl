@@ -1,4 +1,5 @@
 @prefix rirpdm: <http://www.example.org/rirpdm#> .
+@prefix frapo:  <http://purl.org/cerif/frapo/> .
 @prefix data:   <http://www.example.org/rirpdm/data#> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
@@ -211,3 +212,51 @@ data:DatasetGenomics a owl:NamedIndividual , rirpdm:ResearchData ;
     rirpdm:providesOpenAccess "false"^^xsd:boolean ;
     rirpdm:compliesWithFAIR "true"^^xsd:boolean ;
     rirpdm:ensuresLongTermPreservation "false"^^xsd:boolean .
+
+#################################################################
+#    Funding (FRAPO)
+#    data:DFG is already an RFO, hence a frapo:FundingAgency.
+#    Pure FRAPO properties — nothing minted.
+#################################################################
+
+data:EuropeanCommission a owl:NamedIndividual , frapo:FundingAgency ;
+    rdfs:label "European Commission"@en .
+
+# Grants — awarded by an agency (frapo:isAwardedBy), funding a project
+# (frapo:funds), with FRAPO grant number and monetary value.
+data:GrantLRZ a owl:NamedIndividual , frapo:Grant ;
+    rdfs:label "DFG HPC Operations Grant"@en ;
+    frapo:isAwardedBy data:DFG ;
+    frapo:hasGrantNumber "DFG-HPC-2024-117" ;
+    frapo:hasMonetaryValue "38000000.00"^^xsd:decimal ;
+    frapo:funds data:ProjectLRZOps .
+
+data:GrantEGI a owl:NamedIndividual , frapo:Grant ;
+    rdfs:label "EGI-ACE Horizon Europe Grant"@en ;
+    frapo:isAwardedBy data:EuropeanCommission ;
+    frapo:hasGrantNumber "101017567" ;
+    frapo:hasMonetaryValue "12000000.00"^^xsd:decimal ;
+    frapo:funds data:ProjectEGIFederation .
+
+data:GrantAIFactory a owl:NamedIndividual , frapo:Grant ;
+    rdfs:label "AI Factory Preparation Grant"@en ;
+    frapo:isAwardedBy data:EuropeanCommission ;
+    frapo:hasGrantNumber "101100001" ;
+    frapo:hasMonetaryValue "5000000.00"^^xsd:decimal ;
+    frapo:funds data:ProjectAIFactory .
+
+# Projects (funded activities)
+data:ProjectLRZOps a owl:NamedIndividual , frapo:Project ;
+    rdfs:label "LRZ HPC Operations Project"@en .
+
+data:ProjectEGIFederation a owl:NamedIndividual , frapo:Project ;
+    rdfs:label "EGI-ACE Federation Project"@en .
+
+data:ProjectAIFactory a owl:NamedIndividual , frapo:Project ;
+    rdfs:label "AI Factory Preparation Project"@en .
+
+# Wire funding to the research infrastructures.
+# frapo:isFundedBy has an unrestricted domain, so it applies to an RI directly.
+data:LRZ frapo:isFundedBy data:GrantLRZ .
+data:EGIFederation frapo:isFundedBy data:GrantEGI .
+data:AIFactory frapo:isFundedBy data:GrantAIFactory .

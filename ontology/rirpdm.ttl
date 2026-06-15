@@ -6,6 +6,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix org:     <http://www.w3.org/ns/org#> .
+@prefix frapo:   <http://purl.org/cerif/frapo/> .
 @base <http://www.example.org/rirpdm> .
 
 #################################################################
@@ -40,6 +41,50 @@ org:Organization a owl:Class ;
     rdfs:subClassOf foaf:Agent ;
     rirpdm:status "Adopted" ;
     dcterms:source "W3C ORG" .
+
+frapo:Project a owl:Class ;
+    rdfs:label "Project"@en ;
+    rdfs:comment "An activity undertaken to achieve defined objectives, optionally funded by one or more sources."@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:Funding a owl:Class ;
+    rdfs:label "Funding"@en ;
+    rdfs:comment "Financial support provided to undertake research or operate an infrastructure."@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:Grant a owl:Class ;
+    rdfs:label "Grant"@en ;
+    rdfs:comment "A sum of money awarded by a funding agency to support a specific project or activity."@en ;
+    rdfs:subClassOf frapo:Funding ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:FundingAgency a owl:Class ;
+    rdfs:label "Funding Agency"@en ;
+    rdfs:comment "An organisation that provides funding for research projects or infrastructures."@en ;
+    rdfs:subClassOf org:Organization ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:FundingProgramme a owl:Class ;
+    rdfs:label "Funding Programme"@en ;
+    rdfs:comment "A structured scheme under which a funding agency awards grants."@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:Budget a owl:Class ;
+    rdfs:label "Budget"@en ;
+    rdfs:comment "A planned allocation of financial resources for a project or infrastructure."@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:Expenditure a owl:Class ;
+    rdfs:label "Expenditure"@en ;
+    rdfs:comment "Money actually spent against a budget."@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
 
 #################################################################
 #    Research Infrastructure hierarchy
@@ -277,7 +322,7 @@ rirpdm:RPO a owl:Class ;
 rirpdm:RFO a owl:Class ;
     rdfs:label "Research Funding Organisation (RFO)"@en ;
     rdfs:comment "Legal entity that can take binding decisions to financially support an RI."@en ;
-    rdfs:subClassOf org:Organization ;
+    rdfs:subClassOf org:Organization , frapo:FundingAgency ;
     rirpdm:status "Extended" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
@@ -682,3 +727,32 @@ rirpdm:isInPhase a owl:ObjectProperty , owl:FunctionalProperty ;
     rdfs:range rirpdm:LifecyclePhase ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
+
+# --- Funding (FRAPO) ---------------------------------------------------------
+
+frapo:isFundedBy a owl:ObjectProperty ;
+    rdfs:label "is funded by"@en ;
+    owl:inverseOf frapo:funds ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:funds a owl:ObjectProperty ;
+    rdfs:label "funds"@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:isAwardedBy a owl:ObjectProperty ;
+    rdfs:label "is awarded by"@en ;
+    owl:inverseOf frapo:awards ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:hasGrantNumber a owl:DatatypeProperty ;
+    rdfs:label "has grant number"@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:hasMonetaryValue a owl:DatatypeProperty ;
+    rdfs:label "has monetary value"@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
