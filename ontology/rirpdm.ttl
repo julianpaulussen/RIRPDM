@@ -7,6 +7,7 @@
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix org:     <http://www.w3.org/ns/org#> .
 @prefix frapo:   <http://purl.org/cerif/frapo/> .
+@prefix fabio:   <http://purl.org/spar/fabio/> .
 @base <http://www.example.org/rirpdm> .
 
 #################################################################
@@ -300,6 +301,57 @@ rirpdm:ResearchData a owl:Class ;
     rdfs:subClassOf rirpdm:ResearchOutput ;
     rirpdm:status "New" ;
     dcterms:source "EU Reg 2021 Art 14(1)(b), Art 39(4)" .
+
+#    Publication types (FaBiO) ────────────────────────────────────
+
+fabio:JournalArticle a owl:Class ;
+    rdfs:label "Journal Article"@en ;
+    rdfs:comment "A research article published in a journal issue."@en ;
+    rdfs:subClassOf rirpdm:ScientificPublication ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .
+
+fabio:ConferencePaper a owl:Class ;
+    rdfs:label "Conference Paper"@en ;
+    rdfs:comment "A paper presented at a conference and published in its proceedings."@en ;
+    rdfs:subClassOf rirpdm:ScientificPublication ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .
+
+fabio:Thesis a owl:Class ;
+    rdfs:label "Thesis"@en ;
+    rdfs:comment "A document submitted in support of an academic degree."@en ;
+    rdfs:subClassOf rirpdm:ScientificPublication ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .
+
+fabio:ReportDocument a owl:Class ;
+    rdfs:label "Report"@en ;
+    rdfs:comment "A technical or research report."@en ;
+    rdfs:subClassOf rirpdm:ScientificPublication ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .
+
+fabio:Dataset a owl:Class ;
+    rdfs:label "Dataset"@en ;
+    rdfs:comment "A published, citable collection of research data."@en ;
+    rdfs:subClassOf rirpdm:ResearchData ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .
+
+#    Publication venues (FaBiO) ────────────────────────────────────
+
+fabio:Journal a owl:Class ;
+    rdfs:label "Journal"@en ;
+    rdfs:comment "A periodical publishing scholarly articles."@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .
+
+fabio:AcademicProceedings a owl:Class ;
+    rdfs:label "Conference Proceedings"@en ;
+    rdfs:comment "The published collection of papers from a conference."@en ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .
 
 #################################################################
 #    Organisations
@@ -756,3 +808,21 @@ frapo:hasMonetaryValue a owl:DatatypeProperty ;
     rdfs:label "has monetary value"@en ;
     rirpdm:status "Adopted" ;
     dcterms:source "FRAPO" .
+
+# --- Publications (FaBiO) ----------------------------------------------------
+
+fabio:hasPublicationVenue a owl:ObjectProperty ;
+    rdfs:label "has publication venue"@en ;
+    rdfs:comment "Relates a publication to the journal or proceedings it appeared in."@en ;
+    rdfs:domain rirpdm:ScientificPublication ;
+    rdfs:range fabio:Journal ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .
+
+fabio:hasDOI a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:label "has DOI"@en ;
+    rdfs:comment "Digital Object Identifier of the research output."@en ;
+    rdfs:domain rirpdm:ResearchOutput ;
+    rdfs:range xsd:string ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FaBiO" .

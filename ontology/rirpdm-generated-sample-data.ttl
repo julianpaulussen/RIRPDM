@@ -1,5 +1,6 @@
 @prefix rirpdm: <http://www.example.org/rirpdm#> .
 @prefix frapo:  <http://purl.org/cerif/frapo/> .
+@prefix fabio:  <http://purl.org/spar/fabio/> .
 @prefix data:   <http://www.example.org/rirpdm/data#> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
@@ -94,7 +95,7 @@ data:EGIFederation a owl:NamedIndividual , rirpdm:DistributedRI , rirpdm:ESFRILa
     rirpdm:hasNode data:EGINodeDE , data:EGINodeFR ;
     rirpdm:jointInvestmentStrategy "Shared funding pool across national nodes" ;
     rirpdm:totalInvestmentCosts "120000000.00"^^xsd:decimal ;
-    rirpdm:producesResearchOutput data:DatasetGenomics .
+    rirpdm:producesResearchOutput data:DatasetGenomics , data:PubFederatedAI .
 
 # Virtual RI
 data:EOSC a owl:NamedIndividual , rirpdm:VirtualRI , rirpdm:ESFRIProject ;
@@ -197,21 +198,37 @@ data:EvalAIFactoryFinances a owl:NamedIndividual , rirpdm:Evaluation ;
 #    Research outputs
 #################################################################
 
-data:PubHPCBenchmark a owl:NamedIndividual , rirpdm:ScientificPublication ;
+data:PubHPCBenchmark a owl:NamedIndividual , fabio:JournalArticle ;
     rdfs:label "Exascale HPC Benchmark Study"@en ;
-    rirpdm:providesOpenAccess "true"^^xsd:boolean .
+    rirpdm:providesOpenAccess "true"^^xsd:boolean ;
+    fabio:hasDOI "10.1000/exascale.2025.001" ;
+    fabio:hasPublicationVenue data:JournalFutureGenCompSys .
 
-data:DatasetClimateSim a owl:NamedIndividual , rirpdm:ResearchData ;
+# Conference paper produced via the EGI federation.
+data:PubFederatedAI a owl:NamedIndividual , fabio:ConferencePaper ;
+    rdfs:label "Federated AI Workloads on EGI"@en ;
+    rirpdm:providesOpenAccess "true"^^xsd:boolean ;
+    fabio:hasDOI "10.1000/egi.ai.2025.042" .
+
+data:DatasetClimateSim a owl:NamedIndividual , fabio:Dataset ;
     rdfs:label "Climate Simulation Dataset"@en ;
     rirpdm:providesOpenAccess "true"^^xsd:boolean ;
     rirpdm:compliesWithFAIR "true"^^xsd:boolean ;
-    rirpdm:ensuresLongTermPreservation "true"^^xsd:boolean .
+    rirpdm:ensuresLongTermPreservation "true"^^xsd:boolean ;
+    fabio:hasDOI "10.5281/zenodo.1234567" .
 
-data:DatasetGenomics a owl:NamedIndividual , rirpdm:ResearchData ;
+data:DatasetGenomics a owl:NamedIndividual , fabio:Dataset ;
     rdfs:label "Federated Genomics Dataset"@en ;
     rirpdm:providesOpenAccess "false"^^xsd:boolean ;
     rirpdm:compliesWithFAIR "true"^^xsd:boolean ;
     rirpdm:ensuresLongTermPreservation "false"^^xsd:boolean .
+
+# Publication venues (FaBiO)
+data:JournalFutureGenCompSys a owl:NamedIndividual , fabio:Journal ;
+    rdfs:label "Future Generation Computer Systems"@en .
+
+data:ProcEGIConf2025 a owl:NamedIndividual , fabio:AcademicProceedings ;
+    rdfs:label "Proceedings of the EGI Conference 2025"@en .
 
 #################################################################
 #    Funding (FRAPO)
