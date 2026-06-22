@@ -610,7 +610,7 @@ rirpdm:compliesWithFAIR a owl:DatatypeProperty ;
 #    Object properties
 #################################################################
 
-rirpdm:hasCentralHub a owl:ObjectProperty ;
+rirpdm:hasCentralHub a owl:ObjectProperty , owl:InverseFunctionalProperty ;
     rdfs:label "hasCentralHub"@en ;
     rdfs:domain rirpdm:DistributedRI ;
     rdfs:range rirpdm:CentralHub ;
@@ -703,7 +703,7 @@ rirpdm:hasProspectiveMember a owl:ObjectProperty ;
 
 # --- Assessment cases --------------------------------------------------------
 
-rirpdm:hasScientificCase a owl:ObjectProperty ;
+rirpdm:hasScientificCase a owl:ObjectProperty , owl:FunctionalProperty ;
     rdfs:label "hasScientificCase"@en ;
     rdfs:comment "Links a Proposal or Research Infrastructure to its Scientific Case assessment."@en ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdm:Proposal rirpdm:ResearchInfrastructure ) ] ;
@@ -711,7 +711,7 @@ rirpdm:hasScientificCase a owl:ObjectProperty ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
-rirpdm:hasImplementationCase a owl:ObjectProperty ;
+rirpdm:hasImplementationCase a owl:ObjectProperty , owl:FunctionalProperty ;
     rdfs:label "hasImplementationCase"@en ;
     rdfs:comment "Links a Proposal or Research Infrastructure to its Implementation Case assessment."@en ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdm:Proposal rirpdm:ResearchInfrastructure ) ] ;
@@ -789,7 +789,7 @@ rirpdm:isInPhase a owl:ObjectProperty , owl:FunctionalProperty ;
 
 # --- Funding (FRAPO) ---------------------------------------------------------
 
-frapo:isFundedBy a owl:ObjectProperty ;
+frapo:isFundedBy a owl:ObjectProperty , owl:AsymmetricProperty ;
     rdfs:label "is funded by"@en ;
     owl:inverseOf frapo:funds ;
     rirpdm:status "Adopted" ;
@@ -836,7 +836,7 @@ fabio:hasDOI a owl:DatatypeProperty , owl:FunctionalProperty ;
 
 # --- Citations (CiTO) --------------------------------------------------------
 
-cito:cites a owl:ObjectProperty ;
+cito:cites a owl:ObjectProperty , owl:IrreflexiveProperty ;
     rdfs:label "cites"@en ;
     rdfs:comment "The citing entity cites the cited entity."@en ;
     rdfs:domain rirpdm:ScientificPublication ;
@@ -849,6 +849,24 @@ cito:isCitedBy a owl:ObjectProperty ;
     owl:inverseOf cito:cites ;
     rirpdm:status "Adopted" ;
     dcterms:source "CiTO" .
+
+rirpdm:isOutputOf a owl:ObjectProperty ;
+    rdfs:label "isOutputOf"@en ;
+    rdfs:comment "The research infrastructure that produced this output."@en ;
+    owl:inverseOf rirpdm:producesResearchOutput ;
+    rdfs:domain rirpdm:ResearchOutput ;
+    rdfs:range rirpdm:ResearchInfrastructure ;
+    rirpdm:status "New" ;
+    dcterms:source "EU Reg 2021 Art 2(22)" .
+
+rirpdm:isNodeOf a owl:ObjectProperty ;
+    rdfs:label "isNodeOf"@en ;
+    rdfs:comment "The distributed RI this national node belongs to."@en ;
+    owl:inverseOf rirpdm:hasNode ;
+    rdfs:domain rirpdm:NationalNode ;
+    rdfs:range rirpdm:DistributedRI ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
 
 cito:extends a owl:ObjectProperty ;
     rdfs:label "extends"@en ;
