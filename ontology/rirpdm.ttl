@@ -787,6 +787,27 @@ rirpdm:isInPhase a owl:ObjectProperty , owl:FunctionalProperty ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
+# --- Transitive funding chain ------------------------------------------------
+
+rirpdm:isSupportedBy a owl:ObjectProperty , owl:TransitiveProperty ;
+    rdfs:label "isSupportedBy"@en ;
+    rdfs:comment "Connects an RI (or grant) to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme."@en ;
+    # RI or Grant can be funded by a Grant, FundingProgramme or FundingAgency
+    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdm:ResearchInfrastructure frapo:Grant ) ] ;
+    rdfs:range  [ a owl:Class ; owl:unionOf ( frapo:Grant frapo:FundingProgramme frapo:FundingAgency ) ] ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
+# --- Symmetric collaboration --------------------------------------------------
+
+rirpdm:collaboratesWith a owl:ObjectProperty , owl:SymmetricProperty ;
+    rdfs:label "collaboratesWith"@en ;
+    rdfs:comment "Two research institutions collaborate. Symmetry means asserting A→B is enough; B→A is inferred."@en ;
+    rdfs:domain rirpdm:ResearchInstitution ;
+    rdfs:range  rirpdm:ResearchInstitution ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
+
 # --- Funding (FRAPO) ---------------------------------------------------------
 
 frapo:isFundedBy a owl:ObjectProperty , owl:AsymmetricProperty ;

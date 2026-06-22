@@ -97,14 +97,29 @@ roadmap data, finance records, evaluation scores and bibliometric records each
 live separately. The analyst runs one query that joins all four silos (**CQ06**)
 and gets a prioritised watch-list in return.
 
+### Step 7 - How deep does the funding chain go? - CQ07
+*"Which funding sources, at any level, support a given RI, directly or indirectly?"*
+
+Funding has levels: an RI is covered by a grant, and that grant is part of a broader programme. The analyst wants both in one query, not two (**CQ07**). Because `isSupportedBy` is transitive, the reasoner fills in the gap. If the RI is supported by a grant, and the grant is supported by a programme, the RI is automatically also supported by the programme.
+
+### Step 8 - Which institutions collaborate? - CQ08
+*"Which research institutions collaborate with each other?"*
+
+The analyst maps institutional collaboration networks across RIs to identify shared interests and avoid funding duplication (**CQ08**). `collaboratesWith` is symmetric. Asserting that institution A collaborates with B is enough. The reasoner infers the reverse. Only one direction needs to be populated in the knowledge graph.
+
 ## 4. Outcome
 
 In one session against the SPARQL endpoint the analyst produces the quarterly
 review: 
 - a full RI inventory with types and phases (CQ01), 
 - distributed-RI structure maps (CQ02), 
-- a funding table with grant provenance (CQ03), a list of FAIR-but-unpreserved datasets (CQ04), an ex-ante/ex-post merit comparison (CQ05), 
-- and the integrated cross-silo watch-list (CQ06). No roadmap PDF or finance spreadsheet was opened.
+- a funding table with grant provenance (CQ03),
+- a list of FAIR-but-unpreserved datasets (CQ04),
+- an ex-ante/ex-post merit comparison (CQ05), 
+- the integrated cross-silo watch-list (CQ06),
+- a full multi-level funding chain per RI (CQ07),
+- and an institutional collaboration network map (CQ08).
+No roadmap PDF or finance spreadsheet was opened.
 
 ## 5. CQ coverage map
 
@@ -116,8 +131,10 @@ review:
 | Open-science compliance | Bibliometrics | CQ04 |
 | Scientific merit over time | Evaluation | CQ05 |
 | Cross-silo integration | All four | CQ06 |
+| Transitive funding chain | Finance | CQ07 |
+| Institutional collaboration network | Roadmap | CQ08 |
 
-All six CQs are exercised by the single scenario, each covering a distinct part
+All eight CQs are exercised by the single scenario, each covering a distinct part
 of the schema and a distinct data silo.
 
 ## 6. Sources
