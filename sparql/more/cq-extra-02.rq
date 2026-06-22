@@ -1,0 +1,23 @@
+PREFIX rirpdm: <http://www.example.org/rirpdm#>
+PREFIX frapo:  <http://purl.org/cerif/frapo/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ05 — Which research infrastructures are funded, by which grant and funding
+#         agency, and what is the grant's monetary value?
+#
+# Pure FRAPO funding chain: RI -isFundedBy-> Grant -isAwardedBy-> Agency.
+
+SELECT ?riLabel ?grantLabel ?agencyLabel ?value
+WHERE {
+    ?ri     a                    rirpdm:ResearchInfrastructure ;
+            rdfs:label           ?riLabel ;
+            frapo:isFundedBy     ?grant .
+
+    ?grant  a                    frapo:Grant ;
+            rdfs:label           ?grantLabel ;
+            frapo:isAwardedBy    ?agency .
+    OPTIONAL { ?grant frapo:hasMonetaryValue ?value . }
+
+    ?agency rdfs:label           ?agencyLabel .
+}
+ORDER BY ?riLabel

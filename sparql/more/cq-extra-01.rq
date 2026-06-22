@@ -1,0 +1,29 @@
+# CQ01: Which research infrastructures enabled the most publications on a given topic,
+# and what institutions operated them?
+#
+# Bridge: pub -hasAuthor-> researcher <-hasParticipant- project -usesInfrastructure-> infra
+
+PREFIX rirpdo: <http://www.example.org/rirpdo#>
+
+SELECT ?infraName ?instName (COUNT(DISTINCT ?pub) AS ?pubCount)
+WHERE {
+    ?pub      a                         rirpdo:Publication ; # ?pub must be of type Publication
+              rirpdo:hasTopic           ?topic ;             # bind topic to ?topic  to filter the given topic later
+              rirpdo:hasAuthor          ?researcher .        # bind author to ?researcher 
+
+    # ?project bridges publication and infrastructure: the researcher participates in a project that uses the infrastructure
+    ?project  rirpdo:hasParticipant     ?researcher ;
+              rirpdo:usesInfrastructure ?infra .
+
+    ?topic    rirpdo:name               ?topicName .
+
+    ?infra    rirpdo:name               ?infraName ;
+              rirpdo:ownedBy            ?inst .
+
+    ?inst     rirpdo:name               ?instName .
+
+    FILTER(STR(?topicName) = "Multi-Agent Systems and Negotiation")
+}
+# Group by infrastructure and institution to count the number of publications enabled by each infrastructure.
+GROUP BY ?infra ?infraName ?instName
+ORDER BY DESC(?pubCount)

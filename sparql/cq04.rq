@@ -1,15 +1,1 @@
-PREFIX rirpdo: <http://www.example.org/rirpdo#>
-
-# CQ04: Which projects use research infrastructure, and who funds them?
-
-SELECT ?projectName ?infraName ?fundingName
-WHERE {
-    # subject predicate object
-    ?project  a                       rirpdo:Project ;
-              rirpdo:name             ?projectName ; # bind project name to variable ?projectName
-              rirpdo:usesInfrastructure ?infra ; # ...
-              rirpdo:fundedBy         ?funding .
-    ?infra    rirpdo:name             ?infraName .
-    ?funding  rirpdo:name             ?fundingName .
-}
-ORDER BY ?projectName
+# CQ04 - Which datasets are FAIR-compliant but do NOT ensure long-term preservation?
