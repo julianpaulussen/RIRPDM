@@ -44,6 +44,21 @@ foaf:Agent a owl:Class ;
     rirpdm:status "Adopted" ;
     dcterms:source "FOAF" .
 
+foaf:Person a owl:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:subClassOf foaf:Agent ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FOAF" .
+
+rirpdm:Researcher a owl:Class ;
+    rdfs:label "Researcher"@en ;
+    rdfs:comment "An agent who conducts scientific research, typically as a participant in a research infrastructure."@en ;
+    rdfs:subClassOf foaf:Person ;
+    rdfs:seeAlso vivo:ResearcherRole ;
+    rdfs:seeAlso nfdicore:NFDI_0000004 ;
+    rirpdm:status "Extended" ;
+    dcterms:source "VIVO" .
+
 org:Organization a owl:Class ;
     rdfs:label "Organization"@en ;
     rdfs:subClassOf foaf:Agent ;
@@ -880,6 +895,25 @@ fabio:hasDOI a owl:DatatypeProperty , owl:FunctionalProperty ;
     rdfs:range xsd:string ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
+
+rirpdm:hasAuthor a owl:ObjectProperty ;
+    rdfs:label "hasAuthor"@en ;
+    rdfs:comment "Relates a scientific publication to a researcher who authored it."@en ;
+    rdfs:domain rirpdm:ScientificPublication ;
+    rdfs:range  rirpdm:Researcher ;
+    owl:inverseOf rirpdm:authorOf ;
+    rdfs:seeAlso vivo:hasAuthor ;
+    rirpdm:status "New" ;
+    dcterms:source "VIVO" .
+
+rirpdm:authorOf a owl:ObjectProperty ;
+    rdfs:label "authorOf"@en ;
+    rdfs:comment "Relates a researcher to a scientific publication they authored."@en ;
+    rdfs:domain rirpdm:Researcher ;
+    rdfs:range  rirpdm:ScientificPublication ;
+    owl:inverseOf rirpdm:hasAuthor ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI Roadmap 2026" .
 
 # --- Citations (CiTO) --------------------------------------------------------
 
