@@ -121,6 +121,7 @@ frapo:Expenditure a owl:Class ;
 rirpdm:ResearchInfrastructure a owl:Class ;
     rdfs:label "Research Infrastructure"@en ;
     rdfs:comment "A facility (or set of resources/services) enabling research and innovation."@en ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure> ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" , "EU Regulation 2021 Art 2" .
 
