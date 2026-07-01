@@ -9,6 +9,10 @@
 @prefix frapo:   <http://purl.org/cerif/frapo/> .
 @prefix fabio:   <http://purl.org/spar/fabio/> .
 @prefix cito:    <http://purl.org/spar/cito/> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix nfdicore: <https://nfdi.fiz-karlsruhe.de/ontology/> .
+@prefix vivo:     <http://vivoweb.org/ontology/core#> .
+@prefix cerif:    <https://w3id.org/cerif/vocab/> .
 @base <http://www.example.org/rirpdm> .
 
 #################################################################
@@ -60,6 +64,7 @@ frapo:Grant a owl:Class ;
     rdfs:label "Grant"@en ;
     rdfs:comment "A sum of money awarded by a funding agency to support a specific project or activity."@en ;
     rdfs:subClassOf frapo:Funding ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ActivityFundingTypes#Grant> ;
     rirpdm:status "Adopted" ;
     dcterms:source "FRAPO" .
 
@@ -102,18 +107,21 @@ rirpdm:SingleSitedRI a owl:Class ;
     rdfs:label "Single-sited RI"@en ;
     rdfs:comment "An RI concentrated geographically at one site (or a few complementary sites) designed for user access. (ESFRI Roadmap 2026, p.15)"@en ;
     rdfs:subClassOf rirpdm:ResearchInfrastructure ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#SingleLocation> ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
 rirpdm:DistributedRI a owl:Class ;
     rdfs:label "Distributed RI"@en ;
     rdfs:subClassOf rirpdm:ResearchInfrastructure ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Distributed> ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
 rirpdm:VirtualRI a owl:Class ;
     rdfs:label "Virtual RI"@en ;
     rdfs:subClassOf rirpdm:ResearchInfrastructure ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Virtual> ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
@@ -174,6 +182,7 @@ rirpdm:MajorUpgrade a owl:Class ;
     rdfs:label "Major Upgrade"@en ;
     rdfs:comment "A transformative (not routine) upgrade to an operational RI."@en ;
     rdfs:subClassOf rirpdm:Proposal ;
+    rdfs:seeAlso <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#BeingUpgraded> ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
@@ -194,8 +203,8 @@ rirpdm:LifecyclePhase a owl:Class ;
 rirpdm:Concept        a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Concept"@en .
 rirpdm:Design         a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Design"@en .
 rirpdm:Preparation    a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Preparation"@en .
-rirpdm:Implementation a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Implementation"@en .
-rirpdm:Operation      a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Operation"@en .
+rirpdm:Implementation a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Implementation"@en ; skos:closeMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#UnderConstruction> .
+rirpdm:Operation      a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Operation"@en ; skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#InOperation> .
 rirpdm:Termination    a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Termination"@en .
 
 #################################################################
@@ -315,6 +324,7 @@ fabio:JournalArticle a owl:Class ;
     rdfs:label "Journal Article"@en ;
     rdfs:comment "A research article published in a journal issue."@en ;
     rdfs:subClassOf rirpdm:ScientificPublication ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#JournalArticle> ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
 
@@ -322,6 +332,7 @@ fabio:ConferencePaper a owl:Class ;
     rdfs:label "Conference Paper"@en ;
     rdfs:comment "A paper presented at a conference and published in its proceedings."@en ;
     rdfs:subClassOf rirpdm:ScientificPublication ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#ConferenceProceedingsArticle> ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
 
@@ -329,6 +340,7 @@ fabio:Thesis a owl:Class ;
     rdfs:label "Thesis"@en ;
     rdfs:comment "A document submitted in support of an academic degree."@en ;
     rdfs:subClassOf rirpdm:ScientificPublication ;
+    skos:closeMatch <https://w3id.org/cerif/vocab/OutputTypes#PhDThesis> ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
 
@@ -336,6 +348,7 @@ fabio:ReportDocument a owl:Class ;
     rdfs:label "Report"@en ;
     rdfs:comment "A technical or research report."@en ;
     rdfs:subClassOf rirpdm:ScientificPublication ;
+    skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#Report> ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
 
