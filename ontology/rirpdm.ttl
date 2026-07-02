@@ -24,7 +24,14 @@
     dcterms:title "Research Infrastructure and Research Publications Data Model (RIRPDM)"@en ;
     dcterms:description "OWL 2 ontology for knowledge representation and reasoning over scientific research infrastructure and publications."@en ;
     owl:versionInfo "0.1.0" ;
-    dcterms:creator "Julian Paulussen" .
+    dcterms:creator "Julian Paulussen" ;
+    rdfs:comment "Imports of fabio and cito are resolved via catalog-v001.xml to locally patched copies (ontology/fabio.owl, ontology/cito.owl): upstream published files assert untyped dcterms:created/modified literals on their own ontology IRI, violating the xsd:dateTime range they themselves declare, which makes the raw remote files OWL-inconsistent (owl:Thing SubClassOf owl:Nothing). Only those two literals were retyped; no domain classes/properties/axioms were altered."@en ;
+    owl:imports <http://xmlns.com/foaf/0.1/> ,
+                <http://www.w3.org/2004/02/skos/core#> ,
+                <http://www.w3.org/ns/org#> ,
+                <http://purl.org/spar/fabio> ,
+                <http://purl.org/spar/cito> ,
+                <http://purl.org/cerif/frapo/> .
 
 #################################################################
 #    Annotation properties
