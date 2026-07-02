@@ -70,6 +70,7 @@ frapo:Project a owl:Class ;
     rdfs:label "Project"@en ;
     rdfs:comment "An activity undertaken to achieve defined objectives, optionally funded by one or more sources."@en ;
     rdfs:seeAlso nfdicore:NFDI_0000002 ;
+    rdfs:seeAlso vivo:Project ;
     rirpdm:status "Adopted" ;
     dcterms:source "FRAPO" .
 
@@ -135,6 +136,7 @@ rirpdm:SingleSitedRI a owl:Class ;
 
 rirpdm:DistributedRI a owl:Class ;
     rdfs:label "Distributed RI"@en ;
+    rdfs:comment "A distributed RI consists of a Central Hub and interlinked National Nodes; the capacity and resources devoted to the RI must be clearly identified, coordinated and managed by the Central Hub according to agreed statutes and common rules and procedures of the RI Consortium. (ESFRI Roadmap 2026, p.15)"@en ;
     rdfs:subClassOf rirpdm:ResearchInfrastructure ;
     skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Distributed> ;
     rirpdm:status "New" ;
@@ -142,6 +144,7 @@ rirpdm:DistributedRI a owl:Class ;
 
 rirpdm:VirtualRI a owl:Class ;
     rdfs:label "Virtual RI"@en ;
+    rdfs:comment "One of the three RI types under the applied definition of research infrastructure: facilities that provide resources and services for research communities, which \"may, where relevant, be used beyond research... and they may be single sited, virtual or distributed\". (ESFRI Roadmap 2026, p.14, citing Art 2(1) Horizon Europe Regulation)"@en ;
     rdfs:subClassOf rirpdm:ResearchInfrastructure ;
     skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Virtual> ;
     rirpdm:status "New" ;
@@ -229,6 +232,10 @@ rirpdm:Implementation a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label
 rirpdm:Operation      a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Operation"@en ; skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#InOperation> .
 rirpdm:Termination    a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Termination"@en .
 
+[] a owl:AllDifferent ;
+    owl:members ( rirpdm:Concept rirpdm:Design rirpdm:Preparation
+                  rirpdm:Implementation rirpdm:Operation rirpdm:Termination ) .
+
 #################################################################
 #    Scientific Case  (per-proposal/per-RI assessment object)
 #    The six scientific dimensions are modelled separately as the
@@ -259,6 +266,11 @@ rirpdm:UserStrategyAndAccessPolicy a owl:NamedIndividual , rirpdm:ScientificDime
 rirpdm:ENeedsAndData               a owl:NamedIndividual , rirpdm:ScientificDimension ; rdfs:label "E-Needs & Data"@en .
 rirpdm:EnvironmentalConsiderations a owl:NamedIndividual , rirpdm:ScientificDimension ; rdfs:label "Environmental Considerations"@en .
 
+[] a owl:AllDifferent ;
+    owl:members ( rirpdm:ScientificExcellence rirpdm:PanEuropeanRelevance
+                  rirpdm:SocioEconomicImpact rirpdm:UserStrategyAndAccessPolicy
+                  rirpdm:ENeedsAndData rirpdm:EnvironmentalConsiderations ) .
+
 #################################################################
 #    Implementation Case  (per-proposal/per-RI assessment object)
 #    The five implementation dimensions are the enumerated class
@@ -286,6 +298,10 @@ rirpdm:GovernanceManagementAndHR  a owl:NamedIndividual , rirpdm:ImplementationD
 rirpdm:Finances                   a owl:NamedIndividual , rirpdm:ImplementationDimension ; rdfs:label "Finances"@en .
 rirpdm:Risks                      a owl:NamedIndividual , rirpdm:ImplementationDimension ; rdfs:label "Risks"@en .
 
+[] a owl:AllDifferent ;
+    owl:members ( rirpdm:StakeholderCommitment rirpdm:PreparatoryWorkAndPlanning
+                  rirpdm:GovernanceManagementAndHR rirpdm:Finances rirpdm:Risks ) .
+
 #################################################################
 #    Evaluation & Score
 #################################################################
@@ -308,6 +324,9 @@ rirpdm:VeryHigh a owl:NamedIndividual , rirpdm:Score ; rdfs:label "Very High"@en
 rirpdm:High     a owl:NamedIndividual , rirpdm:Score ; rdfs:label "High"@en .
 rirpdm:Medium   a owl:NamedIndividual , rirpdm:Score ; rdfs:label "Medium"@en .
 rirpdm:Low      a owl:NamedIndividual , rirpdm:Score ; rdfs:label "Low"@en .
+
+[] a owl:AllDifferent ;
+    owl:members ( rirpdm:VeryHigh rirpdm:High rirpdm:Medium rirpdm:Low ) .
 
 #################################################################
 #    Research Output
@@ -428,6 +447,7 @@ rirpdm:RFO a owl:Class ;
 
 rirpdm:RIConsortium a owl:Class ;
     rdfs:label "RI Consortium"@en ;
+    rdfs:comment "The consortium of core partners governing a distributed RI, whose agreed statutes and common rules and procedures the Central Hub applies to coordinate and manage the National Nodes' RI-dedicated capacity. (ESFRI Roadmap 2026, p.15)"@en ;
     rdfs:subClassOf org:Organization ;
     rdfs:seeAlso nfdicore:NFDI_0001039 ;
     rirpdm:status "Extended" ;
@@ -654,6 +674,7 @@ rirpdm:compliesWithFAIR a owl:DatatypeProperty ;
 
 rirpdm:hasCentralHub a owl:ObjectProperty , owl:InverseFunctionalProperty ;
     rdfs:label "hasCentralHub"@en ;
+    rdfs:comment "Relates a distributed RI to its Central Hub, the truly international organisation that must guarantee effective operation, attribute optimal personnel capacity and coordinating power, and mediate across different scientific cultures. (ESFRI Roadmap 2026, p.15-16)"@en ;
     rdfs:domain rirpdm:DistributedRI ;
     rdfs:range rirpdm:CentralHub ;
     rirpdm:status "New" ;
@@ -666,6 +687,7 @@ rirpdm:DistributedRI rdfs:subClassOf [ a owl:Restriction ;
 
 rirpdm:hasNode a owl:ObjectProperty ;
     rdfs:label "hasNode"@en ;
+    rdfs:comment "Relates a distributed RI to one of its interlinked National Nodes, whose capacity and resources devoted to the RI must be clearly identified, coordinated and managed by the Central Hub. (ESFRI Roadmap 2026, p.15)"@en ;
     rdfs:domain rirpdm:DistributedRI ;
     rdfs:range rirpdm:NationalNode ;
     rirpdm:status "New" ;
@@ -743,6 +765,10 @@ rirpdm:hasProspectiveMember a owl:ObjectProperty ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
+# An agent cannot hold two of these governance roles for the same RI at once.
+[] a owl:AllDisjointProperties ;
+    owl:members ( rirpdm:hasLeadEntity rirpdm:hasMemberEntity rirpdm:hasObserver rirpdm:hasParticipant rirpdm:hasProspectiveMember ) .
+
 # --- Assessment cases --------------------------------------------------------
 
 rirpdm:hasScientificCase a owl:ObjectProperty , owl:FunctionalProperty ;
@@ -786,6 +812,16 @@ rirpdm:hasEvaluation a owl:ObjectProperty ;
     rdfs:range rirpdm:Evaluation ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
+
+# A Scientific Case has at most one evaluation per each of the 6 Scientific Dimensions (partial/in-progress assessments stay valid; this only blocks excess/duplicate entries).
+rirpdm:ScientificCase rdfs:subClassOf [ a owl:Restriction ;
+    owl:onProperty rirpdm:hasEvaluation ;
+    owl:maxCardinality 6 ] .
+
+# An Implementation Case has at most one evaluation per each of the 5 Implementation Dimensions.
+rirpdm:ImplementationCase rdfs:subClassOf [ a owl:Restriction ;
+    owl:onProperty rirpdm:hasEvaluation ;
+    owl:maxCardinality 5 ] .
 
 rirpdm:evaluatesDimension a owl:ObjectProperty , owl:FunctionalProperty ;
     rdfs:label "evaluatesDimension"@en ;
@@ -842,7 +878,7 @@ rirpdm:isSupportedBy a owl:ObjectProperty , owl:TransitiveProperty ;
 
 # --- Symmetric collaboration --------------------------------------------------
 
-rirpdm:collaboratesWith a owl:ObjectProperty , owl:SymmetricProperty ;
+rirpdm:collaboratesWith a owl:ObjectProperty , owl:SymmetricProperty , owl:IrreflexiveProperty ;
     rdfs:label "collaboratesWith"@en ;
     rdfs:comment "Two research institutions collaborate. Symmetry means asserting A→B is enough; B→A is inferred."@en ;
     rdfs:domain rirpdm:ResearchInstitution ;
@@ -855,6 +891,7 @@ rirpdm:collaboratesWith a owl:ObjectProperty , owl:SymmetricProperty ;
 frapo:isFundedBy a owl:ObjectProperty , owl:AsymmetricProperty ;
     rdfs:label "is funded by"@en ;
     owl:inverseOf frapo:funds ;
+    rdfs:seeAlso vivo:fundedBy ;
     rirpdm:status "Adopted" ;
     dcterms:source "FRAPO" .
 
@@ -866,6 +903,11 @@ frapo:funds a owl:ObjectProperty ;
 frapo:isAwardedBy a owl:ObjectProperty ;
     rdfs:label "is awarded by"@en ;
     owl:inverseOf frapo:awards ;
+    rirpdm:status "Adopted" ;
+    dcterms:source "FRAPO" .
+
+frapo:awards a owl:ObjectProperty ;
+    rdfs:label "awards"@en ;
     rirpdm:status "Adopted" ;
     dcterms:source "FRAPO" .
 
@@ -905,7 +947,7 @@ rirpdm:hasAuthor a owl:ObjectProperty ;
     owl:inverseOf rirpdm:authorOf ;
     rdfs:seeAlso vivo:hasAuthor ;
     rirpdm:status "New" ;
-    dcterms:source "VIVO" .
+    dcterms:source "EU Reg 2021 Art 2(22)" .
 
 rirpdm:authorOf a owl:ObjectProperty ;
     rdfs:label "authorOf"@en ;
@@ -913,6 +955,15 @@ rirpdm:authorOf a owl:ObjectProperty ;
     rdfs:domain rirpdm:Researcher ;
     rdfs:range  rirpdm:ScientificPublication ;
     owl:inverseOf rirpdm:hasAuthor ;
+    rirpdm:status "New" ;
+    dcterms:source "EU Reg 2021 Art 2(22)" .
+
+rirpdm:contributesToRI a owl:ObjectProperty ;
+    rdfs:label "contributesToRI"@en ;
+    rdfs:comment "A researcher contributed to a research infrastructure via a publication they authored that is an output of that RI. Inferred via property chain: authorOf o isOutputOf."@en ;
+    rdfs:domain rirpdm:Researcher ;
+    rdfs:range  rirpdm:ResearchInfrastructure ;
+    owl:propertyChainAxiom ( rirpdm:authorOf rirpdm:isOutputOf ) ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
