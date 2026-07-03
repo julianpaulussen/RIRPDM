@@ -1,0 +1,503 @@
+<h2 id="overv" class="list">Research Infrastructure and Research Publications Data Model (RIRPDM): Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a>
+   </li>
+   <li>
+      <a href="#AssociatedCountry" title="http://www.example.org/rirpdm#AssociatedCountry">Associated Country</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Budget" title="http://purl.org/cerif/frapo/Budget">Budget</a>
+   </li>
+   <li>
+      <a href="#CentralHub" title="http://www.example.org/rirpdm#CentralHub">Central Hub</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/ConferencePaper" title="http://purl.org/spar/fabio/ConferencePaper">
+         <span>Conference Paper</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/AcademicProceedings" title="http://purl.org/spar/fabio/AcademicProceedings">Conference Proceedings</a>
+   </li>
+   <li>
+      <a href="#Country" title="http://www.example.org/rirpdm#Country">Country</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Dataset" title="http://purl.org/spar/fabio/Dataset">Dataset</a>
+   </li>
+   <li>
+      <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">
+         <span>Distributed RI</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ESFRILandmark" title="http://www.example.org/rirpdm#ESFRILandmark">ESFRI Landmark</a>
+   </li>
+   <li>
+      <a href="#ESFRIProject" title="http://www.example.org/rirpdm#ESFRIProject">ESFRI Project</a>
+   </li>
+   <li>
+      <a href="#Evaluation" title="http://www.example.org/rirpdm#Evaluation">Evaluation</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Expenditure" title="http://purl.org/cerif/frapo/Expenditure">Expenditure</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Expression" title="http://purl.org/spar/fabio/Expression">Expression</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Funding" title="http://purl.org/cerif/frapo/Funding">Funding</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/FundingAgency" title="http://purl.org/cerif/frapo/FundingAgency">Funding Agency</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/FundingProgramme" title="http://purl.org/cerif/frapo/FundingProgramme">Funding Programme</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">
+         <span>Grant</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ImplementationCase"
+         title="http://www.example.org/rirpdm#ImplementationCase">Implementation Case</a>
+   </li>
+   <li>
+      <a href="#ImplementationDimension"
+         title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Journal" title="http://purl.org/spar/fabio/Journal">Journal</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle">
+         <span>Journal Article</span>
+      </a>
+   </li>
+   <li>
+      <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a>
+   </li>
+   <li>
+      <a href="#MajorUpgrade" title="http://www.example.org/rirpdm#MajorUpgrade">Major Upgrade</a>
+   </li>
+   <li>
+      <a href="#MemberState" title="http://www.example.org/rirpdm#MemberState">Member State</a>
+   </li>
+   <li>
+      <a href="#NationalNode" title="http://www.example.org/rirpdm#NationalNode">National Node</a>
+   </li>
+   <li>
+      <a href="#NewProposal" title="http://www.example.org/rirpdm#NewProposal">New Proposal</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a>
+   </li>
+   <li>
+      <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Project" title="http://purl.org/cerif/frapo/Project">Project</a>
+   </li>
+   <li>
+      <a href="#Proposal" title="http://www.example.org/rirpdm#Proposal">Proposal</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/ReportDocument" title="http://purl.org/spar/fabio/ReportDocument">
+         <span>Report</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ResearchData" title="http://www.example.org/rirpdm#ResearchData">Research Data</a>
+   </li>
+   <li>
+      <a href="#RFO" title="http://www.example.org/rirpdm#RFO">Research Funding Organisation (RFO)</a>
+   </li>
+   <li>
+      <a href="#ResearchInstitution"
+         title="http://www.example.org/rirpdm#ResearchInstitution">Research Institution</a>
+   </li>
+   <li>
+      <a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a>
+   </li>
+   <li>
+      <a href="#RPO" title="http://www.example.org/rirpdm#RPO">Research Performing Organisation (RPO)</a>
+   </li>
+   <li>
+      <a href="#Researcher" title="http://www.example.org/rirpdm#Researcher">Researcher</a>
+   </li>
+   <li>
+      <a href="#RIConsortium" title="http://www.example.org/rirpdm#RIConsortium">RI Consortium</a>
+   </li>
+   <li>
+      <a href="#ScientificCase" title="http://www.example.org/rirpdm#ScientificCase">Scientific Case</a>
+   </li>
+   <li>
+      <a href="#ScientificDimension"
+         title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a>
+   </li>
+   <li>
+      <a href="#ScientificPublication"
+         title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a>
+   </li>
+   <li>
+      <a href="#Score" title="http://www.example.org/rirpdm#Score">Score</a>
+   </li>
+   <li>
+      <a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI">
+         <span>Single-sited RI</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Thesis" title="http://purl.org/spar/fabio/Thesis">
+         <span>Thesis</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ThirdCountry" title="http://www.example.org/rirpdm#ThirdCountry">Third Country</a>
+   </li>
+   <li>
+      <a href="#VirtualRI" title="http://www.example.org/rirpdm#VirtualRI">
+         <span>Virtual RI</span>
+      </a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#assessedAtPhase" title="http://www.example.org/rirpdm#assessedAtPhase">assessedAtPhase</a>
+   </li>
+   <li>
+      <a href="#authorOf" title="http://www.example.org/rirpdm#authorOf">authorOf</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/awards" title="http://purl.org/cerif/frapo/awards">awards</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/citesAsEvidence" title="http://purl.org/spar/cito/citesAsEvidence">cites as evidence</a>
+   </li>
+   <li>
+      <a href="#collaboratesWith" title="http://www.example.org/rirpdm#collaboratesWith">collaboratesWith</a>
+   </li>
+   <li>
+      <a href="#contributesToRI" title="http://www.example.org/rirpdm#contributesToRI">contributesToRI</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/disputes" title="http://purl.org/spar/cito/disputes">disputes</a>
+   </li>
+   <li>
+      <a href="#evaluatesDimension" title="http://www.example.org/rirpdm#evaluatesDimension">evaluatesDimension</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/extends" title="http://purl.org/spar/cito/extends">extends</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/funds" title="http://purl.org/cerif/frapo/funds">funds</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/hasPublicationVenue" title="http://purl.org/spar/fabio/hasPublicationVenue">has publication venue</a>
+   </li>
+   <li>
+      <a href="#hasAuthor" title="http://www.example.org/rirpdm#hasAuthor">hasAuthor</a>
+   </li>
+   <li>
+      <a href="#hasCentralHub" title="http://www.example.org/rirpdm#hasCentralHub">hasCentralHub</a>
+   </li>
+   <li>
+      <a href="#hasEvaluation" title="http://www.example.org/rirpdm#hasEvaluation">hasEvaluation</a>
+   </li>
+   <li>
+      <a href="#hasImplementationCase"
+         title="http://www.example.org/rirpdm#hasImplementationCase">hasImplementationCase</a>
+   </li>
+   <li>
+      <a href="#hasLeadEntity" title="http://www.example.org/rirpdm#hasLeadEntity">hasLeadEntity</a>
+   </li>
+   <li>
+      <a href="#hasMemberEntity" title="http://www.example.org/rirpdm#hasMemberEntity">hasMemberEntity</a>
+   </li>
+   <li>
+      <a href="#hasNode" title="http://www.example.org/rirpdm#hasNode">hasNode</a>
+   </li>
+   <li>
+      <a href="#hasObserver" title="http://www.example.org/rirpdm#hasObserver">hasObserver</a>
+   </li>
+   <li>
+      <a href="#hasParticipant" title="http://www.example.org/rirpdm#hasParticipant">hasParticipant</a>
+   </li>
+   <li>
+      <a href="#hasProspectiveMember"
+         title="http://www.example.org/rirpdm#hasProspectiveMember">hasProspectiveMember</a>
+   </li>
+   <li>
+      <a href="#hasScientificCase" title="http://www.example.org/rirpdm#hasScientificCase">hasScientificCase</a>
+   </li>
+   <li>
+      <a href="#hasScore" title="http://www.example.org/rirpdm#hasScore">hasScore</a>
+   </li>
+   <li>
+      <a href="#indirectlyExposedTo"
+         title="http://www.example.org/rirpdm#indirectlyExposedTo">indirectlyExposedTo</a>
+   </li>
+   <li>
+      <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/isAwardedBy" title="http://purl.org/cerif/frapo/isAwardedBy">is awarded by</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/isCitedBy" title="http://purl.org/spar/cito/isCitedBy">is cited by</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/isFundedBy" title="http://purl.org/cerif/frapo/isFundedBy">is funded by</a>
+   </li>
+   <li>
+      <a href="#isInPhase" title="http://www.example.org/rirpdm#isInPhase">isInPhase</a>
+   </li>
+   <li>
+      <a href="#isNodeOf" title="http://www.example.org/rirpdm#isNodeOf">isNodeOf</a>
+   </li>
+   <li>
+      <a href="#isOutputOf" title="http://www.example.org/rirpdm#isOutputOf">isOutputOf</a>
+   </li>
+   <li>
+      <a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a>
+   </li>
+   <li>
+      <a href="#participatesIn" title="http://www.example.org/rirpdm#participatesIn">participatesIn</a>
+   </li>
+   <li>
+      <a href="#producesResearchOutput"
+         title="http://www.example.org/rirpdm#producesResearchOutput">producesResearchOutput</a>
+   </li>
+   <li>
+      <a href="#resultsInProject" title="http://www.example.org/rirpdm#resultsInProject">resultsInProject</a>
+   </li>
+   <li>
+      <a href="#upgradesRI" title="http://www.example.org/rirpdm#upgradesRI">upgradesRI</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/usesDataFrom" title="http://purl.org/spar/cito/usesDataFrom">uses data from</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/usesMethodIn" title="http://purl.org/spar/cito/usesMethodIn">uses method in</a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#accessPoint" title="http://www.example.org/rirpdm#accessPoint">accessPoint</a>
+   </li>
+   <li>
+      <a href="#accessPolicy" title="http://www.example.org/rirpdm#accessPolicy">accessPolicy</a>
+   </li>
+   <li>
+      <a href="#averageAnnualOperationCosts"
+         title="http://www.example.org/rirpdm#averageAnnualOperationCosts">averageAnnualOperationCosts</a>
+   </li>
+   <li>
+      <a href="#compliesWithFAIR" title="http://www.example.org/rirpdm#compliesWithFAIR">compliesWithFAIR</a>
+   </li>
+   <li>
+      <a href="#dataManagementSystem"
+         title="http://www.example.org/rirpdm#dataManagementSystem">dataManagementSystem</a>
+   </li>
+   <li>
+      <a href="#designCosts" title="http://www.example.org/rirpdm#designCosts">designCosts</a>
+   </li>
+   <li>
+      <a href="#ensuresLongTermPreservation"
+         title="http://www.example.org/rirpdm#ensuresLongTermPreservation">ensuresLongTermPreservation</a>
+   </li>
+   <li>
+      <a href="#governanceStructure"
+         title="http://www.example.org/rirpdm#governanceStructure">governanceStructure</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/hasDOI" title="http://purl.org/spar/fabio/hasDOI">has DOI</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/hasGrantNumber" title="http://purl.org/cerif/frapo/hasGrantNumber">has grant number</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/hasMonetaryValue" title="http://purl.org/cerif/frapo/hasMonetaryValue">has monetary value</a>
+   </li>
+   <li>
+      <a href="#hasKPI" title="http://www.example.org/rirpdm#hasKPI">hasKPI</a>
+   </li>
+   <li>
+      <a href="#humanResourcesPolicy"
+         title="http://www.example.org/rirpdm#humanResourcesPolicy">humanResourcesPolicy</a>
+   </li>
+   <li>
+      <a href="#implementationCosts"
+         title="http://www.example.org/rirpdm#implementationCosts">implementationCosts</a>
+   </li>
+   <li>
+      <a href="#jointInvestmentStrategy"
+         title="http://www.example.org/rirpdm#jointInvestmentStrategy">jointInvestmentStrategy</a>
+   </li>
+   <li>
+      <a href="#legalStatus" title="http://www.example.org/rirpdm#legalStatus">legalStatus</a>
+   </li>
+   <li>
+      <a href="#longTermSitePlanning"
+         title="http://www.example.org/rirpdm#longTermSitePlanning">longTermSitePlanning</a>
+   </li>
+   <li>
+      <a href="#preparationCosts" title="http://www.example.org/rirpdm#preparationCosts">preparationCosts</a>
+   </li>
+   <li>
+      <a href="#providesOpenAccess"
+         title="http://www.example.org/rirpdm#providesOpenAccess">providesOpenAccess</a>
+   </li>
+   <li>
+      <a href="#serviceOffer" title="http://www.example.org/rirpdm#serviceOffer">serviceOffer</a>
+   </li>
+   <li>
+      <a href="#terminationCosts" title="http://www.example.org/rirpdm#terminationCosts">terminationCosts</a>
+   </li>
+   <li>
+      <a href="#totalInvestmentCosts"
+         title="http://www.example.org/rirpdm#totalInvestmentCosts">totalInvestmentCosts</a>
+   </li>
+   <li>
+      <a href="#uniqueName" title="http://www.example.org/rirpdm#uniqueName">uniqueName</a>
+   </li>
+   <li>
+      <a href="#userProgramme" title="http://www.example.org/rirpdm#userProgramme">userProgramme</a>
+   </li>
+   <li>
+      <a href="#userSupportStructure"
+         title="http://www.example.org/rirpdm#userSupportStructure">userSupportStructure</a>
+   </li>
+</ul><h4>Named Individuals</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#Concept" title="http://www.example.org/rirpdm#Concept">Concept</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/ConferencePaper" title="http://purl.org/spar/fabio/ConferencePaper">
+         <span>Conference Paper</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Design" title="http://www.example.org/rirpdm#Design">Design</a>
+   </li>
+   <li>
+      <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">
+         <span>Distributed RI</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ENeedsAndData" title="http://www.example.org/rirpdm#ENeedsAndData">E-Needs &amp; Data</a>
+   </li>
+   <li>
+      <a href="#EnvironmentalConsiderations"
+         title="http://www.example.org/rirpdm#EnvironmentalConsiderations">Environmental Considerations</a>
+   </li>
+   <li>
+      <a href="#Finances" title="http://www.example.org/rirpdm#Finances">Finances</a>
+   </li>
+   <li>
+      <a href="#GovernanceManagementAndHR"
+         title="http://www.example.org/rirpdm#GovernanceManagementAndHR">Governance Management &amp; HR</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">
+         <span>Grant</span>
+      </a>
+   </li>
+   <li>
+      <a href="#High" title="http://www.example.org/rirpdm#High">High</a>
+   </li>
+   <li>
+      <a href="#Implementation" title="http://www.example.org/rirpdm#Implementation">Implementation</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle">
+         <span>Journal Article</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Low" title="http://www.example.org/rirpdm#Low">Low</a>
+   </li>
+   <li>
+      <a href="#Medium" title="http://www.example.org/rirpdm#Medium">Medium</a>
+   </li>
+   <li>
+      <a href="#Operation" title="http://www.example.org/rirpdm#Operation">Operation</a>
+   </li>
+   <li>
+      <a href="#PanEuropeanRelevance"
+         title="http://www.example.org/rirpdm#PanEuropeanRelevance">Pan-European Relevance</a>
+   </li>
+   <li>
+      <a href="#Preparation" title="http://www.example.org/rirpdm#Preparation">Preparation</a>
+   </li>
+   <li>
+      <a href="#PreparatoryWorkAndPlanning"
+         title="http://www.example.org/rirpdm#PreparatoryWorkAndPlanning">Preparatory Work &amp; Planning</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/ReportDocument" title="http://purl.org/spar/fabio/ReportDocument">
+         <span>Report</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ResearchInfrastructure"
+         title="http://www.example.org/rirpdm#ResearchInfrastructure">
+         <span>Research Infrastructure</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Risks" title="http://www.example.org/rirpdm#Risks">Risks</a>
+   </li>
+   <li>
+      <a href="#ScientificExcellence"
+         title="http://www.example.org/rirpdm#ScientificExcellence">Scientific Excellence</a>
+   </li>
+   <li>
+      <a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI">
+         <span>Single-sited RI</span>
+      </a>
+   </li>
+   <li>
+      <a href="#SocioEconomicImpact"
+         title="http://www.example.org/rirpdm#SocioEconomicImpact">Socio-Economic Impact</a>
+   </li>
+   <li>
+      <a href="#StakeholderCommitment"
+         title="http://www.example.org/rirpdm#StakeholderCommitment">Stakeholder Commitment</a>
+   </li>
+   <li>
+      <a href="#Termination" title="http://www.example.org/rirpdm#Termination">Termination</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Thesis" title="http://purl.org/spar/fabio/Thesis">
+         <span>Thesis</span>
+      </a>
+   </li>
+   <li>
+      <a href="#UserStrategyAndAccessPolicy"
+         title="http://www.example.org/rirpdm#UserStrategyAndAccessPolicy">User Strategy &amp; Access Policy</a>
+   </li>
+   <li>
+      <a href="#VeryHigh" title="http://www.example.org/rirpdm#VeryHigh">Very High</a>
+   </li>
+   <li>
+      <a href="#VirtualRI" title="http://www.example.org/rirpdm#VirtualRI">
+         <span>Virtual RI</span>
+      </a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 

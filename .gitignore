@@ -8,3 +8,6 @@ __pycache__
 ontology/CERIF.txp
 graphify-out
 pdfs
+widoco-1.4.25-jar-with-dependencies.jar
+widoco.jar
+ontology/OntoTrack.owl
