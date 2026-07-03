@@ -11,3 +11,14 @@ pdfs
 widoco-1.4.25-jar-with-dependencies.jar
 widoco.jar
 ontology/OntoTrack.owl
+docs/index-en.html
+docs/index.html
+docs/ontology.owl
+docs/ontology.ttl
+docs/ontology.nt
+docs/ontology.jsonld
+docs/readme.md
+docs/resources
+docs/sections
+docs/webvowl
+docs/provenance

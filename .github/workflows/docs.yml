@@ -1,0 +1,34 @@
+name: Build and deploy ontology docs
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Widoco
+        run: wget -O widoco.jar https://github.com/dgarijo/Widoco/releases/download/v1.4.25/widoco-1.4.25-jar-with-dependencies_JDK-17.jar
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Generate documentation
+        run: |
+          mkdir public
+          java -jar widoco.jar -ontFile ontology/rirpdm.ttl -outFolder public \
+            -uniteSections -includeAnnotationProperties -getOntologyMetadata \
+            -noPlaceHolderText -rewriteAll -webVowl
+          cp public/index-en.html public/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
