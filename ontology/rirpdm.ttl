@@ -679,7 +679,7 @@ rirpdm:compliesWithFAIR a owl:DatatypeProperty ;
 #    Object properties
 #################################################################
 
-rirpdm:hasCentralHub a owl:ObjectProperty , owl:InverseFunctionalProperty ;
+rirpdm:hasCentralHub a owl:ObjectProperty ;
     rdfs:label "hasCentralHub"@en ;
     rdfs:comment "Relates a distributed RI to its Central Hub, the truly international organisation that must guarantee effective operation, attribute optimal personnel capacity and coordinating power, and mediate across different scientific cultures. (ESFRI Roadmap 2026, p.15-16)"@en ;
     rdfs:domain rirpdm:DistributedRI ;
