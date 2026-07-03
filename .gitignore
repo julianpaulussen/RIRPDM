@@ -7,3 +7,4 @@ venv
 __pycache__
 ontology/CERIF.txp
 graphify-out
+pdfs
