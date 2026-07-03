@@ -1,0 +1,1515 @@
+@prefix : <http://www.example.org/rirpdm#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/rirpdm#> .
+
+<http://www.example.org/rirpdm> rdf:type owl:Ontology ;
+                                 owl:imports <http://purl.org/cerif/frapo/> ,
+                                             <http://purl.org/spar/cito> ,
+                                             <http://purl.org/spar/fabio> ,
+                                             <http://www.w3.org/2004/02/skos/core#> ,
+                                             <http://www.w3.org/ns/org#> ,
+                                             <http://xmlns.com/foaf/0.1/> ;
+                                 <http://purl.org/dc/terms/creator> "Julian Paulussen" ;
+                                 <http://purl.org/dc/terms/description> "OWL 2 ontology for knowledge representation and reasoning over scientific research infrastructure and publications."@en ;
+                                 <http://purl.org/dc/terms/title> "Research Infrastructure and Research Publications Data Model (RIRPDM)"@en ;
+                                 rdfs:comment "Imports of fabio and cito are resolved via catalog-v001.xml to locally patched copies (ontology/fabio.owl, ontology/cito.owl): upstream published files assert untyped dcterms:created/modified literals on their own ontology IRI, violating the xsd:dateTime range they themselves declare, which makes the raw remote files OWL-inconsistent (owl:Thing SubClassOf owl:Nothing). Only those two literals were retyped; no domain classes/properties/axioms were altered."@en ;
+                                 owl:versionInfo "0.1.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.example.org/rirpdm#status
+:status rdf:type owl:AnnotationProperty ;
+        rdfs:comment "Editorial status of the term: New, Extended, or Adopted."@en ;
+        rdfs:label "status"@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/cerif/frapo/awards
+<http://purl.org/cerif/frapo/awards> rdf:type owl:ObjectProperty ;
+                                     <http://purl.org/dc/terms/source> "FRAPO" ;
+                                     :status "Adopted" ;
+                                     rdfs:label "awards"@en .
+
+
+###  http://purl.org/cerif/frapo/funds
+<http://purl.org/cerif/frapo/funds> rdf:type owl:ObjectProperty ;
+                                    <http://purl.org/dc/terms/source> "FRAPO" ;
+                                    :status "Adopted" ;
+                                    rdfs:label "funds"@en .
+
+
+###  http://purl.org/cerif/frapo/isAwardedBy
+<http://purl.org/cerif/frapo/isAwardedBy> rdf:type owl:ObjectProperty ;
+                                          owl:inverseOf <http://purl.org/cerif/frapo/awards> ;
+                                          <http://purl.org/dc/terms/source> "FRAPO" ;
+                                          :status "Adopted" ;
+                                          rdfs:label "is awarded by"@en .
+
+
+###  http://purl.org/cerif/frapo/isFundedBy
+<http://purl.org/cerif/frapo/isFundedBy> rdf:type owl:ObjectProperty ;
+                                         owl:inverseOf <http://purl.org/cerif/frapo/funds> ;
+                                         rdf:type owl:AsymmetricProperty ;
+                                         <http://purl.org/dc/terms/source> "FRAPO" ;
+                                         :status "Adopted" ;
+                                         rdfs:label "is funded by"@en ;
+                                         rdfs:seeAlso <http://vivoweb.org/ontology/core#fundedBy> .
+
+
+###  http://purl.org/spar/cito/cites
+<http://purl.org/spar/cito/cites> rdf:type owl:ObjectProperty ,
+                                           owl:IrreflexiveProperty ;
+                                  rdfs:domain :ScientificPublication ;
+                                  rdfs:range :ResearchOutput ;
+                                  <http://purl.org/dc/terms/source> "CiTO" ;
+                                  :status "Adopted" ;
+                                  rdfs:comment "The citing entity cites the cited entity."@en ;
+                                  rdfs:label "cites"@en .
+
+
+###  http://purl.org/spar/cito/citesAsEvidence
+<http://purl.org/spar/cito/citesAsEvidence> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf <http://purl.org/spar/cito/cites> ;
+                                            <http://purl.org/dc/terms/source> "CiTO" ;
+                                            :status "Adopted" ;
+                                            rdfs:comment "The citing entity cites the cited entity as evidence."@en ;
+                                            rdfs:label "cites as evidence"@en .
+
+
+###  http://purl.org/spar/cito/disputes
+<http://purl.org/spar/cito/disputes> rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf <http://purl.org/spar/cito/cites> ;
+                                     <http://purl.org/dc/terms/source> "CiTO" ;
+                                     :status "Adopted" ;
+                                     rdfs:comment "The citing entity disputes a statement in the cited entity."@en ;
+                                     rdfs:label "disputes"@en .
+
+
+###  http://purl.org/spar/cito/extends
+<http://purl.org/spar/cito/extends> rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf <http://purl.org/spar/cito/cites> ;
+                                    <http://purl.org/dc/terms/source> "CiTO" ;
+                                    :status "Adopted" ;
+                                    rdfs:comment "The citing entity extends the cited work."@en ;
+                                    rdfs:label "extends"@en .
+
+
+###  http://purl.org/spar/cito/isCitedBy
+<http://purl.org/spar/cito/isCitedBy> rdf:type owl:ObjectProperty ;
+                                      owl:inverseOf <http://purl.org/spar/cito/cites> ;
+                                      <http://purl.org/dc/terms/source> "CiTO" ;
+                                      :status "Adopted" ;
+                                      rdfs:label "is cited by"@en .
+
+
+###  http://purl.org/spar/cito/usesDataFrom
+<http://purl.org/spar/cito/usesDataFrom> rdf:type owl:ObjectProperty ;
+                                         rdfs:subPropertyOf <http://purl.org/spar/cito/cites> ;
+                                         <http://purl.org/dc/terms/source> "CiTO" ;
+                                         :status "Adopted" ;
+                                         rdfs:comment "The citing entity uses data from the cited entity."@en ;
+                                         rdfs:label "uses data from"@en .
+
+
+###  http://purl.org/spar/cito/usesMethodIn
+<http://purl.org/spar/cito/usesMethodIn> rdf:type owl:ObjectProperty ;
+                                         rdfs:subPropertyOf <http://purl.org/spar/cito/cites> ;
+                                         <http://purl.org/dc/terms/source> "CiTO" ;
+                                         :status "Adopted" ;
+                                         rdfs:comment "The citing entity uses a method described in the cited entity."@en ;
+                                         rdfs:label "uses method in"@en .
+
+
+###  http://purl.org/spar/fabio/hasPublicationVenue
+<http://purl.org/spar/fabio/hasPublicationVenue> rdf:type owl:ObjectProperty ;
+                                                 rdfs:domain :ScientificPublication ;
+                                                 rdfs:range <http://purl.org/spar/fabio/Journal> ;
+                                                 <http://purl.org/dc/terms/source> "FaBiO" ;
+                                                 :status "Adopted" ;
+                                                 rdfs:comment "Relates a publication to the journal or proceedings it appeared in."@en ;
+                                                 rdfs:label "has publication venue"@en .
+
+
+###  http://www.example.org/rirpdm#assessedAtPhase
+:assessedAtPhase rdf:type owl:ObjectProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain :Evaluation ;
+                 rdfs:range :LifecyclePhase ;
+                 <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                 :status "New" ;
+                 rdfs:comment "The lifecycle phase at which an Evaluation was made."@en ;
+                 rdfs:label "assessedAtPhase"@en .
+
+
+###  http://www.example.org/rirpdm#authorOf
+:authorOf rdf:type owl:ObjectProperty ;
+          owl:inverseOf :hasAuthor ;
+          rdfs:domain :Researcher ;
+          rdfs:range :ScientificPublication ;
+          <http://purl.org/dc/terms/source> "VIVO" ;
+          :status "Extended" ;
+          rdfs:comment "Relates a researcher to a scientific publication they authored."@en ;
+          rdfs:label "authorOf"@en .
+
+
+###  http://www.example.org/rirpdm#collaboratesWith
+:collaboratesWith rdf:type owl:ObjectProperty ,
+                           owl:SymmetricProperty ,
+                           owl:IrreflexiveProperty ;
+                  rdfs:domain :ResearchInstitution ;
+                  rdfs:range :ResearchInstitution ;
+                  <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                  :status "New" ;
+                  rdfs:comment "Two research institutions collaborate. Symmetry means asserting A→B is enough; B→A is inferred."@en ;
+                  rdfs:label "collaboratesWith"@en .
+
+
+###  http://www.example.org/rirpdm#contributesToRI
+:contributesToRI rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Researcher ;
+                 rdfs:range :ResearchInfrastructure ;
+                 owl:propertyChainAxiom ( :authorOf
+                                          :isOutputOf
+                                        ) ;
+                 <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                 :status "New" ;
+                 rdfs:comment "A researcher contributed to a research infrastructure via a publication they authored that is an output of that RI. Inferred via property chain: authorOf o isOutputOf."@en ;
+                 rdfs:label "contributesToRI"@en .
+
+
+###  http://www.example.org/rirpdm#evaluatesDimension
+:evaluatesDimension rdf:type owl:ObjectProperty ,
+                             owl:FunctionalProperty ;
+                    rdfs:domain :Evaluation ;
+                    rdfs:range [ rdf:type owl:Class ;
+                                 owl:unionOf ( :ImplementationDimension
+                                               :ScientificDimension
+                                             )
+                               ] ;
+                    <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                    :status "New" ;
+                    rdfs:comment "The scientific or implementation dimension that an Evaluation assesses."@en ;
+                    rdfs:label "evaluatesDimension"@en .
+
+
+###  http://www.example.org/rirpdm#hasAuthor
+:hasAuthor rdf:type owl:ObjectProperty ;
+           rdfs:domain :ScientificPublication ;
+           rdfs:range :Researcher ;
+           <http://purl.org/dc/terms/source> "VIVO" ;
+           :status "Extended" ;
+           rdfs:comment "Relates a scientific publication to a researcher who authored it."@en ;
+           rdfs:label "hasAuthor"@en ;
+           rdfs:seeAlso <http://vivoweb.org/ontology/core#hasAuthor> .
+
+
+###  http://www.example.org/rirpdm#hasCentralHub
+:hasCentralHub rdf:type owl:ObjectProperty ;
+               rdfs:domain :DistributedRI ;
+               rdfs:range :CentralHub ;
+               <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+               :status "New" ;
+               rdfs:comment "Relates a distributed RI to its Central Hub, the truly international organisation that must guarantee effective operation, attribute optimal personnel capacity and coordinating power, and mediate across different scientific cultures. (ESFRI Roadmap 2026, p.15-16)"@en ;
+               rdfs:label "hasCentralHub"@en .
+
+
+###  http://www.example.org/rirpdm#hasEvaluation
+:hasEvaluation rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( :ImplementationCase
+                                           :ScientificCase
+                                         )
+                           ] ;
+               rdfs:range :Evaluation ;
+               <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+               :status "New" ;
+               rdfs:comment "Links a case to one of its per-dimension evaluations."@en ;
+               rdfs:label "hasEvaluation"@en .
+
+
+###  http://www.example.org/rirpdm#hasImplementationCase
+:hasImplementationCase rdf:type owl:ObjectProperty ,
+                                owl:FunctionalProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( :Proposal
+                                                   :ResearchInfrastructure
+                                                 )
+                                   ] ;
+                       rdfs:range :ImplementationCase ;
+                       <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                       :status "New" ;
+                       rdfs:comment "Links a Proposal or Research Infrastructure to its Implementation Case assessment."@en ;
+                       rdfs:label "hasImplementationCase"@en .
+
+
+###  http://www.example.org/rirpdm#hasLeadEntity
+:hasLeadEntity rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :involvesAgent ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:domain :ResearchInfrastructure ;
+               rdfs:range <http://xmlns.com/foaf/0.1/Agent> ;
+               <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+               :status "New" ;
+               rdfs:comment "The agent leading the research infrastructure."@en ;
+               rdfs:label "hasLeadEntity"@en .
+
+
+###  http://www.example.org/rirpdm#hasMemberEntity
+:hasMemberEntity rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :involvesAgent ;
+                 rdfs:domain :ResearchInfrastructure ;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Agent> ;
+                 <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                 :status "New" ;
+                 rdfs:comment "An agent that is a member of the research infrastructure."@en ;
+                 rdfs:label "hasMemberEntity"@en .
+
+
+###  http://www.example.org/rirpdm#hasNode
+:hasNode rdf:type owl:ObjectProperty ;
+         rdfs:domain :DistributedRI ;
+         rdfs:range :NationalNode ;
+         <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+         :status "New" ;
+         rdfs:comment "Relates a distributed RI to one of its interlinked National Nodes, whose capacity and resources devoted to the RI must be clearly identified, coordinated and managed by the Central Hub. (ESFRI Roadmap 2026, p.15)"@en ;
+         rdfs:label "hasNode"@en .
+
+
+###  http://www.example.org/rirpdm#hasObserver
+:hasObserver rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :involvesAgent ;
+             rdfs:domain :ResearchInfrastructure ;
+             rdfs:range <http://xmlns.com/foaf/0.1/Agent> ;
+             <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+             :status "New" ;
+             rdfs:comment "An agent observing the research infrastructure."@en ;
+             rdfs:label "hasObserver"@en .
+
+
+###  http://www.example.org/rirpdm#hasParticipant
+:hasParticipant rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :involvesAgent ;
+                rdfs:domain :ResearchInfrastructure ;
+                rdfs:range <http://xmlns.com/foaf/0.1/Agent> ;
+                <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                :status "New" ;
+                rdfs:comment "An agent participating in the research infrastructure."@en ;
+                rdfs:label "hasParticipant"@en .
+
+
+###  http://www.example.org/rirpdm#hasProspectiveMember
+:hasProspectiveMember rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :involvesAgent ;
+                      rdfs:domain :ResearchInfrastructure ;
+                      rdfs:range <http://xmlns.com/foaf/0.1/Agent> ;
+                      <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                      :status "New" ;
+                      rdfs:comment "An agent that is a prospective member of the research infrastructure."@en ;
+                      rdfs:label "hasProspectiveMember"@en .
+
+
+###  http://www.example.org/rirpdm#hasScientificCase
+:hasScientificCase rdf:type owl:ObjectProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Proposal
+                                               :ResearchInfrastructure
+                                             )
+                               ] ;
+                   rdfs:range :ScientificCase ;
+                   <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                   :status "New" ;
+                   rdfs:comment "Links a Proposal or Research Infrastructure to its Scientific Case assessment."@en ;
+                   rdfs:label "hasScientificCase"@en .
+
+
+###  http://www.example.org/rirpdm#hasScore
+:hasScore rdf:type owl:ObjectProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Evaluation ;
+          rdfs:range :Score ;
+          <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+          :status "New" ;
+          rdfs:comment "The score attributed by an Evaluation."@en ;
+          rdfs:label "hasScore"@en .
+
+
+###  http://www.example.org/rirpdm#indirectlyExposedTo
+:indirectlyExposedTo rdf:type owl:ObjectProperty ;
+                     rdfs:domain :ResearchInfrastructure ;
+                     rdfs:range [ rdf:type owl:Class ;
+                                  owl:unionOf ( <http://purl.org/cerif/frapo/FundingAgency>
+                                                <http://purl.org/cerif/frapo/FundingProgramme>
+                                                <http://purl.org/cerif/frapo/Grant>
+                                              )
+                                ] ;
+                     owl:propertyChainAxiom ( :involvesAgent
+                                              :collaboratesWith
+                                              :participatesIn
+                                              :isSupportedBy
+                                            ) ;
+                     :status "New" ;
+                     rdfs:comment "An RI is indirectly exposed to a funding source through a collaborating partner RI's funding chain. Inferred via property chain: involvesAgent o collaboratesWith o participatesIn o isSupportedBy."@en ;
+                     rdfs:label "indirectlyExposedTo"@en .
+
+
+###  http://www.example.org/rirpdm#involvesAgent
+:involvesAgent rdf:type owl:ObjectProperty ;
+               owl:inverseOf :participatesIn ;
+               rdfs:domain :ResearchInfrastructure ;
+               rdfs:range <http://xmlns.com/foaf/0.1/Agent> ;
+               <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+               :status "New" ;
+               rdfs:comment "An agent is involved in this research infrastructure."@en ;
+               rdfs:label "involvesAgent"@en .
+
+
+###  http://www.example.org/rirpdm#isInPhase
+:isInPhase rdf:type owl:ObjectProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :ResearchInfrastructure ;
+           rdfs:range :LifecyclePhase ;
+           <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+           :status "New" ;
+           rdfs:comment "The current lifecycle phase of the research infrastructure."@en ;
+           rdfs:label "isInPhase"@en .
+
+
+###  http://www.example.org/rirpdm#isNodeOf
+:isNodeOf rdf:type owl:ObjectProperty ;
+          owl:inverseOf :hasNode ;
+          rdfs:domain :NationalNode ;
+          rdfs:range :DistributedRI ;
+          <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+          :status "New" ;
+          rdfs:comment "The distributed RI this national node belongs to."@en ;
+          rdfs:label "isNodeOf"@en .
+
+
+###  http://www.example.org/rirpdm#isOutputOf
+:isOutputOf rdf:type owl:ObjectProperty ;
+            owl:inverseOf :producesResearchOutput ;
+            rdfs:domain :ResearchOutput ;
+            rdfs:range :ResearchInfrastructure ;
+            <http://purl.org/dc/terms/source> "EU Reg 2021 Art 2(22)" ;
+            :status "New" ;
+            rdfs:comment "The research infrastructure that produced this output."@en ;
+            rdfs:label "isOutputOf"@en .
+
+
+###  http://www.example.org/rirpdm#isSupportedBy
+:isSupportedBy rdf:type owl:ObjectProperty ,
+                        owl:TransitiveProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( <http://purl.org/cerif/frapo/Grant>
+                                           :ResearchInfrastructure
+                                         )
+                           ] ;
+               rdfs:range [ rdf:type owl:Class ;
+                            owl:unionOf ( <http://purl.org/cerif/frapo/FundingAgency>
+                                          <http://purl.org/cerif/frapo/FundingProgramme>
+                                          <http://purl.org/cerif/frapo/Grant>
+                                        )
+                          ] ;
+               <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+               :status "New" ;
+               rdfs:comment "Connects an RI (or grant) to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme."@en ;
+               rdfs:label "isSupportedBy"@en .
+
+
+###  http://www.example.org/rirpdm#participatesIn
+:participatesIn rdf:type owl:ObjectProperty ;
+                rdfs:domain <http://xmlns.com/foaf/0.1/Agent> ;
+                rdfs:range :ResearchInfrastructure ;
+                <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                :status "New" ;
+                rdfs:comment "An agent participates in a research infrastructure."@en ;
+                rdfs:label "participatesIn"@en .
+
+
+###  http://www.example.org/rirpdm#producesResearchOutput
+:producesResearchOutput rdf:type owl:ObjectProperty ;
+                        rdfs:domain :ResearchInfrastructure ;
+                        rdfs:range :ResearchOutput ;
+                        <http://purl.org/dc/terms/source> "EU Reg 2021 Art 2(22); Annex I(1)(c)" ;
+                        :status "New" ;
+                        rdfs:comment "A research output produced by the research infrastructure."@en ;
+                        rdfs:label "producesResearchOutput"@en .
+
+
+###  http://www.example.org/rirpdm#resultsInProject
+:resultsInProject rdf:type owl:ObjectProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain :Proposal ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( :ESFRILandmark
+                                             :ESFRIProject
+                                           )
+                             ] ;
+                  <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                  :status "New" ;
+                  rdfs:comment "The transition from a Proposal to the resulting selected RI; carries ex ante to ex post."@en ;
+                  rdfs:label "resultsInProject"@en .
+
+
+###  http://www.example.org/rirpdm#upgradesRI
+:upgradesRI rdf:type owl:ObjectProperty ;
+            rdfs:domain :MajorUpgrade ;
+            rdfs:range :ResearchInfrastructure ;
+            <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+            :status "New" ;
+            rdfs:comment "The operational RI that a Major Upgrade proposal targets."@en ;
+            rdfs:label "upgradesRI"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/cerif/frapo/hasGrantNumber
+<http://purl.org/cerif/frapo/hasGrantNumber> rdf:type owl:DatatypeProperty ;
+                                             <http://purl.org/dc/terms/source> "FRAPO" ;
+                                             :status "Adopted" ;
+                                             rdfs:label "has grant number"@en .
+
+
+###  http://purl.org/cerif/frapo/hasMonetaryValue
+<http://purl.org/cerif/frapo/hasMonetaryValue> rdf:type owl:DatatypeProperty ;
+                                               <http://purl.org/dc/terms/source> "FRAPO" ;
+                                               :status "Adopted" ;
+                                               rdfs:label "has monetary value"@en .
+
+
+###  http://purl.org/spar/fabio/hasDOI
+<http://purl.org/spar/fabio/hasDOI> rdf:type owl:DatatypeProperty ,
+                                             owl:FunctionalProperty ;
+                                    rdfs:domain :ResearchOutput ;
+                                    rdfs:range xsd:string ;
+                                    <http://purl.org/dc/terms/source> "FaBiO" ;
+                                    :status "Adopted" ;
+                                    rdfs:comment "Digital Object Identifier of the research output."@en ;
+                                    rdfs:label "has DOI"@en .
+
+
+###  http://www.example.org/rirpdm#accessPoint
+:accessPoint rdf:type owl:DatatypeProperty ;
+             rdfs:domain :ResearchInfrastructure ;
+             rdfs:range xsd:string ;
+             <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+             :status "New" ;
+             rdfs:comment "The RI's entry point for external users to submit access proposals."@en ;
+             rdfs:label "accessPoint"@en .
+
+
+###  http://www.example.org/rirpdm#accessPolicy
+:accessPolicy rdf:type owl:DatatypeProperty ;
+              rdfs:domain :ResearchInfrastructure ;
+              rdfs:range xsd:string ;
+              <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+              :status "New" ;
+              rdfs:comment "Policy governing external user access."@en ;
+              rdfs:label "accessPolicy"@en .
+
+
+###  http://www.example.org/rirpdm#averageAnnualOperationCosts
+:averageAnnualOperationCosts rdf:type owl:DatatypeProperty ;
+                             rdfs:domain :ResearchInfrastructure ;
+                             rdfs:range xsd:decimal ;
+                             <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                             :status "New" ;
+                             rdfs:comment "Annual cost of running the RI, operating access and delivering services."@en ;
+                             rdfs:label "averageAnnualOperationCosts"@en .
+
+
+###  http://www.example.org/rirpdm#compliesWithFAIR
+:compliesWithFAIR rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :ResearchData ;
+                  rdfs:range xsd:boolean ;
+                  <http://purl.org/dc/terms/source> "EU Reg 2021 Art 14(3)" ;
+                  :status "New" ;
+                  rdfs:comment "Whether the data adhere to the FAIR principles."@en ;
+                  rdfs:label "compliesWithFAIR"@en .
+
+
+###  http://www.example.org/rirpdm#dataManagementSystem
+:dataManagementSystem rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :ResearchInfrastructure ;
+                      rdfs:range xsd:string ;
+                      <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                      :status "New" ;
+                      rdfs:comment "The RI's system for metadata, storage, retrieval and data reduction/analysis."@en ;
+                      rdfs:label "dataManagementSystem"@en .
+
+
+###  http://www.example.org/rirpdm#designCosts
+:designCosts rdf:type owl:DatatypeProperty ;
+             rdfs:domain :ResearchInfrastructure ;
+             rdfs:range xsd:decimal ;
+             <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+             :status "New" ;
+             rdfs:comment "Costs of conceptual design, technical design, feasibility study and proposal drafting."@en ;
+             rdfs:label "designCosts"@en .
+
+
+###  http://www.example.org/rirpdm#ensuresLongTermPreservation
+:ensuresLongTermPreservation rdf:type owl:DatatypeProperty ;
+                             rdfs:domain :ResearchData ;
+                             rdfs:range xsd:boolean ;
+                             <http://purl.org/dc/terms/source> "EU Reg 2021 Art 14(3)" ;
+                             :status "New" ;
+                             rdfs:comment "Whether long-term preservation of the data is ensured."@en ;
+                             rdfs:label "ensuresLongTermPreservation"@en .
+
+
+###  http://www.example.org/rirpdm#governanceStructure
+:governanceStructure rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :ResearchInfrastructure ;
+                     rdfs:range xsd:string ;
+                     <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                     :status "New" ;
+                     rdfs:comment "The RI's governance structure with defined responsibilities, reporting lines and advisory/supervisory bodies."@en ;
+                     rdfs:label "governanceStructure"@en .
+
+
+###  http://www.example.org/rirpdm#hasKPI
+:hasKPI rdf:type owl:DatatypeProperty ;
+        rdfs:domain :ResearchInfrastructure ;
+        rdfs:range xsd:string ;
+        <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+        :status "New" ;
+        rdfs:comment "Measurable KPIs covering scientific-service excellence and sustainability."@en ;
+        rdfs:label "hasKPI"@en .
+
+
+###  http://www.example.org/rirpdm#humanResourcesPolicy
+:humanResourcesPolicy rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :ResearchInfrastructure ;
+                      rdfs:range xsd:string ;
+                      <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                      :status "New" ;
+                      rdfs:comment "HR policy ensuring competences via equal-opportunity hiring, secondments, education and training."@en ;
+                      rdfs:label "humanResourcesPolicy"@en .
+
+
+###  http://www.example.org/rirpdm#implementationCosts
+:implementationCosts rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :ResearchInfrastructure ;
+                     rdfs:range xsd:decimal ;
+                     <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                     :status "New" ;
+                     rdfs:comment "Real or estimated costs for the Implementation Phase of an RI."@en ;
+                     rdfs:label "implementationCosts"@en .
+
+
+###  http://www.example.org/rirpdm#jointInvestmentStrategy
+:jointInvestmentStrategy rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :DistributedRI ;
+                         rdfs:range xsd:string ;
+                         <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                         :status "New" ;
+                         rdfs:comment "Joint investment strategy aimed to strengthen nodes and shared facilities."@en ;
+                         rdfs:label "jointInvestmentStrategy"@en .
+
+
+###  http://www.example.org/rirpdm#legalStatus
+:legalStatus rdf:type owl:DatatypeProperty ;
+             rdfs:domain :ResearchInfrastructure ;
+             rdfs:range xsd:string ;
+             <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+             :status "New" ;
+             rdfs:comment "The legal status of the RI."@en ;
+             rdfs:label "legalStatus"@en .
+
+
+###  http://www.example.org/rirpdm#longTermSitePlanning
+:longTermSitePlanning rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :SingleSitedRI ;
+                      rdfs:range xsd:string ;
+                      <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                      :status "New" ;
+                      rdfs:comment "Long-term plan for the site across its lifecycle."@en ;
+                      rdfs:label "longTermSitePlanning"@en .
+
+
+###  http://www.example.org/rirpdm#preparationCosts
+:preparationCosts rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :ResearchInfrastructure ;
+                  rdfs:range xsd:decimal ;
+                  <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                  :status "New" ;
+                  rdfs:comment "Real/estimated costs of the Preparation Phase."@en ;
+                  rdfs:label "preparationCosts"@en .
+
+
+###  http://www.example.org/rirpdm#providesOpenAccess
+:providesOpenAccess rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :ResearchOutput ;
+                    rdfs:range xsd:boolean ;
+                    <http://purl.org/dc/terms/source> "EU Reg 2021 Art 14(1)(a), Art 39(3)" ;
+                    :status "New" ;
+                    rdfs:comment "Whether open access is ensured for the output (publications and underlying data)."@en ;
+                    rdfs:label "providesOpenAccess"@en .
+
+
+###  http://www.example.org/rirpdm#serviceOffer
+:serviceOffer rdf:type owl:DatatypeProperty ;
+              rdfs:domain :ResearchInfrastructure ;
+              rdfs:range xsd:string ;
+              <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+              :status "New" ;
+              rdfs:comment "Service offer to the user community."@en ;
+              rdfs:label "serviceOffer"@en .
+
+
+###  http://www.example.org/rirpdm#terminationCosts
+:terminationCosts rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :ResearchInfrastructure ;
+                  rdfs:range xsd:decimal ;
+                  <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                  :status "New" ;
+                  rdfs:comment "Decommissioning and environmental-mitigation costs at end of a lifecycle of an RI."@en ;
+                  rdfs:label "terminationCosts"@en .
+
+
+###  http://www.example.org/rirpdm#totalInvestmentCosts
+:totalInvestmentCosts rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :ResearchInfrastructure ;
+                      rdfs:range xsd:decimal ;
+                      <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                      :status "New" ;
+                      rdfs:comment "Sum of all lifecycle investments to fully implement a RI."@en ;
+                      rdfs:label "totalInvestmentCosts"@en .
+
+
+###  http://www.example.org/rirpdm#uniqueName
+:uniqueName rdf:type owl:DatatypeProperty ;
+            rdfs:domain :ResearchInfrastructure ;
+            rdfs:range xsd:string ;
+            <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+            :status "New" ;
+            rdfs:comment "The RI's unique specific name."@en ;
+            rdfs:label "uniqueName"@en .
+
+
+###  http://www.example.org/rirpdm#userProgramme
+:userProgramme rdf:type owl:DatatypeProperty ;
+               rdfs:domain :ResearchInfrastructure ;
+               rdfs:range xsd:string ;
+               <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+               :status "New" ;
+               rdfs:comment "A user programme using a relevant fraction of the RI's total capacity."@en ;
+               rdfs:label "userProgramme"@en .
+
+
+###  http://www.example.org/rirpdm#userSupportStructure
+:userSupportStructure rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :SingleSitedRI ;
+                      rdfs:range xsd:string ;
+                      <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                      :status "New" ;
+                      rdfs:comment "A single-sited RI's structure (office, ancillary laboratories, accommodation, logistics, etc.) to support user access."@en ;
+                      rdfs:label "userSupportStructure"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/cerif/frapo/Budget
+<http://purl.org/cerif/frapo/Budget> rdf:type owl:Class ;
+                                     <http://purl.org/dc/terms/source> "FRAPO" ;
+                                     :status "Adopted" ;
+                                     rdfs:comment "A planned allocation of financial resources for a project or infrastructure."@en ;
+                                     rdfs:label "Budget"@en .
+
+
+###  http://purl.org/cerif/frapo/Expenditure
+<http://purl.org/cerif/frapo/Expenditure> rdf:type owl:Class ;
+                                          <http://purl.org/dc/terms/source> "FRAPO" ;
+                                          :status "Adopted" ;
+                                          rdfs:comment "Money actually spent against a budget."@en ;
+                                          rdfs:label "Expenditure"@en .
+
+
+###  http://purl.org/cerif/frapo/Funding
+<http://purl.org/cerif/frapo/Funding> rdf:type owl:Class ;
+                                      <http://purl.org/dc/terms/source> "FRAPO" ;
+                                      :status "Adopted" ;
+                                      rdfs:comment "Financial support provided to undertake research or operate an infrastructure."@en ;
+                                      rdfs:label "Funding"@en ;
+                                      rdfs:seeAlso <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001051> .
+
+
+###  http://purl.org/cerif/frapo/FundingAgency
+<http://purl.org/cerif/frapo/FundingAgency> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://www.w3.org/ns/org#Organization> ;
+                                            <http://purl.org/dc/terms/source> "FRAPO" ;
+                                            :status "Adopted" ;
+                                            rdfs:comment "An organisation that provides funding for research projects or infrastructures."@en ;
+                                            rdfs:label "Funding Agency"@en ;
+                                            rdfs:seeAlso <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0000139> .
+
+
+###  http://purl.org/cerif/frapo/FundingProgramme
+<http://purl.org/cerif/frapo/FundingProgramme> rdf:type owl:Class ;
+                                               <http://purl.org/dc/terms/source> "FRAPO" ;
+                                               :status "Adopted" ;
+                                               rdfs:comment "A structured scheme under which a funding agency awards grants."@en ;
+                                               rdfs:label "Funding Programme"@en .
+
+
+###  http://purl.org/cerif/frapo/Grant
+<http://purl.org/cerif/frapo/Grant> rdf:type owl:Class ;
+                                    rdfs:subClassOf <http://purl.org/cerif/frapo/Funding> .
+
+
+###  http://purl.org/cerif/frapo/Project
+<http://purl.org/cerif/frapo/Project> rdf:type owl:Class ;
+                                      <http://purl.org/dc/terms/source> "FRAPO" ;
+                                      :status "Adopted" ;
+                                      rdfs:comment "An activity undertaken to achieve defined objectives, optionally funded by one or more sources."@en ;
+                                      rdfs:label "Project"@en ;
+                                      rdfs:seeAlso <http://vivoweb.org/ontology/core#Project> ,
+                                                   <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0000002> .
+
+
+###  http://purl.org/spar/fabio/AcademicProceedings
+<http://purl.org/spar/fabio/AcademicProceedings> rdf:type owl:Class ;
+                                                 <http://purl.org/dc/terms/source> "FaBiO" ;
+                                                 :status "Adopted" ;
+                                                 rdfs:comment "The published collection of papers from a conference."@en ;
+                                                 rdfs:label "Conference Proceedings"@en ;
+                                                 rdfs:seeAlso <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0010020> .
+
+
+###  http://purl.org/spar/fabio/ConferencePaper
+<http://purl.org/spar/fabio/ConferencePaper> rdf:type owl:Class ;
+                                             rdfs:subClassOf :ScientificPublication .
+
+
+###  http://purl.org/spar/fabio/Dataset
+<http://purl.org/spar/fabio/Dataset> rdf:type owl:Class ;
+                                     rdfs:subClassOf :ResearchData ;
+                                     <http://purl.org/dc/terms/source> "FaBiO" ;
+                                     :status "Adopted" ;
+                                     rdfs:comment "A published, citable collection of research data."@en ;
+                                     rdfs:label "Dataset"@en ;
+                                     rdfs:seeAlso <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001203> .
+
+
+###  http://purl.org/spar/fabio/Expression
+<http://purl.org/spar/fabio/Expression> rdf:type owl:Class ;
+                                        <http://purl.org/dc/terms/source> "FaBiO" ;
+                                        :status "Adopted" ;
+                                        rdfs:comment "A FaBiO/FRBR expression — the intellectual realisation of a work, the bibliographic superclass of all publication types."@en ;
+                                        rdfs:label "Expression"@en .
+
+
+###  http://purl.org/spar/fabio/Journal
+<http://purl.org/spar/fabio/Journal> rdf:type owl:Class ;
+                                     <http://purl.org/dc/terms/source> "FaBiO" ;
+                                     :status "Adopted" ;
+                                     rdfs:comment "A periodical publishing scholarly articles."@en ;
+                                     rdfs:label "Journal"@en .
+
+
+###  http://purl.org/spar/fabio/JournalArticle
+<http://purl.org/spar/fabio/JournalArticle> rdf:type owl:Class ;
+                                            rdfs:subClassOf :ScientificPublication .
+
+
+###  http://purl.org/spar/fabio/ReportDocument
+<http://purl.org/spar/fabio/ReportDocument> rdf:type owl:Class ;
+                                            rdfs:subClassOf :ScientificPublication .
+
+
+###  http://purl.org/spar/fabio/Thesis
+<http://purl.org/spar/fabio/Thesis> rdf:type owl:Class ;
+                                    rdfs:subClassOf :ScientificPublication .
+
+
+###  http://www.example.org/rirpdm#AssociatedCountry
+:AssociatedCountry rdf:type owl:Class ;
+                   rdfs:subClassOf :Country ;
+                   <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                   :status "Extended" ;
+                   rdfs:comment "Country associated to the Framework Programme (FP)."@en ;
+                   rdfs:label "Associated Country"@en .
+
+
+###  http://www.example.org/rirpdm#CentralHub
+:CentralHub rdf:type owl:Class ;
+            <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+            :status "New" ;
+            rdfs:comment "The coordinating international organisation of a distributed RI that mediates between the nodes."@en ;
+            rdfs:label "Central Hub"@en .
+
+
+###  http://www.example.org/rirpdm#Country
+:Country rdf:type owl:Class ;
+         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> ;
+         <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+         :status "Extended" ;
+         rdfs:comment "A nation eligible to participate in an RI."@en ;
+         rdfs:label "Country"@en .
+
+
+###  http://www.example.org/rirpdm#DistributedRI
+:DistributedRI rdf:type owl:Class ;
+               rdfs:subClassOf :ResearchInfrastructure ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasNode ;
+                                 owl:minCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasCentralHub ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ;
+               owl:disjointWith :SingleSitedRI .
+
+
+###  http://www.example.org/rirpdm#ESFRILandmark
+:ESFRILandmark rdf:type owl:Class ;
+               rdfs:subClassOf :ResearchInfrastructure ;
+               owl:disjointWith :ESFRIProject ;
+               <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+               :status "New" ;
+               rdfs:comment "An implemented (or near-implemented) RI established as a major asset of the European Research Area, periodically monitored."@en ;
+               rdfs:label "ESFRI Landmark"@en .
+
+
+###  http://www.example.org/rirpdm#ESFRIProject
+:ESFRIProject rdf:type owl:Class ;
+              rdfs:subClassOf :ResearchInfrastructure ;
+              <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+              :status "New" ;
+              rdfs:comment "A selected RI in its Preparation Phase, expected to reach Implementation within ten years."@en ;
+              rdfs:label "ESFRI Project"@en .
+
+
+###  http://www.example.org/rirpdm#Evaluation
+:Evaluation rdf:type owl:Class ;
+            <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+            :status "New" ;
+            rdfs:comment "An assessment of a case dimension, producing a score at a given lifecycle phase."@en ;
+            rdfs:label "Evaluation"@en .
+
+
+###  http://www.example.org/rirpdm#ImplementationCase
+:ImplementationCase rdf:type owl:Class ;
+                    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasEvaluation ;
+                                      owl:maxCardinality "5"^^xsd:nonNegativeInteger
+                                    ] ;
+                    <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                    :status "New" ;
+                    rdfs:comment "The five-dimension assessment of an RI's feasibility and delivery, attached to a Proposal or Research Infrastructure."@en ;
+                    rdfs:label "Implementation Case"@en .
+
+
+###  http://www.example.org/rirpdm#ImplementationDimension
+:ImplementationDimension rdf:type owl:Class ;
+                         owl:equivalentClass [ rdf:type owl:Class ;
+                                               owl:oneOf ( :Finances
+                                                           :GovernanceManagementAndHR
+                                                           :PreparatoryWorkAndPlanning
+                                                           :Risks
+                                                           :StakeholderCommitment
+                                                         )
+                                             ] ;
+                         <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                         :status "New" ;
+                         rdfs:comment "One of the five dimensions along which an Implementation Case is assessed."@en ;
+                         rdfs:label "Implementation Dimension"@en .
+
+
+###  http://www.example.org/rirpdm#LifecyclePhase
+:LifecyclePhase rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Class ;
+                                      owl:oneOf ( :Concept
+                                                  :Design
+                                                  :Implementation
+                                                  :Operation
+                                                  :Preparation
+                                                  :Termination
+                                                )
+                                    ] ;
+                <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                :status "New" ;
+                rdfs:comment "Reference to understand the needs and targets of RIs at a given time and at various levels."@en ;
+                rdfs:label "Lifecycle Phase"@en .
+
+
+###  http://www.example.org/rirpdm#MajorUpgrade
+:MajorUpgrade rdf:type owl:Class ;
+              rdfs:subClassOf :Proposal ;
+              owl:disjointWith :NewProposal ;
+              <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+              :status "New" ;
+              rdfs:comment "A transformative (not routine) upgrade to an operational RI."@en ;
+              rdfs:label "Major Upgrade"@en ;
+              rdfs:seeAlso <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#BeingUpgraded> .
+
+
+###  http://www.example.org/rirpdm#MemberState
+:MemberState rdf:type owl:Class ;
+             rdfs:subClassOf :Country ;
+             <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+             :status "Extended" ;
+             rdfs:comment "Member state of the European Union."@en ;
+             rdfs:label "Member State"@en .
+
+
+###  http://www.example.org/rirpdm#NationalNode
+:NationalNode rdf:type owl:Class ;
+              <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+              :status "New" ;
+              rdfs:comment "A national/institutional component of a distributed RI whose RI-dedicated capacity and resources are identified, coordinated and managed by the Central Hub."@en ;
+              rdfs:label "National Node"@en .
+
+
+###  http://www.example.org/rirpdm#NewProposal
+:NewProposal rdf:type owl:Class ;
+             rdfs:subClassOf :Proposal ;
+             <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+             :status "New" ;
+             rdfs:comment "A candidate RI project submitted for selection onto the Roadmap."@en ;
+             rdfs:label "New Proposal"@en .
+
+
+###  http://www.example.org/rirpdm#Proposal
+:Proposal rdf:type owl:Class ;
+          <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+          :status "New" ;
+          rdfs:comment "Abstract parent for candidate submissions to the Roadmap."@en ;
+          rdfs:label "Proposal"@en .
+
+
+###  http://www.example.org/rirpdm#RFO
+:RFO rdf:type owl:Class ;
+     rdfs:subClassOf <http://purl.org/cerif/frapo/FundingAgency> ,
+                     <http://www.w3.org/ns/org#Organization> ;
+     <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+     :status "Extended" ;
+     rdfs:comment "Legal entity that can take binding decisions to financially support an RI."@en ;
+     rdfs:label "Research Funding Organisation (RFO)"@en .
+
+
+###  http://www.example.org/rirpdm#RIConsortium
+:RIConsortium rdf:type owl:Class ;
+              rdfs:subClassOf <http://www.w3.org/ns/org#Organization> ;
+              <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+              :status "Extended" ;
+              rdfs:comment "The consortium of core partners governing a distributed RI, whose agreed statutes and common rules and procedures the Central Hub applies to coordinate and manage the National Nodes' RI-dedicated capacity. (ESFRI Roadmap 2026, p.15)"@en ;
+              rdfs:label "RI Consortium"@en ;
+              rdfs:seeAlso <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001039> .
+
+
+###  http://www.example.org/rirpdm#RPO
+:RPO rdf:type owl:Class ;
+     rdfs:subClassOf <http://www.w3.org/ns/org#Organization> ;
+     <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+     :status "Extended" ;
+     rdfs:comment "Legal entity from a MS/AC/third country that performs research and can take binding decisions to support an RI."@en ;
+     rdfs:label "Research Performing Organisation (RPO)"@en .
+
+
+###  http://www.example.org/rirpdm#ResearchData
+:ResearchData rdf:type owl:Class ;
+              rdfs:subClassOf :ResearchOutput ;
+              owl:disjointWith :ScientificPublication ;
+              <http://purl.org/dc/terms/source> "EU Reg 2021 Art 14(1)(b), Art 39(4)" ;
+              :status "New" ;
+              rdfs:comment "Data, including those underlying scientific publications, managed per FAIR principles."@en ;
+              rdfs:label "Research Data"@en ;
+              rdfs:seeAlso <http://purl.obolibrary.org/obo/IAO_0000027> .
+
+
+###  http://www.example.org/rirpdm#ResearchInfrastructure
+:ResearchInfrastructure rdf:type owl:Class .
+
+
+###  http://www.example.org/rirpdm#ResearchInstitution
+:ResearchInstitution rdf:type owl:Class ;
+                     rdfs:subClassOf <http://www.w3.org/ns/org#Organization> ;
+                     <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                     :status "Extended" ;
+                     rdfs:comment "Organization that participates as a partner in an RI Consortium."@en ;
+                     rdfs:label "Research Institution"@en .
+
+
+###  http://www.example.org/rirpdm#ResearchOutput
+:ResearchOutput rdf:type owl:Class ;
+                <http://purl.org/dc/terms/source> "EU Reg 2021 Art 2(22)" ;
+                :status "New" ;
+                rdfs:comment "Results of an action accessible as scientific publications, data, software, algorithms, protocols, etc."@en ;
+                rdfs:label "Research Output"@en .
+
+
+###  http://www.example.org/rirpdm#Researcher
+:Researcher rdf:type owl:Class ;
+            rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
+            <http://purl.org/dc/terms/source> "VIVO" ;
+            :status "Extended" ;
+            rdfs:comment "An agent who conducts scientific research, typically as a participant in a research infrastructure."@en ;
+            rdfs:label "Researcher"@en ;
+            rdfs:seeAlso <http://vivoweb.org/ontology/core#ResearcherRole> ,
+                         <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0000004> .
+
+
+###  http://www.example.org/rirpdm#ScientificCase
+:ScientificCase rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasEvaluation ;
+                                  owl:maxCardinality "6"^^xsd:nonNegativeInteger
+                                ] ;
+                <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                :status "New" ;
+                rdfs:comment "The six-dimension assessment of an RI's scientific merit, attached to a Proposal or Research Infrastructure."@en ;
+                rdfs:label "Scientific Case"@en .
+
+
+###  http://www.example.org/rirpdm#ScientificDimension
+:ScientificDimension rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Class ;
+                                           owl:oneOf ( :ENeedsAndData
+                                                       :EnvironmentalConsiderations
+                                                       :PanEuropeanRelevance
+                                                       :ScientificExcellence
+                                                       :SocioEconomicImpact
+                                                       :UserStrategyAndAccessPolicy
+                                                     )
+                                         ] ;
+                     <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+                     :status "New" ;
+                     rdfs:comment "One of the six dimensions along which a Scientific Case is assessed."@en ;
+                     rdfs:label "Scientific Dimension"@en .
+
+
+###  http://www.example.org/rirpdm#ScientificPublication
+:ScientificPublication rdf:type owl:Class ;
+                       rdfs:subClassOf <http://purl.org/spar/fabio/Expression> ,
+                                       :ResearchOutput ;
+                       owl:hasKey ( <http://purl.org/spar/fabio/hasDOI>
+                                  ) ;
+                       <http://purl.org/dc/terms/source> "EU Reg 2021 Art 2(22), Art 14(1)(a), Art 39(3)" ;
+                       :status "New" ;
+                       rdfs:comment "A peer-reviewed publication output to which open access applies."@en ;
+                       rdfs:label "Scientific Publication"@en ;
+                       rdfs:seeAlso <http://purl.obolibrary.org/obo/IAO_0000311> .
+
+
+###  http://www.example.org/rirpdm#Score
+:Score rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Class ;
+                             owl:oneOf ( :High
+                                         :Low
+                                         :Medium
+                                         :VeryHigh
+                                       )
+                           ] ;
+       <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+       :status "New" ;
+       rdfs:comment "Grading attributed to a dimension."@en ;
+       rdfs:label "Score"@en .
+
+
+###  http://www.example.org/rirpdm#SingleSitedRI
+:SingleSitedRI rdf:type owl:Class ;
+               rdfs:subClassOf :ResearchInfrastructure .
+
+
+###  http://www.example.org/rirpdm#ThirdCountry
+:ThirdCountry rdf:type owl:Class ;
+              rdfs:subClassOf :Country ;
+              <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+              :status "Extended" ;
+              rdfs:comment "Country outside Member State / Associated Country."@en ;
+              rdfs:label "Third Country"@en .
+
+
+###  http://www.example.org/rirpdm#VirtualRI
+:VirtualRI rdf:type owl:Class ;
+           rdfs:subClassOf :ResearchInfrastructure .
+
+
+###  http://www.w3.org/ns/org#Organization
+<http://www.w3.org/ns/org#Organization> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> ;
+                                        <http://purl.org/dc/terms/source> "W3C ORG" ;
+                                        :status "Adopted" ;
+                                        rdfs:label "Organization"@en ;
+                                        rdfs:seeAlso <http://purl.obolibrary.org/obo/OBI_0000245> .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
+                                  <http://purl.org/dc/terms/source> "FOAF" ;
+                                  :status "Adopted" ;
+                                  rdfs:label "Agent"@en ;
+                                  rdfs:seeAlso <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0000102> .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+<http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> ;
+                                   <http://purl.org/dc/terms/source> "FOAF" ;
+                                   :status "Adopted" ;
+                                   rdfs:label "Person"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://purl.org/cerif/frapo/Grant
+<http://purl.org/cerif/frapo/Grant> rdf:type owl:NamedIndividual ;
+                                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/ActivityFundingTypes#Grant> .
+
+
+###  http://purl.org/spar/fabio/ConferencePaper
+<http://purl.org/spar/fabio/ConferencePaper> rdf:type owl:NamedIndividual ;
+                                             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/OutputTypes#ConferenceProceedingsArticle> .
+
+
+###  http://purl.org/spar/fabio/JournalArticle
+<http://purl.org/spar/fabio/JournalArticle> rdf:type owl:NamedIndividual ;
+                                            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/OutputTypes#JournalArticle> .
+
+
+###  http://purl.org/spar/fabio/ReportDocument
+<http://purl.org/spar/fabio/ReportDocument> rdf:type owl:NamedIndividual ;
+                                            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/OutputTypes#Report> .
+
+
+###  http://purl.org/spar/fabio/Thesis
+<http://purl.org/spar/fabio/Thesis> rdf:type owl:NamedIndividual ;
+                                    <http://www.w3.org/2004/02/skos/core#closeMatch> <https://w3id.org/cerif/vocab/OutputTypes#PhDThesis> .
+
+
+###  http://www.example.org/rirpdm#Concept
+:Concept rdf:type owl:NamedIndividual ,
+                  :LifecyclePhase ;
+         rdfs:label "Concept"@en .
+
+
+###  http://www.example.org/rirpdm#Design
+:Design rdf:type owl:NamedIndividual ,
+                 :LifecyclePhase ;
+        rdfs:label "Design"@en .
+
+
+###  http://www.example.org/rirpdm#DistributedRI
+:DistributedRI rdf:type owl:NamedIndividual ;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Distributed> .
+
+
+###  http://www.example.org/rirpdm#ENeedsAndData
+:ENeedsAndData rdf:type owl:NamedIndividual ,
+                        :ScientificDimension ;
+               rdfs:label "E-Needs & Data"@en .
+
+
+###  http://www.example.org/rirpdm#EnvironmentalConsiderations
+:EnvironmentalConsiderations rdf:type owl:NamedIndividual ,
+                                      :ScientificDimension ;
+                             rdfs:label "Environmental Considerations"@en .
+
+
+###  http://www.example.org/rirpdm#Finances
+:Finances rdf:type owl:NamedIndividual ,
+                   :ImplementationDimension ;
+          rdfs:label "Finances"@en .
+
+
+###  http://www.example.org/rirpdm#GovernanceManagementAndHR
+:GovernanceManagementAndHR rdf:type owl:NamedIndividual ,
+                                    :ImplementationDimension ;
+                           rdfs:label "Governance Management & HR"@en .
+
+
+###  http://www.example.org/rirpdm#High
+:High rdf:type owl:NamedIndividual ,
+               :Score ;
+      rdfs:label "High"@en .
+
+
+###  http://www.example.org/rirpdm#Implementation
+:Implementation rdf:type owl:NamedIndividual ,
+                         :LifecyclePhase ;
+                <http://www.w3.org/2004/02/skos/core#closeMatch> <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#UnderConstruction> ;
+                rdfs:label "Implementation"@en .
+
+
+###  http://www.example.org/rirpdm#Low
+:Low rdf:type owl:NamedIndividual ,
+              :Score ;
+     rdfs:label "Low"@en .
+
+
+###  http://www.example.org/rirpdm#Medium
+:Medium rdf:type owl:NamedIndividual ,
+                 :Score ;
+        rdfs:label "Medium"@en .
+
+
+###  http://www.example.org/rirpdm#Operation
+:Operation rdf:type owl:NamedIndividual ,
+                    :LifecyclePhase ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#InOperation> ;
+           rdfs:label "Operation"@en .
+
+
+###  http://www.example.org/rirpdm#PanEuropeanRelevance
+:PanEuropeanRelevance rdf:type owl:NamedIndividual ,
+                               :ScientificDimension ;
+                      rdfs:label "Pan-European Relevance"@en .
+
+
+###  http://www.example.org/rirpdm#Preparation
+:Preparation rdf:type owl:NamedIndividual ,
+                      :LifecyclePhase ;
+             rdfs:label "Preparation"@en .
+
+
+###  http://www.example.org/rirpdm#PreparatoryWorkAndPlanning
+:PreparatoryWorkAndPlanning rdf:type owl:NamedIndividual ,
+                                     :ImplementationDimension ;
+                            rdfs:label "Preparatory Work & Planning"@en .
+
+
+###  http://www.example.org/rirpdm#ResearchInfrastructure
+:ResearchInfrastructure rdf:type owl:NamedIndividual ;
+                        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure> .
+
+
+###  http://www.example.org/rirpdm#Risks
+:Risks rdf:type owl:NamedIndividual ,
+                :ImplementationDimension ;
+       rdfs:label "Risks"@en .
+
+
+###  http://www.example.org/rirpdm#ScientificExcellence
+:ScientificExcellence rdf:type owl:NamedIndividual ,
+                               :ScientificDimension ;
+                      rdfs:label "Scientific Excellence"@en .
+
+
+###  http://www.example.org/rirpdm#SingleSitedRI
+:SingleSitedRI rdf:type owl:NamedIndividual ;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#SingleLocation> .
+
+
+###  http://www.example.org/rirpdm#SocioEconomicImpact
+:SocioEconomicImpact rdf:type owl:NamedIndividual ,
+                              :ScientificDimension ;
+                     rdfs:label "Socio-Economic Impact"@en .
+
+
+###  http://www.example.org/rirpdm#StakeholderCommitment
+:StakeholderCommitment rdf:type owl:NamedIndividual ,
+                                :ImplementationDimension ;
+                       rdfs:label "Stakeholder Commitment"@en .
+
+
+###  http://www.example.org/rirpdm#Termination
+:Termination rdf:type owl:NamedIndividual ,
+                      :LifecyclePhase ;
+             rdfs:label "Termination"@en .
+
+
+###  http://www.example.org/rirpdm#UserStrategyAndAccessPolicy
+:UserStrategyAndAccessPolicy rdf:type owl:NamedIndividual ,
+                                      :ScientificDimension ;
+                             rdfs:label "User Strategy & Access Policy"@en .
+
+
+###  http://www.example.org/rirpdm#VeryHigh
+:VeryHigh rdf:type owl:NamedIndividual ,
+                   :Score ;
+          rdfs:label "Very High"@en .
+
+
+###  http://www.example.org/rirpdm#VirtualRI
+:VirtualRI rdf:type owl:NamedIndividual ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Virtual> .
+
+
+###  https://w3id.org/cerif/vocab/ActivityFundingTypes#Grant
+<https://w3id.org/cerif/vocab/ActivityFundingTypes#Grant> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/OutputTypes#ConferenceProceedingsArticle
+<https://w3id.org/cerif/vocab/OutputTypes#ConferenceProceedingsArticle> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/OutputTypes#JournalArticle
+<https://w3id.org/cerif/vocab/OutputTypes#JournalArticle> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/OutputTypes#PhDThesis
+<https://w3id.org/cerif/vocab/OutputTypes#PhDThesis> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/OutputTypes#Report
+<https://w3id.org/cerif/vocab/OutputTypes#Report> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure
+<https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#InOperation
+<https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#InOperation> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#UnderConstruction
+<https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#UnderConstruction> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Distributed
+<https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Distributed> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#SingleLocation
+<https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#SingleLocation> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Virtual
+<https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Virtual> rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://purl.org/cerif/frapo/Grant> <http://purl.org/dc/terms/source> "FRAPO" ;
+                                    :status "Adopted" ;
+                                    rdfs:comment "A sum of money awarded by a funding agency to support a specific project or activity."@en ;
+                                    rdfs:label "Grant"@en .
+
+
+<http://purl.org/spar/fabio/ConferencePaper> <http://purl.org/dc/terms/source> "FaBiO" ;
+                                             :status "Adopted" ;
+                                             rdfs:comment "A paper presented at a conference and published in its proceedings."@en ;
+                                             rdfs:label "Conference Paper"@en ;
+                                             rdfs:seeAlso <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001105> .
+
+
+<http://purl.org/spar/fabio/JournalArticle> <http://purl.org/dc/terms/source> "FaBiO" ;
+                                            :status "Adopted" ;
+                                            rdfs:comment "A research article published in a journal issue."@en ;
+                                            rdfs:label "Journal Article"@en ;
+                                            rdfs:seeAlso <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001209> .
+
+
+<http://purl.org/spar/fabio/ReportDocument> <http://purl.org/dc/terms/source> "FaBiO" ;
+                                            :status "Adopted" ;
+                                            rdfs:comment "A technical or research report."@en ;
+                                            rdfs:label "Report"@en .
+
+
+<http://purl.org/spar/fabio/Thesis> <http://purl.org/dc/terms/source> "FaBiO" ;
+                                    :status "Adopted" ;
+                                    rdfs:comment "A document submitted in support of an academic degree."@en ;
+                                    rdfs:label "Thesis"@en .
+
+
+:DistributedRI <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+               :status "New" ;
+               rdfs:comment "An RI made up of a Central Hub plus interlinked National Nodes; the Hub coordinates and manages each Node's RI-dedicated capacity under the RI Consortium's shared rules."@en ;
+               rdfs:label "Distributed RI"@en .
+
+
+:ResearchInfrastructure <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ,
+                                                          "EU Regulation 2021 Art 2" ;
+                        :status "New" ;
+                        rdfs:comment "A facility (or set of resources/services) enabling research and innovation."@en ;
+                        rdfs:label "Research Infrastructure"@en .
+
+
+:SingleSitedRI <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+               :status "New" ;
+               rdfs:comment "An RI concentrated geographically at one site (or a few complementary sites) designed for user access. (ESFRI Roadmap 2026, p.15)"@en ;
+               rdfs:label "Single-sited RI"@en .
+
+
+:VirtualRI <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
+           :status "New" ;
+           rdfs:comment "An RI with no fixed physical site: its resources and services are accessed remotely rather than in person."@en ;
+           rdfs:label "Virtual RI"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AssociatedCountry
+                :MemberState
+                :ThirdCountry
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Concept
+                        :Design
+                        :Implementation
+                        :Operation
+                        :Preparation
+                        :Termination
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :ENeedsAndData
+                        :EnvironmentalConsiderations
+                        :PanEuropeanRelevance
+                        :ScientificExcellence
+                        :SocioEconomicImpact
+                        :UserStrategyAndAccessPolicy
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Finances
+                        :GovernanceManagementAndHR
+                        :PreparatoryWorkAndPlanning
+                        :Risks
+                        :StakeholderCommitment
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :High
+                        :Low
+                        :Medium
+                        :VeryHigh
+                      )
+] .
+
+
+[ rdf:type owl:AllDisjointProperties ;
+  owl:members ( :hasLeadEntity
+                :hasMemberEntity
+                :hasObserver
+                :hasParticipant
+                :hasProspectiveMember
+              )
+] .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

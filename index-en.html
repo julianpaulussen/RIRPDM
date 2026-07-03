@@ -1,0 +1,4532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>Research Infrastructure and Research Publications Data Model (RIRPDM)</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://www.example.org/rirpdm","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://www.example.org/rirpdm","name":"Research Infrastructure and Research Publications Data Model (RIRPDM)", "headline":"Document describing the ontology http://www.example.org/rirpdm", "dateReleased":"Fri Jul 03 11:25:13 UTC 2026", "version":"0.1.0", "author":[{"@type":"Person","name":"Julian Paulussen"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>Research Infrastructure and Research Publications Data Model (RIRPDM)</h1>
+
+
+<dl>
+<dt>Revision:</dt>
+<dd>0.1.0</dd>
+<dt>Authors:</dt>
+<dd>Julian Paulussen</dd>
+
+<dt>Imported Ontologies:</dt>
+<dd><a href="http://purl.org/cerif/frapo">frapo</a></dd><dd><a href="http://purl.org/spar/cito">cito</a></dd><dd><a href="http://purl.org/spar/fabio">fabio</a></dd><dd><a href="http://purl.org/spar/foaf">foaf</a></dd><dd><a href="http://purl.org/spar/frbr">frbr</a></dd><dd><a href="http://www.ontologydesignpatterns.org/cp/owl/situation.owl">situation.owl</a></dd><dd><a href="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl">cpannotationschema.owl</a></dd><dd><a href="http://www.w3.org/2004/02/skos/core">core</a></dd><dd><a href="http://www.w3.org/ns/org#">org#</a></dd><dd><a href="http://xmlns.com/foaf/0.1/">&lt;http://xmlns.com/foaf/0.1/&gt;</a></dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="http://insertlicenseURIhere.example.org" target="_blank"><img src="https://img.shields.io/badge/License-license%20name%20goes%20here-blue.svg" alt="http://insertlicenseURIhere.example.org" /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>Julian Paulussen. Research Infrastructure and Research Publications Data Model (RIRPDM). Revision: 0.1.0.</dd>
+</dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div><div id="toc"></div>  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">Research Infrastructure and Research Publications Data Model (RIRPDM): Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a>
+   </li>
+   <li>
+      <a href="#AssociatedCountry" title="http://www.example.org/rirpdm#AssociatedCountry">Associated Country</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Budget" title="http://purl.org/cerif/frapo/Budget">Budget</a>
+   </li>
+   <li>
+      <a href="#CentralHub" title="http://www.example.org/rirpdm#CentralHub">Central Hub</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/ConferencePaper" title="http://purl.org/spar/fabio/ConferencePaper">
+         <span>Conference Paper</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/AcademicProceedings" title="http://purl.org/spar/fabio/AcademicProceedings">Conference Proceedings</a>
+   </li>
+   <li>
+      <a href="#Country" title="http://www.example.org/rirpdm#Country">Country</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Dataset" title="http://purl.org/spar/fabio/Dataset">Dataset</a>
+   </li>
+   <li>
+      <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">
+         <span>Distributed RI</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ESFRILandmark" title="http://www.example.org/rirpdm#ESFRILandmark">ESFRI Landmark</a>
+   </li>
+   <li>
+      <a href="#ESFRIProject" title="http://www.example.org/rirpdm#ESFRIProject">ESFRI Project</a>
+   </li>
+   <li>
+      <a href="#Evaluation" title="http://www.example.org/rirpdm#Evaluation">Evaluation</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Expenditure" title="http://purl.org/cerif/frapo/Expenditure">Expenditure</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Expression" title="http://purl.org/spar/fabio/Expression">Expression</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Funding" title="http://purl.org/cerif/frapo/Funding">Funding</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/FundingAgency" title="http://purl.org/cerif/frapo/FundingAgency">Funding Agency</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/FundingProgramme" title="http://purl.org/cerif/frapo/FundingProgramme">Funding Programme</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">
+         <span>Grant</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ImplementationCase"
+         title="http://www.example.org/rirpdm#ImplementationCase">Implementation Case</a>
+   </li>
+   <li>
+      <a href="#ImplementationDimension"
+         title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Journal" title="http://purl.org/spar/fabio/Journal">Journal</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle">
+         <span>Journal Article</span>
+      </a>
+   </li>
+   <li>
+      <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a>
+   </li>
+   <li>
+      <a href="#MajorUpgrade" title="http://www.example.org/rirpdm#MajorUpgrade">Major Upgrade</a>
+   </li>
+   <li>
+      <a href="#MemberState" title="http://www.example.org/rirpdm#MemberState">Member State</a>
+   </li>
+   <li>
+      <a href="#NationalNode" title="http://www.example.org/rirpdm#NationalNode">National Node</a>
+   </li>
+   <li>
+      <a href="#NewProposal" title="http://www.example.org/rirpdm#NewProposal">New Proposal</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a>
+   </li>
+   <li>
+      <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Project" title="http://purl.org/cerif/frapo/Project">Project</a>
+   </li>
+   <li>
+      <a href="#Proposal" title="http://www.example.org/rirpdm#Proposal">Proposal</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/ReportDocument" title="http://purl.org/spar/fabio/ReportDocument">
+         <span>Report</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ResearchData" title="http://www.example.org/rirpdm#ResearchData">Research Data</a>
+   </li>
+   <li>
+      <a href="#RFO" title="http://www.example.org/rirpdm#RFO">Research Funding Organisation (RFO)</a>
+   </li>
+   <li>
+      <a href="#ResearchInstitution"
+         title="http://www.example.org/rirpdm#ResearchInstitution">Research Institution</a>
+   </li>
+   <li>
+      <a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a>
+   </li>
+   <li>
+      <a href="#RPO" title="http://www.example.org/rirpdm#RPO">Research Performing Organisation (RPO)</a>
+   </li>
+   <li>
+      <a href="#Researcher" title="http://www.example.org/rirpdm#Researcher">Researcher</a>
+   </li>
+   <li>
+      <a href="#RIConsortium" title="http://www.example.org/rirpdm#RIConsortium">RI Consortium</a>
+   </li>
+   <li>
+      <a href="#ScientificCase" title="http://www.example.org/rirpdm#ScientificCase">Scientific Case</a>
+   </li>
+   <li>
+      <a href="#ScientificDimension"
+         title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a>
+   </li>
+   <li>
+      <a href="#ScientificPublication"
+         title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a>
+   </li>
+   <li>
+      <a href="#Score" title="http://www.example.org/rirpdm#Score">Score</a>
+   </li>
+   <li>
+      <a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI">
+         <span>Single-sited RI</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Thesis" title="http://purl.org/spar/fabio/Thesis">
+         <span>Thesis</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ThirdCountry" title="http://www.example.org/rirpdm#ThirdCountry">Third Country</a>
+   </li>
+   <li>
+      <a href="#VirtualRI" title="http://www.example.org/rirpdm#VirtualRI">
+         <span>Virtual RI</span>
+      </a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#assessedAtPhase" title="http://www.example.org/rirpdm#assessedAtPhase">assessedAtPhase</a>
+   </li>
+   <li>
+      <a href="#authorOf" title="http://www.example.org/rirpdm#authorOf">authorOf</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/awards" title="http://purl.org/cerif/frapo/awards">awards</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/citesAsEvidence" title="http://purl.org/spar/cito/citesAsEvidence">cites as evidence</a>
+   </li>
+   <li>
+      <a href="#collaboratesWith" title="http://www.example.org/rirpdm#collaboratesWith">collaboratesWith</a>
+   </li>
+   <li>
+      <a href="#contributesToRI" title="http://www.example.org/rirpdm#contributesToRI">contributesToRI</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/disputes" title="http://purl.org/spar/cito/disputes">disputes</a>
+   </li>
+   <li>
+      <a href="#evaluatesDimension" title="http://www.example.org/rirpdm#evaluatesDimension">evaluatesDimension</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/extends" title="http://purl.org/spar/cito/extends">extends</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/funds" title="http://purl.org/cerif/frapo/funds">funds</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/hasPublicationVenue" title="http://purl.org/spar/fabio/hasPublicationVenue">has publication venue</a>
+   </li>
+   <li>
+      <a href="#hasAuthor" title="http://www.example.org/rirpdm#hasAuthor">hasAuthor</a>
+   </li>
+   <li>
+      <a href="#hasCentralHub" title="http://www.example.org/rirpdm#hasCentralHub">hasCentralHub</a>
+   </li>
+   <li>
+      <a href="#hasEvaluation" title="http://www.example.org/rirpdm#hasEvaluation">hasEvaluation</a>
+   </li>
+   <li>
+      <a href="#hasImplementationCase"
+         title="http://www.example.org/rirpdm#hasImplementationCase">hasImplementationCase</a>
+   </li>
+   <li>
+      <a href="#hasLeadEntity" title="http://www.example.org/rirpdm#hasLeadEntity">hasLeadEntity</a>
+   </li>
+   <li>
+      <a href="#hasMemberEntity" title="http://www.example.org/rirpdm#hasMemberEntity">hasMemberEntity</a>
+   </li>
+   <li>
+      <a href="#hasNode" title="http://www.example.org/rirpdm#hasNode">hasNode</a>
+   </li>
+   <li>
+      <a href="#hasObserver" title="http://www.example.org/rirpdm#hasObserver">hasObserver</a>
+   </li>
+   <li>
+      <a href="#hasParticipant" title="http://www.example.org/rirpdm#hasParticipant">hasParticipant</a>
+   </li>
+   <li>
+      <a href="#hasProspectiveMember"
+         title="http://www.example.org/rirpdm#hasProspectiveMember">hasProspectiveMember</a>
+   </li>
+   <li>
+      <a href="#hasScientificCase" title="http://www.example.org/rirpdm#hasScientificCase">hasScientificCase</a>
+   </li>
+   <li>
+      <a href="#hasScore" title="http://www.example.org/rirpdm#hasScore">hasScore</a>
+   </li>
+   <li>
+      <a href="#indirectlyExposedTo"
+         title="http://www.example.org/rirpdm#indirectlyExposedTo">indirectlyExposedTo</a>
+   </li>
+   <li>
+      <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/isAwardedBy" title="http://purl.org/cerif/frapo/isAwardedBy">is awarded by</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/isCitedBy" title="http://purl.org/spar/cito/isCitedBy">is cited by</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/isFundedBy" title="http://purl.org/cerif/frapo/isFundedBy">is funded by</a>
+   </li>
+   <li>
+      <a href="#isInPhase" title="http://www.example.org/rirpdm#isInPhase">isInPhase</a>
+   </li>
+   <li>
+      <a href="#isNodeOf" title="http://www.example.org/rirpdm#isNodeOf">isNodeOf</a>
+   </li>
+   <li>
+      <a href="#isOutputOf" title="http://www.example.org/rirpdm#isOutputOf">isOutputOf</a>
+   </li>
+   <li>
+      <a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a>
+   </li>
+   <li>
+      <a href="#participatesIn" title="http://www.example.org/rirpdm#participatesIn">participatesIn</a>
+   </li>
+   <li>
+      <a href="#producesResearchOutput"
+         title="http://www.example.org/rirpdm#producesResearchOutput">producesResearchOutput</a>
+   </li>
+   <li>
+      <a href="#resultsInProject" title="http://www.example.org/rirpdm#resultsInProject">resultsInProject</a>
+   </li>
+   <li>
+      <a href="#upgradesRI" title="http://www.example.org/rirpdm#upgradesRI">upgradesRI</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/usesDataFrom" title="http://purl.org/spar/cito/usesDataFrom">uses data from</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/cito/usesMethodIn" title="http://purl.org/spar/cito/usesMethodIn">uses method in</a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#accessPoint" title="http://www.example.org/rirpdm#accessPoint">accessPoint</a>
+   </li>
+   <li>
+      <a href="#accessPolicy" title="http://www.example.org/rirpdm#accessPolicy">accessPolicy</a>
+   </li>
+   <li>
+      <a href="#averageAnnualOperationCosts"
+         title="http://www.example.org/rirpdm#averageAnnualOperationCosts">averageAnnualOperationCosts</a>
+   </li>
+   <li>
+      <a href="#compliesWithFAIR" title="http://www.example.org/rirpdm#compliesWithFAIR">compliesWithFAIR</a>
+   </li>
+   <li>
+      <a href="#dataManagementSystem"
+         title="http://www.example.org/rirpdm#dataManagementSystem">dataManagementSystem</a>
+   </li>
+   <li>
+      <a href="#designCosts" title="http://www.example.org/rirpdm#designCosts">designCosts</a>
+   </li>
+   <li>
+      <a href="#ensuresLongTermPreservation"
+         title="http://www.example.org/rirpdm#ensuresLongTermPreservation">ensuresLongTermPreservation</a>
+   </li>
+   <li>
+      <a href="#governanceStructure"
+         title="http://www.example.org/rirpdm#governanceStructure">governanceStructure</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/hasDOI" title="http://purl.org/spar/fabio/hasDOI">has DOI</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/hasGrantNumber" title="http://purl.org/cerif/frapo/hasGrantNumber">has grant number</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/hasMonetaryValue" title="http://purl.org/cerif/frapo/hasMonetaryValue">has monetary value</a>
+   </li>
+   <li>
+      <a href="#hasKPI" title="http://www.example.org/rirpdm#hasKPI">hasKPI</a>
+   </li>
+   <li>
+      <a href="#humanResourcesPolicy"
+         title="http://www.example.org/rirpdm#humanResourcesPolicy">humanResourcesPolicy</a>
+   </li>
+   <li>
+      <a href="#implementationCosts"
+         title="http://www.example.org/rirpdm#implementationCosts">implementationCosts</a>
+   </li>
+   <li>
+      <a href="#jointInvestmentStrategy"
+         title="http://www.example.org/rirpdm#jointInvestmentStrategy">jointInvestmentStrategy</a>
+   </li>
+   <li>
+      <a href="#legalStatus" title="http://www.example.org/rirpdm#legalStatus">legalStatus</a>
+   </li>
+   <li>
+      <a href="#longTermSitePlanning"
+         title="http://www.example.org/rirpdm#longTermSitePlanning">longTermSitePlanning</a>
+   </li>
+   <li>
+      <a href="#preparationCosts" title="http://www.example.org/rirpdm#preparationCosts">preparationCosts</a>
+   </li>
+   <li>
+      <a href="#providesOpenAccess"
+         title="http://www.example.org/rirpdm#providesOpenAccess">providesOpenAccess</a>
+   </li>
+   <li>
+      <a href="#serviceOffer" title="http://www.example.org/rirpdm#serviceOffer">serviceOffer</a>
+   </li>
+   <li>
+      <a href="#terminationCosts" title="http://www.example.org/rirpdm#terminationCosts">terminationCosts</a>
+   </li>
+   <li>
+      <a href="#totalInvestmentCosts"
+         title="http://www.example.org/rirpdm#totalInvestmentCosts">totalInvestmentCosts</a>
+   </li>
+   <li>
+      <a href="#uniqueName" title="http://www.example.org/rirpdm#uniqueName">uniqueName</a>
+   </li>
+   <li>
+      <a href="#userProgramme" title="http://www.example.org/rirpdm#userProgramme">userProgramme</a>
+   </li>
+   <li>
+      <a href="#userSupportStructure"
+         title="http://www.example.org/rirpdm#userSupportStructure">userSupportStructure</a>
+   </li>
+</ul><h4>Annotation Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#status" title="http://www.example.org/rirpdm#status">status</a>
+   </li>
+</ul><h4>Named Individuals</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#Concept" title="http://www.example.org/rirpdm#Concept">Concept</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/ConferencePaper" title="http://purl.org/spar/fabio/ConferencePaper">
+         <span>Conference Paper</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Design" title="http://www.example.org/rirpdm#Design">Design</a>
+   </li>
+   <li>
+      <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">
+         <span>Distributed RI</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ENeedsAndData" title="http://www.example.org/rirpdm#ENeedsAndData">E-Needs &amp; Data</a>
+   </li>
+   <li>
+      <a href="#EnvironmentalConsiderations"
+         title="http://www.example.org/rirpdm#EnvironmentalConsiderations">Environmental Considerations</a>
+   </li>
+   <li>
+      <a href="#Finances" title="http://www.example.org/rirpdm#Finances">Finances</a>
+   </li>
+   <li>
+      <a href="#GovernanceManagementAndHR"
+         title="http://www.example.org/rirpdm#GovernanceManagementAndHR">Governance Management &amp; HR</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">
+         <span>Grant</span>
+      </a>
+   </li>
+   <li>
+      <a href="#High" title="http://www.example.org/rirpdm#High">High</a>
+   </li>
+   <li>
+      <a href="#Implementation" title="http://www.example.org/rirpdm#Implementation">Implementation</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle">
+         <span>Journal Article</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Low" title="http://www.example.org/rirpdm#Low">Low</a>
+   </li>
+   <li>
+      <a href="#Medium" title="http://www.example.org/rirpdm#Medium">Medium</a>
+   </li>
+   <li>
+      <a href="#Operation" title="http://www.example.org/rirpdm#Operation">Operation</a>
+   </li>
+   <li>
+      <a href="#PanEuropeanRelevance"
+         title="http://www.example.org/rirpdm#PanEuropeanRelevance">Pan-European Relevance</a>
+   </li>
+   <li>
+      <a href="#Preparation" title="http://www.example.org/rirpdm#Preparation">Preparation</a>
+   </li>
+   <li>
+      <a href="#PreparatoryWorkAndPlanning"
+         title="http://www.example.org/rirpdm#PreparatoryWorkAndPlanning">Preparatory Work &amp; Planning</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/ReportDocument" title="http://purl.org/spar/fabio/ReportDocument">
+         <span>Report</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ResearchInfrastructure"
+         title="http://www.example.org/rirpdm#ResearchInfrastructure">
+         <span>Research Infrastructure</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Risks" title="http://www.example.org/rirpdm#Risks">Risks</a>
+   </li>
+   <li>
+      <a href="#ScientificExcellence"
+         title="http://www.example.org/rirpdm#ScientificExcellence">Scientific Excellence</a>
+   </li>
+   <li>
+      <a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI">
+         <span>Single-sited RI</span>
+      </a>
+   </li>
+   <li>
+      <a href="#SocioEconomicImpact"
+         title="http://www.example.org/rirpdm#SocioEconomicImpact">Socio-Economic Impact</a>
+   </li>
+   <li>
+      <a href="#StakeholderCommitment"
+         title="http://www.example.org/rirpdm#StakeholderCommitment">Stakeholder Commitment</a>
+   </li>
+   <li>
+      <a href="#Termination" title="http://www.example.org/rirpdm#Termination">Termination</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/spar/fabio/Thesis" title="http://purl.org/spar/fabio/Thesis">
+         <span>Thesis</span>
+      </a>
+   </li>
+   <li>
+      <a href="#UserStrategyAndAccessPolicy"
+         title="http://www.example.org/rirpdm#UserStrategyAndAccessPolicy">User Strategy &amp; Access Policy</a>
+   </li>
+   <li>
+      <a href="#VeryHigh" title="http://www.example.org/rirpdm#VeryHigh">Very High</a>
+   </li>
+   <li>
+      <a href="#VirtualRI" title="http://www.example.org/rirpdm#VirtualRI">
+         <span>Virtual RI</span>
+      </a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">Research Infrastructure and Research Publications Data Model (RIRPDM): Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">Imports of fabio and cito are resolved via catalog-v001.xml to locally patched copies (ontology/fabio.owl, ontology/cito.owl): upstream published files assert untyped dcterms:created/modified literals on their own ontology IRI, violating the xsd:dateTime range they themselves declare, which makes the raw remote files OWL-inconsistent (owl:Thing SubClassOf owl:Nothing). Only those two literals were retyped; no domain classes/properties/axioms were altered.</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for Research Infrastructure and Research Publications Data Model (RIRPDM) classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by Research Infrastructure and Research Publications Data Model (RIRPDM).
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+ <h3 id="classes-headline" class="list">Classes</h3>
+ <ul class="hlist">
+  <li><a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a></li>
+  <li><a href="#AssociatedCountry" title="http://www.example.org/rirpdm#AssociatedCountry">Associated Country</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/Budget" title="http://purl.org/cerif/frapo/Budget">Budget</a></li>
+  <li><a href="#CentralHub" title="http://www.example.org/rirpdm#CentralHub">Central Hub</a></li>
+  <li><a href="#http://purl.org/spar/fabio/ConferencePaper" title="http://purl.org/spar/fabio/ConferencePaper"> <span>Conference Paper</span> </a></li>
+  <li><a href="#http://purl.org/spar/fabio/AcademicProceedings" title="http://purl.org/spar/fabio/AcademicProceedings">Conference Proceedings</a></li>
+  <li><a href="#Country" title="http://www.example.org/rirpdm#Country">Country</a></li>
+  <li><a href="#http://purl.org/spar/fabio/Dataset" title="http://purl.org/spar/fabio/Dataset">Dataset</a></li>
+  <li><a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI"> <span>Distributed RI</span> </a></li>
+  <li><a href="#ESFRILandmark" title="http://www.example.org/rirpdm#ESFRILandmark">ESFRI Landmark</a></li>
+  <li><a href="#ESFRIProject" title="http://www.example.org/rirpdm#ESFRIProject">ESFRI Project</a></li>
+  <li><a href="#Evaluation" title="http://www.example.org/rirpdm#Evaluation">Evaluation</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/Expenditure" title="http://purl.org/cerif/frapo/Expenditure">Expenditure</a></li>
+  <li><a href="#http://purl.org/spar/fabio/Expression" title="http://purl.org/spar/fabio/Expression">Expression</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/Funding" title="http://purl.org/cerif/frapo/Funding">Funding</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/FundingAgency" title="http://purl.org/cerif/frapo/FundingAgency">Funding Agency</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/FundingProgramme" title="http://purl.org/cerif/frapo/FundingProgramme">Funding Programme</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant"> <span>Grant</span> </a></li>
+  <li><a href="#ImplementationCase" title="http://www.example.org/rirpdm#ImplementationCase">Implementation Case</a></li>
+  <li><a href="#ImplementationDimension" title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a></li>
+  <li><a href="#http://purl.org/spar/fabio/Journal" title="http://purl.org/spar/fabio/Journal">Journal</a></li>
+  <li><a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle"> <span>Journal Article</span> </a></li>
+  <li><a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a></li>
+  <li><a href="#MajorUpgrade" title="http://www.example.org/rirpdm#MajorUpgrade">Major Upgrade</a></li>
+  <li><a href="#MemberState" title="http://www.example.org/rirpdm#MemberState">Member State</a></li>
+  <li><a href="#NationalNode" title="http://www.example.org/rirpdm#NationalNode">National Node</a></li>
+  <li><a href="#NewProposal" title="http://www.example.org/rirpdm#NewProposal">New Proposal</a></li>
+  <li><a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a></li>
+  <li><a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/Project" title="http://purl.org/cerif/frapo/Project">Project</a></li>
+  <li><a href="#Proposal" title="http://www.example.org/rirpdm#Proposal">Proposal</a></li>
+  <li><a href="#http://purl.org/spar/fabio/ReportDocument" title="http://purl.org/spar/fabio/ReportDocument"> <span>Report</span> </a></li>
+  <li><a href="#ResearchData" title="http://www.example.org/rirpdm#ResearchData">Research Data</a></li>
+  <li><a href="#RFO" title="http://www.example.org/rirpdm#RFO">Research Funding Organisation (RFO)</a></li>
+  <li><a href="#ResearchInstitution" title="http://www.example.org/rirpdm#ResearchInstitution">Research Institution</a></li>
+  <li><a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a></li>
+  <li><a href="#RPO" title="http://www.example.org/rirpdm#RPO">Research Performing Organisation (RPO)</a></li>
+  <li><a href="#Researcher" title="http://www.example.org/rirpdm#Researcher">Researcher</a></li>
+  <li><a href="#RIConsortium" title="http://www.example.org/rirpdm#RIConsortium">RI Consortium</a></li>
+  <li><a href="#ScientificCase" title="http://www.example.org/rirpdm#ScientificCase">Scientific Case</a></li>
+  <li><a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a></li>
+  <li><a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a></li>
+  <li><a href="#Score" title="http://www.example.org/rirpdm#Score">Score</a></li>
+  <li><a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI"> <span>Single-sited RI</span> </a></li>
+  <li><a href="#http://purl.org/spar/fabio/Thesis" title="http://purl.org/spar/fabio/Thesis"> <span>Thesis</span> </a></li>
+  <li><a href="#ThirdCountry" title="http://www.example.org/rirpdm#ThirdCountry">Third Country</a></li>
+  <li><a href="#VirtualRI" title="http://www.example.org/rirpdm#VirtualRI"> <span>Virtual RI</span> </a></li>
+ </ul>
+ <div class="entity" id="http://xmlns.com/foaf/0.1/Agent">
+  <h3>Agent<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://xmlns.com/foaf/0.1/Agent</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FOAF
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#Country" title="http://www.example.org/rirpdm#Country">Country</a> <sup class="type-c" title="class">c</sup>, <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a> <sup class="type-c" title="class">c</sup>, <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#participatesIn" title="http://www.example.org/rirpdm#participatesIn">participatesIn</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasLeadEntity" title="http://www.example.org/rirpdm#hasLeadEntity">hasLeadEntity</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasMemberEntity" title="http://www.example.org/rirpdm#hasMemberEntity">hasMemberEntity</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasObserver" title="http://www.example.org/rirpdm#hasObserver">hasObserver</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasParticipant" title="http://www.example.org/rirpdm#hasParticipant">hasParticipant</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasProspectiveMember" title="http://www.example.org/rirpdm#hasProspectiveMember">hasProspectiveMember</a> <sup class="type-op" title="object property">op</sup>, <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="AssociatedCountry">
+  <h3>Associated Country<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#AssociatedCountry</p>
+  <div class="comment">
+   <span class="markdown">Country associated to the Framework Programme (FP).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Country" title="http://www.example.org/rirpdm#Country">Country</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#MemberState" title="http://www.example.org/rirpdm#MemberState">Member State</a> <sup class="type-c" title="class">c</sup>, <a href="#ThirdCountry" title="http://www.example.org/rirpdm#ThirdCountry">Third Country</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/Budget">
+  <h3>Budget<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/Budget</p>
+  <div class="comment">
+   <span class="markdown">A planned allocation of financial resources for a project or infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="CentralHub">
+  <h3>Central Hub<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#CentralHub</p>
+  <div class="comment">
+   <span class="markdown">The coordinating international organisation of a distributed RI that mediates between the nodes.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasCentralHub" title="http://www.example.org/rirpdm#hasCentralHub">hasCentralHub</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/ConferencePaper">
+  <h3>Conference Paper<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/ConferencePaper</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/ConferencePaper">named individual</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/AcademicProceedings">
+  <h3>Conference Proceedings<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/AcademicProceedings</p>
+  <div class="comment">
+   <span class="markdown">The published collection of papers from a conference.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FaBiO
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Country">
+  <h3>Country<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Country</p>
+  <div class="comment">
+   <span class="markdown">A nation eligible to participate in an RI.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#AssociatedCountry" title="http://www.example.org/rirpdm#AssociatedCountry">Associated Country</a> <sup class="type-c" title="class">c</sup>, <a href="#MemberState" title="http://www.example.org/rirpdm#MemberState">Member State</a> <sup class="type-c" title="class">c</sup>, <a href="#ThirdCountry" title="http://www.example.org/rirpdm#ThirdCountry">Third Country</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/Dataset">
+  <h3>Dataset<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/Dataset</p>
+  <div class="comment">
+   <span class="markdown">A published, citable collection of research data.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FaBiO
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#ResearchData" title="http://www.example.org/rirpdm#ResearchData">Research Data</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="DistributedRI">
+  <h3>Distributed RI<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#DistributedRI</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasCentralHub" title="http://www.example.org/rirpdm#hasCentralHub">hasCentralHub</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasNode" title="http://www.example.org/rirpdm#hasNode">hasNode</a> <sup class="type-op" title="object property">op</sup>, <a href="#jointInvestmentStrategy" title="http://www.example.org/rirpdm#jointInvestmentStrategy">jointInvestmentStrategy</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#isNodeOf" title="http://www.example.org/rirpdm#isNodeOf">isNodeOf</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI">Single-sited RI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#DistributedRI">named individual</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ESFRILandmark">
+  <h3>ESFRI Landmark<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ESFRILandmark</p>
+  <div class="comment">
+   <span class="markdown">An implemented (or near-implemented) RI established as a major asset of the European Research Area, periodically monitored.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#resultsInProject" title="http://www.example.org/rirpdm#resultsInProject">resultsInProject</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#ESFRIProject" title="http://www.example.org/rirpdm#ESFRIProject">ESFRI Project</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ESFRIProject">
+  <h3>ESFRI Project<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ESFRIProject</p>
+  <div class="comment">
+   <span class="markdown">A selected RI in its Preparation Phase, expected to reach Implementation within ten years.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#resultsInProject" title="http://www.example.org/rirpdm#resultsInProject">resultsInProject</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#ESFRILandmark" title="http://www.example.org/rirpdm#ESFRILandmark">ESFRI Landmark</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Evaluation">
+  <h3>Evaluation<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Evaluation</p>
+  <div class="comment">
+   <span class="markdown">An assessment of a case dimension, producing a score at a given lifecycle phase.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#assessedAtPhase" title="http://www.example.org/rirpdm#assessedAtPhase">assessedAtPhase</a> <sup class="type-op" title="object property">op</sup>, <a href="#evaluatesDimension" title="http://www.example.org/rirpdm#evaluatesDimension">evaluatesDimension</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasScore" title="http://www.example.org/rirpdm#hasScore">hasScore</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasEvaluation" title="http://www.example.org/rirpdm#hasEvaluation">hasEvaluation</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/Expenditure">
+  <h3>Expenditure<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/Expenditure</p>
+  <div class="comment">
+   <span class="markdown">Money actually spent against a budget.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/Expression">
+  <h3>Expression<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/Expression</p>
+  <div class="comment">
+   <span class="markdown">A FaBiO/FRBR expression — the intellectual realisation of a work, the bibliographic superclass of all publication types.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FaBiO
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/Funding">
+  <h3>Funding<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/Funding</p>
+  <div class="comment">
+   <span class="markdown">Financial support provided to undertake research or operate an infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">Grant</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/FundingAgency">
+  <h3>Funding Agency<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/FundingAgency</p>
+  <div class="comment">
+   <span class="markdown">An organisation that provides funding for research projects or infrastructures.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#RFO" title="http://www.example.org/rirpdm#RFO">Research Funding Organisation (RFO)</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#indirectlyExposedTo" title="http://www.example.org/rirpdm#indirectlyExposedTo">indirectlyExposedTo</a> <sup class="type-op" title="object property">op</sup>, <a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/FundingProgramme">
+  <h3>Funding Programme<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/FundingProgramme</p>
+  <div class="comment">
+   <span class="markdown">A structured scheme under which a funding agency awards grants.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/Grant">
+  <h3>Grant<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/Grant</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://purl.org/cerif/frapo/Funding" title="http://purl.org/cerif/frapo/Funding">Funding</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#indirectlyExposedTo" title="http://www.example.org/rirpdm#indirectlyExposedTo">indirectlyExposedTo</a> <sup class="type-op" title="object property">op</sup>, <a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/cerif/frapo/Grant">named individual</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ImplementationCase">
+  <h3>Implementation Case<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ImplementationCase</p>
+  <div class="comment">
+   <span class="markdown">The five-dimension assessment of an RI's feasibility and delivery, attached to a Proposal or Research Infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasEvaluation" title="http://www.example.org/rirpdm#hasEvaluation">hasEvaluation</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasImplementationCase" title="http://www.example.org/rirpdm#hasImplementationCase">hasImplementationCase</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ImplementationDimension">
+  <h3>Implementation Dimension<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ImplementationDimension</p>
+  <div class="comment">
+   <span class="markdown">One of the five dimensions along which an Implementation Case is assessed.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#Finances" title="http://www.example.org/rirpdm#Finances">Finances</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#GovernanceManagementAndHR" title="http://www.example.org/rirpdm#GovernanceManagementAndHR">Governance Management &amp; HR</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#PreparatoryWorkAndPlanning" title="http://www.example.org/rirpdm#PreparatoryWorkAndPlanning">Preparatory Work &amp; Planning</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Risks" title="http://www.example.org/rirpdm#Risks">Risks</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#StakeholderCommitment" title="http://www.example.org/rirpdm#StakeholderCommitment">Stakeholder Commitment</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#evaluatesDimension" title="http://www.example.org/rirpdm#evaluatesDimension">evaluatesDimension</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#Finances" title="http://www.example.org/rirpdm#Finances">Finances</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#GovernanceManagementAndHR" title="http://www.example.org/rirpdm#GovernanceManagementAndHR">Governance Management &amp; HR</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#PreparatoryWorkAndPlanning" title="http://www.example.org/rirpdm#PreparatoryWorkAndPlanning">Preparatory Work &amp; Planning</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Risks" title="http://www.example.org/rirpdm#Risks">Risks</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#StakeholderCommitment" title="http://www.example.org/rirpdm#StakeholderCommitment">Stakeholder Commitment</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/Journal">
+  <h3>Journal<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/Journal</p>
+  <div class="comment">
+   <span class="markdown">A periodical publishing scholarly articles.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FaBiO
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/hasPublicationVenue" title="http://purl.org/spar/fabio/hasPublicationVenue">has publication venue</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/JournalArticle">
+  <h3>Journal Article<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/JournalArticle</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/JournalArticle">named individual</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="LifecyclePhase">
+  <h3>Lifecycle Phase<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#LifecyclePhase</p>
+  <div class="comment">
+   <span class="markdown">Reference to understand the needs and targets of RIs at a given time and at various levels.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#Concept" title="http://www.example.org/rirpdm#Concept">Concept</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Design" title="http://www.example.org/rirpdm#Design">Design</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Implementation" title="http://www.example.org/rirpdm#Implementation">Implementation</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Operation" title="http://www.example.org/rirpdm#Operation">Operation</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Preparation" title="http://www.example.org/rirpdm#Preparation">Preparation</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Termination" title="http://www.example.org/rirpdm#Termination">Termination</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#assessedAtPhase" title="http://www.example.org/rirpdm#assessedAtPhase">assessedAtPhase</a> <sup class="type-op" title="object property">op</sup>, <a href="#isInPhase" title="http://www.example.org/rirpdm#isInPhase">isInPhase</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#Concept" title="http://www.example.org/rirpdm#Concept">Concept</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Design" title="http://www.example.org/rirpdm#Design">Design</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Implementation" title="http://www.example.org/rirpdm#Implementation">Implementation</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Operation" title="http://www.example.org/rirpdm#Operation">Operation</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Preparation" title="http://www.example.org/rirpdm#Preparation">Preparation</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Termination" title="http://www.example.org/rirpdm#Termination">Termination</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="MajorUpgrade">
+  <h3>Major Upgrade<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#MajorUpgrade</p>
+  <div class="comment">
+   <span class="markdown">A transformative (not routine) upgrade to an operational RI.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Proposal" title="http://www.example.org/rirpdm#Proposal">Proposal</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#upgradesRI" title="http://www.example.org/rirpdm#upgradesRI">upgradesRI</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#NewProposal" title="http://www.example.org/rirpdm#NewProposal">New Proposal</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="MemberState">
+  <h3>Member State<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#MemberState</p>
+  <div class="comment">
+   <span class="markdown">Member state of the European Union.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Country" title="http://www.example.org/rirpdm#Country">Country</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#AssociatedCountry" title="http://www.example.org/rirpdm#AssociatedCountry">Associated Country</a> <sup class="type-c" title="class">c</sup>, <a href="#ThirdCountry" title="http://www.example.org/rirpdm#ThirdCountry">Third Country</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NationalNode">
+  <h3>National Node<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#NationalNode</p>
+  <div class="comment">
+   <span class="markdown">A national/institutional component of a distributed RI whose RI-dedicated capacity and resources are identified, coordinated and managed by the Central Hub.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#isNodeOf" title="http://www.example.org/rirpdm#isNodeOf">isNodeOf</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasNode" title="http://www.example.org/rirpdm#hasNode">hasNode</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NewProposal">
+  <h3>New Proposal<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#NewProposal</p>
+  <div class="comment">
+   <span class="markdown">A candidate RI project submitted for selection onto the Roadmap.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Proposal" title="http://www.example.org/rirpdm#Proposal">Proposal</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#MajorUpgrade" title="http://www.example.org/rirpdm#MajorUpgrade">Major Upgrade</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://www.w3.org/ns/org#Organization">
+  <h3>Organization<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/ns/org#Organization</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    W3C ORG
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#http://purl.org/cerif/frapo/FundingAgency" title="http://purl.org/cerif/frapo/FundingAgency">Funding Agency</a> <sup class="type-c" title="class">c</sup>, <a href="#RIConsortium" title="http://www.example.org/rirpdm#RIConsortium">RI Consortium</a> <sup class="type-c" title="class">c</sup>, <a href="#RFO" title="http://www.example.org/rirpdm#RFO">Research Funding Organisation (RFO)</a> <sup class="type-c" title="class">c</sup>, <a href="#ResearchInstitution" title="http://www.example.org/rirpdm#ResearchInstitution">Research Institution</a> <sup class="type-c" title="class">c</sup>, <a href="#RPO" title="http://www.example.org/rirpdm#RPO">Research Performing Organisation (RPO)</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://xmlns.com/foaf/0.1/Person">
+  <h3>Person<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://xmlns.com/foaf/0.1/Person</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FOAF
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#Researcher" title="http://www.example.org/rirpdm#Researcher">Researcher</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/Project">
+  <h3>Project<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/Project</p>
+  <div class="comment">
+   <span class="markdown">An activity undertaken to achieve defined objectives, optionally funded by one or more sources.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Proposal">
+  <h3>Proposal<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Proposal</p>
+  <div class="comment">
+   <span class="markdown">Abstract parent for candidate submissions to the Roadmap.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#MajorUpgrade" title="http://www.example.org/rirpdm#MajorUpgrade">Major Upgrade</a> <sup class="type-c" title="class">c</sup>, <a href="#NewProposal" title="http://www.example.org/rirpdm#NewProposal">New Proposal</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasImplementationCase" title="http://www.example.org/rirpdm#hasImplementationCase">hasImplementationCase</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasScientificCase" title="http://www.example.org/rirpdm#hasScientificCase">hasScientificCase</a> <sup class="type-op" title="object property">op</sup>, <a href="#resultsInProject" title="http://www.example.org/rirpdm#resultsInProject">resultsInProject</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/ReportDocument">
+  <h3>Report<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/ReportDocument</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/ReportDocument">named individual</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ResearchData">
+  <h3>Research Data<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ResearchData</p>
+  <div class="comment">
+   <span class="markdown">Data, including those underlying scientific publications, managed per FAIR principles.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    EU Reg 2021 Art 14(1)(b), Art 39(4)
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/Dataset" title="http://purl.org/spar/fabio/Dataset">Dataset</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#compliesWithFAIR" title="http://www.example.org/rirpdm#compliesWithFAIR">compliesWithFAIR</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#ensuresLongTermPreservation" title="http://www.example.org/rirpdm#ensuresLongTermPreservation">ensuresLongTermPreservation</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="RFO">
+  <h3>Research Funding Organisation (RFO)<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#RFO</p>
+  <div class="comment">
+   <span class="markdown">Legal entity that can take binding decisions to financially support an RI.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://purl.org/cerif/frapo/FundingAgency" title="http://purl.org/cerif/frapo/FundingAgency">Funding Agency</a> <sup class="type-c" title="class">c</sup>, <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ResearchInstitution">
+  <h3>Research Institution<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ResearchInstitution</p>
+  <div class="comment">
+   <span class="markdown">Organization that participates as a partner in an RI Consortium.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#collaboratesWith" title="http://www.example.org/rirpdm#collaboratesWith">collaboratesWith</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#collaboratesWith" title="http://www.example.org/rirpdm#collaboratesWith">collaboratesWith</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ResearchOutput">
+  <h3>Research Output<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ResearchOutput</p>
+  <div class="comment">
+   <span class="markdown">Results of an action accessible as scientific publications, data, software, algorithms, protocols, etc.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    EU Reg 2021 Art 2(22)
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#ResearchData" title="http://www.example.org/rirpdm#ResearchData">Research Data</a> <sup class="type-c" title="class">c</sup>, <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/hasDOI" title="http://purl.org/spar/fabio/hasDOI">has DOI</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#isOutputOf" title="http://www.example.org/rirpdm#isOutputOf">isOutputOf</a> <sup class="type-op" title="object property">op</sup>, <a href="#providesOpenAccess" title="http://www.example.org/rirpdm#providesOpenAccess">providesOpenAccess</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a> <sup class="type-op" title="object property">op</sup>, <a href="#producesResearchOutput" title="http://www.example.org/rirpdm#producesResearchOutput">producesResearchOutput</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="RPO">
+  <h3>Research Performing Organisation (RPO)<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#RPO</p>
+  <div class="comment">
+   <span class="markdown">Legal entity from a MS/AC/third country that performs research and can take binding decisions to support an RI.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Researcher">
+  <h3>Researcher<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Researcher</p>
+  <div class="comment">
+   <span class="markdown">An agent who conducts scientific research, typically as a participant in a research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    VIVO
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#authorOf" title="http://www.example.org/rirpdm#authorOf">authorOf</a> <sup class="type-op" title="object property">op</sup>, <a href="#contributesToRI" title="http://www.example.org/rirpdm#contributesToRI">contributesToRI</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasAuthor" title="http://www.example.org/rirpdm#hasAuthor">hasAuthor</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="RIConsortium">
+  <h3>RI Consortium<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#RIConsortium</p>
+  <div class="comment">
+   <span class="markdown">The consortium of core partners governing a distributed RI, whose agreed statutes and common rules and procedures the Central Hub applies to coordinate and manage the National Nodes' RI-dedicated capacity. (ESFRI Roadmap 2026, p.15)</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ScientificCase">
+  <h3>Scientific Case<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ScientificCase</p>
+  <div class="comment">
+   <span class="markdown">The six-dimension assessment of an RI's scientific merit, attached to a Proposal or Research Infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasEvaluation" title="http://www.example.org/rirpdm#hasEvaluation">hasEvaluation</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasScientificCase" title="http://www.example.org/rirpdm#hasScientificCase">hasScientificCase</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ScientificDimension">
+  <h3>Scientific Dimension<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ScientificDimension</p>
+  <div class="comment">
+   <span class="markdown">One of the six dimensions along which a Scientific Case is assessed.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#ENeedsAndData" title="http://www.example.org/rirpdm#ENeedsAndData">E-Needs &amp; Data</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#EnvironmentalConsiderations" title="http://www.example.org/rirpdm#EnvironmentalConsiderations">Environmental Considerations</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#PanEuropeanRelevance" title="http://www.example.org/rirpdm#PanEuropeanRelevance">Pan-European Relevance</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#ScientificExcellence" title="http://www.example.org/rirpdm#ScientificExcellence">Scientific Excellence</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#SocioEconomicImpact" title="http://www.example.org/rirpdm#SocioEconomicImpact">Socio-Economic Impact</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#UserStrategyAndAccessPolicy" title="http://www.example.org/rirpdm#UserStrategyAndAccessPolicy">User Strategy &amp; Access Policy</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#evaluatesDimension" title="http://www.example.org/rirpdm#evaluatesDimension">evaluatesDimension</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#ENeedsAndData" title="http://www.example.org/rirpdm#ENeedsAndData">E-Needs &amp; Data</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EnvironmentalConsiderations" title="http://www.example.org/rirpdm#EnvironmentalConsiderations">Environmental Considerations</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#PanEuropeanRelevance" title="http://www.example.org/rirpdm#PanEuropeanRelevance">Pan-European Relevance</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ScientificExcellence" title="http://www.example.org/rirpdm#ScientificExcellence">Scientific Excellence</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#SocioEconomicImpact" title="http://www.example.org/rirpdm#SocioEconomicImpact">Socio-Economic Impact</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#UserStrategyAndAccessPolicy" title="http://www.example.org/rirpdm#UserStrategyAndAccessPolicy">User Strategy &amp; Access Policy</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ScientificPublication">
+  <h3>Scientific Publication<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ScientificPublication</p>
+  <div class="comment">
+   <span class="markdown">A peer-reviewed publication output to which open access applies.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    EU Reg 2021 Art 2(22), Art 14(1)(a), Art 39(3)
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/Expression" title="http://purl.org/spar/fabio/Expression">Expression</a> <sup class="type-c" title="class">c</sup>, <a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/ConferencePaper" title="http://purl.org/spar/fabio/ConferencePaper">Conference Paper</a> <sup class="type-c" title="class">c</sup>, <a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle">Journal Article</a> <sup class="type-c" title="class">c</sup>, <a href="#http://purl.org/spar/fabio/ReportDocument" title="http://purl.org/spar/fabio/ReportDocument">Report</a> <sup class="type-c" title="class">c</sup>, <a href="#http://purl.org/spar/fabio/Thesis" title="http://purl.org/spar/fabio/Thesis">Thesis</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/spar/fabio/hasPublicationVenue" title="http://purl.org/spar/fabio/hasPublicationVenue">has publication venue</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasAuthor" title="http://www.example.org/rirpdm#hasAuthor">hasAuthor</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#authorOf" title="http://www.example.org/rirpdm#authorOf">authorOf</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has keys
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/hasDOI" title="http://purl.org/spar/fabio/hasDOI">has DOI</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#ResearchData" title="http://www.example.org/rirpdm#ResearchData">Research Data</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Score">
+  <h3>Score<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Score</p>
+  <div class="comment">
+   <span class="markdown">Grading attributed to a dimension.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#High" title="http://www.example.org/rirpdm#High">High</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Low" title="http://www.example.org/rirpdm#Low">Low</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Medium" title="http://www.example.org/rirpdm#Medium">Medium</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#VeryHigh" title="http://www.example.org/rirpdm#VeryHigh">Very High</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasScore" title="http://www.example.org/rirpdm#hasScore">hasScore</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#High" title="http://www.example.org/rirpdm#High">High</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Low" title="http://www.example.org/rirpdm#Low">Low</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Medium" title="http://www.example.org/rirpdm#Medium">Medium</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#VeryHigh" title="http://www.example.org/rirpdm#VeryHigh">Very High</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="SingleSitedRI">
+  <h3>Single-sited RI<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#SingleSitedRI</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#longTermSitePlanning" title="http://www.example.org/rirpdm#longTermSitePlanning">longTermSitePlanning</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#userSupportStructure" title="http://www.example.org/rirpdm#userSupportStructure">userSupportStructure</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">Distributed RI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#SingleSitedRI">named individual</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/Thesis">
+  <h3>Thesis<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/Thesis</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/Thesis">named individual</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ThirdCountry">
+  <h3>Third Country<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ThirdCountry</p>
+  <div class="comment">
+   <span class="markdown">Country outside Member State / Associated Country.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Country" title="http://www.example.org/rirpdm#Country">Country</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#AssociatedCountry" title="http://www.example.org/rirpdm#AssociatedCountry">Associated Country</a> <sup class="type-c" title="class">c</sup>, <a href="#MemberState" title="http://www.example.org/rirpdm#MemberState">Member State</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="VirtualRI">
+  <h3>Virtual RI<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#VirtualRI</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#VirtualRI">named individual</a>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+ <h3 id="properties" class="list">Object Properties</h3>
+ <ul class="hlist">
+  <li><a href="#assessedAtPhase" title="http://www.example.org/rirpdm#assessedAtPhase">assessedAtPhase</a></li>
+  <li><a href="#authorOf" title="http://www.example.org/rirpdm#authorOf">authorOf</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/awards" title="http://purl.org/cerif/frapo/awards">awards</a></li>
+  <li><a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a></li>
+  <li><a href="#http://purl.org/spar/cito/citesAsEvidence" title="http://purl.org/spar/cito/citesAsEvidence">cites as evidence</a></li>
+  <li><a href="#collaboratesWith" title="http://www.example.org/rirpdm#collaboratesWith">collaboratesWith</a></li>
+  <li><a href="#contributesToRI" title="http://www.example.org/rirpdm#contributesToRI">contributesToRI</a></li>
+  <li><a href="#http://purl.org/spar/cito/disputes" title="http://purl.org/spar/cito/disputes">disputes</a></li>
+  <li><a href="#evaluatesDimension" title="http://www.example.org/rirpdm#evaluatesDimension">evaluatesDimension</a></li>
+  <li><a href="#http://purl.org/spar/cito/extends" title="http://purl.org/spar/cito/extends">extends</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/funds" title="http://purl.org/cerif/frapo/funds">funds</a></li>
+  <li><a href="#http://purl.org/spar/fabio/hasPublicationVenue" title="http://purl.org/spar/fabio/hasPublicationVenue">has publication venue</a></li>
+  <li><a href="#hasAuthor" title="http://www.example.org/rirpdm#hasAuthor">hasAuthor</a></li>
+  <li><a href="#hasCentralHub" title="http://www.example.org/rirpdm#hasCentralHub">hasCentralHub</a></li>
+  <li><a href="#hasEvaluation" title="http://www.example.org/rirpdm#hasEvaluation">hasEvaluation</a></li>
+  <li><a href="#hasImplementationCase" title="http://www.example.org/rirpdm#hasImplementationCase">hasImplementationCase</a></li>
+  <li><a href="#hasLeadEntity" title="http://www.example.org/rirpdm#hasLeadEntity">hasLeadEntity</a></li>
+  <li><a href="#hasMemberEntity" title="http://www.example.org/rirpdm#hasMemberEntity">hasMemberEntity</a></li>
+  <li><a href="#hasNode" title="http://www.example.org/rirpdm#hasNode">hasNode</a></li>
+  <li><a href="#hasObserver" title="http://www.example.org/rirpdm#hasObserver">hasObserver</a></li>
+  <li><a href="#hasParticipant" title="http://www.example.org/rirpdm#hasParticipant">hasParticipant</a></li>
+  <li><a href="#hasProspectiveMember" title="http://www.example.org/rirpdm#hasProspectiveMember">hasProspectiveMember</a></li>
+  <li><a href="#hasScientificCase" title="http://www.example.org/rirpdm#hasScientificCase">hasScientificCase</a></li>
+  <li><a href="#hasScore" title="http://www.example.org/rirpdm#hasScore">hasScore</a></li>
+  <li><a href="#indirectlyExposedTo" title="http://www.example.org/rirpdm#indirectlyExposedTo">indirectlyExposedTo</a></li>
+  <li><a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/isAwardedBy" title="http://purl.org/cerif/frapo/isAwardedBy">is awarded by</a></li>
+  <li><a href="#http://purl.org/spar/cito/isCitedBy" title="http://purl.org/spar/cito/isCitedBy">is cited by</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/isFundedBy" title="http://purl.org/cerif/frapo/isFundedBy">is funded by</a></li>
+  <li><a href="#isInPhase" title="http://www.example.org/rirpdm#isInPhase">isInPhase</a></li>
+  <li><a href="#isNodeOf" title="http://www.example.org/rirpdm#isNodeOf">isNodeOf</a></li>
+  <li><a href="#isOutputOf" title="http://www.example.org/rirpdm#isOutputOf">isOutputOf</a></li>
+  <li><a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a></li>
+  <li><a href="#participatesIn" title="http://www.example.org/rirpdm#participatesIn">participatesIn</a></li>
+  <li><a href="#producesResearchOutput" title="http://www.example.org/rirpdm#producesResearchOutput">producesResearchOutput</a></li>
+  <li><a href="#resultsInProject" title="http://www.example.org/rirpdm#resultsInProject">resultsInProject</a></li>
+  <li><a href="#upgradesRI" title="http://www.example.org/rirpdm#upgradesRI">upgradesRI</a></li>
+  <li><a href="#http://purl.org/spar/cito/usesDataFrom" title="http://purl.org/spar/cito/usesDataFrom">uses data from</a></li>
+  <li><a href="#http://purl.org/spar/cito/usesMethodIn" title="http://purl.org/spar/cito/usesMethodIn">uses method in</a></li>
+ </ul>
+ <div class="entity" id="assessedAtPhase">
+  <h3>assessedAtPhase<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#assessedAtPhase</p>
+  <div class="comment">
+   <span class="markdown">The lifecycle phase at which an Evaluation was made.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Evaluation" title="http://www.example.org/rirpdm#Evaluation">Evaluation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="authorOf">
+  <h3>authorOf<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#authorOf</p>
+  <div class="comment">
+   <span class="markdown">Relates a researcher to a scientific publication they authored.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    VIVO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Researcher" title="http://www.example.org/rirpdm#Researcher">Researcher</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasAuthor" title="http://www.example.org/rirpdm#hasAuthor">hasAuthor</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/awards">
+  <h3>awards<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/awards</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://purl.org/cerif/frapo/isAwardedBy" title="http://purl.org/cerif/frapo/isAwardedBy">is awarded by</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/spar/cito/cites">
+  <h3>cites<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/cito/cites</p>
+  <div class="comment">
+   <span class="markdown">The citing entity cites the cited entity.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    CiTO
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> irreflexive</p>
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://purl.org/spar/cito/citesAsEvidence" title="http://purl.org/spar/cito/citesAsEvidence">cites as evidence</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/spar/cito/disputes" title="http://purl.org/spar/cito/disputes">disputes</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/spar/cito/extends" title="http://purl.org/spar/cito/extends">extends</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/spar/cito/usesDataFrom" title="http://purl.org/spar/cito/usesDataFrom">uses data from</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/spar/cito/usesMethodIn" title="http://purl.org/spar/cito/usesMethodIn">uses method in</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://purl.org/spar/cito/isCitedBy" title="http://purl.org/spar/cito/isCitedBy">is cited by</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/spar/cito/citesAsEvidence">
+  <h3>cites as evidence<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/cito/citesAsEvidence</p>
+  <div class="comment">
+   <span class="markdown">The citing entity cites the cited entity as evidence.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    CiTO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="collaboratesWith">
+  <h3>collaboratesWith<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#collaboratesWith</p>
+  <div class="comment">
+   <span class="markdown">Two research institutions collaborate. Symmetry means asserting A→B is enough; B→A is inferred.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> symmetric, irreflexive</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ResearchInstitution" title="http://www.example.org/rirpdm#ResearchInstitution">Research Institution</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ResearchInstitution" title="http://www.example.org/rirpdm#ResearchInstitution">Research Institution</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="contributesToRI">
+  <h3>contributesToRI<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#contributesToRI</p>
+  <div class="comment">
+   <span class="markdown">A researcher contributed to a research infrastructure via a publication they authored that is an output of that RI. Inferred via property chain: authorOf o isOutputOf.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Researcher" title="http://www.example.org/rirpdm#Researcher">Researcher</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#authorOf" title="http://www.example.org/rirpdm#authorOf">authorOf</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#isOutputOf" title="http://www.example.org/rirpdm#isOutputOf">isOutputOf</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/spar/cito/disputes">
+  <h3>disputes<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/cito/disputes</p>
+  <div class="comment">
+   <span class="markdown">The citing entity disputes a statement in the cited entity.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    CiTO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="evaluatesDimension">
+  <h3>evaluatesDimension<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#evaluatesDimension</p>
+  <div class="comment">
+   <span class="markdown">The scientific or implementation dimension that an Evaluation assesses.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Evaluation" title="http://www.example.org/rirpdm#Evaluation">Evaluation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ImplementationDimension" title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/spar/cito/extends">
+  <h3>extends<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/cito/extends</p>
+  <div class="comment">
+   <span class="markdown">The citing entity extends the cited work.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    CiTO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/funds">
+  <h3>funds<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/funds</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://purl.org/cerif/frapo/isFundedBy" title="http://purl.org/cerif/frapo/isFundedBy">is funded by</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/hasPublicationVenue">
+  <h3>has publication venue<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/hasPublicationVenue</p>
+  <div class="comment">
+   <span class="markdown">Relates a publication to the journal or proceedings it appeared in.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FaBiO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://purl.org/spar/fabio/Journal" title="http://purl.org/spar/fabio/Journal">Journal</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasAuthor">
+  <h3>hasAuthor<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasAuthor</p>
+  <div class="comment">
+   <span class="markdown">Relates a scientific publication to a researcher who authored it.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    VIVO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ScientificPublication" title="http://www.example.org/rirpdm#ScientificPublication">Scientific Publication</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Researcher" title="http://www.example.org/rirpdm#Researcher">Researcher</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#authorOf" title="http://www.example.org/rirpdm#authorOf">authorOf</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasCentralHub">
+  <h3>hasCentralHub<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasCentralHub</p>
+  <div class="comment">
+   <span class="markdown">Relates a distributed RI to its Central Hub, the truly international organisation that must guarantee effective operation, attribute optimal personnel capacity and coordinating power, and mediate across different scientific cultures. (ESFRI Roadmap 2026, p.15-16)</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">Distributed RI</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#CentralHub" title="http://www.example.org/rirpdm#CentralHub">Central Hub</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasEvaluation">
+  <h3>hasEvaluation<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasEvaluation</p>
+  <div class="comment">
+   <span class="markdown">Links a case to one of its per-dimension evaluations.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ImplementationCase" title="http://www.example.org/rirpdm#ImplementationCase">Implementation Case</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#ScientificCase" title="http://www.example.org/rirpdm#ScientificCase">Scientific Case</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Evaluation" title="http://www.example.org/rirpdm#Evaluation">Evaluation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasImplementationCase">
+  <h3>hasImplementationCase<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasImplementationCase</p>
+  <div class="comment">
+   <span class="markdown">Links a Proposal or Research Infrastructure to its Implementation Case assessment.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Proposal" title="http://www.example.org/rirpdm#Proposal">Proposal</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ImplementationCase" title="http://www.example.org/rirpdm#ImplementationCase">Implementation Case</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasLeadEntity">
+  <h3>hasLeadEntity<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasLeadEntity</p>
+  <div class="comment">
+   <span class="markdown">The agent leading the research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasMemberEntity">
+  <h3>hasMemberEntity<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasMemberEntity</p>
+  <div class="comment">
+   <span class="markdown">An agent that is a member of the research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasNode">
+  <h3>hasNode<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasNode</p>
+  <div class="comment">
+   <span class="markdown">Relates a distributed RI to one of its interlinked National Nodes, whose capacity and resources devoted to the RI must be clearly identified, coordinated and managed by the Central Hub. (ESFRI Roadmap 2026, p.15)</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">Distributed RI</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#NationalNode" title="http://www.example.org/rirpdm#NationalNode">National Node</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#isNodeOf" title="http://www.example.org/rirpdm#isNodeOf">isNodeOf</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasObserver">
+  <h3>hasObserver<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasObserver</p>
+  <div class="comment">
+   <span class="markdown">An agent observing the research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasParticipant">
+  <h3>hasParticipant<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasParticipant</p>
+  <div class="comment">
+   <span class="markdown">An agent participating in the research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasProspectiveMember">
+  <h3>hasProspectiveMember<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasProspectiveMember</p>
+  <div class="comment">
+   <span class="markdown">An agent that is a prospective member of the research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasScientificCase">
+  <h3>hasScientificCase<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasScientificCase</p>
+  <div class="comment">
+   <span class="markdown">Links a Proposal or Research Infrastructure to its Scientific Case assessment.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Proposal" title="http://www.example.org/rirpdm#Proposal">Proposal</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ScientificCase" title="http://www.example.org/rirpdm#ScientificCase">Scientific Case</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasScore">
+  <h3>hasScore<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasScore</p>
+  <div class="comment">
+   <span class="markdown">The score attributed by an Evaluation.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Evaluation" title="http://www.example.org/rirpdm#Evaluation">Evaluation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Score" title="http://www.example.org/rirpdm#Score">Score</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="indirectlyExposedTo">
+  <h3>indirectlyExposedTo<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#indirectlyExposedTo</p>
+  <div class="comment">
+   <span class="markdown">An RI is indirectly exposed to a funding source through a collaborating partner RI's funding chain. Inferred via property chain: involvesAgent o collaboratesWith o participatesIn o isSupportedBy.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://purl.org/cerif/frapo/FundingAgency" title="http://purl.org/cerif/frapo/FundingAgency">Funding Agency</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#http://purl.org/cerif/frapo/FundingProgramme" title="http://purl.org/cerif/frapo/FundingProgramme">Funding Programme</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">Grant</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#collaboratesWith" title="http://www.example.org/rirpdm#collaboratesWith">collaboratesWith</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#participatesIn" title="http://www.example.org/rirpdm#participatesIn">participatesIn</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="involvesAgent">
+  <h3>involvesAgent<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#involvesAgent</p>
+  <div class="comment">
+   <span class="markdown">An agent is involved in this research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#hasLeadEntity" title="http://www.example.org/rirpdm#hasLeadEntity">hasLeadEntity</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasMemberEntity" title="http://www.example.org/rirpdm#hasMemberEntity">hasMemberEntity</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasObserver" title="http://www.example.org/rirpdm#hasObserver">hasObserver</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasParticipant" title="http://www.example.org/rirpdm#hasParticipant">hasParticipant</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasProspectiveMember" title="http://www.example.org/rirpdm#hasProspectiveMember">hasProspectiveMember</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#participatesIn" title="http://www.example.org/rirpdm#participatesIn">participatesIn</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/isAwardedBy">
+  <h3>is awarded by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/isAwardedBy</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://purl.org/cerif/frapo/awards" title="http://purl.org/cerif/frapo/awards">awards</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/spar/cito/isCitedBy">
+  <h3>is cited by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/cito/isCitedBy</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    CiTO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/isFundedBy">
+  <h3>is funded by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/isFundedBy</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> asymmetric</p>
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://purl.org/cerif/frapo/funds" title="http://purl.org/cerif/frapo/funds">funds</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isInPhase">
+  <h3>isInPhase<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#isInPhase</p>
+  <div class="comment">
+   <span class="markdown">The current lifecycle phase of the research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isNodeOf">
+  <h3>isNodeOf<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#isNodeOf</p>
+  <div class="comment">
+   <span class="markdown">The distributed RI this national node belongs to.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NationalNode" title="http://www.example.org/rirpdm#NationalNode">National Node</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">Distributed RI</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hasNode" title="http://www.example.org/rirpdm#hasNode">hasNode</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isOutputOf">
+  <h3>isOutputOf<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#isOutputOf</p>
+  <div class="comment">
+   <span class="markdown">The research infrastructure that produced this output.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    EU Reg 2021 Art 2(22)
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#producesResearchOutput" title="http://www.example.org/rirpdm#producesResearchOutput">producesResearchOutput</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isSupportedBy">
+  <h3>isSupportedBy<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#isSupportedBy</p>
+  <div class="comment">
+   <span class="markdown">Connects an RI (or grant) to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">Grant</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://purl.org/cerif/frapo/FundingAgency" title="http://purl.org/cerif/frapo/FundingAgency">Funding Agency</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#http://purl.org/cerif/frapo/FundingProgramme" title="http://purl.org/cerif/frapo/FundingProgramme">Funding Programme</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">Grant</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="participatesIn">
+  <h3>participatesIn<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#participatesIn</p>
+  <div class="comment">
+   <span class="markdown">An agent participates in a research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#http://xmlns.com/foaf/0.1/Agent" title="http://xmlns.com/foaf/0.1/Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#involvesAgent" title="http://www.example.org/rirpdm#involvesAgent">involvesAgent</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="producesResearchOutput">
+  <h3>producesResearchOutput<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#producesResearchOutput</p>
+  <div class="comment">
+   <span class="markdown">A research output produced by the research infrastructure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    EU Reg 2021 Art 2(22); Annex I(1)(c)
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#isOutputOf" title="http://www.example.org/rirpdm#isOutputOf">isOutputOf</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="resultsInProject">
+  <h3>resultsInProject<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#resultsInProject</p>
+  <div class="comment">
+   <span class="markdown">The transition from a Proposal to the resulting selected RI; carries ex ante to ex post.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Proposal" title="http://www.example.org/rirpdm#Proposal">Proposal</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ESFRILandmark" title="http://www.example.org/rirpdm#ESFRILandmark">ESFRI Landmark</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#ESFRIProject" title="http://www.example.org/rirpdm#ESFRIProject">ESFRI Project</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="upgradesRI">
+  <h3>upgradesRI<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#upgradesRI</p>
+  <div class="comment">
+   <span class="markdown">The operational RI that a Major Upgrade proposal targets.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#MajorUpgrade" title="http://www.example.org/rirpdm#MajorUpgrade">Major Upgrade</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/spar/cito/usesDataFrom">
+  <h3>uses data from<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/cito/usesDataFrom</p>
+  <div class="comment">
+   <span class="markdown">The citing entity uses data from the cited entity.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    CiTO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/spar/cito/usesMethodIn">
+  <h3>uses method in<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/cito/usesMethodIn</p>
+  <div class="comment">
+   <span class="markdown">The citing entity uses a method described in the cited entity.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    CiTO
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://purl.org/spar/cito/cites" title="http://purl.org/spar/cito/cites">cites</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+ <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+ <ul class="hlist">
+  <li><a href="#accessPoint" title="http://www.example.org/rirpdm#accessPoint">accessPoint</a></li>
+  <li><a href="#accessPolicy" title="http://www.example.org/rirpdm#accessPolicy">accessPolicy</a></li>
+  <li><a href="#averageAnnualOperationCosts" title="http://www.example.org/rirpdm#averageAnnualOperationCosts">averageAnnualOperationCosts</a></li>
+  <li><a href="#compliesWithFAIR" title="http://www.example.org/rirpdm#compliesWithFAIR">compliesWithFAIR</a></li>
+  <li><a href="#dataManagementSystem" title="http://www.example.org/rirpdm#dataManagementSystem">dataManagementSystem</a></li>
+  <li><a href="#designCosts" title="http://www.example.org/rirpdm#designCosts">designCosts</a></li>
+  <li><a href="#ensuresLongTermPreservation" title="http://www.example.org/rirpdm#ensuresLongTermPreservation">ensuresLongTermPreservation</a></li>
+  <li><a href="#governanceStructure" title="http://www.example.org/rirpdm#governanceStructure">governanceStructure</a></li>
+  <li><a href="#http://purl.org/spar/fabio/hasDOI" title="http://purl.org/spar/fabio/hasDOI">has DOI</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/hasGrantNumber" title="http://purl.org/cerif/frapo/hasGrantNumber">has grant number</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/hasMonetaryValue" title="http://purl.org/cerif/frapo/hasMonetaryValue">has monetary value</a></li>
+  <li><a href="#hasKPI" title="http://www.example.org/rirpdm#hasKPI">hasKPI</a></li>
+  <li><a href="#humanResourcesPolicy" title="http://www.example.org/rirpdm#humanResourcesPolicy">humanResourcesPolicy</a></li>
+  <li><a href="#implementationCosts" title="http://www.example.org/rirpdm#implementationCosts">implementationCosts</a></li>
+  <li><a href="#jointInvestmentStrategy" title="http://www.example.org/rirpdm#jointInvestmentStrategy">jointInvestmentStrategy</a></li>
+  <li><a href="#legalStatus" title="http://www.example.org/rirpdm#legalStatus">legalStatus</a></li>
+  <li><a href="#longTermSitePlanning" title="http://www.example.org/rirpdm#longTermSitePlanning">longTermSitePlanning</a></li>
+  <li><a href="#preparationCosts" title="http://www.example.org/rirpdm#preparationCosts">preparationCosts</a></li>
+  <li><a href="#providesOpenAccess" title="http://www.example.org/rirpdm#providesOpenAccess">providesOpenAccess</a></li>
+  <li><a href="#serviceOffer" title="http://www.example.org/rirpdm#serviceOffer">serviceOffer</a></li>
+  <li><a href="#terminationCosts" title="http://www.example.org/rirpdm#terminationCosts">terminationCosts</a></li>
+  <li><a href="#totalInvestmentCosts" title="http://www.example.org/rirpdm#totalInvestmentCosts">totalInvestmentCosts</a></li>
+  <li><a href="#uniqueName" title="http://www.example.org/rirpdm#uniqueName">uniqueName</a></li>
+  <li><a href="#userProgramme" title="http://www.example.org/rirpdm#userProgramme">userProgramme</a></li>
+  <li><a href="#userSupportStructure" title="http://www.example.org/rirpdm#userSupportStructure">userSupportStructure</a></li>
+ </ul>
+ <div class="entity" id="accessPoint">
+  <h3>accessPoint<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#accessPoint</p>
+  <div class="comment">
+   <span class="markdown">The RI's entry point for external users to submit access proposals.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="accessPolicy">
+  <h3>accessPolicy<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#accessPolicy</p>
+  <div class="comment">
+   <span class="markdown">Policy governing external user access.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="averageAnnualOperationCosts">
+  <h3>averageAnnualOperationCosts<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#averageAnnualOperationCosts</p>
+  <div class="comment">
+   <span class="markdown">Annual cost of running the RI, operating access and delivering services.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="compliesWithFAIR">
+  <h3>compliesWithFAIR<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#compliesWithFAIR</p>
+  <div class="comment">
+   <span class="markdown">Whether the data adhere to the FAIR principles.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    EU Reg 2021 Art 14(3)
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ResearchData" title="http://www.example.org/rirpdm#ResearchData">Research Data</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#boolean" target="_blank" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="dataManagementSystem">
+  <h3>dataManagementSystem<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#dataManagementSystem</p>
+  <div class="comment">
+   <span class="markdown">The RI's system for metadata, storage, retrieval and data reduction/analysis.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="designCosts">
+  <h3>designCosts<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#designCosts</p>
+  <div class="comment">
+   <span class="markdown">Costs of conceptual design, technical design, feasibility study and proposal drafting.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="ensuresLongTermPreservation">
+  <h3>ensuresLongTermPreservation<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ensuresLongTermPreservation</p>
+  <div class="comment">
+   <span class="markdown">Whether long-term preservation of the data is ensured.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    EU Reg 2021 Art 14(3)
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ResearchData" title="http://www.example.org/rirpdm#ResearchData">Research Data</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#boolean" target="_blank" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="governanceStructure">
+  <h3>governanceStructure<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#governanceStructure</p>
+  <div class="comment">
+   <span class="markdown">The RI's governance structure with defined responsibilities, reporting lines and advisory/supervisory bodies.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/hasDOI">
+  <h3>has DOI<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/hasDOI</p>
+  <div class="comment">
+   <span class="markdown">Digital Object Identifier of the research output.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FaBiO
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/hasGrantNumber">
+  <h3>has grant number<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/hasGrantNumber</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/hasMonetaryValue">
+  <h3>has monetary value<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/hasMonetaryValue</p>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    FRAPO
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="hasKPI">
+  <h3>hasKPI<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasKPI</p>
+  <div class="comment">
+   <span class="markdown">Measurable KPIs covering scientific-service excellence and sustainability.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="humanResourcesPolicy">
+  <h3>humanResourcesPolicy<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#humanResourcesPolicy</p>
+  <div class="comment">
+   <span class="markdown">HR policy ensuring competences via equal-opportunity hiring, secondments, education and training.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="implementationCosts">
+  <h3>implementationCosts<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#implementationCosts</p>
+  <div class="comment">
+   <span class="markdown">Real or estimated costs for the Implementation Phase of an RI.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="jointInvestmentStrategy">
+  <h3>jointInvestmentStrategy<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#jointInvestmentStrategy</p>
+  <div class="comment">
+   <span class="markdown">Joint investment strategy aimed to strengthen nodes and shared facilities.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">Distributed RI</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="legalStatus">
+  <h3>legalStatus<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#legalStatus</p>
+  <div class="comment">
+   <span class="markdown">The legal status of the RI.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="longTermSitePlanning">
+  <h3>longTermSitePlanning<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#longTermSitePlanning</p>
+  <div class="comment">
+   <span class="markdown">Long-term plan for the site across its lifecycle.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI">Single-sited RI</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="preparationCosts">
+  <h3>preparationCosts<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#preparationCosts</p>
+  <div class="comment">
+   <span class="markdown">Real/estimated costs of the Preparation Phase.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="providesOpenAccess">
+  <h3>providesOpenAccess<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#providesOpenAccess</p>
+  <div class="comment">
+   <span class="markdown">Whether open access is ensured for the output (publications and underlying data).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    EU Reg 2021 Art 14(1)(a), Art 39(3)
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ResearchOutput" title="http://www.example.org/rirpdm#ResearchOutput">Research Output</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#boolean" target="_blank" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="serviceOffer">
+  <h3>serviceOffer<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#serviceOffer</p>
+  <div class="comment">
+   <span class="markdown">Service offer to the user community.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="terminationCosts">
+  <h3>terminationCosts<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#terminationCosts</p>
+  <div class="comment">
+   <span class="markdown">Decommissioning and environmental-mitigation costs at end of a lifecycle of an RI.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="totalInvestmentCosts">
+  <h3>totalInvestmentCosts<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#totalInvestmentCosts</p>
+  <div class="comment">
+   <span class="markdown">Sum of all lifecycle investments to fully implement a RI.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="uniqueName">
+  <h3>uniqueName<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#uniqueName</p>
+  <div class="comment">
+   <span class="markdown">The RI's unique specific name.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="userProgramme">
+  <h3>userProgramme<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#userProgramme</p>
+  <div class="comment">
+   <span class="markdown">A user programme using a relevant fraction of the RI's total capacity.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="userSupportStructure">
+  <h3>userSupportStructure<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#userSupportStructure</p>
+  <div class="comment">
+   <span class="markdown">A single-sited RI's structure (office, ancillary laboratories, accommodation, logistics, etc.) to support user access.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI Roadmap 2026
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI">Single-sited RI</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="annotationproperties">
+ <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+ <ul class="hlist">
+  <li><a href="#status" title="http://www.example.org/rirpdm#status">status</a></li>
+ </ul>
+ <div class="entity" id="status">
+  <h3>status<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#status</p>
+  <div class="comment">
+   <span class="markdown">Editorial status of the term: New, Extended, or Adopted.</span>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+ <h3 id="namedindividuals" class="list">Named Individuals</h3>
+ <ul class="hlist">
+  <li><a href="#Concept" title="http://www.example.org/rirpdm#Concept">Concept</a></li>
+  <li><a href="#http://purl.org/spar/fabio/ConferencePaper" title="http://purl.org/spar/fabio/ConferencePaper"> <span>Conference Paper</span> </a></li>
+  <li><a href="#Design" title="http://www.example.org/rirpdm#Design">Design</a></li>
+  <li><a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI"> <span>Distributed RI</span> </a></li>
+  <li><a href="#ENeedsAndData" title="http://www.example.org/rirpdm#ENeedsAndData">E-Needs &amp; Data</a></li>
+  <li><a href="#EnvironmentalConsiderations" title="http://www.example.org/rirpdm#EnvironmentalConsiderations">Environmental Considerations</a></li>
+  <li><a href="#Finances" title="http://www.example.org/rirpdm#Finances">Finances</a></li>
+  <li><a href="#GovernanceManagementAndHR" title="http://www.example.org/rirpdm#GovernanceManagementAndHR">Governance Management &amp; HR</a></li>
+  <li><a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant"> <span>Grant</span> </a></li>
+  <li><a href="#High" title="http://www.example.org/rirpdm#High">High</a></li>
+  <li><a href="#Implementation" title="http://www.example.org/rirpdm#Implementation">Implementation</a></li>
+  <li><a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle"> <span>Journal Article</span> </a></li>
+  <li><a href="#Low" title="http://www.example.org/rirpdm#Low">Low</a></li>
+  <li><a href="#Medium" title="http://www.example.org/rirpdm#Medium">Medium</a></li>
+  <li><a href="#Operation" title="http://www.example.org/rirpdm#Operation">Operation</a></li>
+  <li><a href="#PanEuropeanRelevance" title="http://www.example.org/rirpdm#PanEuropeanRelevance">Pan-European Relevance</a></li>
+  <li><a href="#Preparation" title="http://www.example.org/rirpdm#Preparation">Preparation</a></li>
+  <li><a href="#PreparatoryWorkAndPlanning" title="http://www.example.org/rirpdm#PreparatoryWorkAndPlanning">Preparatory Work &amp; Planning</a></li>
+  <li><a href="#http://purl.org/spar/fabio/ReportDocument" title="http://purl.org/spar/fabio/ReportDocument"> <span>Report</span> </a></li>
+  <li><a href="#ResearchInfrastructure" title="http://www.example.org/rirpdm#ResearchInfrastructure"> <span>Research Infrastructure</span> </a></li>
+  <li><a href="#Risks" title="http://www.example.org/rirpdm#Risks">Risks</a></li>
+  <li><a href="#ScientificExcellence" title="http://www.example.org/rirpdm#ScientificExcellence">Scientific Excellence</a></li>
+  <li><a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI"> <span>Single-sited RI</span> </a></li>
+  <li><a href="#SocioEconomicImpact" title="http://www.example.org/rirpdm#SocioEconomicImpact">Socio-Economic Impact</a></li>
+  <li><a href="#StakeholderCommitment" title="http://www.example.org/rirpdm#StakeholderCommitment">Stakeholder Commitment</a></li>
+  <li><a href="#Termination" title="http://www.example.org/rirpdm#Termination">Termination</a></li>
+  <li><a href="#http://purl.org/spar/fabio/Thesis" title="http://purl.org/spar/fabio/Thesis"> <span>Thesis</span> </a></li>
+  <li><a href="#UserStrategyAndAccessPolicy" title="http://www.example.org/rirpdm#UserStrategyAndAccessPolicy">User Strategy &amp; Access Policy</a></li>
+  <li><a href="#VeryHigh" title="http://www.example.org/rirpdm#VeryHigh">Very High</a></li>
+  <li><a href="#VirtualRI" title="http://www.example.org/rirpdm#VirtualRI"> <span>Virtual RI</span> </a></li>
+ </ul>
+ <div class="entity" id="Concept">
+  <h3>Concept<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Concept</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/ConferencePaper">
+  <h3>Conference Paper<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/ConferencePaper</p>
+  <dl class="description">
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/OutputTypes#ConferenceProceedingsArticle" target="_blank" title="https://w3id.org/cerif/vocab/OutputTypes#ConferenceProceedingsArticle">Conference Proceedings Article</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/ConferencePaper">class</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Design">
+  <h3>Design<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Design</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="DistributedRI">
+  <h3>Distributed RI<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#DistributedRI</p>
+  <dl class="description">
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI">Single-sited RI</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Distributed" target="_blank" title="https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Distributed">Distributed</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#DistributedRI">class</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ENeedsAndData">
+  <h3>E-Needs &amp; Data<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ENeedsAndData</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="EnvironmentalConsiderations">
+  <h3>Environmental Considerations<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#EnvironmentalConsiderations</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Finances">
+  <h3>Finances<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Finances</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ImplementationDimension" title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="GovernanceManagementAndHR">
+  <h3>Governance Management &amp; HR<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#GovernanceManagementAndHR</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ImplementationDimension" title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/cerif/frapo/Grant">
+  <h3>Grant<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/cerif/frapo/Grant</p>
+  <dl class="description">
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/ActivityFundingTypes#Grant" target="_blank" title="https://w3id.org/cerif/vocab/ActivityFundingTypes#Grant">Grant</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/cerif/frapo/Grant">class</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="High">
+  <h3>High<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#High</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Score" title="http://www.example.org/rirpdm#Score">Score</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Implementation">
+  <h3>Implementation<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Implementation</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">has close match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#UnderConstruction" target="_blank" title="https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#UnderConstruction">Under Construction</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/JournalArticle">
+  <h3>Journal Article<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/JournalArticle</p>
+  <dl class="description">
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/OutputTypes#JournalArticle" target="_blank" title="https://w3id.org/cerif/vocab/OutputTypes#JournalArticle">Journal Article</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/JournalArticle">class</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Low">
+  <h3>Low<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Low</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Score" title="http://www.example.org/rirpdm#Score">Score</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Medium">
+  <h3>Medium<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Medium</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Score" title="http://www.example.org/rirpdm#Score">Score</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Operation">
+  <h3>Operation<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Operation</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#InOperation" target="_blank" title="https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#InOperation">In Operation</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PanEuropeanRelevance">
+  <h3>Pan-European Relevance<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#PanEuropeanRelevance</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Preparation">
+  <h3>Preparation<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Preparation</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PreparatoryWorkAndPlanning">
+  <h3>Preparatory Work &amp; Planning<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#PreparatoryWorkAndPlanning</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ImplementationDimension" title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/ReportDocument">
+  <h3>Report<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/ReportDocument</p>
+  <dl class="description">
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/OutputTypes#Report" target="_blank" title="https://w3id.org/cerif/vocab/OutputTypes#Report">Report</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/ReportDocument">class</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ResearchInfrastructure">
+  <h3>Research Infrastructure<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ResearchInfrastructure</p>
+  <dl class="description">
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure" target="_blank" title="https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    class
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Risks">
+  <h3>Risks<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Risks</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ImplementationDimension" title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ScientificExcellence">
+  <h3>Scientific Excellence<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ScientificExcellence</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="SingleSitedRI">
+  <h3>Single-sited RI<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#SingleSitedRI</p>
+  <dl class="description">
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI">Distributed RI</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#SingleLocation" target="_blank" title="https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#SingleLocation">Single Location</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#SingleSitedRI">class</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="SocioEconomicImpact">
+  <h3>Socio-Economic Impact<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#SocioEconomicImpact</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="StakeholderCommitment">
+  <h3>Stakeholder Commitment<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#StakeholderCommitment</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ImplementationDimension" title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Termination">
+  <h3>Termination<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Termination</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/spar/fabio/Thesis">
+  <h3>Thesis<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/spar/fabio/Thesis</p>
+  <dl class="description">
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">has close match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/OutputTypes#PhDThesis" target="_blank" title="https://w3id.org/cerif/vocab/OutputTypes#PhDThesis">Ph D Thesis</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#http://purl.org/spar/fabio/Thesis">class</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="UserStrategyAndAccessPolicy">
+  <h3>User Strategy &amp; Access Policy<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#UserStrategyAndAccessPolicy</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="VeryHigh">
+  <h3>Very High<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#VeryHigh</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Score" title="http://www.example.org/rirpdm#Score">Score</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="VirtualRI">
+  <h3>Virtual RI<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#VirtualRI</p>
+  <dl class="description">
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup> <a href="https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Virtual" target="_blank" title="https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Virtual">Virtual</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is also defined as
+   </dt>
+   <dd>
+    <a href="#VirtualRI">class</a>
+   </dd>
+  </dl>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+</div>
+</div>
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>
