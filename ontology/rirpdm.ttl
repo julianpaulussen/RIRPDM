@@ -143,7 +143,7 @@ rirpdm:SingleSitedRI a owl:Class ;
 
 rirpdm:DistributedRI a owl:Class ;
     rdfs:label "Distributed RI"@en ;
-    rdfs:comment "A distributed RI consists of a Central Hub and interlinked National Nodes; the capacity and resources devoted to the RI must be clearly identified, coordinated and managed by the Central Hub according to agreed statutes and common rules and procedures of the RI Consortium. (ESFRI Roadmap 2026, p.15)"@en ;
+    rdfs:comment "An RI made up of a Central Hub plus interlinked National Nodes; the Hub coordinates and manages each Node's RI-dedicated capacity under the RI Consortium's shared rules."@en ;
     rdfs:subClassOf rirpdm:ResearchInfrastructure ;
     skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Distributed> ;
     rirpdm:status "New" ;
@@ -151,7 +151,7 @@ rirpdm:DistributedRI a owl:Class ;
 
 rirpdm:VirtualRI a owl:Class ;
     rdfs:label "Virtual RI"@en ;
-    rdfs:comment "One of the three RI types under the applied definition of research infrastructure: facilities that provide resources and services for research communities, which \"may, where relevant, be used beyond research... and they may be single sited, virtual or distributed\". (ESFRI Roadmap 2026, p.14, citing Art 2(1) Horizon Europe Regulation)"@en ;
+    rdfs:comment "An RI with no fixed physical site: its resources and services are accessed remotely rather than in person."@en ;
     rdfs:subClassOf rirpdm:ResearchInfrastructure ;
     skos:exactMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureTypes#Virtual> ;
     rirpdm:status "New" ;
@@ -963,8 +963,8 @@ rirpdm:hasAuthor a owl:ObjectProperty ;
     rdfs:range  rirpdm:Researcher ;
     owl:inverseOf rirpdm:authorOf ;
     rdfs:seeAlso vivo:hasAuthor ;
-    rirpdm:status "New" ;
-    dcterms:source "EU Reg 2021 Art 2(22)" .
+    rirpdm:status "Extended" ;
+    dcterms:source "VIVO" .
 
 rirpdm:authorOf a owl:ObjectProperty ;
     rdfs:label "authorOf"@en ;
@@ -972,8 +972,8 @@ rirpdm:authorOf a owl:ObjectProperty ;
     rdfs:domain rirpdm:Researcher ;
     rdfs:range  rirpdm:ScientificPublication ;
     owl:inverseOf rirpdm:hasAuthor ;
-    rirpdm:status "New" ;
-    dcterms:source "EU Reg 2021 Art 2(22)" .
+    rirpdm:status "Extended" ;
+    dcterms:source "VIVO" .
 
 rirpdm:contributesToRI a owl:ObjectProperty ;
     rdfs:label "contributesToRI"@en ;
