@@ -893,6 +893,16 @@ rirpdm:collaboratesWith a owl:ObjectProperty , owl:SymmetricProperty , owl:Irref
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
+# --- Indirect funder exposure via collaboration (CQ09) -----------------------
+
+rirpdm:indirectlyExposedTo a owl:ObjectProperty ;
+    rdfs:label "indirectlyExposedTo"@en ;
+    rdfs:comment "An RI is indirectly exposed to a funding source through a collaborating partner RI's funding chain. Inferred via property chain: involvesAgent o collaboratesWith o participatesIn o isSupportedBy."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range  [ a owl:Class ; owl:unionOf ( frapo:Grant frapo:FundingProgramme frapo:FundingAgency ) ] ;
+    owl:propertyChainAxiom ( rirpdm:involvesAgent rirpdm:collaboratesWith rirpdm:participatesIn rirpdm:isSupportedBy ) ;
+    rirpdm:status "New" .
+
 # --- Funding (FRAPO) ---------------------------------------------------------
 
 frapo:isFundedBy a owl:ObjectProperty , owl:AsymmetricProperty ;
