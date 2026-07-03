@@ -36,9 +36,24 @@ curl -o ontology/nfdicore.owl https://raw.githubusercontent.com/ISE-FIZKarlsruhe
 
 ## Ontology visualization
 
-Todo: simply host widoco-generated HTML on GitHub Pages.
-
 Open [WebVOWL](https://service.tib.eu/webvowl/) → Upload → select `ontology/rirpdm.ttl` to render the full schema as an interactive graph.
+
+## Ontology documentation (Widoco)
+
+Live spec: https://julianpaulussen.github.io/RIRPDM/
+
+Auto-built and deployed to `gh-pages` on every push to `main` via `.github/workflows/docs.yml`. To generate locally:
+
+```bash
+wget -O widoco.jar https://github.com/dgarijo/Widoco/releases/download/v1.4.25/widoco-1.4.25-jar-with-dependencies_JDK-17.jar
+
+java -jar widoco.jar -ontFile ontology/rirpdm.ttl -outFolder docs \
+  -uniteSections -includeAnnotationProperties -getOntologyMetadata \
+  -noPlaceHolderText -rewriteAll -webVowl
+```
+```bash
+cd docs && python3 -m http.server 8000
+```
 
 ## Loading in Protégé
 

@@ -24,7 +24,7 @@ jobs:
           mkdir public
           java -jar widoco.jar -ontFile ontology/rirpdm.ttl -outFolder public \
             -uniteSections -includeAnnotationProperties -getOntologyMetadata \
-            -noPlaceHolderText -rewriteAll -webVowl
+            -noPlaceHolderText -rewriteAll -webVowl -displayDirectImportsOnly
           cp public/index-en.html public/index.html
 
       - name: Deploy to GitHub Pages
