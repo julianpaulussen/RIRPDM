@@ -9,6 +9,82 @@
     } ]
   } ]
 }, {
+  "@id" : "_:genid121",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
+  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+    "@list" : [ {
+      "@id" : "http://www.example.org/rirpdm#Concept"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Design"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Implementation"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Operation"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Preparation"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Termination"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid128",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
+  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+    "@list" : [ {
+      "@id" : "http://www.example.org/rirpdm#DeliveryOfEducationAndTraining"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#EnablingScientificExcellence"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#EnhancingTransnationalCollaboration"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#FacilitatingEconomicActivities"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#FacilitatingInternationalCooperation"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OptimisingDataUse"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OptimisingManagement"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OutreachToThePublic"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ProvisionOfScientificAdvice"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid138",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
+  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+    "@list" : [ {
+      "@id" : "http://www.example.org/rirpdm#ENeedsAndData"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#EnvironmentalConsiderations"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#PanEuropeanRelevance"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ScientificExcellence"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#SocioEconomicImpact"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#UserStrategyAndAccessPolicy"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid145",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
+  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+    "@list" : [ {
+      "@id" : "http://www.example.org/rirpdm#Finances"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#GovernanceManagementAndHR"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#PreparatoryWorkAndPlanning"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Risks"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#StakeholderCommitment"
+    } ]
+  } ]
+}, {
   "@id" : "_:genid15",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
@@ -18,6 +94,36 @@
       "@id" : "http://purl.org/cerif/frapo/FundingProgramme"
     }, {
       "@id" : "http://purl.org/cerif/frapo/Grant"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid151",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
+  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+    "@list" : [ {
+      "@id" : "http://www.example.org/rirpdm#High"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Low"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Medium"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#VeryHigh"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid156",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointProperties" ],
+  "http://www.w3.org/2002/07/owl#members" : [ {
+    "@list" : [ {
+      "@id" : "http://www.example.org/rirpdm#hasLeadEntity"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#hasMemberEntity"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#hasObserver"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#hasParticipant"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#hasProspectiveMember"
     } ]
   } ]
 }, {
@@ -113,59 +219,47 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
-      "@id" : "http://www.example.org/rirpdm#Concept"
+      "@id" : "http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications"
     }, {
-      "@id" : "http://www.example.org/rirpdm#Design"
+      "@id" : "http://www.example.org/rirpdm#EngagementByDirectContact"
     }, {
-      "@id" : "http://www.example.org/rirpdm#Implementation"
+      "@id" : "http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable"
     }, {
-      "@id" : "http://www.example.org/rirpdm#Operation"
+      "@id" : "http://www.example.org/rirpdm#IncomeFromCommercialActivities"
     }, {
-      "@id" : "http://www.example.org/rirpdm#Preparation"
+      "@id" : "http://www.example.org/rirpdm#InternationalTrainees"
     }, {
-      "@id" : "http://www.example.org/rirpdm#Termination"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid49",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#maxCardinality" : [ {
-    "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
-    "@value" : "6"
-  } ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "http://www.example.org/rirpdm#hasEvaluation"
-  } ]
-}, {
-  "@id" : "_:genid50",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#oneOf" : [ {
-    "@list" : [ {
-      "@id" : "http://www.example.org/rirpdm#ENeedsAndData"
+      "@id" : "http://www.example.org/rirpdm#NumberOfESFRIMembers"
     }, {
-      "@id" : "http://www.example.org/rirpdm#EnvironmentalConsiderations"
+      "@id" : "http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI"
     }, {
-      "@id" : "http://www.example.org/rirpdm#PanEuropeanRelevance"
+      "@id" : "http://www.example.org/rirpdm#NumberOfNonESFRIMembers"
     }, {
-      "@id" : "http://www.example.org/rirpdm#ScientificExcellence"
+      "@id" : "http://www.example.org/rirpdm#NumberOfPublications"
     }, {
-      "@id" : "http://www.example.org/rirpdm#SocioEconomicImpact"
+      "@id" : "http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally"
     }, {
-      "@id" : "http://www.example.org/rirpdm#UserStrategyAndAccessPolicy"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid58",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#oneOf" : [ {
-    "@list" : [ {
-      "@id" : "http://www.example.org/rirpdm#High"
+      "@id" : "http://www.example.org/rirpdm#NumberOfUserRequestsForAccess"
     }, {
-      "@id" : "http://www.example.org/rirpdm#Low"
+      "@id" : "http://www.example.org/rirpdm#NumberOfUsersServed"
     }, {
-      "@id" : "http://www.example.org/rirpdm#Medium"
+      "@id" : "http://www.example.org/rirpdm#OutreachThroughMedia"
     }, {
-      "@id" : "http://www.example.org/rirpdm#VeryHigh"
+      "@id" : "http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#PercentageOfTopCitedPublications"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Revenues"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#TrainingOfNonRIStaff"
     } ]
   } ]
 }, {
@@ -179,21 +273,33 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid63",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
-  "http://www.w3.org/2002/07/owl#members" : [ {
+  "@id" : "_:genid64",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
-      "@id" : "http://www.example.org/rirpdm#AssociatedCountry"
+      "@id" : "http://www.example.org/rirpdm#DeliveryOfEducationAndTraining"
     }, {
-      "@id" : "http://www.example.org/rirpdm#MemberState"
+      "@id" : "http://www.example.org/rirpdm#EnablingScientificExcellence"
     }, {
-      "@id" : "http://www.example.org/rirpdm#ThirdCountry"
+      "@id" : "http://www.example.org/rirpdm#EnhancingTransnationalCollaboration"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#FacilitatingEconomicActivities"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#FacilitatingInternationalCooperation"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OptimisingDataUse"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OptimisingManagement"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OutreachToThePublic"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ProvisionOfScientificAdvice"
     } ]
   } ]
 }, {
-  "@id" : "_:genid67",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
-  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+  "@id" : "_:genid74",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
       "@id" : "http://www.example.org/rirpdm#Concept"
     }, {
@@ -209,9 +315,19 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid74",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
-  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+  "@id" : "_:genid81",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#maxCardinality" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "@value" : "6"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://www.example.org/rirpdm#hasEvaluation"
+  } ]
+}, {
+  "@id" : "_:genid82",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
       "@id" : "http://www.example.org/rirpdm#ENeedsAndData"
     }, {
@@ -227,25 +343,19 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid81",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
-  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+  "@id" : "_:genid9",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
-      "@id" : "http://www.example.org/rirpdm#Finances"
+      "@id" : "http://www.example.org/rirpdm#Proposal"
     }, {
-      "@id" : "http://www.example.org/rirpdm#GovernanceManagementAndHR"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#PreparatoryWorkAndPlanning"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#Risks"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#StakeholderCommitment"
+      "@id" : "http://www.example.org/rirpdm#ResearchInfrastructure"
     } ]
   } ]
 }, {
-  "@id" : "_:genid87",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
-  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+  "@id" : "_:genid90",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
       "@id" : "http://www.example.org/rirpdm#High"
     }, {
@@ -257,29 +367,63 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid9",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+  "@id" : "_:genid95",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
+  "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
-      "@id" : "http://www.example.org/rirpdm#Proposal"
+      "@id" : "http://www.example.org/rirpdm#AssociatedCountry"
     }, {
-      "@id" : "http://www.example.org/rirpdm#ResearchInfrastructure"
+      "@id" : "http://www.example.org/rirpdm#MemberState"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ThirdCountry"
     } ]
   } ]
 }, {
-  "@id" : "_:genid92",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointProperties" ],
-  "http://www.w3.org/2002/07/owl#members" : [ {
+  "@id" : "_:genid99",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
+  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
-      "@id" : "http://www.example.org/rirpdm#hasLeadEntity"
+      "@id" : "http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications"
     }, {
-      "@id" : "http://www.example.org/rirpdm#hasMemberEntity"
+      "@id" : "http://www.example.org/rirpdm#EngagementByDirectContact"
     }, {
-      "@id" : "http://www.example.org/rirpdm#hasObserver"
+      "@id" : "http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable"
     }, {
-      "@id" : "http://www.example.org/rirpdm#hasParticipant"
+      "@id" : "http://www.example.org/rirpdm#IncomeFromCommercialActivities"
     }, {
-      "@id" : "http://www.example.org/rirpdm#hasProspectiveMember"
+      "@id" : "http://www.example.org/rirpdm#InternationalTrainees"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfESFRIMembers"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfNonESFRIMembers"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfPublications"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfUserRequestsForAccess"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfUsersServed"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OutreachThroughMedia"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#PercentageOfTopCitedPublications"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Revenues"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#TrainingOfNonRIStaff"
     } ]
   } ]
 }, {
@@ -940,6 +1084,32 @@
     "@value" : "Central Hub"
   } ]
 }, {
+  "@id" : "http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 16"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#ProvisionOfScientificAdvice"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number of citations"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Number of times the RI or its projects are cited in policy related publications."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Citations in policy related publications"
+  } ]
+}, {
   "@id" : "http://www.example.org/rirpdm#Concept",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
@@ -968,6 +1138,16 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://xmlns.com/foaf/0.1/Agent"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#DeliveryOfEducationAndTraining",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Delivery of Education and Training"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#Design",
@@ -1063,6 +1243,52 @@
     "@id" : "http://www.example.org/rirpdm#ResearchInfrastructure"
   } ]
 }, {
+  "@id" : "http://www.example.org/rirpdm#EnablingScientificExcellence",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Enabling Scientific Excellence"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#EngagementByDirectContact",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 11"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#OutreachToThePublic"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number of visitors/participants; number and hours of events"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Outreach by public relations/direct contact: events organised or attended (by third parties), and visitors to the RI."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Engagement achieved by direct contact"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#EnhancingTransnationalCollaboration",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Enhancing Transnational Collaboration in Europe"
+  } ]
+}, {
   "@id" : "http://www.example.org/rirpdm#EnvironmentalConsiderations",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
@@ -1088,6 +1314,52 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Evaluation"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 21"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#OptimisingManagement"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Hours (facility RI) or number of data entries/sets/items/services (resource RI)"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Experimental time available, or size of resources database made available to users to faciliate research."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Extent of resources made available"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#FacilitatingEconomicActivities",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Facilitating Economic Activities"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#FacilitatingInternationalCooperation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Facilitating International Cooperation"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#Finances",
@@ -1173,6 +1445,115 @@
     "@id" : "_:genid36"
   } ]
 }, {
+  "@id" : "http://www.example.org/rirpdm#IncomeFromCommercialActivities",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 10"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#FacilitatingEconomicActivities"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Currency amount; number of entities"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Share of revenue from the RI's economic activities (sale of services/goods, access provision) reported in the annual accounts."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Income from commercial activities and the number of entities paying for service"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#InternationalTrainees",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 18"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#FacilitatingInternationalCooperation"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Person hours"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Person-hours of training opportunities provided by the RI made use of by trainees from non-ESFRI member countries."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "International trainees"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#KPI",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "One of the 21 key performance indicators, each belonging to exactly one KPIObjective."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "KPI"
+  } ],
+  "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
+    "@id" : "_:genid42"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#KPIMeasurement",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "One recorded value of a KPI for a research infrastructure in a given year."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "KPI Measurement"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#KPIObjective",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "One of the nine commonly held objectives against which RIs monitor performance."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "KPI Objective"
+  } ],
+  "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
+    "@id" : "_:genid64"
+  } ]
+}, {
   "@id" : "http://www.example.org/rirpdm#LifecyclePhase",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://purl.org/dc/terms/source" : [ {
@@ -1190,7 +1571,7 @@
     "@value" : "Lifecycle Phase"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
-    "@id" : "_:genid42"
+    "@id" : "_:genid74"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#Low",
@@ -1296,6 +1677,188 @@
     "@id" : "http://www.example.org/rirpdm#Proposal"
   } ]
 }, {
+  "@id" : "http://www.example.org/rirpdm#NumberOfESFRIMembers",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 7"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#EnhancingTransnationalCollaboration"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Number of organisations/countries with a formal engagement (member, associated member, observer) based in an ESFRI member country."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Number of members of the RI from ESFRI countries"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 5"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#DeliveryOfEducationAndTraining"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Number of master and PhD students who have performed some of their studies at or using the services of the RI in a particular year regardless of whether they are funded/hosted by the RI or access it as a user."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Number of master and PhD students using the RI"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#NumberOfNonESFRIMembers",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 19"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#FacilitatingInternationalCooperation"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Number of organisations/countries with a formal engagement based in a non-ESFRI member country."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Number of members of the RI from non-ESFRI countries"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#NumberOfPublications",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 3"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#EnablingScientificExcellence"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Number of publications based on research performed using facilities/resources of the RI. The publication is shared by the countries of the home institutions of all authors, the sum of the shares being one."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Number of publications"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 14"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#OptimisingDataUse"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number of data users"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Number of data sets produced as a consequence of access to the RI that are subsequently accessed by other users."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Number of publicly available data sets used externally"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#NumberOfUserRequestsForAccess",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 1"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#EnablingScientificExcellence"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "For access to facilities: number of user proposals for access. For resource RIs: number of users of resources (collections, data, services)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Number of user requests for access"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#NumberOfUsersServed",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 2"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#EnablingScientificExcellence"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "For access to facilities: number of granted proposals/accepted users. For resource RIs: number of downloads/studies or service provisions."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Number of users served"
+  } ]
+}, {
   "@id" : "http://www.example.org/rirpdm#Operation",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
@@ -1309,6 +1872,88 @@
     "@id" : "https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#InOperation"
   } ]
 }, {
+  "@id" : "http://www.example.org/rirpdm#OptimisingDataUse",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Optimising Data Use"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#OptimisingManagement",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Optimising Management"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#OutreachThroughMedia",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 12"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#OutreachToThePublic"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number of media mentions"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Impact of press and communication actions in raising awareness of RI mission, activities and societal relevance of results"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Outreach through printed, broadcast and web-based media"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#OutreachToThePublic",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Outreach to the Public"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 13"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#OutreachToThePublic"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Web/social media analytics (users, followers, interactions)"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Website popularity and level of social media engagement: Web (e.g. Google analytics) analytics and social media analytic tools (Twitter, Linkedin, Youtube, Flickr, Facebook, etc.)"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Outreach via the RI's own web and social media activities"
+  } ]
+}, {
   "@id" : "http://www.example.org/rirpdm#PanEuropeanRelevance",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
@@ -1317,6 +1962,58 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Pan-European Relevance"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 15"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#ProvisionOfScientificAdvice"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number of invitations/contributions per annum"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Number of participations, reimbursed by the organisers, in policy related working groups, committees & advisory boards. In the case of working groups, etc, organised by intergovernmental organisations, the invitation suffices."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Participation by RIs in policy related activities"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#PercentageOfTopCitedPublications",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 4"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#EnablingScientificExcellence"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Percentage"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Percentage of RI-enabled publications that, compared with publications in the same field and year, belong to the top 10% most frequently cited."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Percentage of top (10%) cited publications"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#Preparation",
@@ -1354,6 +2051,16 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Proposal"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#ProvisionOfScientificAdvice",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Provision of Scientific Advice"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#RFO",
@@ -1531,6 +2238,32 @@
     "@id" : "http://xmlns.com/foaf/0.1/Person"
   } ]
 }, {
+  "@id" : "http://www.example.org/rirpdm#Revenues",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 20"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#OptimisingManagement"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Amount in national currency"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Sources of revenue (member contributions, third-party contributions, project funding, commercial revenue, other) and their contributions to investment and operational costs."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Revenues"
+  } ]
+}, {
   "@id" : "http://www.example.org/rirpdm#Risks",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
@@ -1558,7 +2291,7 @@
     "@value" : "Scientific Case"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid49"
+    "@id" : "_:genid81"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#ScientificDimension",
@@ -1578,7 +2311,7 @@
     "@value" : "Scientific Dimension"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
-    "@id" : "_:genid50"
+    "@id" : "_:genid82"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#ScientificExcellence",
@@ -1638,7 +2371,85 @@
     "@value" : "Score"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
-    "@id" : "_:genid58"
+    "@id" : "_:genid90"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 9"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#FacilitatingEconomicActivities"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "% and number"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Extent to which scientists from industry, the RI and possibly universities collaborate and exchange knowledge."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Share of users associated with industry and publications with industry"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 8"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#EnhancingTransnationalCollaboration"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number and %"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Share of RI users and RI-enabled publications attributable to each ESFRI member country, per host institution of the user/author."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Share of users and publications per ESFRI member country"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 17"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#FacilitatingInternationalCooperation"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Number and %"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Share of RI users and RI-enabled publications attributable to each non-ESFRI member country, per host institution of the user/author."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Share of users and publications per non-ESFRI member country"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#SingleSitedRI",
@@ -1712,6 +2523,32 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://www.example.org/rirpdm#Country"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#TrainingOfNonRIStaff",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019, Annex 5 KPI 6"
+  } ],
+  "http://www.example.org/rirpdm#forObjective" : [ {
+    "@id" : "http://www.example.org/rirpdm#DeliveryOfEducationAndTraining"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.example.org/rirpdm#unitOfMeasure" : [ {
+    "@value" : "Person hours"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Total person-hours for which people external to the RI made use of training opportunities provided by the RI (face-to-face and on-line)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Training of people who are not RI staff"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#UserStrategyAndAccessPolicy",
@@ -2043,6 +2880,29 @@
     "@id" : "_:genid3"
   } ]
 }, {
+  "@id" : "http://www.example.org/rirpdm#forObjective",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The KPIObjective a KPI belongs to."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "forObjective"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIObjective"
+  } ]
+}, {
   "@id" : "http://www.example.org/rirpdm#governanceStructure",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://purl.org/dc/terms/source" : [ {
@@ -2161,27 +3021,27 @@
     "@id" : "http://www.example.org/rirpdm#ImplementationCase"
   } ]
 }, {
-  "@id" : "http://www.example.org/rirpdm#hasKPI",
-  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "@id" : "http://www.example.org/rirpdm#hasKPIMeasurement",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://purl.org/dc/terms/source" : [ {
-    "@value" : "ESFRI Roadmap 2026"
+    "@value" : "ESFRI WG Monitoring Report 2019"
   } ],
   "http://www.example.org/rirpdm#status" : [ {
     "@value" : "New"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Measurable KPIs covering scientific-service excellence and sustainability."
+    "@value" : "Relates a research infrastructure to one of its recorded KPI measurements."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "http://www.example.org/rirpdm#ResearchInfrastructure"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
-    "@value" : "hasKPI"
+    "@value" : "hasKPIMeasurement"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+    "@id" : "http://www.example.org/rirpdm#KPIMeasurement"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#hasLeadEntity",
@@ -2653,6 +3513,75 @@
     "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
+  "@id" : "http://www.example.org/rirpdm#measurementYear",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The year to which a KPI measurement applies; KPIs are monitored annually."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIMeasurement"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "measurementYear"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#gYear"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#measuresKPI",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The KPI that a KPIMeasurement records a value for."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIMeasurement"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "measuresKPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#numericValue",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The recorded value of a KPI measurement, expressed in the measured KPI's unitOfMeasure."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPIMeasurement"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "numericValue"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#decimal"
+  } ]
+}, {
   "@id" : "http://www.example.org/rirpdm#participatesIn",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://purl.org/dc/terms/source" : [ {
@@ -2866,6 +3795,29 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "uniqueName"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "http://www.example.org/rirpdm#unitOfMeasure",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@value" : "ESFRI WG Monitoring Report 2019"
+  } ],
+  "http://www.example.org/rirpdm#status" : [ {
+    "@value" : "New"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The unit in which a KPI's numericValue is expressed (e.g. Number, Percentage, Person hours)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.example.org/rirpdm#KPI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "unitOfMeasure"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://www.w3.org/2001/XMLSchema#string"

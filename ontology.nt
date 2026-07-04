@@ -192,6 +192,16 @@ _:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <http://www.example.org/rirpdm#evaluatesDimension> <http://www.w3.org/2000/01/rdf-schema#comment> "The scientific or implementation dimension that an Evaluation assesses."@en .
 <http://www.example.org/rirpdm#evaluatesDimension> <http://www.w3.org/2000/01/rdf-schema#label> "evaluatesDimension"@en .
 # 
+# http://www.example.org/rirpdm#forObjective
+<http://www.example.org/rirpdm#forObjective> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.example.org/rirpdm#forObjective> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.example.org/rirpdm#forObjective> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#forObjective> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#forObjective> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019" .
+<http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#forObjective> <http://www.w3.org/2000/01/rdf-schema#comment> "The KPIObjective a KPI belongs to."@en .
+<http://www.example.org/rirpdm#forObjective> <http://www.w3.org/2000/01/rdf-schema#label> "forObjective"@en .
+# 
 # http://www.example.org/rirpdm#hasAuthor
 <http://www.example.org/rirpdm#hasAuthor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://www.example.org/rirpdm#hasAuthor> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.example.org/rirpdm#ScientificPublication> .
@@ -245,6 +255,15 @@ _:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <http://www.example.org/rirpdm#hasImplementationCase> <http://www.example.org/rirpdm#status> "New" .
 <http://www.example.org/rirpdm#hasImplementationCase> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a Proposal or Research Infrastructure to its Implementation Case assessment."@en .
 <http://www.example.org/rirpdm#hasImplementationCase> <http://www.w3.org/2000/01/rdf-schema#label> "hasImplementationCase"@en .
+# 
+# http://www.example.org/rirpdm#hasKPIMeasurement
+<http://www.example.org/rirpdm#hasKPIMeasurement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.example.org/rirpdm#hasKPIMeasurement> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.example.org/rirpdm#ResearchInfrastructure> .
+<http://www.example.org/rirpdm#hasKPIMeasurement> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.example.org/rirpdm#KPIMeasurement> .
+<http://www.example.org/rirpdm#hasKPIMeasurement> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019" .
+<http://www.example.org/rirpdm#hasKPIMeasurement> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#hasKPIMeasurement> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a research infrastructure to one of its recorded KPI measurements."@en .
+<http://www.example.org/rirpdm#hasKPIMeasurement> <http://www.w3.org/2000/01/rdf-schema#label> "hasKPIMeasurement"@en .
 # 
 # http://www.example.org/rirpdm#hasLeadEntity
 <http://www.example.org/rirpdm#hasLeadEntity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
@@ -435,6 +454,16 @@ _:genid26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#isSupportedBy> <http://www.w3.org/2000/01/rdf-schema#comment> "Connects an RI (or grant) to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme."@en .
 <http://www.example.org/rirpdm#isSupportedBy> <http://www.w3.org/2000/01/rdf-schema#label> "isSupportedBy"@en .
 # 
+# http://www.example.org/rirpdm#measuresKPI
+<http://www.example.org/rirpdm#measuresKPI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.example.org/rirpdm#measuresKPI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.example.org/rirpdm#measuresKPI> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.example.org/rirpdm#KPIMeasurement> .
+<http://www.example.org/rirpdm#measuresKPI> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#measuresKPI> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019" .
+<http://www.example.org/rirpdm#measuresKPI> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#measuresKPI> <http://www.w3.org/2000/01/rdf-schema#comment> "The KPI that a KPIMeasurement records a value for."@en .
+<http://www.example.org/rirpdm#measuresKPI> <http://www.w3.org/2000/01/rdf-schema#label> "measuresKPI"@en .
+# 
 # http://www.example.org/rirpdm#participatesIn
 <http://www.example.org/rirpdm#participatesIn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://www.example.org/rirpdm#participatesIn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://xmlns.com/foaf/0.1/Agent> .
@@ -583,15 +612,6 @@ _:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#governanceStructure> <http://www.w3.org/2000/01/rdf-schema#comment> "The RI's governance structure with defined responsibilities, reporting lines and advisory/supervisory bodies."@en .
 <http://www.example.org/rirpdm#governanceStructure> <http://www.w3.org/2000/01/rdf-schema#label> "governanceStructure"@en .
 # 
-# http://www.example.org/rirpdm#hasKPI
-<http://www.example.org/rirpdm#hasKPI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://www.example.org/rirpdm#hasKPI> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.example.org/rirpdm#ResearchInfrastructure> .
-<http://www.example.org/rirpdm#hasKPI> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
-<http://www.example.org/rirpdm#hasKPI> <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" .
-<http://www.example.org/rirpdm#hasKPI> <http://www.example.org/rirpdm#status> "New" .
-<http://www.example.org/rirpdm#hasKPI> <http://www.w3.org/2000/01/rdf-schema#comment> "Measurable KPIs covering scientific-service excellence and sustainability."@en .
-<http://www.example.org/rirpdm#hasKPI> <http://www.w3.org/2000/01/rdf-schema#label> "hasKPI"@en .
-# 
 # http://www.example.org/rirpdm#humanResourcesPolicy
 <http://www.example.org/rirpdm#humanResourcesPolicy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://www.example.org/rirpdm#humanResourcesPolicy> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.example.org/rirpdm#ResearchInfrastructure> .
@@ -636,6 +656,26 @@ _:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#longTermSitePlanning> <http://www.example.org/rirpdm#status> "New" .
 <http://www.example.org/rirpdm#longTermSitePlanning> <http://www.w3.org/2000/01/rdf-schema#comment> "Long-term plan for the site across its lifecycle."@en .
 <http://www.example.org/rirpdm#longTermSitePlanning> <http://www.w3.org/2000/01/rdf-schema#label> "longTermSitePlanning"@en .
+# 
+# http://www.example.org/rirpdm#measurementYear
+<http://www.example.org/rirpdm#measurementYear> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.example.org/rirpdm#measurementYear> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.example.org/rirpdm#measurementYear> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.example.org/rirpdm#KPIMeasurement> .
+<http://www.example.org/rirpdm#measurementYear> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#gYear> .
+<http://www.example.org/rirpdm#measurementYear> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019" .
+<http://www.example.org/rirpdm#measurementYear> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#measurementYear> <http://www.w3.org/2000/01/rdf-schema#comment> "The year to which a KPI measurement applies; KPIs are monitored annually."@en .
+<http://www.example.org/rirpdm#measurementYear> <http://www.w3.org/2000/01/rdf-schema#label> "measurementYear"@en .
+# 
+# http://www.example.org/rirpdm#numericValue
+<http://www.example.org/rirpdm#numericValue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.example.org/rirpdm#numericValue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.example.org/rirpdm#numericValue> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.example.org/rirpdm#KPIMeasurement> .
+<http://www.example.org/rirpdm#numericValue> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://www.example.org/rirpdm#numericValue> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019" .
+<http://www.example.org/rirpdm#numericValue> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#numericValue> <http://www.w3.org/2000/01/rdf-schema#comment> "The recorded value of a KPI measurement, expressed in the measured KPI's unitOfMeasure."@en .
+<http://www.example.org/rirpdm#numericValue> <http://www.w3.org/2000/01/rdf-schema#label> "numericValue"@en .
 # 
 # http://www.example.org/rirpdm#preparationCosts
 <http://www.example.org/rirpdm#preparationCosts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
@@ -690,6 +730,16 @@ _:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#uniqueName> <http://www.example.org/rirpdm#status> "New" .
 <http://www.example.org/rirpdm#uniqueName> <http://www.w3.org/2000/01/rdf-schema#comment> "The RI's unique specific name."@en .
 <http://www.example.org/rirpdm#uniqueName> <http://www.w3.org/2000/01/rdf-schema#label> "uniqueName"@en .
+# 
+# http://www.example.org/rirpdm#unitOfMeasure
+<http://www.example.org/rirpdm#unitOfMeasure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.example.org/rirpdm#unitOfMeasure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.example.org/rirpdm#unitOfMeasure> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#unitOfMeasure> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<http://www.example.org/rirpdm#unitOfMeasure> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019" .
+<http://www.example.org/rirpdm#unitOfMeasure> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#unitOfMeasure> <http://www.w3.org/2000/01/rdf-schema#comment> "The unit in which a KPI's numericValue is expressed (e.g. Number, Percentage, Person hours)."@en .
+<http://www.example.org/rirpdm#unitOfMeasure> <http://www.w3.org/2000/01/rdf-schema#label> "unitOfMeasure"@en .
 # 
 # http://www.example.org/rirpdm#userProgramme
 <http://www.example.org/rirpdm#userProgramme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
@@ -912,29 +962,146 @@ _:genid36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#ImplementationDimension> <http://www.w3.org/2000/01/rdf-schema#comment> "One of the five dimensions along which an Implementation Case is assessed."@en .
 <http://www.example.org/rirpdm#ImplementationDimension> <http://www.w3.org/2000/01/rdf-schema#label> "Implementation Dimension"@en .
 # 
-# http://www.example.org/rirpdm#LifecyclePhase
-<http://www.example.org/rirpdm#LifecyclePhase> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://www.example.org/rirpdm#LifecyclePhase> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid42 .
-_:genid42 <http://www.w3.org/2002/07/owl#oneOf> _:genid48 .
+# http://www.example.org/rirpdm#KPI
+<http://www.example.org/rirpdm#KPI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.example.org/rirpdm#KPI> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid42 .
+_:genid42 <http://www.w3.org/2002/07/owl#oneOf> _:genid63 .
+_:genid63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid62 .
+_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid61 .
+_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid60 .
+_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid59 .
+_:genid59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid58 .
+_:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid57 .
+_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid56 .
+_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid55 .
+_:genid55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid54 .
+_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid53 .
+_:genid53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid52 .
+_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid51 .
+_:genid51 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid50 .
+_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid49 .
+_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid48 .
 _:genid48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid47 .
 _:genid47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid46 .
 _:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid45 .
 _:genid45 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid44 .
 _:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid43 .
 _:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Termination> .
+_:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#TrainingOfNonRIStaff> .
 _:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Preparation> .
+_:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> .
 _:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid45 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Operation> .
+_:genid45 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> .
 _:genid45 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Implementation> .
+_:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> .
 _:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Design> .
+_:genid47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Revenues> .
 _:genid47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Concept> .
+_:genid48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#PercentageOfTopCitedPublications> .
 _:genid48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> .
+_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> .
+_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid51 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OutreachThroughMedia> .
+_:genid51 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfUsersServed> .
+_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> .
+_:genid53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> .
+_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfPublications> .
+_:genid55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfNonESFRIMembers> .
+_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> .
+_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfESFRIMembers> .
+_:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#InternationalTrainees> .
+_:genid59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#IncomeFromCommercialActivities> .
+_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> .
+_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EngagementByDirectContact> .
+_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> .
+_:genid63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 _:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.example.org/rirpdm#KPI> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019" .
+<http://www.example.org/rirpdm#KPI> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#KPI> <http://www.w3.org/2000/01/rdf-schema#comment> "One of the 21 key performance indicators, each belonging to exactly one KPIObjective."@en .
+<http://www.example.org/rirpdm#KPI> <http://www.w3.org/2000/01/rdf-schema#label> "KPI"@en .
+# 
+# http://www.example.org/rirpdm#KPIMeasurement
+<http://www.example.org/rirpdm#KPIMeasurement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.example.org/rirpdm#KPIMeasurement> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019" .
+<http://www.example.org/rirpdm#KPIMeasurement> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#KPIMeasurement> <http://www.w3.org/2000/01/rdf-schema#comment> "One recorded value of a KPI for a research infrastructure in a given year."@en .
+<http://www.example.org/rirpdm#KPIMeasurement> <http://www.w3.org/2000/01/rdf-schema#label> "KPI Measurement"@en .
+# 
+# http://www.example.org/rirpdm#KPIObjective
+<http://www.example.org/rirpdm#KPIObjective> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.example.org/rirpdm#KPIObjective> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid64 .
+_:genid64 <http://www.w3.org/2002/07/owl#oneOf> _:genid73 .
+_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid72 .
+_:genid72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid71 .
+_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid70 .
+_:genid70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid69 .
+_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid68 .
+_:genid68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid67 .
+_:genid67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid66 .
+_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid65 .
+_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ProvisionOfScientificAdvice> .
+_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OutreachToThePublic> .
+_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OptimisingManagement> .
+_:genid67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OptimisingDataUse> .
+_:genid68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#FacilitatingInternationalCooperation> .
+_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#FacilitatingEconomicActivities> .
+_:genid70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EnhancingTransnationalCollaboration> .
+_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EnablingScientificExcellence> .
+_:genid72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#DeliveryOfEducationAndTraining> .
+_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.example.org/rirpdm#KPIObjective> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019" .
+<http://www.example.org/rirpdm#KPIObjective> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#KPIObjective> <http://www.w3.org/2000/01/rdf-schema#comment> "One of the nine commonly held objectives against which RIs monitor performance."@en .
+<http://www.example.org/rirpdm#KPIObjective> <http://www.w3.org/2000/01/rdf-schema#label> "KPI Objective"@en .
+# 
+# http://www.example.org/rirpdm#LifecyclePhase
+<http://www.example.org/rirpdm#LifecyclePhase> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.example.org/rirpdm#LifecyclePhase> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid74 .
+_:genid74 <http://www.w3.org/2002/07/owl#oneOf> _:genid80 .
+_:genid80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid79 .
+_:genid79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid78 .
+_:genid78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid77 .
+_:genid77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid76 .
+_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid75 .
+_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Termination> .
+_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Preparation> .
+_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Operation> .
+_:genid77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Implementation> .
+_:genid78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Design> .
+_:genid79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Concept> .
+_:genid80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://www.example.org/rirpdm#LifecyclePhase> <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" .
 <http://www.example.org/rirpdm#LifecyclePhase> <http://www.example.org/rirpdm#status> "New" .
 <http://www.example.org/rirpdm#LifecyclePhase> <http://www.w3.org/2000/01/rdf-schema#comment> "Reference to understand the needs and targets of RIs at a given time and at various levels."@en .
@@ -1046,10 +1213,10 @@ _:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # 
 # http://www.example.org/rirpdm#ScientificCase
 <http://www.example.org/rirpdm#ScientificCase> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://www.example.org/rirpdm#ScientificCase> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid49 .
-_:genid49 <http://www.w3.org/2002/07/owl#maxCardinality> "6"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid49 <http://www.w3.org/2002/07/owl#onProperty> <http://www.example.org/rirpdm#hasEvaluation> .
-_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://www.example.org/rirpdm#ScientificCase> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid81 .
+_:genid81 <http://www.w3.org/2002/07/owl#maxCardinality> "6"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid81 <http://www.w3.org/2002/07/owl#onProperty> <http://www.example.org/rirpdm#hasEvaluation> .
+_:genid81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <http://www.example.org/rirpdm#ScientificCase> <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" .
 <http://www.example.org/rirpdm#ScientificCase> <http://www.example.org/rirpdm#status> "New" .
 <http://www.example.org/rirpdm#ScientificCase> <http://www.w3.org/2000/01/rdf-schema#comment> "The six-dimension assessment of an RI's scientific merit, attached to a Proposal or Research Infrastructure."@en .
@@ -1057,27 +1224,27 @@ _:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # 
 # http://www.example.org/rirpdm#ScientificDimension
 <http://www.example.org/rirpdm#ScientificDimension> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://www.example.org/rirpdm#ScientificDimension> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid50 .
-_:genid50 <http://www.w3.org/2002/07/owl#oneOf> _:genid56 .
-_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid55 .
-_:genid55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid54 .
-_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid53 .
-_:genid53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid52 .
-_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid51 .
-_:genid51 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid51 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#UserStrategyAndAccessPolicy> .
-_:genid51 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#SocioEconomicImpact> .
-_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ScientificExcellence> .
-_:genid53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#PanEuropeanRelevance> .
-_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EnvironmentalConsiderations> .
-_:genid55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ENeedsAndData> .
-_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.example.org/rirpdm#ScientificDimension> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid82 .
+_:genid82 <http://www.w3.org/2002/07/owl#oneOf> _:genid88 .
+_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid87 .
+_:genid87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid86 .
+_:genid86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid85 .
+_:genid85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid84 .
+_:genid84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid83 .
+_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#UserStrategyAndAccessPolicy> .
+_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#SocioEconomicImpact> .
+_:genid84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ScientificExcellence> .
+_:genid85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#PanEuropeanRelevance> .
+_:genid86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EnvironmentalConsiderations> .
+_:genid87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ENeedsAndData> .
+_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://www.example.org/rirpdm#ScientificDimension> <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" .
 <http://www.example.org/rirpdm#ScientificDimension> <http://www.example.org/rirpdm#status> "New" .
 <http://www.example.org/rirpdm#ScientificDimension> <http://www.w3.org/2000/01/rdf-schema#comment> "One of the six dimensions along which a Scientific Case is assessed."@en .
@@ -1087,10 +1254,10 @@ _:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#ScientificPublication> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://www.example.org/rirpdm#ScientificPublication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/spar/fabio/Expression> .
 <http://www.example.org/rirpdm#ScientificPublication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.example.org/rirpdm#ResearchOutput> .
-<http://www.example.org/rirpdm#ScientificPublication> <http://www.w3.org/2002/07/owl#hasKey> _:genid57 .
-_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.org/spar/fabio/hasDOI> .
-_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<http://www.example.org/rirpdm#ScientificPublication> <http://www.w3.org/2002/07/owl#hasKey> _:genid89 .
+_:genid89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.org/spar/fabio/hasDOI> .
+_:genid89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <http://www.example.org/rirpdm#ScientificPublication> <http://purl.org/dc/terms/source> "EU Reg 2021 Art 2(22), Art 14(1)(a), Art 39(3)" .
 <http://www.example.org/rirpdm#ScientificPublication> <http://www.example.org/rirpdm#status> "New" .
 <http://www.example.org/rirpdm#ScientificPublication> <http://www.w3.org/2000/01/rdf-schema#comment> "A peer-reviewed publication output to which open access applies."@en .
@@ -1099,21 +1266,21 @@ _:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 # 
 # http://www.example.org/rirpdm#Score
 <http://www.example.org/rirpdm#Score> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://www.example.org/rirpdm#Score> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid58 .
-_:genid58 <http://www.w3.org/2002/07/owl#oneOf> _:genid62 .
-_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid61 .
-_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid60 .
-_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid59 .
-_:genid59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#VeryHigh> .
-_:genid59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Medium> .
-_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Low> .
-_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#High> .
-_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.example.org/rirpdm#Score> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid90 .
+_:genid90 <http://www.w3.org/2002/07/owl#oneOf> _:genid94 .
+_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid93 .
+_:genid93 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid92 .
+_:genid92 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid91 .
+_:genid91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#VeryHigh> .
+_:genid91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid92 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Medium> .
+_:genid92 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid93 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Low> .
+_:genid93 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#High> .
+_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://www.example.org/rirpdm#Score> <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" .
 <http://www.example.org/rirpdm#Score> <http://www.example.org/rirpdm#status> "New" .
 <http://www.example.org/rirpdm#Score> <http://www.w3.org/2000/01/rdf-schema#comment> "Grading attributed to a dimension."@en .
@@ -1191,10 +1358,25 @@ _:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://purl.org/spar/fabio/Thesis> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://w3id.org/cerif/vocab/OutputTypes#PhDThesis> .
 <https://w3id.org/cerif/vocab/OutputTypes#PhDThesis> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 # 
+# http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications
+<http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#ProvisionOfScientificAdvice> .
+<http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> <http://www.example.org/rirpdm#unitOfMeasure> "Number of citations" .
+<http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 16" .
+<http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> <http://www.w3.org/2000/01/rdf-schema#comment> "Number of times the RI or its projects are cited in policy related publications."@en .
+<http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> <http://www.w3.org/2000/01/rdf-schema#label> "Citations in policy related publications"@en .
+# 
 # http://www.example.org/rirpdm#Concept
 <http://www.example.org/rirpdm#Concept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#Concept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#LifecyclePhase> .
 <http://www.example.org/rirpdm#Concept> <http://www.w3.org/2000/01/rdf-schema#label> "Concept"@en .
+# 
+# http://www.example.org/rirpdm#DeliveryOfEducationAndTraining
+<http://www.example.org/rirpdm#DeliveryOfEducationAndTraining> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#DeliveryOfEducationAndTraining> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#DeliveryOfEducationAndTraining> <http://www.w3.org/2000/01/rdf-schema#label> "Delivery of Education and Training"@en .
 # 
 # http://www.example.org/rirpdm#Design
 <http://www.example.org/rirpdm#Design> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
@@ -1211,10 +1393,50 @@ _:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#ENeedsAndData> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#ScientificDimension> .
 <http://www.example.org/rirpdm#ENeedsAndData> <http://www.w3.org/2000/01/rdf-schema#label> "E-Needs & Data"@en .
 # 
+# http://www.example.org/rirpdm#EnablingScientificExcellence
+<http://www.example.org/rirpdm#EnablingScientificExcellence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#EnablingScientificExcellence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#EnablingScientificExcellence> <http://www.w3.org/2000/01/rdf-schema#label> "Enabling Scientific Excellence"@en .
+# 
+# http://www.example.org/rirpdm#EngagementByDirectContact
+<http://www.example.org/rirpdm#EngagementByDirectContact> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#EngagementByDirectContact> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#EngagementByDirectContact> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#OutreachToThePublic> .
+<http://www.example.org/rirpdm#EngagementByDirectContact> <http://www.example.org/rirpdm#unitOfMeasure> "Number of visitors/participants; number and hours of events" .
+<http://www.example.org/rirpdm#EngagementByDirectContact> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 11" .
+<http://www.example.org/rirpdm#EngagementByDirectContact> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#EngagementByDirectContact> <http://www.w3.org/2000/01/rdf-schema#comment> "Outreach by public relations/direct contact: events organised or attended (by third parties), and visitors to the RI."@en .
+<http://www.example.org/rirpdm#EngagementByDirectContact> <http://www.w3.org/2000/01/rdf-schema#label> "Engagement achieved by direct contact"@en .
+# 
+# http://www.example.org/rirpdm#EnhancingTransnationalCollaboration
+<http://www.example.org/rirpdm#EnhancingTransnationalCollaboration> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#EnhancingTransnationalCollaboration> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#EnhancingTransnationalCollaboration> <http://www.w3.org/2000/01/rdf-schema#label> "Enhancing Transnational Collaboration in Europe"@en .
+# 
 # http://www.example.org/rirpdm#EnvironmentalConsiderations
 <http://www.example.org/rirpdm#EnvironmentalConsiderations> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#EnvironmentalConsiderations> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#ScientificDimension> .
 <http://www.example.org/rirpdm#EnvironmentalConsiderations> <http://www.w3.org/2000/01/rdf-schema#label> "Environmental Considerations"@en .
+# 
+# http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable
+<http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#OptimisingManagement> .
+<http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> <http://www.example.org/rirpdm#unitOfMeasure> "Hours (facility RI) or number of data entries/sets/items/services (resource RI)" .
+<http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 21" .
+<http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> <http://www.w3.org/2000/01/rdf-schema#comment> "Experimental time available, or size of resources database made available to users to faciliate research."@en .
+<http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> <http://www.w3.org/2000/01/rdf-schema#label> "Extent of resources made available"@en .
+# 
+# http://www.example.org/rirpdm#FacilitatingEconomicActivities
+<http://www.example.org/rirpdm#FacilitatingEconomicActivities> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#FacilitatingEconomicActivities> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#FacilitatingEconomicActivities> <http://www.w3.org/2000/01/rdf-schema#label> "Facilitating Economic Activities"@en .
+# 
+# http://www.example.org/rirpdm#FacilitatingInternationalCooperation
+<http://www.example.org/rirpdm#FacilitatingInternationalCooperation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#FacilitatingInternationalCooperation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#FacilitatingInternationalCooperation> <http://www.w3.org/2000/01/rdf-schema#label> "Facilitating International Cooperation"@en .
 # 
 # http://www.example.org/rirpdm#Finances
 <http://www.example.org/rirpdm#Finances> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
@@ -1238,6 +1460,26 @@ _:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#UnderConstruction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#Implementation> <http://www.w3.org/2000/01/rdf-schema#label> "Implementation"@en .
 # 
+# http://www.example.org/rirpdm#IncomeFromCommercialActivities
+<http://www.example.org/rirpdm#IncomeFromCommercialActivities> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#IncomeFromCommercialActivities> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#IncomeFromCommercialActivities> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#FacilitatingEconomicActivities> .
+<http://www.example.org/rirpdm#IncomeFromCommercialActivities> <http://www.example.org/rirpdm#unitOfMeasure> "Currency amount; number of entities" .
+<http://www.example.org/rirpdm#IncomeFromCommercialActivities> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 10" .
+<http://www.example.org/rirpdm#IncomeFromCommercialActivities> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#IncomeFromCommercialActivities> <http://www.w3.org/2000/01/rdf-schema#comment> "Share of revenue from the RI's economic activities (sale of services/goods, access provision) reported in the annual accounts."@en .
+<http://www.example.org/rirpdm#IncomeFromCommercialActivities> <http://www.w3.org/2000/01/rdf-schema#label> "Income from commercial activities and the number of entities paying for service"@en .
+# 
+# http://www.example.org/rirpdm#InternationalTrainees
+<http://www.example.org/rirpdm#InternationalTrainees> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#InternationalTrainees> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#InternationalTrainees> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#FacilitatingInternationalCooperation> .
+<http://www.example.org/rirpdm#InternationalTrainees> <http://www.example.org/rirpdm#unitOfMeasure> "Person hours" .
+<http://www.example.org/rirpdm#InternationalTrainees> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 18" .
+<http://www.example.org/rirpdm#InternationalTrainees> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#InternationalTrainees> <http://www.w3.org/2000/01/rdf-schema#comment> "Person-hours of training opportunities provided by the RI made use of by trainees from non-ESFRI member countries."@en .
+<http://www.example.org/rirpdm#InternationalTrainees> <http://www.w3.org/2000/01/rdf-schema#label> "International trainees"@en .
+# 
 # http://www.example.org/rirpdm#Low
 <http://www.example.org/rirpdm#Low> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#Low> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#Score> .
@@ -1248,6 +1490,76 @@ _:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#Medium> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#Score> .
 <http://www.example.org/rirpdm#Medium> <http://www.w3.org/2000/01/rdf-schema#label> "Medium"@en .
 # 
+# http://www.example.org/rirpdm#NumberOfESFRIMembers
+<http://www.example.org/rirpdm#NumberOfESFRIMembers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#NumberOfESFRIMembers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#NumberOfESFRIMembers> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#EnhancingTransnationalCollaboration> .
+<http://www.example.org/rirpdm#NumberOfESFRIMembers> <http://www.example.org/rirpdm#unitOfMeasure> "Number" .
+<http://www.example.org/rirpdm#NumberOfESFRIMembers> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 7" .
+<http://www.example.org/rirpdm#NumberOfESFRIMembers> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#NumberOfESFRIMembers> <http://www.w3.org/2000/01/rdf-schema#comment> "Number of organisations/countries with a formal engagement (member, associated member, observer) based in an ESFRI member country."@en .
+<http://www.example.org/rirpdm#NumberOfESFRIMembers> <http://www.w3.org/2000/01/rdf-schema#label> "Number of members of the RI from ESFRI countries"@en .
+# 
+# http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI
+<http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#DeliveryOfEducationAndTraining> .
+<http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> <http://www.example.org/rirpdm#unitOfMeasure> "Number" .
+<http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 5" .
+<http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> <http://www.w3.org/2000/01/rdf-schema#comment> "Number of master and PhD students who have performed some of their studies at or using the services of the RI in a particular year regardless of whether they are funded/hosted by the RI or access it as a user."@en .
+<http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> <http://www.w3.org/2000/01/rdf-schema#label> "Number of master and PhD students using the RI"@en .
+# 
+# http://www.example.org/rirpdm#NumberOfNonESFRIMembers
+<http://www.example.org/rirpdm#NumberOfNonESFRIMembers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#NumberOfNonESFRIMembers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#NumberOfNonESFRIMembers> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#FacilitatingInternationalCooperation> .
+<http://www.example.org/rirpdm#NumberOfNonESFRIMembers> <http://www.example.org/rirpdm#unitOfMeasure> "Number" .
+<http://www.example.org/rirpdm#NumberOfNonESFRIMembers> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 19" .
+<http://www.example.org/rirpdm#NumberOfNonESFRIMembers> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#NumberOfNonESFRIMembers> <http://www.w3.org/2000/01/rdf-schema#comment> "Number of organisations/countries with a formal engagement based in a non-ESFRI member country."@en .
+<http://www.example.org/rirpdm#NumberOfNonESFRIMembers> <http://www.w3.org/2000/01/rdf-schema#label> "Number of members of the RI from non-ESFRI countries"@en .
+# 
+# http://www.example.org/rirpdm#NumberOfPublications
+<http://www.example.org/rirpdm#NumberOfPublications> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#NumberOfPublications> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#NumberOfPublications> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#EnablingScientificExcellence> .
+<http://www.example.org/rirpdm#NumberOfPublications> <http://www.example.org/rirpdm#unitOfMeasure> "Number" .
+<http://www.example.org/rirpdm#NumberOfPublications> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 3" .
+<http://www.example.org/rirpdm#NumberOfPublications> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#NumberOfPublications> <http://www.w3.org/2000/01/rdf-schema#comment> "Number of publications based on research performed using facilities/resources of the RI. The publication is shared by the countries of the home institutions of all authors, the sum of the shares being one."@en .
+<http://www.example.org/rirpdm#NumberOfPublications> <http://www.w3.org/2000/01/rdf-schema#label> "Number of publications"@en .
+# 
+# http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally
+<http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#OptimisingDataUse> .
+<http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> <http://www.example.org/rirpdm#unitOfMeasure> "Number of data users" .
+<http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 14" .
+<http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> <http://www.w3.org/2000/01/rdf-schema#comment> "Number of data sets produced as a consequence of access to the RI that are subsequently accessed by other users."@en .
+<http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> <http://www.w3.org/2000/01/rdf-schema#label> "Number of publicly available data sets used externally"@en .
+# 
+# http://www.example.org/rirpdm#NumberOfUserRequestsForAccess
+<http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#EnablingScientificExcellence> .
+<http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> <http://www.example.org/rirpdm#unitOfMeasure> "Number" .
+<http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 1" .
+<http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> <http://www.w3.org/2000/01/rdf-schema#comment> "For access to facilities: number of user proposals for access. For resource RIs: number of users of resources (collections, data, services)."@en .
+<http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> <http://www.w3.org/2000/01/rdf-schema#label> "Number of user requests for access"@en .
+# 
+# http://www.example.org/rirpdm#NumberOfUsersServed
+<http://www.example.org/rirpdm#NumberOfUsersServed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#NumberOfUsersServed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#NumberOfUsersServed> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#EnablingScientificExcellence> .
+<http://www.example.org/rirpdm#NumberOfUsersServed> <http://www.example.org/rirpdm#unitOfMeasure> "Number" .
+<http://www.example.org/rirpdm#NumberOfUsersServed> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 2" .
+<http://www.example.org/rirpdm#NumberOfUsersServed> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#NumberOfUsersServed> <http://www.w3.org/2000/01/rdf-schema#comment> "For access to facilities: number of granted proposals/accepted users. For resource RIs: number of downloads/studies or service provisions."@en .
+<http://www.example.org/rirpdm#NumberOfUsersServed> <http://www.w3.org/2000/01/rdf-schema#label> "Number of users served"@en .
+# 
 # http://www.example.org/rirpdm#Operation
 <http://www.example.org/rirpdm#Operation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#Operation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#LifecyclePhase> .
@@ -1255,10 +1567,65 @@ _:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#InOperation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#Operation> <http://www.w3.org/2000/01/rdf-schema#label> "Operation"@en .
 # 
+# http://www.example.org/rirpdm#OptimisingDataUse
+<http://www.example.org/rirpdm#OptimisingDataUse> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#OptimisingDataUse> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#OptimisingDataUse> <http://www.w3.org/2000/01/rdf-schema#label> "Optimising Data Use"@en .
+# 
+# http://www.example.org/rirpdm#OptimisingManagement
+<http://www.example.org/rirpdm#OptimisingManagement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#OptimisingManagement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#OptimisingManagement> <http://www.w3.org/2000/01/rdf-schema#label> "Optimising Management"@en .
+# 
+# http://www.example.org/rirpdm#OutreachThroughMedia
+<http://www.example.org/rirpdm#OutreachThroughMedia> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#OutreachThroughMedia> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#OutreachThroughMedia> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#OutreachToThePublic> .
+<http://www.example.org/rirpdm#OutreachThroughMedia> <http://www.example.org/rirpdm#unitOfMeasure> "Number of media mentions" .
+<http://www.example.org/rirpdm#OutreachThroughMedia> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 12" .
+<http://www.example.org/rirpdm#OutreachThroughMedia> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#OutreachThroughMedia> <http://www.w3.org/2000/01/rdf-schema#comment> "Impact of press and communication actions in raising awareness of RI mission, activities and societal relevance of results"@en .
+<http://www.example.org/rirpdm#OutreachThroughMedia> <http://www.w3.org/2000/01/rdf-schema#label> "Outreach through printed, broadcast and web-based media"@en .
+# 
+# http://www.example.org/rirpdm#OutreachToThePublic
+<http://www.example.org/rirpdm#OutreachToThePublic> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#OutreachToThePublic> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#OutreachToThePublic> <http://www.w3.org/2000/01/rdf-schema#label> "Outreach to the Public"@en .
+# 
+# http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia
+<http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#OutreachToThePublic> .
+<http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> <http://www.example.org/rirpdm#unitOfMeasure> "Web/social media analytics (users, followers, interactions)" .
+<http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 13" .
+<http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> <http://www.w3.org/2000/01/rdf-schema#comment> "Website popularity and level of social media engagement: Web (e.g. Google analytics) analytics and social media analytic tools (Twitter, Linkedin, Youtube, Flickr, Facebook, etc.)"@en .
+<http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> <http://www.w3.org/2000/01/rdf-schema#label> "Outreach via the RI's own web and social media activities"@en .
+# 
 # http://www.example.org/rirpdm#PanEuropeanRelevance
 <http://www.example.org/rirpdm#PanEuropeanRelevance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#PanEuropeanRelevance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#ScientificDimension> .
 <http://www.example.org/rirpdm#PanEuropeanRelevance> <http://www.w3.org/2000/01/rdf-schema#label> "Pan-European Relevance"@en .
+# 
+# http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities
+<http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#ProvisionOfScientificAdvice> .
+<http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> <http://www.example.org/rirpdm#unitOfMeasure> "Number of invitations/contributions per annum" .
+<http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 15" .
+<http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> <http://www.w3.org/2000/01/rdf-schema#comment> "Number of participations, reimbursed by the organisers, in policy related working groups, committees & advisory boards. In the case of working groups, etc, organised by intergovernmental organisations, the invitation suffices."@en .
+<http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> <http://www.w3.org/2000/01/rdf-schema#label> "Participation by RIs in policy related activities"@en .
+# 
+# http://www.example.org/rirpdm#PercentageOfTopCitedPublications
+<http://www.example.org/rirpdm#PercentageOfTopCitedPublications> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#PercentageOfTopCitedPublications> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#PercentageOfTopCitedPublications> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#EnablingScientificExcellence> .
+<http://www.example.org/rirpdm#PercentageOfTopCitedPublications> <http://www.example.org/rirpdm#unitOfMeasure> "Percentage" .
+<http://www.example.org/rirpdm#PercentageOfTopCitedPublications> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 4" .
+<http://www.example.org/rirpdm#PercentageOfTopCitedPublications> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#PercentageOfTopCitedPublications> <http://www.w3.org/2000/01/rdf-schema#comment> "Percentage of RI-enabled publications that, compared with publications in the same field and year, belong to the top 10% most frequently cited."@en .
+<http://www.example.org/rirpdm#PercentageOfTopCitedPublications> <http://www.w3.org/2000/01/rdf-schema#label> "Percentage of top (10%) cited publications"@en .
 # 
 # http://www.example.org/rirpdm#Preparation
 <http://www.example.org/rirpdm#Preparation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
@@ -1270,10 +1637,25 @@ _:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#PreparatoryWorkAndPlanning> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#ImplementationDimension> .
 <http://www.example.org/rirpdm#PreparatoryWorkAndPlanning> <http://www.w3.org/2000/01/rdf-schema#label> "Preparatory Work & Planning"@en .
 # 
+# http://www.example.org/rirpdm#ProvisionOfScientificAdvice
+<http://www.example.org/rirpdm#ProvisionOfScientificAdvice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#ProvisionOfScientificAdvice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPIObjective> .
+<http://www.example.org/rirpdm#ProvisionOfScientificAdvice> <http://www.w3.org/2000/01/rdf-schema#label> "Provision of Scientific Advice"@en .
+# 
 # http://www.example.org/rirpdm#ResearchInfrastructure
 <http://www.example.org/rirpdm#ResearchInfrastructure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#ResearchInfrastructure> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure> .
 <https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://www.example.org/rirpdm#Revenues
+<http://www.example.org/rirpdm#Revenues> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#Revenues> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#Revenues> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#OptimisingManagement> .
+<http://www.example.org/rirpdm#Revenues> <http://www.example.org/rirpdm#unitOfMeasure> "Amount in national currency" .
+<http://www.example.org/rirpdm#Revenues> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 20" .
+<http://www.example.org/rirpdm#Revenues> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#Revenues> <http://www.w3.org/2000/01/rdf-schema#comment> "Sources of revenue (member contributions, third-party contributions, project funding, commercial revenue, other) and their contributions to investment and operational costs."@en .
+<http://www.example.org/rirpdm#Revenues> <http://www.w3.org/2000/01/rdf-schema#label> "Revenues"@en .
 # 
 # http://www.example.org/rirpdm#Risks
 <http://www.example.org/rirpdm#Risks> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
@@ -1284,6 +1666,36 @@ _:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#ScientificExcellence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#ScientificExcellence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#ScientificDimension> .
 <http://www.example.org/rirpdm#ScientificExcellence> <http://www.w3.org/2000/01/rdf-schema#label> "Scientific Excellence"@en .
+# 
+# http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications
+<http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#FacilitatingEconomicActivities> .
+<http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> <http://www.example.org/rirpdm#unitOfMeasure> "% and number" .
+<http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 9" .
+<http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> <http://www.w3.org/2000/01/rdf-schema#comment> "Extent to which scientists from industry, the RI and possibly universities collaborate and exchange knowledge."@en .
+<http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> <http://www.w3.org/2000/01/rdf-schema#label> "Share of users associated with industry and publications with industry"@en .
+# 
+# http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#EnhancingTransnationalCollaboration> .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> <http://www.example.org/rirpdm#unitOfMeasure> "Number and %" .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 8" .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> <http://www.w3.org/2000/01/rdf-schema#comment> "Share of RI users and RI-enabled publications attributable to each ESFRI member country, per host institution of the user/author."@en .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> <http://www.w3.org/2000/01/rdf-schema#label> "Share of users and publications per ESFRI member country"@en .
+# 
+# http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#FacilitatingInternationalCooperation> .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> <http://www.example.org/rirpdm#unitOfMeasure> "Number and %" .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 17" .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> <http://www.w3.org/2000/01/rdf-schema#comment> "Share of RI users and RI-enabled publications attributable to each non-ESFRI member country, per host institution of the user/author."@en .
+<http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> <http://www.w3.org/2000/01/rdf-schema#label> "Share of users and publications per non-ESFRI member country"@en .
 # 
 # http://www.example.org/rirpdm#SingleSitedRI
 <http://www.example.org/rirpdm#SingleSitedRI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
@@ -1304,6 +1716,16 @@ _:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://www.example.org/rirpdm#Termination> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.example.org/rirpdm#Termination> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#LifecyclePhase> .
 <http://www.example.org/rirpdm#Termination> <http://www.w3.org/2000/01/rdf-schema#label> "Termination"@en .
+# 
+# http://www.example.org/rirpdm#TrainingOfNonRIStaff
+<http://www.example.org/rirpdm#TrainingOfNonRIStaff> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.example.org/rirpdm#TrainingOfNonRIStaff> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.org/rirpdm#KPI> .
+<http://www.example.org/rirpdm#TrainingOfNonRIStaff> <http://www.example.org/rirpdm#forObjective> <http://www.example.org/rirpdm#DeliveryOfEducationAndTraining> .
+<http://www.example.org/rirpdm#TrainingOfNonRIStaff> <http://www.example.org/rirpdm#unitOfMeasure> "Person hours" .
+<http://www.example.org/rirpdm#TrainingOfNonRIStaff> <http://purl.org/dc/terms/source> "ESFRI WG Monitoring Report 2019, Annex 5 KPI 6" .
+<http://www.example.org/rirpdm#TrainingOfNonRIStaff> <http://www.example.org/rirpdm#status> "New" .
+<http://www.example.org/rirpdm#TrainingOfNonRIStaff> <http://www.w3.org/2000/01/rdf-schema#comment> "Total person-hours for which people external to the RI made use of training opportunities provided by the RI (face-to-face and on-line)."@en .
+<http://www.example.org/rirpdm#TrainingOfNonRIStaff> <http://www.w3.org/2000/01/rdf-schema#label> "Training of people who are not RI staff"@en .
 # 
 # http://www.example.org/rirpdm#UserStrategyAndAccessPolicy
 <http://www.example.org/rirpdm#UserStrategyAndAccessPolicy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
@@ -1408,109 +1830,205 @@ _:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # #################################################################
 # 
 # 
-_:genid63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
-_:genid63 <http://www.w3.org/2002/07/owl#members> _:genid66 .
-_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid65 .
-_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid64 .
-_:genid64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ThirdCountry> .
-_:genid64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#MemberState> .
-_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#AssociatedCountry> .
-_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-# 
-_:genid67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
-_:genid67 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid73 .
-_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid72 .
-_:genid72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid71 .
-_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid70 .
-_:genid70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid69 .
-_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid68 .
-_:genid68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Termination> .
-_:genid68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Preparation> .
-_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Operation> .
-_:genid70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Implementation> .
-_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Design> .
-_:genid72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Concept> .
-_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-# 
-_:genid74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
-_:genid74 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid80 .
-_:genid80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid79 .
-_:genid79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid78 .
-_:genid78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid77 .
-_:genid77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid76 .
-_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid75 .
-_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#UserStrategyAndAccessPolicy> .
-_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#SocioEconomicImpact> .
-_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ScientificExcellence> .
-_:genid77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#PanEuropeanRelevance> .
-_:genid78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EnvironmentalConsiderations> .
-_:genid79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ENeedsAndData> .
-_:genid80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-# 
-_:genid81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
-_:genid81 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid86 .
-_:genid86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid85 .
-_:genid85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid84 .
-_:genid84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid83 .
-_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid82 .
-_:genid82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#StakeholderCommitment> .
-_:genid82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Risks> .
-_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#PreparatoryWorkAndPlanning> .
-_:genid84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#GovernanceManagementAndHR> .
-_:genid85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Finances> .
-_:genid86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-# 
-_:genid87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
-_:genid87 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid91 .
-_:genid91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid90 .
-_:genid90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid89 .
-_:genid89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid88 .
-_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#VeryHigh> .
-_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Medium> .
-_:genid89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Low> .
-_:genid90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#High> .
-_:genid91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-# 
-_:genid92 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointProperties> .
-_:genid92 <http://www.w3.org/2002/07/owl#members> _:genid97 .
+_:genid95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid95 <http://www.w3.org/2002/07/owl#members> _:genid98 .
+_:genid98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid97 .
 _:genid97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid96 .
-_:genid96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid95 .
-_:genid95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid94 .
-_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid93 .
-_:genid93 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid93 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasProspectiveMember> .
-_:genid93 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasParticipant> .
-_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasObserver> .
-_:genid95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasMemberEntity> .
+_:genid96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ThirdCountry> .
 _:genid96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasLeadEntity> .
+_:genid97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#MemberState> .
 _:genid97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#AssociatedCountry> .
+_:genid98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid99 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
+_:genid99 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid120 .
+_:genid120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid119 .
+_:genid119 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid118 .
+_:genid118 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid117 .
+_:genid117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid116 .
+_:genid116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid115 .
+_:genid115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid114 .
+_:genid114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid113 .
+_:genid113 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid112 .
+_:genid112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid111 .
+_:genid111 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid110 .
+_:genid110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid109 .
+_:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid108 .
+_:genid108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid107 .
+_:genid107 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid106 .
+_:genid106 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid105 .
+_:genid105 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid104 .
+_:genid104 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid103 .
+_:genid103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid102 .
+_:genid102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid101 .
+_:genid101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid100 .
+_:genid100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#TrainingOfNonRIStaff> .
+_:genid100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry> .
+_:genid101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry> .
+_:genid102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications> .
+_:genid103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid104 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Revenues> .
+_:genid104 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid105 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#PercentageOfTopCitedPublications> .
+_:genid105 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid106 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities> .
+_:genid106 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid107 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia> .
+_:genid107 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OutreachThroughMedia> .
+_:genid108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfUsersServed> .
+_:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfUserRequestsForAccess> .
+_:genid110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid111 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally> .
+_:genid111 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfPublications> .
+_:genid112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid113 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfNonESFRIMembers> .
+_:genid113 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI> .
+_:genid114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#NumberOfESFRIMembers> .
+_:genid115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#InternationalTrainees> .
+_:genid116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#IncomeFromCommercialActivities> .
+_:genid117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid118 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable> .
+_:genid118 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid119 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EngagementByDirectContact> .
+_:genid119 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications> .
+_:genid120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid121 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
+_:genid121 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid127 .
+_:genid127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid126 .
+_:genid126 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid125 .
+_:genid125 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid124 .
+_:genid124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid123 .
+_:genid123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid122 .
+_:genid122 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid122 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Termination> .
+_:genid122 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Preparation> .
+_:genid123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Operation> .
+_:genid124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid125 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Implementation> .
+_:genid125 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid126 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Design> .
+_:genid126 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Concept> .
+_:genid127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid128 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
+_:genid128 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid137 .
+_:genid137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid136 .
+_:genid136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid135 .
+_:genid135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid134 .
+_:genid134 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid133 .
+_:genid133 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid132 .
+_:genid132 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid131 .
+_:genid131 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid130 .
+_:genid130 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid129 .
+_:genid129 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid129 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ProvisionOfScientificAdvice> .
+_:genid129 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid130 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OutreachToThePublic> .
+_:genid130 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid131 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OptimisingManagement> .
+_:genid131 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid132 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#OptimisingDataUse> .
+_:genid132 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid133 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#FacilitatingInternationalCooperation> .
+_:genid133 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid134 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#FacilitatingEconomicActivities> .
+_:genid134 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EnhancingTransnationalCollaboration> .
+_:genid135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EnablingScientificExcellence> .
+_:genid136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#DeliveryOfEducationAndTraining> .
+_:genid137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid138 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
+_:genid138 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid144 .
+_:genid144 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid143 .
+_:genid143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid142 .
+_:genid142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid141 .
+_:genid141 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid140 .
+_:genid140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid139 .
+_:genid139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#UserStrategyAndAccessPolicy> .
+_:genid139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#SocioEconomicImpact> .
+_:genid140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid141 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ScientificExcellence> .
+_:genid141 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#PanEuropeanRelevance> .
+_:genid142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#EnvironmentalConsiderations> .
+_:genid143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid144 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#ENeedsAndData> .
+_:genid144 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid145 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
+_:genid145 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid150 .
+_:genid150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid149 .
+_:genid149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid148 .
+_:genid148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid147 .
+_:genid147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid146 .
+_:genid146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#StakeholderCommitment> .
+_:genid146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Risks> .
+_:genid147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#PreparatoryWorkAndPlanning> .
+_:genid148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#GovernanceManagementAndHR> .
+_:genid149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Finances> .
+_:genid150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
+_:genid151 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid155 .
+_:genid155 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid154 .
+_:genid154 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid153 .
+_:genid153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid152 .
+_:genid152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#VeryHigh> .
+_:genid152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Medium> .
+_:genid153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid154 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#Low> .
+_:genid154 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid155 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#High> .
+_:genid155 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid156 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointProperties> .
+_:genid156 <http://www.w3.org/2002/07/owl#members> _:genid161 .
+_:genid161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid160 .
+_:genid160 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid159 .
+_:genid159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid158 .
+_:genid158 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid157 .
+_:genid157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasProspectiveMember> .
+_:genid157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid158 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasParticipant> .
+_:genid158 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasObserver> .
+_:genid159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid160 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasMemberEntity> .
+_:genid160 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.example.org/rirpdm#hasLeadEntity> .
+_:genid161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 # 
 # Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

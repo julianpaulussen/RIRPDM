@@ -17,7 +17,7 @@
 
 
 <!-- SCHEMA.ORG METADATA -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://www.example.org/rirpdm","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://www.example.org/rirpdm","name":"Research Infrastructure and Research Publications Data Model (RIRPDM)", "headline":"Document describing the ontology http://www.example.org/rirpdm", "dateReleased":"Fri Jul 03 11:35:00 UTC 2026", "version":"0.1.0", "author":[{"@type":"Person","name":"Julian Paulussen"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://www.example.org/rirpdm","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://www.example.org/rirpdm","name":"Research Infrastructure and Research Publications Data Model (RIRPDM)", "headline":"Document describing the ontology http://www.example.org/rirpdm", "dateReleased":"Sat Jul 04 20:07:42 UTC 2026", "version":"0.1.0", "author":[{"@type":"Person","name":"Julian Paulussen"}]}</script>
 
 <script src="resources/jquery.js"></script> 
 <script src="resources/marked.min.js"></script> 
@@ -176,6 +176,15 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
+      <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a>
+   </li>
+   <li>
+      <a href="#KPIMeasurement" title="http://www.example.org/rirpdm#KPIMeasurement">KPI Measurement</a>
+   </li>
+   <li>
+      <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a>
+   </li>
+   <li>
       <a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a>
    </li>
    <li>
@@ -295,6 +304,9 @@ This ontology has the following classes and properties.</span>
       <a href="#http://purl.org/spar/cito/extends" title="http://purl.org/spar/cito/extends">extends</a>
    </li>
    <li>
+      <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a>
+   </li>
+   <li>
       <a href="#http://purl.org/cerif/frapo/funds" title="http://purl.org/cerif/frapo/funds">funds</a>
    </li>
    <li>
@@ -312,6 +324,9 @@ This ontology has the following classes and properties.</span>
    <li>
       <a href="#hasImplementationCase"
          title="http://www.example.org/rirpdm#hasImplementationCase">hasImplementationCase</a>
+   </li>
+   <li>
+      <a href="#hasKPIMeasurement" title="http://www.example.org/rirpdm#hasKPIMeasurement">hasKPIMeasurement</a>
    </li>
    <li>
       <a href="#hasLeadEntity" title="http://www.example.org/rirpdm#hasLeadEntity">hasLeadEntity</a>
@@ -365,6 +380,9 @@ This ontology has the following classes and properties.</span>
    </li>
    <li>
       <a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a>
+   </li>
+   <li>
+      <a href="#measuresKPI" title="http://www.example.org/rirpdm#measuresKPI">measuresKPI</a>
    </li>
    <li>
       <a href="#participatesIn" title="http://www.example.org/rirpdm#participatesIn">participatesIn</a>
@@ -426,9 +444,6 @@ This ontology has the following classes and properties.</span>
       <a href="#http://purl.org/cerif/frapo/hasMonetaryValue" title="http://purl.org/cerif/frapo/hasMonetaryValue">has monetary value</a>
    </li>
    <li>
-      <a href="#hasKPI" title="http://www.example.org/rirpdm#hasKPI">hasKPI</a>
-   </li>
-   <li>
       <a href="#humanResourcesPolicy"
          title="http://www.example.org/rirpdm#humanResourcesPolicy">humanResourcesPolicy</a>
    </li>
@@ -446,6 +461,12 @@ This ontology has the following classes and properties.</span>
    <li>
       <a href="#longTermSitePlanning"
          title="http://www.example.org/rirpdm#longTermSitePlanning">longTermSitePlanning</a>
+   </li>
+   <li>
+      <a href="#measurementYear" title="http://www.example.org/rirpdm#measurementYear">measurementYear</a>
+   </li>
+   <li>
+      <a href="#numericValue" title="http://www.example.org/rirpdm#numericValue">numericValue</a>
    </li>
    <li>
       <a href="#preparationCosts" title="http://www.example.org/rirpdm#preparationCosts">preparationCosts</a>
@@ -468,6 +489,9 @@ This ontology has the following classes and properties.</span>
       <a href="#uniqueName" title="http://www.example.org/rirpdm#uniqueName">uniqueName</a>
    </li>
    <li>
+      <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a>
+   </li>
+   <li>
       <a href="#userProgramme" title="http://www.example.org/rirpdm#userProgramme">userProgramme</a>
    </li>
    <li>
@@ -484,12 +508,20 @@ This ontology has the following classes and properties.</span>
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     class="hlist">
    <li>
+      <a href="#CitationsInPolicyRelatedPublications"
+         title="http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications">Citations in policy related publications</a>
+   </li>
+   <li>
       <a href="#Concept" title="http://www.example.org/rirpdm#Concept">Concept</a>
    </li>
    <li>
       <a href="#http://purl.org/spar/fabio/ConferencePaper" title="http://purl.org/spar/fabio/ConferencePaper">
          <span>Conference Paper</span>
       </a>
+   </li>
+   <li>
+      <a href="#DeliveryOfEducationAndTraining"
+         title="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining">Delivery of Education and Training</a>
    </li>
    <li>
       <a href="#Design" title="http://www.example.org/rirpdm#Design">Design</a>
@@ -503,8 +535,32 @@ This ontology has the following classes and properties.</span>
       <a href="#ENeedsAndData" title="http://www.example.org/rirpdm#ENeedsAndData">E-Needs &amp; Data</a>
    </li>
    <li>
+      <a href="#EnablingScientificExcellence"
+         title="http://www.example.org/rirpdm#EnablingScientificExcellence">Enabling Scientific Excellence</a>
+   </li>
+   <li>
+      <a href="#EngagementByDirectContact"
+         title="http://www.example.org/rirpdm#EngagementByDirectContact">Engagement achieved by direct contact</a>
+   </li>
+   <li>
+      <a href="#EnhancingTransnationalCollaboration"
+         title="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration">Enhancing Transnational Collaboration in Europe</a>
+   </li>
+   <li>
       <a href="#EnvironmentalConsiderations"
          title="http://www.example.org/rirpdm#EnvironmentalConsiderations">Environmental Considerations</a>
+   </li>
+   <li>
+      <a href="#ExtentOfResourcesMadeAvailable"
+         title="http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable">Extent of resources made available</a>
+   </li>
+   <li>
+      <a href="#FacilitatingEconomicActivities"
+         title="http://www.example.org/rirpdm#FacilitatingEconomicActivities">Facilitating Economic Activities</a>
+   </li>
+   <li>
+      <a href="#FacilitatingInternationalCooperation"
+         title="http://www.example.org/rirpdm#FacilitatingInternationalCooperation">Facilitating International Cooperation</a>
    </li>
    <li>
       <a href="#Finances" title="http://www.example.org/rirpdm#Finances">Finances</a>
@@ -525,6 +581,14 @@ This ontology has the following classes and properties.</span>
       <a href="#Implementation" title="http://www.example.org/rirpdm#Implementation">Implementation</a>
    </li>
    <li>
+      <a href="#IncomeFromCommercialActivities"
+         title="http://www.example.org/rirpdm#IncomeFromCommercialActivities">Income from commercial activities and the number of entities paying for service</a>
+   </li>
+   <li>
+      <a href="#InternationalTrainees"
+         title="http://www.example.org/rirpdm#InternationalTrainees">International trainees</a>
+   </li>
+   <li>
       <a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle">
          <span>Journal Article</span>
       </a>
@@ -536,11 +600,66 @@ This ontology has the following classes and properties.</span>
       <a href="#Medium" title="http://www.example.org/rirpdm#Medium">Medium</a>
    </li>
    <li>
+      <a href="#NumberOfMasterAndPhDStudentsUsingRI"
+         title="http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI">Number of master and PhD students using the RI</a>
+   </li>
+   <li>
+      <a href="#NumberOfESFRIMembers"
+         title="http://www.example.org/rirpdm#NumberOfESFRIMembers">Number of members of the RI from ESFRI countries</a>
+   </li>
+   <li>
+      <a href="#NumberOfNonESFRIMembers"
+         title="http://www.example.org/rirpdm#NumberOfNonESFRIMembers">Number of members of the RI from non-ESFRI countries</a>
+   </li>
+   <li>
+      <a href="#NumberOfPublications"
+         title="http://www.example.org/rirpdm#NumberOfPublications">Number of publications</a>
+   </li>
+   <li>
+      <a href="#NumberOfPubliclyAvailableDataSetsUsedExternally"
+         title="http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally">Number of publicly available data sets used externally</a>
+   </li>
+   <li>
+      <a href="#NumberOfUserRequestsForAccess"
+         title="http://www.example.org/rirpdm#NumberOfUserRequestsForAccess">Number of user requests for access</a>
+   </li>
+   <li>
+      <a href="#NumberOfUsersServed"
+         title="http://www.example.org/rirpdm#NumberOfUsersServed">Number of users served</a>
+   </li>
+   <li>
       <a href="#Operation" title="http://www.example.org/rirpdm#Operation">Operation</a>
+   </li>
+   <li>
+      <a href="#OptimisingDataUse" title="http://www.example.org/rirpdm#OptimisingDataUse">Optimising Data Use</a>
+   </li>
+   <li>
+      <a href="#OptimisingManagement"
+         title="http://www.example.org/rirpdm#OptimisingManagement">Optimising Management</a>
+   </li>
+   <li>
+      <a href="#OutreachThroughMedia"
+         title="http://www.example.org/rirpdm#OutreachThroughMedia">Outreach through printed, broadcast and web-based media</a>
+   </li>
+   <li>
+      <a href="#OutreachToThePublic"
+         title="http://www.example.org/rirpdm#OutreachToThePublic">Outreach to the Public</a>
+   </li>
+   <li>
+      <a href="#OutreachViaOwnWebAndSocialMedia"
+         title="http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia">Outreach via the RI's own web and social media activities</a>
    </li>
    <li>
       <a href="#PanEuropeanRelevance"
          title="http://www.example.org/rirpdm#PanEuropeanRelevance">Pan-European Relevance</a>
+   </li>
+   <li>
+      <a href="#ParticipationInPolicyRelatedActivities"
+         title="http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities">Participation by RIs in policy related activities</a>
+   </li>
+   <li>
+      <a href="#PercentageOfTopCitedPublications"
+         title="http://www.example.org/rirpdm#PercentageOfTopCitedPublications">Percentage of top (10%) cited publications</a>
    </li>
    <li>
       <a href="#Preparation" title="http://www.example.org/rirpdm#Preparation">Preparation</a>
@@ -548,6 +667,10 @@ This ontology has the following classes and properties.</span>
    <li>
       <a href="#PreparatoryWorkAndPlanning"
          title="http://www.example.org/rirpdm#PreparatoryWorkAndPlanning">Preparatory Work &amp; Planning</a>
+   </li>
+   <li>
+      <a href="#ProvisionOfScientificAdvice"
+         title="http://www.example.org/rirpdm#ProvisionOfScientificAdvice">Provision of Scientific Advice</a>
    </li>
    <li>
       <a href="#http://purl.org/spar/fabio/ReportDocument" title="http://purl.org/spar/fabio/ReportDocument">
@@ -561,11 +684,26 @@ This ontology has the following classes and properties.</span>
       </a>
    </li>
    <li>
+      <a href="#Revenues" title="http://www.example.org/rirpdm#Revenues">Revenues</a>
+   </li>
+   <li>
       <a href="#Risks" title="http://www.example.org/rirpdm#Risks">Risks</a>
    </li>
    <li>
       <a href="#ScientificExcellence"
          title="http://www.example.org/rirpdm#ScientificExcellence">Scientific Excellence</a>
+   </li>
+   <li>
+      <a href="#ShareOfUsersAndPublicationsPerESFRICountry"
+         title="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry">Share of users and publications per ESFRI member country</a>
+   </li>
+   <li>
+      <a href="#ShareOfUsersAndPublicationsPerNonESFRICountry"
+         title="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry">Share of users and publications per non-ESFRI member country</a>
+   </li>
+   <li>
+      <a href="#ShareOfIndustryUsersAndPublications"
+         title="http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications">Share of users associated with industry and publications with industry</a>
    </li>
    <li>
       <a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI">
@@ -587,6 +725,10 @@ This ontology has the following classes and properties.</span>
       <a href="#http://purl.org/spar/fabio/Thesis" title="http://purl.org/spar/fabio/Thesis">
          <span>Thesis</span>
       </a>
+   </li>
+   <li>
+      <a href="#TrainingOfNonRIStaff"
+         title="http://www.example.org/rirpdm#TrainingOfNonRIStaff">Training of people who are not RI staff</a>
    </li>
    <li>
       <a href="#UserStrategyAndAccessPolicy"
@@ -638,6 +780,9 @@ This section provides details for each class and property defined by Research In
   <li><a href="#ImplementationDimension" title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a></li>
   <li><a href="#http://purl.org/spar/fabio/Journal" title="http://purl.org/spar/fabio/Journal">Journal</a></li>
   <li><a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle"> <span>Journal Article</span> </a></li>
+  <li><a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a></li>
+  <li><a href="#KPIMeasurement" title="http://www.example.org/rirpdm#KPIMeasurement">KPI Measurement</a></li>
+  <li><a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a></li>
   <li><a href="#LifecyclePhase" title="http://www.example.org/rirpdm#LifecyclePhase">Lifecycle Phase</a></li>
   <li><a href="#MajorUpgrade" title="http://www.example.org/rirpdm#MajorUpgrade">Major Upgrade</a></li>
   <li><a href="#MemberState" title="http://www.example.org/rirpdm#MemberState">Member State</a></li>
@@ -1230,6 +1375,111 @@ This section provides details for each class and property defined by Research In
    </dt>
    <dd>
     <a href="#http://purl.org/spar/fabio/JournalArticle">named individual</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="KPI">
+  <h3>KPI<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#KPI</p>
+  <div class="comment">
+   <span class="markdown">One of the 21 key performance indicators, each belonging to exactly one KPIObjective.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#CitationsInPolicyRelatedPublications" title="http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications">Citations in policy related publications</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#EngagementByDirectContact" title="http://www.example.org/rirpdm#EngagementByDirectContact">Engagement achieved by direct contact</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#ExtentOfResourcesMadeAvailable" title="http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable">Extent of resources made available</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#IncomeFromCommercialActivities" title="http://www.example.org/rirpdm#IncomeFromCommercialActivities">Income from commercial activities and the number of entities paying for service</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#InternationalTrainees" title="http://www.example.org/rirpdm#InternationalTrainees">International trainees</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#NumberOfESFRIMembers" title="http://www.example.org/rirpdm#NumberOfESFRIMembers">Number of members of the RI from ESFRI countries</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#NumberOfMasterAndPhDStudentsUsingRI" title="http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI">Number of master and PhD students using the RI</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#NumberOfNonESFRIMembers" title="http://www.example.org/rirpdm#NumberOfNonESFRIMembers">Number of members of the RI from non-ESFRI countries</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#NumberOfPublications" title="http://www.example.org/rirpdm#NumberOfPublications">Number of publications</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#NumberOfPubliclyAvailableDataSetsUsedExternally" title="http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally">Number of publicly available data sets used externally</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#NumberOfUserRequestsForAccess" title="http://www.example.org/rirpdm#NumberOfUserRequestsForAccess">Number of user requests for access</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#NumberOfUsersServed" title="http://www.example.org/rirpdm#NumberOfUsersServed">Number of users served</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#OutreachThroughMedia" title="http://www.example.org/rirpdm#OutreachThroughMedia">Outreach through printed, broadcast and web-based media</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#OutreachViaOwnWebAndSocialMedia" title="http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia">Outreach via the RI's own web and social media activities</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#ParticipationInPolicyRelatedActivities" title="http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities">Participation by RIs in policy related activities</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#PercentageOfTopCitedPublications" title="http://www.example.org/rirpdm#PercentageOfTopCitedPublications">Percentage of top (10%) cited publications</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Revenues" title="http://www.example.org/rirpdm#Revenues">Revenues</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#ShareOfIndustryUsersAndPublications" title="http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications">Share of users associated with industry and publications with industry</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#ShareOfUsersAndPublicationsPerESFRICountry" title="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry">Share of users and publications per ESFRI member country</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#ShareOfUsersAndPublicationsPerNonESFRICountry" title="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry">Share of users and publications per non-ESFRI member country</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#TrainingOfNonRIStaff" title="http://www.example.org/rirpdm#TrainingOfNonRIStaff">Training of people who are not RI staff</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup>, <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#measuresKPI" title="http://www.example.org/rirpdm#measuresKPI">measuresKPI</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#CitationsInPolicyRelatedPublications" title="http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications">Citations in policy related publications</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EngagementByDirectContact" title="http://www.example.org/rirpdm#EngagementByDirectContact">Engagement achieved by direct contact</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ExtentOfResourcesMadeAvailable" title="http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable">Extent of resources made available</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#IncomeFromCommercialActivities" title="http://www.example.org/rirpdm#IncomeFromCommercialActivities">Income from commercial activities and the number of entities paying for service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#InternationalTrainees" title="http://www.example.org/rirpdm#InternationalTrainees">International trainees</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NumberOfMasterAndPhDStudentsUsingRI" title="http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI">Number of master and PhD students using the RI</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NumberOfESFRIMembers" title="http://www.example.org/rirpdm#NumberOfESFRIMembers">Number of members of the RI from ESFRI countries</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NumberOfNonESFRIMembers" title="http://www.example.org/rirpdm#NumberOfNonESFRIMembers">Number of members of the RI from non-ESFRI countries</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NumberOfPublications" title="http://www.example.org/rirpdm#NumberOfPublications">Number of publications</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NumberOfPubliclyAvailableDataSetsUsedExternally" title="http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally">Number of publicly available data sets used externally</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NumberOfUserRequestsForAccess" title="http://www.example.org/rirpdm#NumberOfUserRequestsForAccess">Number of user requests for access</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NumberOfUsersServed" title="http://www.example.org/rirpdm#NumberOfUsersServed">Number of users served</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OutreachThroughMedia" title="http://www.example.org/rirpdm#OutreachThroughMedia">Outreach through printed, broadcast and web-based media</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OutreachViaOwnWebAndSocialMedia" title="http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia">Outreach via the RI's own web and social media activities</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ParticipationInPolicyRelatedActivities" title="http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities">Participation by RIs in policy related activities</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#PercentageOfTopCitedPublications" title="http://www.example.org/rirpdm#PercentageOfTopCitedPublications">Percentage of top (10%) cited publications</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Revenues" title="http://www.example.org/rirpdm#Revenues">Revenues</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ShareOfUsersAndPublicationsPerESFRICountry" title="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry">Share of users and publications per ESFRI member country</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ShareOfUsersAndPublicationsPerNonESFRICountry" title="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry">Share of users and publications per non-ESFRI member country</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ShareOfIndustryUsersAndPublications" title="http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications">Share of users associated with industry and publications with industry</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#TrainingOfNonRIStaff" title="http://www.example.org/rirpdm#TrainingOfNonRIStaff">Training of people who are not RI staff</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="KPIMeasurement">
+  <h3>KPI Measurement<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#KPIMeasurement</p>
+  <div class="comment">
+   <span class="markdown">One recorded value of a KPI for a research infrastructure in a given year.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#measurementYear" title="http://www.example.org/rirpdm#measurementYear">measurementYear</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#measuresKPI" title="http://www.example.org/rirpdm#measuresKPI">measuresKPI</a> <sup class="type-op" title="object property">op</sup>, <a href="#numericValue" title="http://www.example.org/rirpdm#numericValue">numericValue</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasKPIMeasurement" title="http://www.example.org/rirpdm#hasKPIMeasurement">hasKPIMeasurement</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="KPIObjective">
+  <h3>KPI Objective<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#KPIObjective</p>
+  <div class="comment">
+   <span class="markdown">One of the nine commonly held objectives against which RIs monitor performance.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#DeliveryOfEducationAndTraining" title="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining">Delivery of Education and Training</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#EnablingScientificExcellence" title="http://www.example.org/rirpdm#EnablingScientificExcellence">Enabling Scientific Excellence</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#EnhancingTransnationalCollaboration" title="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration">Enhancing Transnational Collaboration in Europe</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#FacilitatingEconomicActivities" title="http://www.example.org/rirpdm#FacilitatingEconomicActivities">Facilitating Economic Activities</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#FacilitatingInternationalCooperation" title="http://www.example.org/rirpdm#FacilitatingInternationalCooperation">Facilitating International Cooperation</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#OptimisingDataUse" title="http://www.example.org/rirpdm#OptimisingDataUse">Optimising Data Use</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#OptimisingManagement" title="http://www.example.org/rirpdm#OptimisingManagement">Optimising Management</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#OutreachToThePublic" title="http://www.example.org/rirpdm#OutreachToThePublic">Outreach to the Public</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#ProvisionOfScientificAdvice" title="http://www.example.org/rirpdm#ProvisionOfScientificAdvice">Provision of Scientific Advice</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#DeliveryOfEducationAndTraining" title="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining">Delivery of Education and Training</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EnablingScientificExcellence" title="http://www.example.org/rirpdm#EnablingScientificExcellence">Enabling Scientific Excellence</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EnhancingTransnationalCollaboration" title="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration">Enhancing Transnational Collaboration in Europe</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#FacilitatingEconomicActivities" title="http://www.example.org/rirpdm#FacilitatingEconomicActivities">Facilitating Economic Activities</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#FacilitatingInternationalCooperation" title="http://www.example.org/rirpdm#FacilitatingInternationalCooperation">Facilitating International Cooperation</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OptimisingDataUse" title="http://www.example.org/rirpdm#OptimisingDataUse">Optimising Data Use</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OptimisingManagement" title="http://www.example.org/rirpdm#OptimisingManagement">Optimising Management</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OutreachToThePublic" title="http://www.example.org/rirpdm#OutreachToThePublic">Outreach to the Public</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ProvisionOfScientificAdvice" title="http://www.example.org/rirpdm#ProvisionOfScientificAdvice">Provision of Scientific Advice</a> <sup class="type-ni" title="named individual">ni</sup>
    </dd>
   </dl>
  </div>
@@ -1983,12 +2233,14 @@ This section provides details for each class and property defined by Research In
   <li><a href="#http://purl.org/spar/cito/disputes" title="http://purl.org/spar/cito/disputes">disputes</a></li>
   <li><a href="#evaluatesDimension" title="http://www.example.org/rirpdm#evaluatesDimension">evaluatesDimension</a></li>
   <li><a href="#http://purl.org/spar/cito/extends" title="http://purl.org/spar/cito/extends">extends</a></li>
+  <li><a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a></li>
   <li><a href="#http://purl.org/cerif/frapo/funds" title="http://purl.org/cerif/frapo/funds">funds</a></li>
   <li><a href="#http://purl.org/spar/fabio/hasPublicationVenue" title="http://purl.org/spar/fabio/hasPublicationVenue">has publication venue</a></li>
   <li><a href="#hasAuthor" title="http://www.example.org/rirpdm#hasAuthor">hasAuthor</a></li>
   <li><a href="#hasCentralHub" title="http://www.example.org/rirpdm#hasCentralHub">hasCentralHub</a></li>
   <li><a href="#hasEvaluation" title="http://www.example.org/rirpdm#hasEvaluation">hasEvaluation</a></li>
   <li><a href="#hasImplementationCase" title="http://www.example.org/rirpdm#hasImplementationCase">hasImplementationCase</a></li>
+  <li><a href="#hasKPIMeasurement" title="http://www.example.org/rirpdm#hasKPIMeasurement">hasKPIMeasurement</a></li>
   <li><a href="#hasLeadEntity" title="http://www.example.org/rirpdm#hasLeadEntity">hasLeadEntity</a></li>
   <li><a href="#hasMemberEntity" title="http://www.example.org/rirpdm#hasMemberEntity">hasMemberEntity</a></li>
   <li><a href="#hasNode" title="http://www.example.org/rirpdm#hasNode">hasNode</a></li>
@@ -2006,6 +2258,7 @@ This section provides details for each class and property defined by Research In
   <li><a href="#isNodeOf" title="http://www.example.org/rirpdm#isNodeOf">isNodeOf</a></li>
   <li><a href="#isOutputOf" title="http://www.example.org/rirpdm#isOutputOf">isOutputOf</a></li>
   <li><a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a></li>
+  <li><a href="#measuresKPI" title="http://www.example.org/rirpdm#measuresKPI">measuresKPI</a></li>
   <li><a href="#participatesIn" title="http://www.example.org/rirpdm#participatesIn">participatesIn</a></li>
   <li><a href="#producesResearchOutput" title="http://www.example.org/rirpdm#producesResearchOutput">producesResearchOutput</a></li>
   <li><a href="#resultsInProject" title="http://www.example.org/rirpdm#resultsInProject">resultsInProject</a></li>
@@ -2324,6 +2577,38 @@ This section provides details for each class and property defined by Research In
    </dl>
   </div>
  </div>
+ <div class="entity" id="forObjective">
+  <h3>forObjective<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#forObjective</p>
+  <div class="comment">
+   <span class="markdown">The KPIObjective a KPI belongs to.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
  <div class="entity" id="http://purl.org/cerif/frapo/funds">
   <h3>funds<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://purl.org/cerif/frapo/funds</p>
@@ -2504,6 +2789,37 @@ This section provides details for each class and property defined by Research In
     </dt>
     <dd>
      <a href="#ImplementationCase" title="http://www.example.org/rirpdm#ImplementationCase">Implementation Case</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasKPIMeasurement">
+  <h3>hasKPIMeasurement<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasKPIMeasurement</p>
+  <div class="comment">
+   <span class="markdown">Relates a research infrastructure to one of its recorded KPI measurements.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#KPIMeasurement" title="http://www.example.org/rirpdm#KPIMeasurement">KPI Measurement</a> <sup class="type-c" title="class">c</sup>
     </dd>
    </dl>
   </div>
@@ -3072,6 +3388,38 @@ This section provides details for each class and property defined by Research In
    </dl>
   </div>
  </div>
+ <div class="entity" id="measuresKPI">
+  <h3>measuresKPI<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#measuresKPI</p>
+  <div class="comment">
+   <span class="markdown">The KPI that a KPIMeasurement records a value for.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#KPIMeasurement" title="http://www.example.org/rirpdm#KPIMeasurement">KPI Measurement</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
  <div class="entity" id="participatesIn">
   <h3>participatesIn<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://www.example.org/rirpdm#participatesIn</p>
@@ -3273,18 +3621,20 @@ This section provides details for each class and property defined by Research In
   <li><a href="#http://purl.org/spar/fabio/hasDOI" title="http://purl.org/spar/fabio/hasDOI">has DOI</a></li>
   <li><a href="#http://purl.org/cerif/frapo/hasGrantNumber" title="http://purl.org/cerif/frapo/hasGrantNumber">has grant number</a></li>
   <li><a href="#http://purl.org/cerif/frapo/hasMonetaryValue" title="http://purl.org/cerif/frapo/hasMonetaryValue">has monetary value</a></li>
-  <li><a href="#hasKPI" title="http://www.example.org/rirpdm#hasKPI">hasKPI</a></li>
   <li><a href="#humanResourcesPolicy" title="http://www.example.org/rirpdm#humanResourcesPolicy">humanResourcesPolicy</a></li>
   <li><a href="#implementationCosts" title="http://www.example.org/rirpdm#implementationCosts">implementationCosts</a></li>
   <li><a href="#jointInvestmentStrategy" title="http://www.example.org/rirpdm#jointInvestmentStrategy">jointInvestmentStrategy</a></li>
   <li><a href="#legalStatus" title="http://www.example.org/rirpdm#legalStatus">legalStatus</a></li>
   <li><a href="#longTermSitePlanning" title="http://www.example.org/rirpdm#longTermSitePlanning">longTermSitePlanning</a></li>
+  <li><a href="#measurementYear" title="http://www.example.org/rirpdm#measurementYear">measurementYear</a></li>
+  <li><a href="#numericValue" title="http://www.example.org/rirpdm#numericValue">numericValue</a></li>
   <li><a href="#preparationCosts" title="http://www.example.org/rirpdm#preparationCosts">preparationCosts</a></li>
   <li><a href="#providesOpenAccess" title="http://www.example.org/rirpdm#providesOpenAccess">providesOpenAccess</a></li>
   <li><a href="#serviceOffer" title="http://www.example.org/rirpdm#serviceOffer">serviceOffer</a></li>
   <li><a href="#terminationCosts" title="http://www.example.org/rirpdm#terminationCosts">terminationCosts</a></li>
   <li><a href="#totalInvestmentCosts" title="http://www.example.org/rirpdm#totalInvestmentCosts">totalInvestmentCosts</a></li>
   <li><a href="#uniqueName" title="http://www.example.org/rirpdm#uniqueName">uniqueName</a></li>
+  <li><a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a></li>
   <li><a href="#userProgramme" title="http://www.example.org/rirpdm#userProgramme">userProgramme</a></li>
   <li><a href="#userSupportStructure" title="http://www.example.org/rirpdm#userSupportStructure">userSupportStructure</a></li>
  </ul>
@@ -3592,37 +3942,6 @@ This section provides details for each class and property defined by Research In
    </dd>
   </dl>
  </div>
- <div class="entity" id="hasKPI">
-  <h3>hasKPI<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
-  <p><strong>IRI:</strong> http://www.example.org/rirpdm#hasKPI</p>
-  <div class="comment">
-   <span class="markdown">Measurable KPIs covering scientific-service excellence and sustainability.</span>
-  </div>
-  <dl class="definedBy">
-   <dt>
-    Source
-   </dt>
-   <dd>
-    ESFRI Roadmap 2026
-   </dd>
-  </dl>
-  <div class="description">
-   <dl>
-    <dt>
-     has domain
-    </dt>
-    <dd>
-     <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
-    </dd>
-    <dt>
-     has range
-    </dt>
-    <dd>
-     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
-    </dd>
-   </dl>
-  </div>
- </div>
  <div class="entity" id="humanResourcesPolicy">
   <h3>humanResourcesPolicy<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://www.example.org/rirpdm#humanResourcesPolicy</p>
@@ -3774,6 +4093,70 @@ This section provides details for each class and property defined by Research In
     </dt>
     <dd>
      <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="measurementYear">
+  <h3>measurementYear<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#measurementYear</p>
+  <div class="comment">
+   <span class="markdown">The year to which a KPI measurement applies; KPIs are monitored annually.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#KPIMeasurement" title="http://www.example.org/rirpdm#KPIMeasurement">KPI Measurement</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#gYear" target="_blank" title="http://www.w3.org/2001/XMLSchema#gYear">g Year</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="numericValue">
+  <h3>numericValue<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#numericValue</p>
+  <div class="comment">
+   <span class="markdown">The recorded value of a KPI measurement, expressed in the measured KPI's unitOfMeasure.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#KPIMeasurement" title="http://www.example.org/rirpdm#KPIMeasurement">KPI Measurement</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
     </dd>
    </dl>
   </div>
@@ -3964,6 +4347,38 @@ This section provides details for each class and property defined by Research In
    </dl>
   </div>
  </div>
+ <div class="entity" id="unitOfMeasure">
+  <h3>unitOfMeasure<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#unitOfMeasure</p>
+  <div class="comment">
+   <span class="markdown">The unit in which a KPI's numericValue is expressed (e.g. Number, Percentage, Person hours).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
  <div class="entity" id="userProgramme">
   <h3>userProgramme<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://www.example.org/rirpdm#userProgramme</p>
@@ -4041,37 +4456,105 @@ This section provides details for each class and property defined by Research In
 </div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
  <h3 id="namedindividuals" class="list">Named Individuals</h3>
  <ul class="hlist">
+  <li><a href="#CitationsInPolicyRelatedPublications" title="http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications">Citations in policy related publications</a></li>
   <li><a href="#Concept" title="http://www.example.org/rirpdm#Concept">Concept</a></li>
   <li><a href="#http://purl.org/spar/fabio/ConferencePaper" title="http://purl.org/spar/fabio/ConferencePaper"> <span>Conference Paper</span> </a></li>
+  <li><a href="#DeliveryOfEducationAndTraining" title="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining">Delivery of Education and Training</a></li>
   <li><a href="#Design" title="http://www.example.org/rirpdm#Design">Design</a></li>
   <li><a href="#DistributedRI" title="http://www.example.org/rirpdm#DistributedRI"> <span>Distributed RI</span> </a></li>
   <li><a href="#ENeedsAndData" title="http://www.example.org/rirpdm#ENeedsAndData">E-Needs &amp; Data</a></li>
+  <li><a href="#EnablingScientificExcellence" title="http://www.example.org/rirpdm#EnablingScientificExcellence">Enabling Scientific Excellence</a></li>
+  <li><a href="#EngagementByDirectContact" title="http://www.example.org/rirpdm#EngagementByDirectContact">Engagement achieved by direct contact</a></li>
+  <li><a href="#EnhancingTransnationalCollaboration" title="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration">Enhancing Transnational Collaboration in Europe</a></li>
   <li><a href="#EnvironmentalConsiderations" title="http://www.example.org/rirpdm#EnvironmentalConsiderations">Environmental Considerations</a></li>
+  <li><a href="#ExtentOfResourcesMadeAvailable" title="http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable">Extent of resources made available</a></li>
+  <li><a href="#FacilitatingEconomicActivities" title="http://www.example.org/rirpdm#FacilitatingEconomicActivities">Facilitating Economic Activities</a></li>
+  <li><a href="#FacilitatingInternationalCooperation" title="http://www.example.org/rirpdm#FacilitatingInternationalCooperation">Facilitating International Cooperation</a></li>
   <li><a href="#Finances" title="http://www.example.org/rirpdm#Finances">Finances</a></li>
   <li><a href="#GovernanceManagementAndHR" title="http://www.example.org/rirpdm#GovernanceManagementAndHR">Governance Management &amp; HR</a></li>
   <li><a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant"> <span>Grant</span> </a></li>
   <li><a href="#High" title="http://www.example.org/rirpdm#High">High</a></li>
   <li><a href="#Implementation" title="http://www.example.org/rirpdm#Implementation">Implementation</a></li>
+  <li><a href="#IncomeFromCommercialActivities" title="http://www.example.org/rirpdm#IncomeFromCommercialActivities">Income from commercial activities and the number of entities paying for service</a></li>
+  <li><a href="#InternationalTrainees" title="http://www.example.org/rirpdm#InternationalTrainees">International trainees</a></li>
   <li><a href="#http://purl.org/spar/fabio/JournalArticle" title="http://purl.org/spar/fabio/JournalArticle"> <span>Journal Article</span> </a></li>
   <li><a href="#Low" title="http://www.example.org/rirpdm#Low">Low</a></li>
   <li><a href="#Medium" title="http://www.example.org/rirpdm#Medium">Medium</a></li>
+  <li><a href="#NumberOfMasterAndPhDStudentsUsingRI" title="http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI">Number of master and PhD students using the RI</a></li>
+  <li><a href="#NumberOfESFRIMembers" title="http://www.example.org/rirpdm#NumberOfESFRIMembers">Number of members of the RI from ESFRI countries</a></li>
+  <li><a href="#NumberOfNonESFRIMembers" title="http://www.example.org/rirpdm#NumberOfNonESFRIMembers">Number of members of the RI from non-ESFRI countries</a></li>
+  <li><a href="#NumberOfPublications" title="http://www.example.org/rirpdm#NumberOfPublications">Number of publications</a></li>
+  <li><a href="#NumberOfPubliclyAvailableDataSetsUsedExternally" title="http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally">Number of publicly available data sets used externally</a></li>
+  <li><a href="#NumberOfUserRequestsForAccess" title="http://www.example.org/rirpdm#NumberOfUserRequestsForAccess">Number of user requests for access</a></li>
+  <li><a href="#NumberOfUsersServed" title="http://www.example.org/rirpdm#NumberOfUsersServed">Number of users served</a></li>
   <li><a href="#Operation" title="http://www.example.org/rirpdm#Operation">Operation</a></li>
+  <li><a href="#OptimisingDataUse" title="http://www.example.org/rirpdm#OptimisingDataUse">Optimising Data Use</a></li>
+  <li><a href="#OptimisingManagement" title="http://www.example.org/rirpdm#OptimisingManagement">Optimising Management</a></li>
+  <li><a href="#OutreachThroughMedia" title="http://www.example.org/rirpdm#OutreachThroughMedia">Outreach through printed, broadcast and web-based media</a></li>
+  <li><a href="#OutreachToThePublic" title="http://www.example.org/rirpdm#OutreachToThePublic">Outreach to the Public</a></li>
+  <li><a href="#OutreachViaOwnWebAndSocialMedia" title="http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia">Outreach via the RI's own web and social media activities</a></li>
   <li><a href="#PanEuropeanRelevance" title="http://www.example.org/rirpdm#PanEuropeanRelevance">Pan-European Relevance</a></li>
+  <li><a href="#ParticipationInPolicyRelatedActivities" title="http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities">Participation by RIs in policy related activities</a></li>
+  <li><a href="#PercentageOfTopCitedPublications" title="http://www.example.org/rirpdm#PercentageOfTopCitedPublications">Percentage of top (10%) cited publications</a></li>
   <li><a href="#Preparation" title="http://www.example.org/rirpdm#Preparation">Preparation</a></li>
   <li><a href="#PreparatoryWorkAndPlanning" title="http://www.example.org/rirpdm#PreparatoryWorkAndPlanning">Preparatory Work &amp; Planning</a></li>
+  <li><a href="#ProvisionOfScientificAdvice" title="http://www.example.org/rirpdm#ProvisionOfScientificAdvice">Provision of Scientific Advice</a></li>
   <li><a href="#http://purl.org/spar/fabio/ReportDocument" title="http://purl.org/spar/fabio/ReportDocument"> <span>Report</span> </a></li>
   <li><a href="#ResearchInfrastructure" title="http://www.example.org/rirpdm#ResearchInfrastructure"> <span>Research Infrastructure</span> </a></li>
+  <li><a href="#Revenues" title="http://www.example.org/rirpdm#Revenues">Revenues</a></li>
   <li><a href="#Risks" title="http://www.example.org/rirpdm#Risks">Risks</a></li>
   <li><a href="#ScientificExcellence" title="http://www.example.org/rirpdm#ScientificExcellence">Scientific Excellence</a></li>
+  <li><a href="#ShareOfUsersAndPublicationsPerESFRICountry" title="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry">Share of users and publications per ESFRI member country</a></li>
+  <li><a href="#ShareOfUsersAndPublicationsPerNonESFRICountry" title="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry">Share of users and publications per non-ESFRI member country</a></li>
+  <li><a href="#ShareOfIndustryUsersAndPublications" title="http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications">Share of users associated with industry and publications with industry</a></li>
   <li><a href="#SingleSitedRI" title="http://www.example.org/rirpdm#SingleSitedRI"> <span>Single-sited RI</span> </a></li>
   <li><a href="#SocioEconomicImpact" title="http://www.example.org/rirpdm#SocioEconomicImpact">Socio-Economic Impact</a></li>
   <li><a href="#StakeholderCommitment" title="http://www.example.org/rirpdm#StakeholderCommitment">Stakeholder Commitment</a></li>
   <li><a href="#Termination" title="http://www.example.org/rirpdm#Termination">Termination</a></li>
   <li><a href="#http://purl.org/spar/fabio/Thesis" title="http://purl.org/spar/fabio/Thesis"> <span>Thesis</span> </a></li>
+  <li><a href="#TrainingOfNonRIStaff" title="http://www.example.org/rirpdm#TrainingOfNonRIStaff">Training of people who are not RI staff</a></li>
   <li><a href="#UserStrategyAndAccessPolicy" title="http://www.example.org/rirpdm#UserStrategyAndAccessPolicy">User Strategy &amp; Access Policy</a></li>
   <li><a href="#VeryHigh" title="http://www.example.org/rirpdm#VeryHigh">Very High</a></li>
   <li><a href="#VirtualRI" title="http://www.example.org/rirpdm#VirtualRI"> <span>Virtual RI</span> </a></li>
  </ul>
+ <div class="entity" id="CitationsInPolicyRelatedPublications">
+  <h3>Citations in policy related publications<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications</p>
+  <div class="comment">
+   <span class="markdown">Number of times the RI or its projects are cited in policy related publications.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 16
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#ProvisionOfScientificAdvice" title="http://www.example.org/rirpdm#ProvisionOfScientificAdvice">Provision of Scientific Advice</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number of citations"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 16"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
  <div class="entity" id="Concept">
   <h3>Concept<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://www.example.org/rirpdm#Concept</p>
@@ -4099,6 +4582,18 @@ This section provides details for each class and property defined by Research In
    </dt>
    <dd>
     <a href="#http://purl.org/spar/fabio/ConferencePaper">class</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="DeliveryOfEducationAndTraining">
+  <h3>Delivery of Education and Training<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#DeliveryOfEducationAndTraining</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
    </dd>
   </dl>
  </div>
@@ -4150,6 +4645,68 @@ This section provides details for each class and property defined by Research In
    </dd>
   </dl>
  </div>
+ <div class="entity" id="EnablingScientificExcellence">
+  <h3>Enabling Scientific Excellence<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#EnablingScientificExcellence</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="EngagementByDirectContact">
+  <h3>Engagement achieved by direct contact<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#EngagementByDirectContact</p>
+  <div class="comment">
+   <span class="markdown">Outreach by public relations/direct contact: events organised or attended (by third parties), and visitors to the RI.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 11
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#OutreachToThePublic" title="http://www.example.org/rirpdm#OutreachToThePublic">Outreach to the Public</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number of visitors/participants; number and hours of events"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 11"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="EnhancingTransnationalCollaboration">
+  <h3>Enhancing Transnational Collaboration in Europe<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#EnhancingTransnationalCollaboration</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
  <div class="entity" id="EnvironmentalConsiderations">
   <h3>Environmental Considerations<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://www.example.org/rirpdm#EnvironmentalConsiderations</p>
@@ -4159,6 +4716,68 @@ This section provides details for each class and property defined by Research In
    </dt>
    <dd>
     <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ExtentOfResourcesMadeAvailable">
+  <h3>Extent of resources made available<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable</p>
+  <div class="comment">
+   <span class="markdown">Experimental time available, or size of resources database made available to users to faciliate research.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 21
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#OptimisingManagement" title="http://www.example.org/rirpdm#OptimisingManagement">Optimising Management</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Hours (facility RI) or number of data entries/sets/items/services (resource RI)"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 21"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="FacilitatingEconomicActivities">
+  <h3>Facilitating Economic Activities<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#FacilitatingEconomicActivities</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="FacilitatingInternationalCooperation">
+  <h3>Facilitating International Cooperation<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#FacilitatingInternationalCooperation</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
    </dd>
   </dl>
  </div>
@@ -4234,6 +4853,82 @@ This section provides details for each class and property defined by Research In
    </dd>
   </dl>
  </div>
+ <div class="entity" id="IncomeFromCommercialActivities">
+  <h3>Income from commercial activities and the number of entities paying for service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#IncomeFromCommercialActivities</p>
+  <div class="comment">
+   <span class="markdown">Share of revenue from the RI's economic activities (sale of services/goods, access provision) reported in the annual accounts.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 10
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#FacilitatingEconomicActivities" title="http://www.example.org/rirpdm#FacilitatingEconomicActivities">Facilitating Economic Activities</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Currency amount; number of entities"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 10"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="InternationalTrainees">
+  <h3>International trainees<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#InternationalTrainees</p>
+  <div class="comment">
+   <span class="markdown">Person-hours of training opportunities provided by the RI made use of by trainees from non-ESFRI member countries.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 18
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#FacilitatingInternationalCooperation" title="http://www.example.org/rirpdm#FacilitatingInternationalCooperation">Facilitating International Cooperation</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Person hours"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 18"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
  <div class="entity" id="http://purl.org/spar/fabio/JournalArticle">
   <h3>Journal Article<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://purl.org/spar/fabio/JournalArticle</p>
@@ -4276,6 +4971,272 @@ This section provides details for each class and property defined by Research In
    </dd>
   </dl>
  </div>
+ <div class="entity" id="NumberOfMasterAndPhDStudentsUsingRI">
+  <h3>Number of master and PhD students using the RI<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI</p>
+  <div class="comment">
+   <span class="markdown">Number of master and PhD students who have performed some of their studies at or using the services of the RI in a particular year regardless of whether they are funded/hosted by the RI or access it as a user.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 5
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#DeliveryOfEducationAndTraining" title="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining">Delivery of Education and Training</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 5"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NumberOfESFRIMembers">
+  <h3>Number of members of the RI from ESFRI countries<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#NumberOfESFRIMembers</p>
+  <div class="comment">
+   <span class="markdown">Number of organisations/countries with a formal engagement (member, associated member, observer) based in an ESFRI member country.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 7
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#EnhancingTransnationalCollaboration" title="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration">Enhancing Transnational Collaboration in Europe</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 7"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NumberOfNonESFRIMembers">
+  <h3>Number of members of the RI from non-ESFRI countries<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#NumberOfNonESFRIMembers</p>
+  <div class="comment">
+   <span class="markdown">Number of organisations/countries with a formal engagement based in a non-ESFRI member country.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 19
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#FacilitatingInternationalCooperation" title="http://www.example.org/rirpdm#FacilitatingInternationalCooperation">Facilitating International Cooperation</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 19"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NumberOfPublications">
+  <h3>Number of publications<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#NumberOfPublications</p>
+  <div class="comment">
+   <span class="markdown">Number of publications based on research performed using facilities/resources of the RI. The publication is shared by the countries of the home institutions of all authors, the sum of the shares being one.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 3
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#EnablingScientificExcellence" title="http://www.example.org/rirpdm#EnablingScientificExcellence">Enabling Scientific Excellence</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 3"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NumberOfPubliclyAvailableDataSetsUsedExternally">
+  <h3>Number of publicly available data sets used externally<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally</p>
+  <div class="comment">
+   <span class="markdown">Number of data sets produced as a consequence of access to the RI that are subsequently accessed by other users.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 14
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#OptimisingDataUse" title="http://www.example.org/rirpdm#OptimisingDataUse">Optimising Data Use</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number of data users"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 14"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NumberOfUserRequestsForAccess">
+  <h3>Number of user requests for access<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#NumberOfUserRequestsForAccess</p>
+  <div class="comment">
+   <span class="markdown">For access to facilities: number of user proposals for access. For resource RIs: number of users of resources (collections, data, services).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 1
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#EnablingScientificExcellence" title="http://www.example.org/rirpdm#EnablingScientificExcellence">Enabling Scientific Excellence</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 1"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NumberOfUsersServed">
+  <h3>Number of users served<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#NumberOfUsersServed</p>
+  <div class="comment">
+   <span class="markdown">For access to facilities: number of granted proposals/accepted users. For resource RIs: number of downloads/studies or service provisions.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 2
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#EnablingScientificExcellence" title="http://www.example.org/rirpdm#EnablingScientificExcellence">Enabling Scientific Excellence</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 2"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
  <div class="entity" id="Operation">
   <h3>Operation<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://www.example.org/rirpdm#Operation</p>
@@ -4294,6 +5255,118 @@ This section provides details for each class and property defined by Research In
    </dd>
   </dl>
  </div>
+ <div class="entity" id="OptimisingDataUse">
+  <h3>Optimising Data Use<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#OptimisingDataUse</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="OptimisingManagement">
+  <h3>Optimising Management<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#OptimisingManagement</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="OutreachThroughMedia">
+  <h3>Outreach through printed, broadcast and web-based media<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#OutreachThroughMedia</p>
+  <div class="comment">
+   <span class="markdown">Impact of press and communication actions in raising awareness of RI mission, activities and societal relevance of results</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 12
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#OutreachToThePublic" title="http://www.example.org/rirpdm#OutreachToThePublic">Outreach to the Public</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number of media mentions"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 12"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="OutreachToThePublic">
+  <h3>Outreach to the Public<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#OutreachToThePublic</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="OutreachViaOwnWebAndSocialMedia">
+  <h3>Outreach via the RI's own web and social media activities<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia</p>
+  <div class="comment">
+   <span class="markdown">Website popularity and level of social media engagement: Web (e.g. Google analytics) analytics and social media analytic tools (Twitter, Linkedin, Youtube, Flickr, Facebook, etc.)</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 13
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#OutreachToThePublic" title="http://www.example.org/rirpdm#OutreachToThePublic">Outreach to the Public</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Web/social media analytics (users, followers, interactions)"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 13"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
  <div class="entity" id="PanEuropeanRelevance">
   <h3>Pan-European Relevance<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://www.example.org/rirpdm#PanEuropeanRelevance</p>
@@ -4303,6 +5376,82 @@ This section provides details for each class and property defined by Research In
    </dt>
    <dd>
     <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ParticipationInPolicyRelatedActivities">
+  <h3>Participation by RIs in policy related activities<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities</p>
+  <div class="comment">
+   <span class="markdown">Number of participations, reimbursed by the organisers, in policy related working groups, committees &amp; advisory boards. In the case of working groups, etc, organised by intergovernmental organisations, the invitation suffices.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 15
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#ProvisionOfScientificAdvice" title="http://www.example.org/rirpdm#ProvisionOfScientificAdvice">Provision of Scientific Advice</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number of invitations/contributions per annum"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 15"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PercentageOfTopCitedPublications">
+  <h3>Percentage of top (10%) cited publications<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#PercentageOfTopCitedPublications</p>
+  <div class="comment">
+   <span class="markdown">Percentage of RI-enabled publications that, compared with publications in the same field and year, belong to the top 10% most frequently cited.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 4
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#EnablingScientificExcellence" title="http://www.example.org/rirpdm#EnablingScientificExcellence">Enabling Scientific Excellence</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Percentage"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 4"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
    </dd>
   </dl>
  </div>
@@ -4327,6 +5476,18 @@ This section provides details for each class and property defined by Research In
    </dt>
    <dd>
     <a href="#ImplementationDimension" title="http://www.example.org/rirpdm#ImplementationDimension">Implementation Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ProvisionOfScientificAdvice">
+  <h3>Provision of Scientific Advice<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ProvisionOfScientificAdvice</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPIObjective" title="http://www.example.org/rirpdm#KPIObjective">KPI Objective</a> <sup class="type-c" title="class">c</sup>
    </dd>
   </dl>
  </div>
@@ -4366,6 +5527,44 @@ This section provides details for each class and property defined by Research In
    </dd>
   </dl>
  </div>
+ <div class="entity" id="Revenues">
+  <h3>Revenues<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#Revenues</p>
+  <div class="comment">
+   <span class="markdown">Sources of revenue (member contributions, third-party contributions, project funding, commercial revenue, other) and their contributions to investment and operational costs.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 20
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#OptimisingManagement" title="http://www.example.org/rirpdm#OptimisingManagement">Optimising Management</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Amount in national currency"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 20"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
  <div class="entity" id="Risks">
   <h3>Risks<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://www.example.org/rirpdm#Risks</p>
@@ -4387,6 +5586,120 @@ This section provides details for each class and property defined by Research In
    </dt>
    <dd>
     <a href="#ScientificDimension" title="http://www.example.org/rirpdm#ScientificDimension">Scientific Dimension</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ShareOfUsersAndPublicationsPerESFRICountry">
+  <h3>Share of users and publications per ESFRI member country<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry</p>
+  <div class="comment">
+   <span class="markdown">Share of RI users and RI-enabled publications attributable to each ESFRI member country, per host institution of the user/author.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 8
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#EnhancingTransnationalCollaboration" title="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration">Enhancing Transnational Collaboration in Europe</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number and %"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 8"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ShareOfUsersAndPublicationsPerNonESFRICountry">
+  <h3>Share of users and publications per non-ESFRI member country<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry</p>
+  <div class="comment">
+   <span class="markdown">Share of RI users and RI-enabled publications attributable to each non-ESFRI member country, per host institution of the user/author.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 17
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#FacilitatingInternationalCooperation" title="http://www.example.org/rirpdm#FacilitatingInternationalCooperation">Facilitating International Cooperation</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Number and %"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 17"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ShareOfIndustryUsersAndPublications">
+  <h3>Share of users associated with industry and publications with industry<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications</p>
+  <div class="comment">
+   <span class="markdown">Extent to which scientists from industry, the RI and possibly universities collaborate and exchange knowledge.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 9
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#FacilitatingEconomicActivities" title="http://www.example.org/rirpdm#FacilitatingEconomicActivities">Facilitating Economic Activities</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"% and number"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 9"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
    </dd>
   </dl>
  </div>
@@ -4465,6 +5778,44 @@ This section provides details for each class and property defined by Research In
    </dt>
    <dd>
     <a href="#http://purl.org/spar/fabio/Thesis">class</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="TrainingOfNonRIStaff">
+  <h3>Training of people who are not RI staff<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.example.org/rirpdm#TrainingOfNonRIStaff</p>
+  <div class="comment">
+   <span class="markdown">Total person-hours for which people external to the RI made use of training opportunities provided by the RI (face-to-face and on-line).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    ESFRI WG Monitoring Report 2019, Annex 5 KPI 6
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#KPI" title="http://www.example.org/rirpdm#KPI">KPI</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#forObjective" title="http://www.example.org/rirpdm#forObjective">forObjective</a> <sup class="type-op" title="object property">op</sup> <a href="#DeliveryOfEducationAndTraining" title="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining">Delivery of Education and Training</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#unitOfMeasure" title="http://www.example.org/rirpdm#unitOfMeasure">unitOfMeasure</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Person hours"</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"ESFRI WG Monitoring Report 2019, Annex 5 KPI 6"</span>
+   </dd>
+   <dd>
+    <a href="#status" title="http://www.example.org/rirpdm#status">status</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"New"</span>
    </dd>
   </dl>
  </div>

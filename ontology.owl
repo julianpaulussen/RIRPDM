@@ -316,6 +316,21 @@
     
 
 
+    <!-- http://www.example.org/rirpdm#forObjective -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/rirpdm#forObjective">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <rdfs:range rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <terms:source>ESFRI WG Monitoring Report 2019</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">The KPIObjective a KPI belongs to.</rdfs:comment>
+        <rdfs:label xml:lang="en">forObjective</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.example.org/rirpdm#hasAuthor -->
 
 
@@ -384,6 +399,20 @@
         <status>New</status>
         <rdfs:comment xml:lang="en">Links a Proposal or Research Infrastructure to its Implementation Case assessment.</rdfs:comment>
         <rdfs:label xml:lang="en">hasImplementationCase</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/rirpdm#hasKPIMeasurement -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/rirpdm#hasKPIMeasurement">
+        <rdfs:domain rdf:resource="http://www.example.org/rirpdm#ResearchInfrastructure"/>
+        <rdfs:range rdf:resource="http://www.example.org/rirpdm#KPIMeasurement"/>
+        <terms:source>ESFRI WG Monitoring Report 2019</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Relates a research infrastructure to one of its recorded KPI measurements.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasKPIMeasurement</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -632,6 +661,21 @@
     
 
 
+    <!-- http://www.example.org/rirpdm#measuresKPI -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/rirpdm#measuresKPI">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.org/rirpdm#KPIMeasurement"/>
+        <rdfs:range rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <terms:source>ESFRI WG Monitoring Report 2019</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">The KPI that a KPIMeasurement records a value for.</rdfs:comment>
+        <rdfs:label xml:lang="en">measuresKPI</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.example.org/rirpdm#participatesIn -->
 
 
@@ -857,20 +901,6 @@
     
 
 
-    <!-- http://www.example.org/rirpdm#hasKPI -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.example.org/rirpdm#hasKPI">
-        <rdfs:domain rdf:resource="http://www.example.org/rirpdm#ResearchInfrastructure"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <terms:source>ESFRI Roadmap 2026</terms:source>
-        <status>New</status>
-        <rdfs:comment xml:lang="en">Measurable KPIs covering scientific-service excellence and sustainability.</rdfs:comment>
-        <rdfs:label xml:lang="en">hasKPI</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://www.example.org/rirpdm#humanResourcesPolicy -->
 
 
@@ -937,6 +967,36 @@
         <status>New</status>
         <rdfs:comment xml:lang="en">Long-term plan for the site across its lifecycle.</rdfs:comment>
         <rdfs:label xml:lang="en">longTermSitePlanning</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/rirpdm#measurementYear -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/rirpdm#measurementYear">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.org/rirpdm#KPIMeasurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <terms:source>ESFRI WG Monitoring Report 2019</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">The year to which a KPI measurement applies; KPIs are monitored annually.</rdfs:comment>
+        <rdfs:label xml:lang="en">measurementYear</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/rirpdm#numericValue -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/rirpdm#numericValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.org/rirpdm#KPIMeasurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <terms:source>ESFRI WG Monitoring Report 2019</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">The recorded value of a KPI measurement, expressed in the measured KPI&apos;s unitOfMeasure.</rdfs:comment>
+        <rdfs:label xml:lang="en">numericValue</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -1021,6 +1081,21 @@
         <status>New</status>
         <rdfs:comment xml:lang="en">The RI&apos;s unique specific name.</rdfs:comment>
         <rdfs:label xml:lang="en">uniqueName</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/rirpdm#unitOfMeasure -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/rirpdm#unitOfMeasure">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <terms:source>ESFRI WG Monitoring Report 2019</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">The unit in which a KPI&apos;s numericValue is expressed (e.g. Number, Percentage, Person hours).</rdfs:comment>
+        <rdfs:label xml:lang="en">unitOfMeasure</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -1374,6 +1449,84 @@
         <status>New</status>
         <rdfs:comment xml:lang="en">One of the five dimensions along which an Implementation Case is assessed.</rdfs:comment>
         <rdfs:label xml:lang="en">Implementation Dimension</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/rirpdm#KPI -->
+
+
+    <owl:Class rdf:about="http://www.example.org/rirpdm#KPI">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#EngagementByDirectContact"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#IncomeFromCommercialActivities"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#InternationalTrainees"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfESFRIMembers"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfNonESFRIMembers"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfPublications"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfUserRequestsForAccess"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfUsersServed"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#OutreachThroughMedia"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#PercentageOfTopCitedPublications"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#Revenues"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#TrainingOfNonRIStaff"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <terms:source>ESFRI WG Monitoring Report 2019</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">One of the 21 key performance indicators, each belonging to exactly one KPIObjective.</rdfs:comment>
+        <rdfs:label xml:lang="en">KPI</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/rirpdm#KPIMeasurement -->
+
+
+    <owl:Class rdf:about="http://www.example.org/rirpdm#KPIMeasurement">
+        <terms:source>ESFRI WG Monitoring Report 2019</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">One recorded value of a KPI for a research infrastructure in a given year.</rdfs:comment>
+        <rdfs:label xml:lang="en">KPI Measurement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/rirpdm#KPIObjective -->
+
+
+    <owl:Class rdf:about="http://www.example.org/rirpdm#KPIObjective">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#EnablingScientificExcellence"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#FacilitatingEconomicActivities"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#FacilitatingInternationalCooperation"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#OptimisingDataUse"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#OptimisingManagement"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#OutreachToThePublic"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#ProvisionOfScientificAdvice"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <terms:source>ESFRI WG Monitoring Report 2019</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">One of the nine commonly held objectives against which RIs monitor performance.</rdfs:comment>
+        <rdfs:label xml:lang="en">KPI Objective</rdfs:label>
     </owl:Class>
     
 
@@ -1777,12 +1930,37 @@
     
 
 
+    <!-- http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#ProvisionOfScientificAdvice"/>
+        <unitOfMeasure>Number of citations</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 16</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Number of times the RI or its projects are cited in policy related publications.</rdfs:comment>
+        <rdfs:label xml:lang="en">Citations in policy related publications</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.example.org/rirpdm#Concept -->
 
 
     <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#Concept">
         <rdf:type rdf:resource="http://www.example.org/rirpdm#LifecyclePhase"/>
         <rdfs:label xml:lang="en">Concept</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#DeliveryOfEducationAndTraining -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <rdfs:label xml:lang="en">Delivery of Education and Training</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1816,12 +1994,82 @@
     
 
 
+    <!-- http://www.example.org/rirpdm#EnablingScientificExcellence -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#EnablingScientificExcellence">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <rdfs:label xml:lang="en">Enabling Scientific Excellence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#EngagementByDirectContact -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#EngagementByDirectContact">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#OutreachToThePublic"/>
+        <unitOfMeasure>Number of visitors/participants; number and hours of events</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 11</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Outreach by public relations/direct contact: events organised or attended (by third parties), and visitors to the RI.</rdfs:comment>
+        <rdfs:label xml:lang="en">Engagement achieved by direct contact</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#EnhancingTransnationalCollaboration -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <rdfs:label xml:lang="en">Enhancing Transnational Collaboration in Europe</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.example.org/rirpdm#EnvironmentalConsiderations -->
 
 
     <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#EnvironmentalConsiderations">
         <rdf:type rdf:resource="http://www.example.org/rirpdm#ScientificDimension"/>
         <rdfs:label xml:lang="en">Environmental Considerations</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#OptimisingManagement"/>
+        <unitOfMeasure>Hours (facility RI) or number of data entries/sets/items/services (resource RI)</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 21</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Experimental time available, or size of resources database made available to users to faciliate research.</rdfs:comment>
+        <rdfs:label xml:lang="en">Extent of resources made available</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#FacilitatingEconomicActivities -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#FacilitatingEconomicActivities">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <rdfs:label xml:lang="en">Facilitating Economic Activities</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#FacilitatingInternationalCooperation -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#FacilitatingInternationalCooperation">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <rdfs:label xml:lang="en">Facilitating International Cooperation</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1867,6 +2115,36 @@
     
 
 
+    <!-- http://www.example.org/rirpdm#IncomeFromCommercialActivities -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#IncomeFromCommercialActivities">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#FacilitatingEconomicActivities"/>
+        <unitOfMeasure>Currency amount; number of entities</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 10</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Share of revenue from the RI&apos;s economic activities (sale of services/goods, access provision) reported in the annual accounts.</rdfs:comment>
+        <rdfs:label xml:lang="en">Income from commercial activities and the number of entities paying for service</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#InternationalTrainees -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#InternationalTrainees">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#FacilitatingInternationalCooperation"/>
+        <unitOfMeasure>Person hours</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 18</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Person-hours of training opportunities provided by the RI made use of by trainees from non-ESFRI member countries.</rdfs:comment>
+        <rdfs:label xml:lang="en">International trainees</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.example.org/rirpdm#Low -->
 
 
@@ -1887,6 +2165,111 @@
     
 
 
+    <!-- http://www.example.org/rirpdm#NumberOfESFRIMembers -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#NumberOfESFRIMembers">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration"/>
+        <unitOfMeasure>Number</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 7</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Number of organisations/countries with a formal engagement (member, associated member, observer) based in an ESFRI member country.</rdfs:comment>
+        <rdfs:label xml:lang="en">Number of members of the RI from ESFRI countries</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining"/>
+        <unitOfMeasure>Number</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 5</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Number of master and PhD students who have performed some of their studies at or using the services of the RI in a particular year regardless of whether they are funded/hosted by the RI or access it as a user.</rdfs:comment>
+        <rdfs:label xml:lang="en">Number of master and PhD students using the RI</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#NumberOfNonESFRIMembers -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#NumberOfNonESFRIMembers">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#FacilitatingInternationalCooperation"/>
+        <unitOfMeasure>Number</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 19</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Number of organisations/countries with a formal engagement based in a non-ESFRI member country.</rdfs:comment>
+        <rdfs:label xml:lang="en">Number of members of the RI from non-ESFRI countries</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#NumberOfPublications -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#NumberOfPublications">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#EnablingScientificExcellence"/>
+        <unitOfMeasure>Number</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 3</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Number of publications based on research performed using facilities/resources of the RI. The publication is shared by the countries of the home institutions of all authors, the sum of the shares being one.</rdfs:comment>
+        <rdfs:label xml:lang="en">Number of publications</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#OptimisingDataUse"/>
+        <unitOfMeasure>Number of data users</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 14</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Number of data sets produced as a consequence of access to the RI that are subsequently accessed by other users.</rdfs:comment>
+        <rdfs:label xml:lang="en">Number of publicly available data sets used externally</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#NumberOfUserRequestsForAccess -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#NumberOfUserRequestsForAccess">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#EnablingScientificExcellence"/>
+        <unitOfMeasure>Number</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 1</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">For access to facilities: number of user proposals for access. For resource RIs: number of users of resources (collections, data, services).</rdfs:comment>
+        <rdfs:label xml:lang="en">Number of user requests for access</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#NumberOfUsersServed -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#NumberOfUsersServed">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#EnablingScientificExcellence"/>
+        <unitOfMeasure>Number</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 2</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">For access to facilities: number of granted proposals/accepted users. For resource RIs: number of downloads/studies or service provisions.</rdfs:comment>
+        <rdfs:label xml:lang="en">Number of users served</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.example.org/rirpdm#Operation -->
 
 
@@ -1898,12 +2281,102 @@
     
 
 
+    <!-- http://www.example.org/rirpdm#OptimisingDataUse -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#OptimisingDataUse">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <rdfs:label xml:lang="en">Optimising Data Use</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#OptimisingManagement -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#OptimisingManagement">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <rdfs:label xml:lang="en">Optimising Management</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#OutreachThroughMedia -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#OutreachThroughMedia">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#OutreachToThePublic"/>
+        <unitOfMeasure>Number of media mentions</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 12</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Impact of press and communication actions in raising awareness of RI mission, activities and societal relevance of results</rdfs:comment>
+        <rdfs:label xml:lang="en">Outreach through printed, broadcast and web-based media</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#OutreachToThePublic -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#OutreachToThePublic">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <rdfs:label xml:lang="en">Outreach to the Public</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#OutreachToThePublic"/>
+        <unitOfMeasure>Web/social media analytics (users, followers, interactions)</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 13</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Website popularity and level of social media engagement: Web (e.g. Google analytics) analytics and social media analytic tools (Twitter, Linkedin, Youtube, Flickr, Facebook, etc.)</rdfs:comment>
+        <rdfs:label xml:lang="en">Outreach via the RI&apos;s own web and social media activities</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.example.org/rirpdm#PanEuropeanRelevance -->
 
 
     <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#PanEuropeanRelevance">
         <rdf:type rdf:resource="http://www.example.org/rirpdm#ScientificDimension"/>
         <rdfs:label xml:lang="en">Pan-European Relevance</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#ProvisionOfScientificAdvice"/>
+        <unitOfMeasure>Number of invitations/contributions per annum</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 15</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Number of participations, reimbursed by the organisers, in policy related working groups, committees &amp; advisory boards. In the case of working groups, etc, organised by intergovernmental organisations, the invitation suffices.</rdfs:comment>
+        <rdfs:label xml:lang="en">Participation by RIs in policy related activities</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#PercentageOfTopCitedPublications -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#PercentageOfTopCitedPublications">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#EnablingScientificExcellence"/>
+        <unitOfMeasure>Percentage</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 4</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Percentage of RI-enabled publications that, compared with publications in the same field and year, belong to the top 10% most frequently cited.</rdfs:comment>
+        <rdfs:label xml:lang="en">Percentage of top (10%) cited publications</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1928,11 +2401,36 @@
     
 
 
+    <!-- http://www.example.org/rirpdm#ProvisionOfScientificAdvice -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#ProvisionOfScientificAdvice">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPIObjective"/>
+        <rdfs:label xml:lang="en">Provision of Scientific Advice</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.example.org/rirpdm#ResearchInfrastructure -->
 
 
     <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#ResearchInfrastructure">
         <skos:exactMatch rdf:resource="https://w3id.org/cerif/vocab/ResearchInfrastructure#ResearchInfrastructure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#Revenues -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#Revenues">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#OptimisingManagement"/>
+        <unitOfMeasure>Amount in national currency</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 20</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Sources of revenue (member contributions, third-party contributions, project funding, commercial revenue, other) and their contributions to investment and operational costs.</rdfs:comment>
+        <rdfs:label xml:lang="en">Revenues</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1953,6 +2451,51 @@
     <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#ScientificExcellence">
         <rdf:type rdf:resource="http://www.example.org/rirpdm#ScientificDimension"/>
         <rdfs:label xml:lang="en">Scientific Excellence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#FacilitatingEconomicActivities"/>
+        <unitOfMeasure>% and number</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 9</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Extent to which scientists from industry, the RI and possibly universities collaborate and exchange knowledge.</rdfs:comment>
+        <rdfs:label xml:lang="en">Share of users associated with industry and publications with industry</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration"/>
+        <unitOfMeasure>Number and %</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 8</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Share of RI users and RI-enabled publications attributable to each ESFRI member country, per host institution of the user/author.</rdfs:comment>
+        <rdfs:label xml:lang="en">Share of users and publications per ESFRI member country</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#FacilitatingInternationalCooperation"/>
+        <unitOfMeasure>Number and %</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 17</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Share of RI users and RI-enabled publications attributable to each non-ESFRI member country, per host institution of the user/author.</rdfs:comment>
+        <rdfs:label xml:lang="en">Share of users and publications per non-ESFRI member country</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1992,6 +2535,21 @@
     <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#Termination">
         <rdf:type rdf:resource="http://www.example.org/rirpdm#LifecyclePhase"/>
         <rdfs:label xml:lang="en">Termination</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/rirpdm#TrainingOfNonRIStaff -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/rirpdm#TrainingOfNonRIStaff">
+        <rdf:type rdf:resource="http://www.example.org/rirpdm#KPI"/>
+        <forObjective rdf:resource="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining"/>
+        <unitOfMeasure>Person hours</unitOfMeasure>
+        <terms:source>ESFRI WG Monitoring Report 2019, Annex 5 KPI 6</terms:source>
+        <status>New</status>
+        <rdfs:comment xml:lang="en">Total person-hours for which people external to the RI made use of training opportunities provided by the RI (face-to-face and on-line).</rdfs:comment>
+        <rdfs:label xml:lang="en">Training of people who are not RI staff</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -2191,12 +2749,52 @@
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#EngagementByDirectContact"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#IncomeFromCommercialActivities"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#InternationalTrainees"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfESFRIMembers"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfNonESFRIMembers"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfPublications"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfUserRequestsForAccess"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#NumberOfUsersServed"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#OutreachThroughMedia"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#PercentageOfTopCitedPublications"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#Revenues"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#TrainingOfNonRIStaff"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.example.org/rirpdm#Concept"/>
             <rdf:Description rdf:about="http://www.example.org/rirpdm#Design"/>
             <rdf:Description rdf:about="http://www.example.org/rirpdm#Implementation"/>
             <rdf:Description rdf:about="http://www.example.org/rirpdm#Operation"/>
             <rdf:Description rdf:about="http://www.example.org/rirpdm#Preparation"/>
             <rdf:Description rdf:about="http://www.example.org/rirpdm#Termination"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#DeliveryOfEducationAndTraining"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#EnablingScientificExcellence"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#EnhancingTransnationalCollaboration"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#FacilitatingEconomicActivities"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#FacilitatingInternationalCooperation"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#OptimisingDataUse"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#OptimisingManagement"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#OutreachToThePublic"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#ProvisionOfScientificAdvice"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
