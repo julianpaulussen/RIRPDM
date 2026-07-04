@@ -339,6 +339,224 @@ rirpdm:Low      a owl:NamedIndividual , rirpdm:Score ; rdfs:label "Low"@en .
     owl:members ( rirpdm:VeryHigh rirpdm:High rirpdm:Medium rirpdm:Low ) .
 
 #################################################################
+#    KPI Objectives & KPIs  (ESFRI WG Monitoring Report 2019)
+#    9 objectives (Table 1), each with a fixed set of the 21 KPIs;
+#    a KPIMeasurement records one KPI's value for one RI in one year.
+#################################################################
+
+rirpdm:KPIObjective a owl:Class ;
+    rdfs:label "KPI Objective"@en ;
+    rdfs:comment "One of the nine commonly held objectives against which RIs monitor performance."@en ;
+    owl:equivalentClass [ a owl:Class ;
+        owl:oneOf ( rirpdm:EnablingScientificExcellence rirpdm:DeliveryOfEducationAndTraining
+                    rirpdm:EnhancingTransnationalCollaboration rirpdm:FacilitatingEconomicActivities
+                    rirpdm:OutreachToThePublic rirpdm:OptimisingDataUse
+                    rirpdm:ProvisionOfScientificAdvice rirpdm:FacilitatingInternationalCooperation
+                    rirpdm:OptimisingManagement ) ] ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI WG Monitoring Report 2019" .
+
+# owl:NamedIndividual declares that these are all instances of KPIObjective, not classes. 
+rirpdm:EnablingScientificExcellence         a owl:NamedIndividual , rirpdm:KPIObjective ; rdfs:label "Enabling Scientific Excellence"@en .
+rirpdm:DeliveryOfEducationAndTraining       a owl:NamedIndividual , rirpdm:KPIObjective ; rdfs:label "Delivery of Education and Training"@en .
+rirpdm:EnhancingTransnationalCollaboration  a owl:NamedIndividual , rirpdm:KPIObjective ; rdfs:label "Enhancing Transnational Collaboration in Europe"@en .
+rirpdm:FacilitatingEconomicActivities       a owl:NamedIndividual , rirpdm:KPIObjective ; rdfs:label "Facilitating Economic Activities"@en .
+rirpdm:OutreachToThePublic                  a owl:NamedIndividual , rirpdm:KPIObjective ; rdfs:label "Outreach to the Public"@en .
+rirpdm:OptimisingDataUse                    a owl:NamedIndividual , rirpdm:KPIObjective ; rdfs:label "Optimising Data Use"@en .
+rirpdm:ProvisionOfScientificAdvice          a owl:NamedIndividual , rirpdm:KPIObjective ; rdfs:label "Provision of Scientific Advice"@en .
+rirpdm:FacilitatingInternationalCooperation a owl:NamedIndividual , rirpdm:KPIObjective ; rdfs:label "Facilitating International Cooperation"@en .
+rirpdm:OptimisingManagement                 a owl:NamedIndividual , rirpdm:KPIObjective ; rdfs:label "Optimising Management"@en .
+
+rirpdm:KPIObjectivesAllDifferent a owl:AllDifferent ;
+    owl:members ( rirpdm:EnablingScientificExcellence rirpdm:DeliveryOfEducationAndTraining
+                  rirpdm:EnhancingTransnationalCollaboration rirpdm:FacilitatingEconomicActivities
+                  rirpdm:OutreachToThePublic rirpdm:OptimisingDataUse
+                  rirpdm:ProvisionOfScientificAdvice rirpdm:FacilitatingInternationalCooperation
+                  rirpdm:OptimisingManagement ) .
+
+rirpdm:KPI a owl:Class ;
+    rdfs:label "KPI"@en ;
+    rdfs:comment "One of the 21 key performance indicators, each belonging to exactly one KPIObjective."@en ;
+    owl:equivalentClass [ a owl:Class ;
+        owl:oneOf ( rirpdm:NumberOfUserRequestsForAccess rirpdm:NumberOfUsersServed
+                    rirpdm:NumberOfPublications rirpdm:PercentageOfTopCitedPublications
+                    rirpdm:NumberOfMasterAndPhDStudentsUsingRI rirpdm:TrainingOfNonRIStaff
+                    rirpdm:NumberOfESFRIMembers rirpdm:ShareOfUsersAndPublicationsPerESFRICountry
+                    rirpdm:ShareOfIndustryUsersAndPublications rirpdm:IncomeFromCommercialActivities
+                    rirpdm:EngagementByDirectContact rirpdm:OutreachThroughMedia
+                    rirpdm:OutreachViaOwnWebAndSocialMedia rirpdm:NumberOfPubliclyAvailableDataSetsUsedExternally
+                    rirpdm:ParticipationInPolicyRelatedActivities rirpdm:CitationsInPolicyRelatedPublications
+                    rirpdm:ShareOfUsersAndPublicationsPerNonESFRICountry rirpdm:InternationalTrainees
+                    rirpdm:NumberOfNonESFRIMembers rirpdm:Revenues rirpdm:ExtentOfResourcesMadeAvailable ) ] ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI WG Monitoring Report 2019" .
+
+rirpdm:NumberOfUserRequestsForAccess a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Number of user requests for access"@en ;
+    rdfs:comment "For access to facilities: number of user proposals for access. For resource RIs: number of users of resources (collections, data, services)."@en ;
+    rirpdm:forObjective rirpdm:EnablingScientificExcellence ;
+    rirpdm:unitOfMeasure "Number" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 1" .
+
+rirpdm:NumberOfUsersServed a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Number of users served"@en ;
+    rdfs:comment "For access to facilities: number of granted proposals/accepted users. For resource RIs: number of downloads/studies or service provisions."@en ;
+    rirpdm:forObjective rirpdm:EnablingScientificExcellence ;
+    rirpdm:unitOfMeasure "Number" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 2" .
+
+rirpdm:NumberOfPublications a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Number of publications"@en ;
+    rdfs:comment "Number of publications based on research performed using facilities/resources of the RI. The publication is shared by the countries of the home institutions of all authors, the sum of the shares being one."@en ;
+    rirpdm:forObjective rirpdm:EnablingScientificExcellence ;
+    rirpdm:unitOfMeasure "Number" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 3" .
+
+rirpdm:PercentageOfTopCitedPublications a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Percentage of top (10%) cited publications"@en ;
+    rdfs:comment "Percentage of RI-enabled publications that, compared with publications in the same field and year, belong to the top 10% most frequently cited."@en ;
+    rirpdm:forObjective rirpdm:EnablingScientificExcellence ;
+    rirpdm:unitOfMeasure "Percentage" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 4" .
+
+rirpdm:NumberOfMasterAndPhDStudentsUsingRI a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Number of master and PhD students using the RI"@en ;
+    rdfs:comment "Number of master and PhD students who have performed some of their studies at or using the services of the RI in a particular year regardless of whether they are funded/hosted by the RI or access it as a user."@en ;
+    rirpdm:forObjective rirpdm:DeliveryOfEducationAndTraining ;
+    rirpdm:unitOfMeasure "Number" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 5" .
+
+rirpdm:TrainingOfNonRIStaff a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Training of people who are not RI staff"@en ;
+    rdfs:comment "Total person-hours for which people external to the RI made use of training opportunities provided by the RI (face-to-face and on-line)."@en ;
+    rirpdm:forObjective rirpdm:DeliveryOfEducationAndTraining ;
+    rirpdm:unitOfMeasure "Person hours" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 6" .
+
+rirpdm:NumberOfESFRIMembers a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Number of members of the RI from ESFRI countries"@en ;
+    rdfs:comment "Number of organisations/countries with a formal engagement (member, associated member, observer) based in an ESFRI member country."@en ;
+    rirpdm:forObjective rirpdm:EnhancingTransnationalCollaboration ;
+    rirpdm:unitOfMeasure "Number" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 7" .
+
+rirpdm:ShareOfUsersAndPublicationsPerESFRICountry a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Share of users and publications per ESFRI member country"@en ;
+    rdfs:comment "Share of RI users and RI-enabled publications attributable to each ESFRI member country, per host institution of the user/author."@en ;
+    rirpdm:forObjective rirpdm:EnhancingTransnationalCollaboration ;
+    rirpdm:unitOfMeasure "Number and %" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 8" .
+
+rirpdm:ShareOfIndustryUsersAndPublications a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Share of users associated with industry and publications with industry"@en ;
+    rdfs:comment "Extent to which scientists from industry, the RI and possibly universities collaborate and exchange knowledge."@en ;
+    rirpdm:forObjective rirpdm:FacilitatingEconomicActivities ;
+    rirpdm:unitOfMeasure "% and number" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 9" .
+
+rirpdm:IncomeFromCommercialActivities a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Income from commercial activities and the number of entities paying for service"@en ;
+    rdfs:comment "Share of revenue from the RI's economic activities (sale of services/goods, access provision) reported in the annual accounts."@en ;
+    rirpdm:forObjective rirpdm:FacilitatingEconomicActivities ;
+    rirpdm:unitOfMeasure "Currency amount; number of entities" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 10" .
+
+rirpdm:EngagementByDirectContact a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Engagement achieved by direct contact"@en ;
+    rdfs:comment "Outreach by public relations/direct contact: events organised or attended (by third parties), and visitors to the RI."@en ;
+    rirpdm:forObjective rirpdm:OutreachToThePublic ;
+    rirpdm:unitOfMeasure "Number of visitors/participants; number and hours of events" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 11" .
+
+rirpdm:OutreachThroughMedia a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Outreach through printed, broadcast and web-based media"@en ;
+    rdfs:comment "Impact of press and communication actions in raising awareness of RI mission, activities and societal relevance of results"@en ;
+    rirpdm:forObjective rirpdm:OutreachToThePublic ;
+    rirpdm:unitOfMeasure "Number of media mentions" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 12" .
+
+rirpdm:OutreachViaOwnWebAndSocialMedia a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Outreach via the RI's own web and social media activities"@en ;
+    rdfs:comment "Website popularity and level of social media engagement: Web (e.g. Google analytics) analytics and social media analytic tools (Twitter, Linkedin, Youtube, Flickr, Facebook, etc.)"@en ;
+    rirpdm:forObjective rirpdm:OutreachToThePublic ;
+    rirpdm:unitOfMeasure "Web/social media analytics (users, followers, interactions)" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 13" .
+
+rirpdm:NumberOfPubliclyAvailableDataSetsUsedExternally a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Number of publicly available data sets used externally"@en ;
+    rdfs:comment "Number of data sets produced as a consequence of access to the RI that are subsequently accessed by other users."@en ;
+    rirpdm:forObjective rirpdm:OptimisingDataUse ;
+    rirpdm:unitOfMeasure "Number of data users" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 14" .
+
+rirpdm:ParticipationInPolicyRelatedActivities a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Participation by RIs in policy related activities"@en ;
+    rdfs:comment "Number of participations, reimbursed by the organisers, in policy related working groups, committees & advisory boards. In the case of working groups, etc, organised by intergovernmental organisations, the invitation suffices."@en ;
+    rirpdm:forObjective rirpdm:ProvisionOfScientificAdvice ;
+    rirpdm:unitOfMeasure "Number of invitations/contributions per annum" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 15" .
+
+rirpdm:CitationsInPolicyRelatedPublications a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Citations in policy related publications"@en ;
+    rdfs:comment "Number of times the RI or its projects are cited in policy related publications."@en ;
+    rirpdm:forObjective rirpdm:ProvisionOfScientificAdvice ;
+    rirpdm:unitOfMeasure "Number of citations" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 16" .
+
+rirpdm:ShareOfUsersAndPublicationsPerNonESFRICountry a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Share of users and publications per non-ESFRI member country"@en ;
+    rdfs:comment "Share of RI users and RI-enabled publications attributable to each non-ESFRI member country, per host institution of the user/author."@en ;
+    rirpdm:forObjective rirpdm:FacilitatingInternationalCooperation ;
+    rirpdm:unitOfMeasure "Number and %" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 17" .
+
+rirpdm:InternationalTrainees a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "International trainees"@en ;
+    rdfs:comment "Person-hours of training opportunities provided by the RI made use of by trainees from non-ESFRI member countries."@en ;
+    rirpdm:forObjective rirpdm:FacilitatingInternationalCooperation ;
+    rirpdm:unitOfMeasure "Person hours" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 18" .
+
+rirpdm:NumberOfNonESFRIMembers a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Number of members of the RI from non-ESFRI countries"@en ;
+    rdfs:comment "Number of organisations/countries with a formal engagement based in a non-ESFRI member country."@en ;
+    rirpdm:forObjective rirpdm:FacilitatingInternationalCooperation ;
+    rirpdm:unitOfMeasure "Number" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 19" .
+
+rirpdm:Revenues a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Revenues"@en ;
+    rdfs:comment "Sources of revenue (member contributions, third-party contributions, project funding, commercial revenue, other) and their contributions to investment and operational costs."@en ;
+    rirpdm:forObjective rirpdm:OptimisingManagement ;
+    rirpdm:unitOfMeasure "Amount in national currency" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 20" .
+
+rirpdm:ExtentOfResourcesMadeAvailable a owl:NamedIndividual , rirpdm:KPI ;
+    rdfs:label "Extent of resources made available"@en ;
+    rdfs:comment "Experimental time available, or size of resources database made available to users to faciliate research."@en ;
+    rirpdm:forObjective rirpdm:OptimisingManagement ;
+    rirpdm:unitOfMeasure "Hours (facility RI) or number of data entries/sets/items/services (resource RI)" ;
+    rirpdm:status "New" ; dcterms:source "ESFRI WG Monitoring Report 2019, Annex 5 KPI 21" .
+
+rirpdm:KPIsAllDifferent a owl:AllDifferent ;
+    owl:members ( rirpdm:NumberOfUserRequestsForAccess rirpdm:NumberOfUsersServed
+                  rirpdm:NumberOfPublications rirpdm:PercentageOfTopCitedPublications
+                  rirpdm:NumberOfMasterAndPhDStudentsUsingRI rirpdm:TrainingOfNonRIStaff
+                  rirpdm:NumberOfESFRIMembers rirpdm:ShareOfUsersAndPublicationsPerESFRICountry
+                  rirpdm:ShareOfIndustryUsersAndPublications rirpdm:IncomeFromCommercialActivities
+                  rirpdm:EngagementByDirectContact rirpdm:OutreachThroughMedia
+                  rirpdm:OutreachViaOwnWebAndSocialMedia rirpdm:NumberOfPubliclyAvailableDataSetsUsedExternally
+                  rirpdm:ParticipationInPolicyRelatedActivities rirpdm:CitationsInPolicyRelatedPublications
+                  rirpdm:ShareOfUsersAndPublicationsPerNonESFRICountry rirpdm:InternationalTrainees
+                  rirpdm:NumberOfNonESFRIMembers rirpdm:Revenues rirpdm:ExtentOfResourcesMadeAvailable ) .
+
+rirpdm:KPIMeasurement a owl:Class ;
+    rdfs:label "KPI Measurement"@en ;
+    rdfs:comment "One recorded value of a KPI for a research infrastructure in a given year."@en ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI WG Monitoring Report 2019" .
+
+#################################################################
 #    Research Output
 #################################################################
 
@@ -566,14 +784,6 @@ rirpdm:dataManagementSystem a owl:DatatypeProperty ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
-rirpdm:hasKPI a owl:DatatypeProperty ;
-    rdfs:label "hasKPI"@en ;
-    rdfs:comment "Measurable KPIs covering scientific-service excellence and sustainability."@en ;
-    rdfs:domain rirpdm:ResearchInfrastructure ;
-    rdfs:range xsd:string ;
-    rirpdm:status "New" ;
-    dcterms:source "ESFRI Roadmap 2026" .
-
 rirpdm:humanResourcesPolicy a owl:DatatypeProperty ;
     rdfs:label "humanResourcesPolicy"@en ;
     rdfs:comment "HR policy ensuring competences via equal-opportunity hiring, secondments, education and training."@en ;
@@ -677,6 +887,30 @@ rirpdm:compliesWithFAIR a owl:DatatypeProperty ;
     rdfs:range xsd:boolean ;
     rirpdm:status "New" ;
     dcterms:source "EU Reg 2021 Art 14(3)" .
+
+rirpdm:unitOfMeasure a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:label "unitOfMeasure"@en ;
+    rdfs:comment "The unit in which a KPI's numericValue is expressed (e.g. Number, Percentage, Person hours)."@en ;
+    rdfs:domain rirpdm:KPI ;
+    rdfs:range xsd:string ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI WG Monitoring Report 2019" .
+
+rirpdm:numericValue a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:label "numericValue"@en ;
+    rdfs:comment "The recorded value of a KPI measurement, expressed in the measured KPI's unitOfMeasure."@en ;
+    rdfs:domain rirpdm:KPIMeasurement ;
+    rdfs:range xsd:decimal ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI WG Monitoring Report 2019" .
+
+rirpdm:measurementYear a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:label "measurementYear"@en ;
+    rdfs:comment "The year to which a KPI measurement applies; KPIs are monitored annually."@en ;
+    rdfs:domain rirpdm:KPIMeasurement ;
+    rdfs:range xsd:gYear ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI WG Monitoring Report 2019" .
 
 #################################################################
 #    Object properties
@@ -1060,3 +1294,29 @@ cito:disputes a owl:ObjectProperty ;
     rdfs:subPropertyOf cito:cites ;
     rirpdm:status "Adopted" ;
     dcterms:source "CiTO" .
+
+# --- KPIs (ESFRI WG Monitoring Report 2019) -----------------------------------
+
+rirpdm:forObjective a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "forObjective"@en ;
+    rdfs:comment "The KPIObjective a KPI belongs to."@en ;
+    rdfs:domain rirpdm:KPI ;
+    rdfs:range rirpdm:KPIObjective ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI WG Monitoring Report 2019" .
+
+rirpdm:measuresKPI a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "measuresKPI"@en ;
+    rdfs:comment "The KPI that a KPIMeasurement records a value for."@en ;
+    rdfs:domain rirpdm:KPIMeasurement ;
+    rdfs:range rirpdm:KPI ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI WG Monitoring Report 2019" .
+
+rirpdm:hasKPIMeasurement a owl:ObjectProperty ;
+    rdfs:label "hasKPIMeasurement"@en ;
+    rdfs:comment "Relates a research infrastructure to one of its recorded KPI measurements."@en ;
+    rdfs:domain rirpdm:ResearchInfrastructure ;
+    rdfs:range rirpdm:KPIMeasurement ;
+    rirpdm:status "New" ;
+    dcterms:source "ESFRI WG Monitoring Report 2019" .
