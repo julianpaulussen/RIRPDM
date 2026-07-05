@@ -432,6 +432,7 @@
                         owl:TransitiveProperty ;
                rdfs:domain [ rdf:type owl:Class ;
                              owl:unionOf ( <http://purl.org/cerif/frapo/Grant>
+                                           :NationalNode
                                            :ResearchInfrastructure
                                          )
                            ] ;
@@ -441,9 +442,12 @@
                                           <http://purl.org/cerif/frapo/Grant>
                                         )
                           ] ;
+               owl:propertyChainAxiom ( :hasNode
+                                        :isSupportedBy
+                                      ) ;
                <http://purl.org/dc/terms/source> "ESFRI Roadmap 2026" ;
                :status "New" ;
-               rdfs:comment "Connects an RI (or grant) to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme."@en ;
+               rdfs:comment "Connects an RI, national node or grant to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme. The property chain hasNode o isSupportedBy additionally rolls a distributed RI's node funding up to the RI, so the funders of the nodes are inferred funders of the RI itself."@en ;
                rdfs:label "isSupportedBy"@en .
 
 

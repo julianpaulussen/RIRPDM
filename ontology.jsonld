@@ -1,4 +1,52 @@
 [ {
+  "@id" : "_:genid102",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
+  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+    "@list" : [ {
+      "@id" : "http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#EngagementByDirectContact"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#IncomeFromCommercialActivities"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#InternationalTrainees"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfESFRIMembers"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfNonESFRIMembers"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfPublications"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfUserRequestsForAccess"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#NumberOfUsersServed"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OutreachThroughMedia"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#PercentageOfTopCitedPublications"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#Revenues"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#TrainingOfNonRIStaff"
+    } ]
+  } ]
+}, {
   "@id" : "_:genid12",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
@@ -9,7 +57,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid121",
+  "@id" : "_:genid124",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
   "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
@@ -27,7 +75,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid128",
+  "@id" : "_:genid131",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
   "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
@@ -51,7 +99,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid138",
+  "@id" : "_:genid141",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
   "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
@@ -69,7 +117,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid145",
+  "@id" : "_:genid148",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
   "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
@@ -97,7 +145,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid151",
+  "@id" : "_:genid154",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
   "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
@@ -111,7 +159,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid156",
+  "@id" : "_:genid159",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointProperties" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -133,11 +181,13 @@
     "@list" : [ {
       "@id" : "http://purl.org/cerif/frapo/Grant"
     }, {
+      "@id" : "http://www.example.org/rirpdm#NationalNode"
+    }, {
       "@id" : "http://www.example.org/rirpdm#ResearchInfrastructure"
     } ]
   } ]
 }, {
-  "@id" : "_:genid26",
+  "@id" : "_:genid27",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
@@ -159,7 +209,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid30",
+  "@id" : "_:genid33",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
@@ -169,7 +219,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid33",
+  "@id" : "_:genid36",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#minCardinality" : [ {
     "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
@@ -179,7 +229,7 @@
     "@id" : "http://www.example.org/rirpdm#hasNode"
   } ]
 }, {
-  "@id" : "_:genid34",
+  "@id" : "_:genid37",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#cardinality" : [ {
     "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
@@ -189,7 +239,7 @@
     "@id" : "http://www.example.org/rirpdm#hasCentralHub"
   } ]
 }, {
-  "@id" : "_:genid35",
+  "@id" : "_:genid38",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#maxCardinality" : [ {
     "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
@@ -199,7 +249,7 @@
     "@id" : "http://www.example.org/rirpdm#hasEvaluation"
   } ]
 }, {
-  "@id" : "_:genid36",
+  "@id" : "_:genid39",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
@@ -215,7 +265,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid42",
+  "@id" : "_:genid45",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
@@ -273,7 +323,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid64",
+  "@id" : "_:genid67",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
@@ -297,7 +347,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid74",
+  "@id" : "_:genid77",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
@@ -315,7 +365,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid81",
+  "@id" : "_:genid84",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#maxCardinality" : [ {
     "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
@@ -325,7 +375,7 @@
     "@id" : "http://www.example.org/rirpdm#hasEvaluation"
   } ]
 }, {
-  "@id" : "_:genid82",
+  "@id" : "_:genid85",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
@@ -353,7 +403,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid90",
+  "@id" : "_:genid93",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
@@ -367,7 +417,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid95",
+  "@id" : "_:genid98",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -376,54 +426,6 @@
       "@id" : "http://www.example.org/rirpdm#MemberState"
     }, {
       "@id" : "http://www.example.org/rirpdm#ThirdCountry"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid99",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
-  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
-    "@list" : [ {
-      "@id" : "http://www.example.org/rirpdm#CitationsInPolicyRelatedPublications"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#EngagementByDirectContact"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#ExtentOfResourcesMadeAvailable"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#IncomeFromCommercialActivities"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#InternationalTrainees"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#NumberOfESFRIMembers"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#NumberOfMasterAndPhDStudentsUsingRI"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#NumberOfNonESFRIMembers"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#NumberOfPublications"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#NumberOfPubliclyAvailableDataSetsUsedExternally"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#NumberOfUserRequestsForAccess"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#NumberOfUsersServed"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#OutreachThroughMedia"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#OutreachViaOwnWebAndSocialMedia"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#ParticipationInPolicyRelatedActivities"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#PercentageOfTopCitedPublications"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#Revenues"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerESFRICountry"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#ShareOfUsersAndPublicationsPerNonESFRICountry"
-    }, {
-      "@id" : "http://www.example.org/rirpdm#TrainingOfNonRIStaff"
     } ]
   } ]
 }, {
@@ -1179,9 +1181,9 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://www.example.org/rirpdm#ResearchInfrastructure"
   }, {
-    "@id" : "_:genid33"
+    "@id" : "_:genid36"
   }, {
-    "@id" : "_:genid34"
+    "@id" : "_:genid37"
   } ],
   "http://www.w3.org/2002/07/owl#disjointWith" : [ {
     "@id" : "http://www.example.org/rirpdm#SingleSitedRI"
@@ -1422,7 +1424,7 @@
     "@value" : "Implementation Case"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid35"
+    "@id" : "_:genid38"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#ImplementationDimension",
@@ -1442,7 +1444,7 @@
     "@value" : "Implementation Dimension"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
-    "@id" : "_:genid36"
+    "@id" : "_:genid39"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#IncomeFromCommercialActivities",
@@ -1514,7 +1516,7 @@
     "@value" : "KPI"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
-    "@id" : "_:genid42"
+    "@id" : "_:genid45"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#KPIMeasurement",
@@ -1551,7 +1553,7 @@
     "@value" : "KPI Objective"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
-    "@id" : "_:genid64"
+    "@id" : "_:genid67"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#LifecyclePhase",
@@ -1571,7 +1573,7 @@
     "@value" : "Lifecycle Phase"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
-    "@id" : "_:genid74"
+    "@id" : "_:genid77"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#Low",
@@ -2291,7 +2293,7 @@
     "@value" : "Scientific Case"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "_:genid81"
+    "@id" : "_:genid84"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#ScientificDimension",
@@ -2311,7 +2313,7 @@
     "@value" : "Scientific Dimension"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
-    "@id" : "_:genid82"
+    "@id" : "_:genid85"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#ScientificExcellence",
@@ -2371,7 +2373,7 @@
     "@value" : "Score"
   } ],
   "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
-    "@id" : "_:genid90"
+    "@id" : "_:genid93"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#ShareOfIndustryUsersAndPublications",
@@ -3431,7 +3433,7 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Connects an RI (or grant) to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme."
+    "@value" : "Connects an RI, national node or grant to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme. The property chain hasNode o isSupportedBy additionally rolls a distributed RI's node funding up to the RI, so the funders of the nodes are inferred funders of the RI itself."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "_:genid23"
@@ -3441,7 +3443,14 @@
     "@value" : "isSupportedBy"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "_:genid26"
+    "@id" : "_:genid27"
+  } ],
+  "http://www.w3.org/2002/07/owl#propertyChainAxiom" : [ {
+    "@list" : [ {
+      "@id" : "http://www.example.org/rirpdm#hasNode"
+    }, {
+      "@id" : "http://www.example.org/rirpdm#isSupportedBy"
+    } ]
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#jointInvestmentStrategy",
@@ -3694,7 +3703,7 @@
     "@value" : "resultsInProject"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "_:genid30"
+    "@id" : "_:genid33"
   } ]
 }, {
   "@id" : "http://www.example.org/rirpdm#serviceOffer",

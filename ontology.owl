@@ -640,6 +640,7 @@
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.org/cerif/frapo/Grant"/>
+                    <rdf:Description rdf:about="http://www.example.org/rirpdm#NationalNode"/>
                     <rdf:Description rdf:about="http://www.example.org/rirpdm#ResearchInfrastructure"/>
                 </owl:unionOf>
             </owl:Class>
@@ -653,9 +654,13 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#hasNode"/>
+            <rdf:Description rdf:about="http://www.example.org/rirpdm#isSupportedBy"/>
+        </owl:propertyChainAxiom>
         <terms:source>ESFRI Roadmap 2026</terms:source>
         <status>New</status>
-        <rdfs:comment xml:lang="en">Connects an RI (or grant) to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Connects an RI, national node or grant to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme. The property chain hasNode o isSupportedBy additionally rolls a distributed RI&apos;s node funding up to the RI, so the funders of the nodes are inferred funders of the RI itself.</rdfs:comment>
         <rdfs:label xml:lang="en">isSupportedBy</rdfs:label>
     </owl:ObjectProperty>
     

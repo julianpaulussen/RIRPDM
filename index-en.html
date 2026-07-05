@@ -17,7 +17,7 @@
 
 
 <!-- SCHEMA.ORG METADATA -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://www.example.org/rirpdm","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://www.example.org/rirpdm","name":"Research Infrastructure and Research Publications Data Model (RIRPDM)", "headline":"Document describing the ontology http://www.example.org/rirpdm", "dateReleased":"Sat Jul 04 20:07:42 UTC 2026", "version":"0.1.0", "author":[{"@type":"Person","name":"Julian Paulussen"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://www.example.org/rirpdm","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://www.example.org/rirpdm","name":"Research Infrastructure and Research Publications Data Model (RIRPDM)", "headline":"Document describing the ontology http://www.example.org/rirpdm", "dateReleased":"Sun Jul 05 19:56:35 UTC 2026", "version":"0.1.0", "author":[{"@type":"Person","name":"Julian Paulussen"}]}</script>
 
 <script src="resources/jquery.js"></script> 
 <script src="resources/marked.min.js"></script> 
@@ -1601,7 +1601,7 @@ This section provides details for each class and property defined by Research In
     is in domain of
    </dt>
    <dd>
-    <a href="#isNodeOf" title="http://www.example.org/rirpdm#isNodeOf">isNodeOf</a> <sup class="type-op" title="object property">op</sup>
+    <a href="#isNodeOf" title="http://www.example.org/rirpdm#isNodeOf">isNodeOf</a> <sup class="type-op" title="object property">op</sup>, <a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a> <sup class="type-op" title="object property">op</sup>
    </dd>
    <dt>
     is in range of
@@ -3360,7 +3360,7 @@ This section provides details for each class and property defined by Research In
   <h3>isSupportedBy<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://www.example.org/rirpdm#isSupportedBy</p>
   <div class="comment">
-   <span class="markdown">Connects an RI (or grant) to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme.</span>
+   <span class="markdown">Connects an RI, national node or grant to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme. The property chain hasNode o isSupportedBy additionally rolls a distributed RI's node funding up to the RI, so the funders of the nodes are inferred funders of the RI itself.</span>
   </div>
   <dl class="definedBy">
    <dt>
@@ -3377,13 +3377,19 @@ This section provides details for each class and property defined by Research In
      has domain
     </dt>
     <dd>
-     <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">Grant</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
+     <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">Grant</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#NationalNode" title="http://www.example.org/rirpdm#NationalNode">National Node</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="http://www.example.org/rirpdm#ResearchInfrastructure" target="_blank" title="http://www.example.org/rirpdm#ResearchInfrastructure">Research Infrastructure</a> <sup class="type-c" title="class">c</sup>
     </dd>
     <dt>
      has range
     </dt>
     <dd>
      <a href="#http://purl.org/cerif/frapo/FundingAgency" title="http://purl.org/cerif/frapo/FundingAgency">Funding Agency</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#http://purl.org/cerif/frapo/FundingProgramme" title="http://purl.org/cerif/frapo/FundingProgramme">Funding Programme</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#http://purl.org/cerif/frapo/Grant" title="http://purl.org/cerif/frapo/Grant">Grant</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#hasNode" title="http://www.example.org/rirpdm#hasNode">hasNode</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#isSupportedBy" title="http://www.example.org/rirpdm#isSupportedBy">isSupportedBy</a> <sup class="type-op" title="object property">op</sup>
     </dd>
    </dl>
   </div>
