@@ -1113,10 +1113,14 @@ rirpdm:isInPhase a owl:ObjectProperty , owl:FunctionalProperty ;
 
 rirpdm:isSupportedBy a owl:ObjectProperty , owl:TransitiveProperty ;
     rdfs:label "isSupportedBy"@en ;
-    rdfs:comment "Connects an RI (or grant) to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme."@en ;
-    # RI or Grant can be funded by a Grant, FundingProgramme or FundingAgency
-    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdm:ResearchInfrastructure frapo:Grant ) ] ;
+    rdfs:comment "Connects an RI, national node or grant to its funding source at any level. Transitivity lets the reasoner infer the full chain: RI → Grant → FundingProgramme. The property chain hasNode o isSupportedBy additionally rolls a distributed RI's node funding up to the RI, so the funders of the nodes are inferred funders of the RI itself."@en ;
+    # RI, NationalNode or Grant can be funded by a Grant, FundingProgramme or FundingAgency.
+    # NationalNode is in the domain so a node can be the subject of isSupportedBy without
+    # the reasoner wrongly inferring (via rdfs:domain) that the node is an RI or a Grant.
+    rdfs:domain [ a owl:Class ; owl:unionOf ( rirpdm:ResearchInfrastructure rirpdm:NationalNode frapo:Grant ) ] ;
     rdfs:range  [ a owl:Class ; owl:unionOf ( frapo:Grant frapo:FundingProgramme frapo:FundingAgency ) ] ;
+    # A distributed RI is supported by whatever funds its national nodes.
+    owl:propertyChainAxiom ( rirpdm:hasNode rirpdm:isSupportedBy ) ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
