@@ -1324,3 +1324,10 @@ rirpdm:hasKPIMeasurement a owl:ObjectProperty ;
     rdfs:range rirpdm:KPIMeasurement ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI WG Monitoring Report 2019" .
+
+rirpdm:derivedFromOutput a owl:ObjectProperty ;
+    rdfs:label "derivedFromOutput"@en ;
+    rdfs:comment "The research outputs a KPI measurement aggregates over, making the recorded value auditable against the graph. ESFRI KPI 3 records a bare count."@en ;
+    rdfs:domain rirpdm:KPIMeasurement ;
+    rdfs:range rirpdm:ResearchOutput ;
+    rirpdm:status "New" .

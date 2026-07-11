@@ -1,0 +1,246 @@
+@prefix data: <http://www.example.org/rirpdm/data#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rirpdm: <http://www.example.org/rirpdm#> .
+
+<http://www.example.org/rirpdm/data> a owl:Ontology ;
+    rdfs:label "RIRPDM ROR-sourced sample data"@en ;
+    owl:imports <http://www.example.org/rirpdm> .
+
+data:AtlantaClinicalandTranslationalScienceInstitute a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Atlanta Clinical and Translational Science Institute"@en ;
+    dcterms:identifier "https://ror.org/01ars0856" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "https://www.ceismc.gatech.edu/content/atlanta-clinical-and-translational-science-institute-actsi" ;
+    rirpdm:hasParticipant data:UnitedStates ;
+    rirpdm:uniqueName "Atlanta Clinical and Translational Science Institute" .
+
+data:CRCCARE a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "CRC CARE"@en ;
+    dcterms:identifier "https://ror.org/058yerw52" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://www.crccare.com/" ;
+    rirpdm:hasParticipant data:Australia ;
+    rirpdm:uniqueName "CRC CARE" .
+
+data:CRCforSpatialinformation a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "CRC for Spatial information"@en ;
+    dcterms:identifier "https://ror.org/022482e21" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://www.crcsi.com.au/" ;
+    rirpdm:hasParticipant data:Australia ;
+    rirpdm:uniqueName "CRC for Spatial information" .
+
+data:CentroMexicanodeInnovacinenEnergaSolar a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Centro Mexicano de Innovación en Energía Solar"@en ;
+    dcterms:identifier "https://ror.org/00t2x7r19" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://www.cemiesol.mx/home/" ;
+    rirpdm:hasParticipant data:Mexico ;
+    rirpdm:uniqueName "Centro Mexicano de Innovación en Energía Solar" .
+
+data:ComputationalMaterialsScienceInitiative a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Computational Materials Science Initiative"@en ;
+    dcterms:identifier "https://ror.org/01r42z565" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://www.cms-initiative.jp/en" ;
+    rirpdm:hasParticipant data:Japan ;
+    rirpdm:uniqueName "Computational Materials Science Initiative" .
+
+data:ConsortiumfortheAdvancedSimulationofLightWaterReactors a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Consortium for the Advanced Simulation of Light Water Reactors"@en ;
+    dcterms:identifier "https://ror.org/00qq8bd87" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://www.casl.gov/" ;
+    rirpdm:hasParticipant data:UnitedStates ;
+    rirpdm:uniqueName "Consortium for the Advanced Simulation of Light Water Reactors" .
+
+data:EnergyPipelinesCRC a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Energy Pipelines CRC"@en ;
+    dcterms:identifier "https://ror.org/00xfww534" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://epcrc.com.au/" ;
+    rirpdm:hasParticipant data:Australia ;
+    rirpdm:uniqueName "Energy Pipelines CRC" .
+
+data:GermanHeartResearchFoundation a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "German Heart Research Foundation"@en ;
+    dcterms:identifier "https://ror.org/02yjb3a91" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://www.dshf.de/forschung_en.php" ;
+    rirpdm:hasParticipant data:Germany ;
+    rirpdm:uniqueName "German Heart Research Foundation" .
+
+data:InnovativeResearchInstituteforCellTherapy a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Innovative Research Institute for Cell Therapy"@en ;
+    dcterms:identifier "https://ror.org/00c89j038" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://celltherapy.re.kr/eng/conference07/welcome.html" ;
+    rirpdm:hasParticipant data:SouthKorea ;
+    rirpdm:uniqueName "Innovative Research Institute for Cell Therapy" .
+
+data:InstitutNationaldePrventionetdEducationpourlaSant a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Institut National de Prévention et d’Education pour la Santé"@en ;
+    dcterms:identifier "https://ror.org/00fzq0880" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://inpes.santepubliquefrance.fr/" ;
+    rirpdm:hasParticipant data:France ;
+    rirpdm:uniqueName "Institut National de Prévention et d’Education pour la Santé" .
+
+data:InstituteofSocialSciences a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Institute of Social Sciences"@en ;
+    dcterms:identifier "https://ror.org/046chmz66" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://socius.ru/" ;
+    rirpdm:hasParticipant data:Russia ;
+    rirpdm:uniqueName "Institute of Social Sciences" .
+
+data:InstitutoNacionaldeCinciasdosMateriaisemNanotecnologia a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Instituto Nacional de Ciências dos Materiais em Nanotecnologia"@en ;
+    dcterms:identifier "https://ror.org/00xr47e92" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://inct.cnpq.br/web/inct-mn" ;
+    rirpdm:hasParticipant data:Brazil ;
+    rirpdm:uniqueName "Instituto Nacional de Ciências dos Materiais em Nanotecnologia" .
+
+data:JiangsuKeyLaboratoryof3DPrintingEquipmentandManufacturing a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Jiangsu Key Laboratory of 3D Printing Equipment and Manufacturing"@en ;
+    dcterms:identifier "https://ror.org/04dzj3g56" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://www.js3dp.org/eng/" ;
+    rirpdm:hasParticipant data:China ;
+    rirpdm:uniqueName "Jiangsu Key Laboratory of 3D Printing Equipment and Manufacturing" .
+
+data:JiangsuProvincialKeyLaboratoryofNetworkandInformationSecurity a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Jiangsu Provincial Key Laboratory of Network and Information Security"@en ;
+    dcterms:identifier "https://ror.org/03jan5912" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://jssec.seu.edu.cn/" ;
+    rirpdm:hasParticipant data:China ;
+    rirpdm:uniqueName "Jiangsu Provincial Key Laboratory of Network and Information Security" .
+
+data:KeyLaboratoryofGuangdongProvince a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Key Laboratory of Guangdong Province"@en ;
+    dcterms:identifier "https://ror.org/00swtqp09" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://gdlab.gdstc.gov.cn/" ;
+    rirpdm:hasParticipant data:China ;
+    rirpdm:uniqueName "Key Laboratory of Guangdong Province" .
+
+data:MRCCentreforRegenerativeMedicine a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "MRC Centre for Regenerative Medicine"@en ;
+    dcterms:identifier "https://ror.org/01x802g65" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://www.crm.ed.ac.uk/" ;
+    rirpdm:hasParticipant data:UnitedKingdom ;
+    rirpdm:uniqueName "MRC Centre for Regenerative Medicine" .
+
+data:OfficeofPostsecondaryEducation a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Office of Postsecondary Education"@en ;
+    dcterms:identifier "https://ror.org/0179vv482" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "https://ed.gov/about/offices/list/ope/index.html" ;
+    rirpdm:hasParticipant data:UnitedStates ;
+    rirpdm:uniqueName "Office of Postsecondary Education" .
+
+data:PSPasternakResearchInstituteforMountainForestry a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "P.S. Pasternak Research Institute for Mountain Forestry"@en ;
+    dcterms:identifier "https://ror.org/028xcfg40" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "https://ror.org/028xcfg40" ;
+    rirpdm:hasParticipant data:Ukraine ;
+    rirpdm:uniqueName "P.S. Pasternak Research Institute for Mountain Forestry" .
+
+data:SwissIntegrativeCenterforHumanHealth a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Swiss Integrative Center for Human Health"@en ;
+    dcterms:identifier "https://ror.org/037xabw57" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://www.cish.ch/en" ;
+    rirpdm:hasParticipant data:Switzerland ;
+    rirpdm:uniqueName "Swiss Integrative Center for Human Health" .
+
+data:UlughBegAstronomicalInstitute a rirpdm:SingleSitedRI,
+        owl:NamedIndividual ;
+    rdfs:label "Ulugh Beg Astronomical Institute"@en ;
+    dcterms:identifier "https://ror.org/01avs2k90" ;
+    dcterms:source "ROR API" ;
+    rirpdm:accessPoint "http://astrin.uz/index.php" ;
+    rirpdm:hasParticipant data:Uzbekistan ;
+    rirpdm:uniqueName "Ulugh Beg Astronomical Institute" .
+
+data:Brazil a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "Brazil"@en .
+
+data:France a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "France"@en .
+
+data:Germany a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "Germany"@en .
+
+data:Japan a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "Japan"@en .
+
+data:Mexico a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "Mexico"@en .
+
+data:Russia a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "Russia"@en .
+
+data:SouthKorea a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "South Korea"@en .
+
+data:Switzerland a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "Switzerland"@en .
+
+data:Ukraine a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "Ukraine"@en .
+
+data:UnitedKingdom a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "United Kingdom"@en .
+
+data:Uzbekistan a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "Uzbekistan"@en .
+
+data:Australia a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "Australia"@en .
+
+data:China a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "China"@en .
+
+data:UnitedStates a rirpdm:Country,
+        owl:NamedIndividual ;
+    rdfs:label "United States"@en .
+
