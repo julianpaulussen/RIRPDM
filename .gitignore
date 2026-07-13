@@ -24,3 +24,4 @@ docs/webvowl
 docs/provenance
 .claude/settings.json
 CQ-notes.md
+ontology/*sample-data*.ttl

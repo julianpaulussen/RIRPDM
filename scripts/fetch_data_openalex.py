@@ -10,6 +10,7 @@ Usage:
 """
 
 import argparse
+import itertools
 import json
 import re
 import urllib.parse
@@ -19,7 +20,7 @@ from pathlib import Path
 from rdflib import Graph, Namespace, URIRef, Literal, RDF, RDFS
 from rdflib.namespace import OWL, DCTERMS, XSD
 
-ROR_FILE = Path(__file__).parent.parent / "ontology" / "rirpdm-ror-sample-data.ttl"
+ROR_FILE = Path(__file__).parent.parent / "ontology" / "rirpdm-meril-sample-data.ttl"
 OUT_FILE = Path(__file__).parent.parent / "ontology" / "rirpdm-openalex-sample-data.ttl"
 OPENALEX_URL = "https://api.openalex.org/works?filter=institutions.ror:{ror}&per-page={n}"
 
@@ -47,6 +48,10 @@ def bare_doi(doi_url: str | None) -> str | None:
 def openalex_id(work_id: str) -> str:
     """OpenAlex id is a URL 'https://openalex.org/W123'; keep the 'W123' tail."""
     return work_id.rsplit("/", 1)[-1]
+
+
+def ror_tail(ror_url: str) -> str:
+    return ror_url.rstrip("/").rsplit("/", 1)[-1]
 
 
 def read_ris() -> list[tuple[URIRef, str]]:
@@ -83,6 +88,7 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
     g.add((ontology, OWL.imports, URIRef("http://www.example.org/rirpdm")))
 
     researchers: set[str] = set()  # slug -> emit each author once
+    institutions: set[str] = set()  # ror -> emit each ResearchInstitution once
     # (ri, year) -> publications, to build one NumberOfPublications KPI measurement each
     by_ri_year: dict[tuple[URIRef, int], list[URIRef]] = {}
     by_ri: dict[URIRef, list[URIRef]] = {}       # ri -> all its publications (top-cited KPI)
@@ -123,6 +129,7 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
             refs.append((pub, [openalex_id(w) for w in work.get("referenced_works", [])]))
 
             # for each authorship in the work, create a researcher individual and link it to the publication
+            work_institutions: set[URIRef] = set()  # co-affiliated on this work -> collaboratesWith
             for authorship in work.get("authorships", []):
                 name = authorship.get("author", {}).get("display_name")
                 if not name:
@@ -134,6 +141,25 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
                     g.add((person, RDF.type, RIRPDM.Researcher))
                     g.add((person, RDFS.label, Literal(name, lang="en")))
                 g.add((pub, RIRPDM.hasAuthor, person))  # inverseOf authorOf -> feeds CQ19 chain
+
+                # author's institutions -> ResearchInstitution agents involved in this RI's output (CQ11)
+                for inst in authorship.get("institutions", []):
+                    ror = inst.get("ror")
+                    name_inst = inst.get("display_name")
+                    if not ror or not name_inst:
+                        continue
+                    institution = DATA["inst_" + ror_tail(ror)]
+                    if ror not in institutions:
+                        institutions.add(ror)
+                        g.add((institution, RDF.type, OWL.NamedIndividual))
+                        g.add((institution, RDF.type, RIRPDM.ResearchInstitution))
+                        g.add((institution, RDFS.label, Literal(name_inst, lang="en")))
+                    g.add((ri, RIRPDM.involvesAgent, institution))
+                    work_institutions.add(institution)
+
+            # institutions that co-authored this work collaborate with each other (CQ11, CQ22)
+            for a, b in itertools.combinations(work_institutions, 2):
+                g.add((a, RIRPDM.collaboratesWith, b))  # symmetric -> reasoner infers b->a
 
     # cito:cites, but only between publications we actually emitted (closed graph)
     for pub, targets in refs:
