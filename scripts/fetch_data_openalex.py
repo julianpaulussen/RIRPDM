@@ -27,6 +27,9 @@ RIRPDM = Namespace("http://www.example.org/rirpdm#")
 DATA = Namespace("http://www.example.org/rirpdm/data#")
 FABIO = Namespace("http://purl.org/spar/fabio/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
+CITO = Namespace("http://purl.org/spar/cito/")
+
+TOP_CITED_FRACTION = 0.10  # ESFRI KPI: top 10% most-cited
 
 
 def slugify(name: str) -> str:
@@ -71,6 +74,7 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
     g.bind("data", DATA)
     g.bind("fabio", FABIO)
     g.bind("foaf", FOAF)
+    g.bind("cito", CITO)
 
     # ontology header: this data file imports the RIRPDM ontology it uses
     ontology = URIRef("http://www.example.org/rirpdm/data-openalex")
@@ -81,10 +85,16 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
     researchers: set[str] = set()  # slug -> emit each author once
     # (ri, year) -> publications, to build one NumberOfPublications KPI measurement each
     by_ri_year: dict[tuple[URIRef, int], list[URIRef]] = {}
+    by_ri: dict[URIRef, list[URIRef]] = {}       # ri -> all its publications (top-cited KPI)
+    citations: dict[URIRef, int] = {}            # pub -> cited_by_count, for ranking
+    refs: list[tuple[URIRef, list[str]]] = []    # (pub, referenced OpenAlex ids), resolved after
+    emitted: set[str] = set()                    # OpenAlex ids we actually emitted, to close cito:cites
 
     for ri, ror in ris:
         for work in fetch_works(ror, per_page):
-            pub = DATA["pub_" + openalex_id(work["id"])]
+            oa_id = openalex_id(work["id"])
+            pub = DATA["pub_" + oa_id]
+            emitted.add(oa_id)
 
             # subject, predicate, object
             # Add the publication individual, its type, and its properties
@@ -94,7 +104,7 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
                 g.add((pub, RDFS.label, Literal(work["title"], lang="en")))
                 g.add((pub, DCTERMS.title, Literal(work["title"])))
             doi = bare_doi(work.get("doi"))
-            if doi:  
+            if doi:
                 g.add((pub, FABIO.hasDOI, Literal(doi)))
             year = work.get("publication_year")
             if year:
@@ -106,6 +116,11 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
 
             # the bridge: this publication was produced by the queried RI
             g.add((pub, RIRPDM.isOutputOf, ri))
+            by_ri.setdefault(ri, []).append(pub)
+
+            # citation data: count for ranking, references for the cito:cites graph
+            citations[pub] = work.get("cited_by_count", 0)
+            refs.append((pub, [openalex_id(w) for w in work.get("referenced_works", [])]))
 
             # for each authorship in the work, create a researcher individual and link it to the publication
             for authorship in work.get("authorships", []):
@@ -120,10 +135,16 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
                     g.add((person, RDFS.label, Literal(name, lang="en")))
                 g.add((pub, RIRPDM.hasAuthor, person))  # inverseOf authorOf -> feeds CQ19 chain
 
+    # cito:cites, but only between publications we actually emitted (closed graph)
+    for pub, targets in refs:
+        for t in targets:
+            if t in emitted:
+                g.add((pub, CITO.cites, DATA["pub_" + t]))
+
     # one NumberOfPublications KPI measurement per RI per year, counting the pubs
     for (ri, year), pubs in by_ri_year.items():
         slug = str(ri).rsplit("#", 1)[-1]
-        m = DATA[f"kpim_{slug}_{year}"]
+        m = DATA[f"kpim_{slug}_pubs_{year}"]
         g.add((m, RDF.type, OWL.NamedIndividual))
         g.add((m, RDF.type, RIRPDM.KPIMeasurement))
         g.add((m, RIRPDM.measuresKPI, RIRPDM.NumberOfPublications))
@@ -133,12 +154,41 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
         for pub in pubs:
             g.add((m, RIRPDM.derivedFromOutput, pub))
 
+    add_top_cited_kpi(g, by_ri, citations)
     return g
 
 
+def add_top_cited_kpi(g: Graph, by_ri: dict[URIRef, list[URIRef]], citations: dict[URIRef, int]) -> None:
+    """PercentageOfTopCitedPublications per RI: share of its pubs in the top-cited set."""
+    
+    if not citations:
+        return
+    ranked = sorted(citations.values(), reverse=True)
+    # cutoff_idx is the index of the last pub that is in the top-cited fraction
+    # if there are fewer pubs than the fraction, we take all of them
+    cutoff_idx = max(0, int(TOP_CITED_FRACTION * len(ranked)) - 1)
+    threshold = ranked[cutoff_idx] # pubs at/above this count are "top-cited"
+
+    # for each RI, find its top-cited pubs and create a KPI measurement for the percentage
+    for ri, pubs in by_ri.items():
+        top = [p for p in pubs if citations.get(p, 0) >= threshold]
+        slug = str(ri).rsplit("#", 1)[-1]
+        m = DATA[f"kpim_{slug}_topcited"]
+        g.add((m, RDF.type, OWL.NamedIndividual))
+        g.add((m, RDF.type, RIRPDM.KPIMeasurement))
+        g.add((m, RIRPDM.measuresKPI, RIRPDM.PercentageOfTopCitedPublications))
+        g.add((m, RIRPDM.numericValue,
+               Literal(round(100 * len(top) / len(pubs), 1), datatype=XSD.decimal)))
+        g.add((ri, RIRPDM.hasKPIMeasurement, m))
+        for p in top:
+            g.add((m, RIRPDM.derivedFromOutput, p))
+
+
 def verify_counts(g: Graph) -> None:
-    """CQ21 invariant: each measurement's numericValue equals its derivedFromOutput count."""
-    for m, _, val in g.triples((None, RIRPDM.numericValue, None)):
+    """CQ21 invariant: a NumberOfPublications measurement's numericValue equals its
+    derivedFromOutput count."""
+    for m in g.subjects(RIRPDM.measuresKPI, RIRPDM.NumberOfPublications):
+        val = next(g.objects(m, RIRPDM.numericValue))
         linked = len(list(g.objects(m, RIRPDM.derivedFromOutput)))
         assert float(str(val)) == linked, f"{m}: numericValue {val} != {linked} linked outputs"
 
