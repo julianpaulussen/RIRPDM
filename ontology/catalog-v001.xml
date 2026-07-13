@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://www.example.org/rirpdm" uri="rirpdm.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://www.example.org/rirpdm/data-meril" uri="rirpdm-meril-sample-data.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://www.example.org/rirpdm/data-openalex" uri="rirpdm-openalex-sample-data.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://www.example.org/rirpdm/data-openaire" uri="rirpdm-openaire-sample-data.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://www.example.org/rirpdm/data-ror-relationships" uri="rirpdm-ror-relationships-sample-data.ttl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public">
         <uri id="Automatically generated entry, Timestamp=1782996863311" name="http://purl.org/spar/cito" uri="cito.owl"/>
         <uri id="Automatically generated entry, Timestamp=1782996863311" name="http://purl.org/spar/fabio" uri="fabio.owl"/>

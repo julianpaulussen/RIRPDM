@@ -1232,7 +1232,7 @@ rirpdm:contributesToRI a owl:ObjectProperty ;
 
 # --- Citations (CiTO) --------------------------------------------------------
 
-cito:cites a owl:ObjectProperty , owl:IrreflexiveProperty ;
+cito:cites a owl:ObjectProperty ;
     rdfs:label "cites"@en ;
     rdfs:comment "The citing entity cites the cited entity."@en ;
     rdfs:domain rirpdm:ScientificPublication ;

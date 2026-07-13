@@ -1,0 +1,10 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.example.org/rirpdm-full> a owl:Ontology ;
+    rdfs:label "RIRPDM -- ontology + all sample data (for reasoning)"@en ;
+    owl:imports <http://www.example.org/rirpdm> ,
+                <http://www.example.org/rirpdm/data-meril> ,
+                <http://www.example.org/rirpdm/data-openalex> ,
+                <http://www.example.org/rirpdm/data-openaire> ,
+                <http://www.example.org/rirpdm/data-ror-relationships> .
