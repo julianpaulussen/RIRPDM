@@ -1,0 +1,21 @@
+# CQ07: Which research institutions collaborate with each other?
+#
+# Reasoning: collaboratesWith is owl:SymmetricProperty + owl:IrreflexiveProperty
+# -- only one direction needs to be asserted; the reasoner infers the reverse
+# and rejects self-collaboration.
+
+PREFIX rirpdm: <http://www.example.org/rirpdm#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?instA ?labelA ?instB ?labelB
+WHERE {
+    ?instA a rirpdm:ResearchInstitution ;
+           rirpdm:collaboratesWith ?instB ;
+           rdfs:label ?labelA .
+    ?instB rdfs:label ?labelB .
+
+    # Symmetric property means each pair comes back twice (A-B and B-A);
+    # this keeps only one row per pair.
+    FILTER(STR(?instA) < STR(?instB))
+}
+ORDER BY ?labelA ?labelB

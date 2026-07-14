@@ -1,0 +1,25 @@
+# CQ04: What KPI values has an RI reported, for which KPI and
+# objective, in which year and unit?
+#
+# Reasoning: functional numericValue / measurementYear; enumerated 21 KPIs
+# across 9 objectives (forObjective) fixes the vocabulary.
+
+PREFIX rirpdm: <http://www.example.org/rirpdm#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?ri ?riName ?kpiLabel ?objectiveLabel ?value ?year ?unit
+WHERE {
+    ?ri a rirpdm:ResearchInfrastructure ;
+        rirpdm:uniqueName ?riName ;
+        rirpdm:hasKPIMeasurement ?m .
+
+    ?m rirpdm:measuresKPI ?kpi ;
+       rirpdm:numericValue ?value ;
+       rirpdm:measurementYear ?year .
+    OPTIONAL { ?m rirpdm:unitOfMeasure ?unit }
+
+    ?kpi rdfs:label ?kpiLabel ;
+         rirpdm:forObjective ?objective .
+    ?objective rdfs:label ?objectiveLabel .
+}
+ORDER BY ?riName ?year

@@ -1,0 +1,18 @@
+# CQ03: To which funders is an RI indirectly exposed through a
+# collaborating partner's funding?
+#
+# Reasoning: owl:propertyChainAxiom on indirectlyExposedTo
+# (involvesAgent o collaboratesWith o participatesIn o isSupportedBy) --
+# the whole 4-hop path is inferred, never asserted.
+
+PREFIX rirpdm: <http://www.example.org/rirpdm#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?ri ?riName ?funder ?funderLabel
+WHERE {
+    ?ri a rirpdm:ResearchInfrastructure ;
+        rirpdm:uniqueName ?riName ;
+        rirpdm:indirectlyExposedTo ?funder .
+    OPTIONAL { ?funder rdfs:label ?funderLabel }
+}
+ORDER BY ?riName ?funderLabel

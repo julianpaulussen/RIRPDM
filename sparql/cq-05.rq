@@ -1,0 +1,22 @@
+# CQ05: Which research outputs did an RI produce, and which of
+# them provide open access?
+#
+# Reasoning: ScientificPublication owl:disjointWith ResearchData keeps the two
+# output types cleanly separated in producesResearchOutput results.
+
+PREFIX rirpdm: <http://www.example.org/rirpdm#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?ri ?riName ?output ?outputLabel ?type ?openAccess
+WHERE {
+    ?ri a rirpdm:ResearchInfrastructure ;
+        rirpdm:uniqueName ?riName ;
+        rirpdm:producesResearchOutput ?output .
+
+    ?output a ?type ;
+            rdfs:label ?outputLabel .
+    FILTER(?type IN (rirpdm:ScientificPublication, rirpdm:ResearchData))
+
+    OPTIONAL { ?output rirpdm:providesOpenAccess ?openAccess }
+}
+ORDER BY ?riName ?outputLabel
