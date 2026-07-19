@@ -122,7 +122,7 @@ def build_graph(limit: int) -> Graph:
 
         ri = DATA["ri_" + ror_tail(ror)]
         g.add((ri, RDF.type, OWL.NamedIndividual))
-        g.add((ri, RDF.type, ri_class))              # REAL subtype, not a guess
+        g.add((ri, RDF.type, ri_class))              
         g.add((ri, RDFS.label, Literal(str(name), lang="en")))
         g.add((ri, RIRPDM.uniqueName, Literal(str(name))))
         if website:
