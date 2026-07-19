@@ -1,18 +1,29 @@
-# CQ01: Which research infrastructures exist, of what type (single-sited, distributed, virtual), 
-# and in which lifecycle phase?
+# CQ01: 
+# Which research infrastructures exist, of what type (single-sited, distributed, virtual), and in which lifecycle phase?
 #
-# Reasoning: enumerated LifecyclePhase (owl:oneOf) + functional isInPhase -- exactly one phase per RI.
+# Reasoning: 
+# enumerated LifecyclePhase (owl:oneOf) + functional isInPhase -> exactly one phase per RI.
 
 PREFIX rirpdm: <http://www.example.org/rirpdm#>
 PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?ri ?riName ?type ?phaseLabel
 WHERE {
+    # Long form:
+    # ?ri a rirpdm:ResearchInfrastructure .
+    # ?ri a ?type .
+    # ?ri rirpdm:uniqueName ?riName .
+
+    # Short form:
     ?ri a rirpdm:ResearchInfrastructure ;
         a ?type ;
         rirpdm:uniqueName ?riName .
+
+    # Filter to only the three types of RI defined in the ontology
     FILTER(?type IN (rirpdm:SingleSitedRI, rirpdm:DistributedRI, rirpdm:VirtualRI))
 
+    # If the RI has a lifecycle phase get its label 
+    # otherwise unbound variable (?phaseLabel)
     OPTIONAL {
         ?ri rirpdm:isInPhase ?phase .
         ?phase rdfs:label ?phaseLabel .

@@ -1,0 +1,29 @@
+# CQ: Which funding sources, at any level, support a given RI, directly or 
+# indirectly, and how many publications by that RI's researchers are thereby affected?
+#
+# Reasoning:
+# - isSupportedBy is owl:TransitiveProperty:
+#       => so it also returns funders reached through intermediate Grants/Programmes.
+# - contributesToRI is a property chain (authorOf o isOutputOf): 
+#       => a researcher is inferred to contribute to ?ri as soon as they authored one of its outputs.
+
+PREFIX rirpdm: <http://www.example.org/rirpdm#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?riName ?funderLabel (COUNT(DISTINCT ?pub) AS ?publicationCount)
+WHERE {
+    ?ri a rirpdm:ResearchInfrastructure .
+    ?ri rirpdm:uniqueName ?riName .
+    ?ri rirpdm:isSupportedBy ?funder .
+    OPTIONAL { ?funder rdfs:label ?funderLabel }
+
+    OPTIONAL {
+        ?researcher rirpdm:contributesToRI ?ri .
+        ?researcher rirpdm:authorOf ?pub .
+    }
+
+    # Narrow to one RI via:
+    # FILTER(STR(?riName) = "Cohort CONSTANCES")
+}
+GROUP BY ?riName ?funderLabel
+ORDER BY DESC(?publicationCount) ?riName

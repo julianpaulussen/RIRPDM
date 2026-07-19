@@ -10,3 +10,5 @@
 | 06 | CQ19 | [cq-06.rq](cq-06.rq) | Which specific RI produced a given publication, and which researchers thereby contributed to that RI? | Mix (Publication, Research Infrastructure) |
 | 07 | CQ22 | [cq-07.rq](cq-07.rq) | Which research institutions collaborate with each other? | Research Infrastructure |
 | 08 | CQ23 | [cq-08.rq](cq-08.rq) | For a participating institution, which umbrella / parent organisation does it ultimately belong to? | Research Infrastructure |
+| 10 | ext. of CQ10 | [cq-10.rq](cq-10.rq) | Which funding sources, at any level, support a given RI, directly or indirectly, and how many publications by that RI's researchers are thereby affected? | Research Infrastructure |
+
