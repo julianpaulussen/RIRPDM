@@ -47,7 +47,7 @@ rirpdm:status a owl:AnnotationProperty ;
 
 foaf:Agent a owl:Class ;
     rdfs:label "Agent"@en ;
-    rdfs:seeAlso nfdicore:NFDI_0000102 ;
+    skos:closeMatch nfdicore:NFDI_0000102 ;
     rirpdm:status "Adopted" ;
     dcterms:source "FOAF" .
 
@@ -61,30 +61,30 @@ rirpdm:Researcher a owl:Class ;
     rdfs:label "Researcher"@en ;
     rdfs:comment "An agent who conducts scientific research, typically as a participant in a research infrastructure."@en ;
     rdfs:subClassOf foaf:Person ;
-    rdfs:seeAlso vivo:ResearcherRole ;
-    rdfs:seeAlso nfdicore:NFDI_0000004 ;
+    skos:closeMatch vivo:ResearcherRole ;
+    skos:closeMatch nfdicore:NFDI_0000004 ;
     rirpdm:status "Extended" ;
     dcterms:source "VIVO" .
 
 org:Organization a owl:Class ;
     rdfs:label "Organization"@en ;
     rdfs:subClassOf foaf:Agent ;
-    rdfs:seeAlso obo:OBI_0000245 ;
+    skos:closeMatch obo:OBI_0000245 ;
     rirpdm:status "Adopted" ;
     dcterms:source "W3C ORG" .
 
 frapo:Project a owl:Class ;
     rdfs:label "Project"@en ;
     rdfs:comment "An activity undertaken to achieve defined objectives, optionally funded by one or more sources."@en ;
-    rdfs:seeAlso nfdicore:NFDI_0000002 ;
-    rdfs:seeAlso vivo:Project ;
+    skos:closeMatch nfdicore:NFDI_0000002 ;
+    skos:closeMatch vivo:Project ;
     rirpdm:status "Adopted" ;
     dcterms:source "FRAPO" .
 
 frapo:Funding a owl:Class ;
     rdfs:label "Funding"@en ;
     rdfs:comment "Financial support provided to undertake research or operate an infrastructure."@en ;
-    rdfs:seeAlso nfdicore:NFDI_0001051 ;
+    skos:closeMatch nfdicore:NFDI_0001051 ;
     rirpdm:status "Adopted" ;
     dcterms:source "FRAPO" .
 
@@ -100,7 +100,7 @@ frapo:FundingAgency a owl:Class ;
     rdfs:label "Funding Agency"@en ;
     rdfs:comment "An organisation that provides funding for research projects or infrastructures."@en ;
     rdfs:subClassOf org:Organization ;
-    rdfs:seeAlso nfdicore:NFDI_0000139 ;
+    skos:closeMatch nfdicore:NFDI_0000139 ;
     rirpdm:status "Adopted" ;
     dcterms:source "FRAPO" .
 
@@ -217,7 +217,7 @@ rirpdm:MajorUpgrade a owl:Class ;
     rdfs:label "Major Upgrade"@en ;
     rdfs:comment "A transformative (not routine) upgrade to an operational RI."@en ;
     rdfs:subClassOf rirpdm:Proposal ;
-    rdfs:seeAlso <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#BeingUpgraded> ;
+    skos:closeMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#BeingUpgraded> ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
@@ -571,7 +571,7 @@ rirpdm:ScientificPublication a owl:Class ;
     rdfs:comment "A peer-reviewed publication output to which open access applies."@en ;
     rdfs:subClassOf rirpdm:ResearchOutput , fabio:Expression ;
     owl:disjointWith rirpdm:ResearchData ;
-    rdfs:seeAlso obo:IAO_0000311 ;
+    skos:closeMatch obo:IAO_0000311 ;
     rirpdm:status "New" ;
     dcterms:source "EU Reg 2021 Art 2(22), Art 14(1)(a), Art 39(3)" .
 
@@ -579,7 +579,7 @@ rirpdm:ResearchData a owl:Class ;
     rdfs:label "Research Data"@en ;
     rdfs:comment "Data, including those underlying scientific publications, managed per FAIR principles."@en ;
     rdfs:subClassOf rirpdm:ResearchOutput ;
-    rdfs:seeAlso obo:IAO_0000027 ;
+    skos:closeMatch obo:IAO_0000027 ;
     rirpdm:status "New" ;
     dcterms:source "EU Reg 2021 Art 14(1)(b), Art 39(4)" .
 
@@ -596,7 +596,7 @@ fabio:JournalArticle a owl:Class ;
     rdfs:comment "A research article published in a journal issue."@en ;
     rdfs:subClassOf rirpdm:ScientificPublication ;
     skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#JournalArticle> ;
-    rdfs:seeAlso nfdicore:NFDI_0001209 ;
+    skos:closeMatch nfdicore:NFDI_0001209 ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
 
@@ -605,7 +605,7 @@ fabio:ConferencePaper a owl:Class ;
     rdfs:comment "A paper presented at a conference and published in its proceedings."@en ;
     rdfs:subClassOf rirpdm:ScientificPublication ;
     skos:exactMatch <https://w3id.org/cerif/vocab/OutputTypes#ConferenceProceedingsArticle> ;
-    rdfs:seeAlso nfdicore:NFDI_0001105 ;
+    skos:closeMatch nfdicore:NFDI_0001105 ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
 
@@ -629,7 +629,7 @@ fabio:Dataset a owl:Class ;
     rdfs:label "Dataset"@en ;
     rdfs:comment "A published, citable collection of research data."@en ;
     rdfs:subClassOf rirpdm:ResearchData ;
-    rdfs:seeAlso nfdicore:NFDI_0001203 ;
+    skos:closeMatch nfdicore:NFDI_0001203 ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
 
@@ -644,7 +644,7 @@ fabio:Journal a owl:Class ;
 fabio:AcademicProceedings a owl:Class ;
     rdfs:label "Conference Proceedings"@en ;
     rdfs:comment "The published collection of papers from a conference."@en ;
-    rdfs:seeAlso nfdicore:NFDI_0010020 ;
+    skos:closeMatch nfdicore:NFDI_0010020 ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
 
@@ -677,7 +677,7 @@ rirpdm:RIConsortium a owl:Class ;
     rdfs:label "RI Consortium"@en ;
     rdfs:comment "The consortium of core partners governing a distributed RI, whose agreed statutes and common rules and procedures the Central Hub applies to coordinate and manage the National Nodes' RI-dedicated capacity. (ESFRI Roadmap 2026, p.15)"@en ;
     rdfs:subClassOf org:Organization ;
-    rdfs:seeAlso nfdicore:NFDI_0001039 ;
+    skos:closeMatch nfdicore:NFDI_0001039 ;
     rirpdm:status "Extended" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
@@ -1149,7 +1149,7 @@ rirpdm:indirectlyExposedTo a owl:ObjectProperty ;
 frapo:isFundedBy a owl:ObjectProperty , owl:AsymmetricProperty ;
     rdfs:label "is funded by"@en ;
     owl:inverseOf frapo:funds ;
-    rdfs:seeAlso vivo:fundedBy ;
+    skos:closeMatch vivo:fundedBy ;
     rirpdm:status "Adopted" ;
     dcterms:source "FRAPO" .
 
@@ -1208,7 +1208,7 @@ rirpdm:hasAuthor a owl:ObjectProperty ;
     rdfs:domain rirpdm:ScientificPublication ;
     rdfs:range  rirpdm:Researcher ;
     owl:inverseOf rirpdm:authorOf ;
-    rdfs:seeAlso vivo:hasAuthor ;
+    skos:closeMatch vivo:hasAuthor ;
     rirpdm:status "Extended" ;
     dcterms:source "VIVO" .
 
