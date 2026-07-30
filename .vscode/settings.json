@@ -1,8 +1,0 @@
-{
-    "mentor.sparql.connections": [
-        {
-            "id": "cbb99204-db4d-42eb-bd4d-c4ab433d8c76",
-            "endpointUrl": "http://localhost:7200/repositories/rirpdm"
-        }
-    ]
-}

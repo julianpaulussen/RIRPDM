@@ -38,6 +38,7 @@ jobs:
             -uniteSections -includeAnnotationProperties -getOntologyMetadata \
             -noPlaceHolderText -rewriteAll -webVowl -displayDirectImportsOnly
           cp public/index-en.html public/index.html
+          cp public/ontology.owl public/rirpdm.owl
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4

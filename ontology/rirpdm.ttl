@@ -167,6 +167,7 @@ rirpdm:SingleSitedRI owl:disjointWith rirpdm:DistributedRI .
 rirpdm:CentralHub a owl:Class ;
     rdfs:label "Central Hub"@en ;
     rdfs:comment "The coordinating international organisation of a distributed RI that mediates between the nodes."@en ;
+    rdfs:subClassOf org:Organization ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 

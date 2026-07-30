@@ -7,8 +7,9 @@ ROR id (ri_<rortail>). RIs without a confident ROR match are skipped -- they can
 be joined to publications or funding anyway.
 
 Also emitted from MERIL: life-cycle phase (mapped onto the closed LifecyclePhase
-enum), legal status, ESFRI status (as an ESFRILandmark/ESFRIProject type) and the
-coordinating/participating countries -- grounding CQ01, CQ03, CQ04 and CQ05.
+enum), legal status, ESFRI status (as an ESFRILandmark/ESFRIProject type), a
+MajorUpgrade proposal where MERIL reports one, and the coordinating/participating
+countries -- grounding CQ01, CQ03, CQ04 and CQ05.
 
 Usage:
     python3 scripts/fetch_data_meril.py                 # 8 RIs
@@ -45,7 +46,9 @@ TYPE_CLASS = {"Single-sited": RIRPDM.SingleSitedRI,
 # MERIL ESFRI status label
 ESFRI_CLASS = {"RI is an ESFRI landmark": RIRPDM.ESFRILandmark,
                "RI is an ESFRI project": RIRPDM.ESFRIProject}
-# MERIL lifecycle label -> our LifecyclePhase individual 
+# MERIL lifecycle label -> our LifecyclePhase individual
+# "Being Upgraded" is not a phase: the RI keeps operating, and the upgrade itself
+# is emitted separately as a MajorUpgrade proposal (see build_graph).
 PHASE_IND = {"Operational": RIRPDM.Operation,
              "Under Construction": RIRPDM.Implementation,
              "Being Upgraded": RIRPDM.Operation}
@@ -109,12 +112,18 @@ def build_graph(limit: int) -> Graph:
         name = src.value(prov, CATRIS.providerFullName)
         acronym = src.value(prov, CATRIS.providerAcronym)
         website = src.value(prov, CATRIS.providerWebsite)
+        # MERIL can classify one provider under several types (CLARIN is Virtual and
+        # Distributed), so keep all of them -- VirtualRI is not disjoint with the others.
         pc = src.value(prov, CATRIS.providerClassification)
-        type_node = src.value(pc, CATRIS.type) if pc else None
-        type_label = src.value(type_node, SKOS.prefLabel) if type_node else None
-        ri_class = TYPE_CLASS.get(str(type_label))   # semantics.gr inlines the concept label
-        if ri_class is None:
-            continue                                 # unknown/blank type -> skip
+        ri_classes = set()
+        for type_node in (src.objects(pc, CATRIS.type) if pc else []):
+            label = src.value(type_node, SKOS.prefLabel)  # semantics.gr inlines the label
+            if str(label) in TYPE_CLASS:
+                ri_classes.add(TYPE_CLASS[str(label)])
+        # Single-sited and Distributed are disjoint: a record claiming both is broken
+        # source data that would make the merged ontology inconsistent (2 of 1750 do).
+        if not ri_classes or {RIRPDM.SingleSitedRI, RIRPDM.DistributedRI} <= ri_classes:
+            continue                                 # unknown/blank/contradictory -> skip
 
         ror = match_ror(str(acronym) if acronym else str(name))
         if not ror:
@@ -122,7 +131,8 @@ def build_graph(limit: int) -> Graph:
 
         ri = DATA["ri_" + ror_tail(ror)]
         g.add((ri, RDF.type, OWL.NamedIndividual))
-        g.add((ri, RDF.type, ri_class))              
+        for ri_class in sorted(ri_classes):           # sorted -> stable output across runs
+            g.add((ri, RDF.type, ri_class))
         g.add((ri, RDFS.label, Literal(str(name), lang="en")))
         g.add((ri, RIRPDM.uniqueName, Literal(str(name))))
         if website:
@@ -131,9 +141,17 @@ def build_graph(limit: int) -> Graph:
         g.add((ri, DCTERMS.source, Literal("MERIL / semantics.gr")))
 
         # --- enrichment: fields ROR can't give (CQ01 phase, CQ03, CQ04, CQ05) ---
-        phase_ind = PHASE_IND.get(lifecycle.get(str(src.value(prov, CATRIS.lifeCycleStatus))) or "")
+        life_label = lifecycle.get(str(src.value(prov, CATRIS.lifeCycleStatus))) or ""
+        phase_ind = PHASE_IND.get(life_label)
         if phase_ind:
             g.add((ri, RIRPDM.isInPhase, phase_ind))  # map onto the closed enum, don't mint
+
+        if life_label == "Being Upgraded":            # the upgrade is a Proposal about the RI
+            upgrade = DATA["upgrade_" + ror_tail(ror)]
+            g.add((upgrade, RDF.type, OWL.NamedIndividual))
+            g.add((upgrade, RDF.type, RIRPDM.MajorUpgrade))
+            g.add((upgrade, RDFS.label, Literal(f"Major upgrade of {name}", lang="en")))
+            g.add((upgrade, RIRPDM.upgradesRI, ri))
 
         legal_label = legal.get(str(src.value(prov, CATRIS.legalStatus)))
         if legal_label and legal_label != "Other":

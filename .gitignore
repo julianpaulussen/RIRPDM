@@ -25,3 +25,8 @@ docs/provenance
 .claude/settings.json
 CQ-notes.md
 ontology/*sample-data*.ttl
+*.log
+.vscode
+ontology/catalog-v001.xml
+ontology/rirpdm.owl
+ontology/.backup-*/

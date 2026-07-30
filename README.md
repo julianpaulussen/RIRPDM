@@ -42,6 +42,15 @@ Open [WebVOWL](https://service.tib.eu/webvowl/) → Upload → select `ontology/
 
 Live spec: https://julianpaulussen.github.io/RIRPDM/
 
+Widoco also serializes the ontology on every build — these are generated, not committed:
+
+| Format | URL |
+|--------|-----|
+| RDF/XML | https://julianpaulussen.github.io/RIRPDM/rirpdm.owl |
+| Turtle | https://julianpaulussen.github.io/RIRPDM/ontology.ttl |
+| N-Triples | https://julianpaulussen.github.io/RIRPDM/ontology.nt |
+| JSON-LD | https://julianpaulussen.github.io/RIRPDM/ontology.jsonld |
+
 Auto-built and deployed to `gh-pages` on every push to `main` via `.github/workflows/docs.yml`. To generate locally:
 
 ```bash
@@ -96,7 +105,7 @@ Runs all CQs against the GraphDB endpoint and prints results.
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -r scripts/requirements.txt
+pip install -r requirements.txt
 python scripts/query_endpoint.py
 ```
 
