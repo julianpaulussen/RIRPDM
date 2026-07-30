@@ -64,6 +64,35 @@ java -jar widoco.jar -ontFile ontology/rirpdm.ttl -outFolder docs \
 cd docs && python3 -m http.server 8000
 ```
 
+## Sample data (ABox)
+
+The ABox is **not committed** — the data belongs to its upstream providers, so this
+repository ships only the code that retrieves it. Generate it yourself before loading
+the ontology anywhere:
+
+```bash
+pip install -r requirements.txt
+./scripts/build_data.sh                # defaults: 8 RIs, 5 works/RI, 5 grants/RI, 60 institutions
+./scripts/build_data.sh 12 10 8 100    # larger sample
+```
+
+No credentials needed; all four APIs are public. Each step feeds the next through the
+shared ROR id, so run the pipeline script rather than the fetch scripts individually.
+The APIs are live, so every run produces different content.
+
+This writes four files, each carrying a `dcterms:source` on every individual:
+
+| File | Source | Holds |
+|------|--------|-------|
+| `ontology/rirpdm-meril-sample-data.ttl` | MERIL / CatRIS | research infrastructures (name, type, ROR id) |
+| `ontology/rirpdm-openalex-sample-data.ttl` | OpenAlex (CC0) | publications, KPI measurements, affiliated institutions |
+| `ontology/rirpdm-openaire-sample-data.ttl` | OpenAIRE | funding / grants |
+| `ontology/rirpdm-ror-relationships-sample-data.ttl` | ROR (CC0) | parent organizations (`org:subOrganizationOf`) |
+
+All four are gitignored. `ontology/rirpdm-full.ttl` is a thin wrapper that
+`owl:imports` the ontology plus all four graphs — load that one for reasoning over
+everything at once, but only after the files exist.
+
 ## Loading in Protégé
 
 ```bash
@@ -78,7 +107,7 @@ Run HermiT reasoner (Reasoner → Start Reasoner) to check consistency and compu
 
 1. Open GraphDB Desktop
 2. Create repository: ID `rirpdm`, ruleset `OWL2-RL (Optimized)`
-3. Import → Upload RDF files → select `ontology/rirpdm.ttl` and `ontology/rirpdm-individuals.ttl`, format Turtle
+3. Import → Upload RDF files → select `ontology/rirpdm.ttl` and the four `ontology/*sample-data*.ttl` files, format Turtle
 
 Endpoint: `http://localhost:7200/repositories/rirpdm`
 
@@ -88,9 +117,11 @@ curl -X POST http://localhost:7200/repositories/rirpdm/statements \
   -H "Content-Type: text/turtle" \
   --data-binary @ontology/rirpdm.ttl
 
-curl -X POST http://localhost:7200/repositories/rirpdm/statements \
-  -H "Content-Type: text/turtle" \
-  --data-binary @ontology/rirpdm-individuals.ttl
+for f in ontology/*sample-data*.ttl; do
+  curl -X POST http://localhost:7200/repositories/rirpdm/statements \
+    -H "Content-Type: text/turtle" \
+    --data-binary @"$f"
+done
 ```
 
 ## Competency questions
