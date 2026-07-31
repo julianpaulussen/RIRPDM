@@ -16,6 +16,7 @@ Usage:
     python3 scripts/fetch_data_meril.py --limit 15
 """
 import argparse
+import sys
 import urllib.parse
 import urllib.request
 import json
@@ -145,6 +146,10 @@ def build_graph(limit: int) -> Graph:
         phase_ind = PHASE_IND.get(life_label)
         if phase_ind:
             g.add((ri, RIRPDM.isInPhase, phase_ind))  # map onto the closed enum, don't mint
+        elif life_label:
+            # MERIL stated a status we do not map -- report it instead of dropping it
+            # silently, otherwise it is indistinguishable from MERIL stating nothing.
+            print(f"  unmapped lifeCycleStatus {life_label!r} for {name}", file=sys.stderr)
 
         if life_label == "Being Upgraded":            # the upgrade is a Proposal about the RI
             upgrade = DATA["upgrade_" + ror_tail(ror)]
@@ -183,7 +188,7 @@ def build_graph(limit: int) -> Graph:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=8, help="RIs to emit (matched to ROR)")
+    parser.add_argument("--limit", type=int, default=15, help="RIs to emit (matched to ROR)")
     args = parser.parse_args()
     build_graph(args.limit).serialize(destination=str(OUT_FILE), format="turtle")
     print(f"Written MERIL RIs -> {OUT_FILE}")

@@ -131,7 +131,7 @@ def build_graph(rors: list[str], projects: int) -> Graph:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--projects", type=int, default=5, help="projects (grants) per RI")
+    parser.add_argument("--projects", type=int, default=10, help="projects (grants) per RI")
     args = parser.parse_args()
 
     rors = read_rors()

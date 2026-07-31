@@ -230,13 +230,12 @@ rirpdm:LifecyclePhase a owl:Class ;
     rdfs:label "Lifecycle Phase"@en ;
     rdfs:comment "Reference to understand the needs and targets of RIs at a given time and at various levels."@en ;
     owl:equivalentClass [ a owl:Class ;
-        owl:oneOf ( rirpdm:Concept rirpdm:Design rirpdm:Preparation
+        owl:oneOf ( rirpdm:Design rirpdm:Preparation
                     rirpdm:Implementation rirpdm:Operation rirpdm:Termination ) ] ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
 # Declaring individuals for each lifecycle phase, because a RI can only be in one phase at a time 
-rirpdm:Concept        a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Concept"@en .
 rirpdm:Design         a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Design"@en .
 rirpdm:Preparation    a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Preparation"@en .
 rirpdm:Implementation a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Implementation"@en ; skos:closeMatch <https://w3id.org/cerif/vocab/ResearchInfrastructureStatuses#UnderConstruction> .
@@ -244,7 +243,7 @@ rirpdm:Operation      a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label
 rirpdm:Termination    a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label "Termination"@en .
 
 [] a owl:AllDifferent ;
-    owl:members ( rirpdm:Concept rirpdm:Design rirpdm:Preparation
+    owl:members ( rirpdm:Design rirpdm:Preparation
                   rirpdm:Implementation rirpdm:Operation rirpdm:Termination ) .
 
 #################################################################

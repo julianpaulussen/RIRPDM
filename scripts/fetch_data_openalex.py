@@ -221,7 +221,7 @@ def verify_counts(g: Graph) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--per-page", type=int, default=5, help="OpenAlex works to fetch per RI")
+    parser.add_argument("--per-page", type=int, default=10, help="OpenAlex works to fetch per RI")
     args = parser.parse_args()
 
     ris = read_ris()
