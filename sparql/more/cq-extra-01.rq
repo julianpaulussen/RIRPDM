@@ -1,7 +1,5 @@
 # CQ01: Which research infrastructures enabled the most publications on a given topic,
 # and what institutions operated them?
-#
-# Bridge: pub -hasAuthor-> researcher <-hasParticipant- project -usesInfrastructure-> infra
 
 PREFIX rirpdo: <http://www.example.org/rirpdo#>
 

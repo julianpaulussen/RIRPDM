@@ -32,3 +32,5 @@ ontology/.backup-*/
 # Protege local import resolution
 ontology/catalog-v001.xml
 ontology/rirpdm.owl
+# Secondary CQs -- kept locally, not part of the deliverable
+sparql/more/cq-0[3-8].rq
