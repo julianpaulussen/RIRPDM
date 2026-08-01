@@ -1,13 +1,5 @@
 """Backfill funding from OpenAIRE for the RIs MERIL discovered.
 
-Prerequisite: fetch_data_meril.py has already written the RIs (with their ROR ids). 
-Here, for each RI we look it up in OpenAIRE by its ROR, fetch the projects that fund it, and emit the funding chain in FRAPO terms:
-
-RI --frapo:isFundedBy--> Grant --frapo:isAwardedBy--> FundingAgency
-RI --rirpdm:isSupportedBy--> Grant --rirpdm:isSupportedBy--> {Programme, Agency}
-
-RIs that OpenAIRE doesn't know (no org for the ROR) simply get no funding.
-
 Usage:
     python3 scripts/fetch_data_openaire.py                 
     python3 scripts/fetch_data_openaire.py --projects 8

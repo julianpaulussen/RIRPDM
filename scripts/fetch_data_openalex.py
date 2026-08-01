@@ -1,12 +1,8 @@
 """Fetch publications from OpenAlex for RIs already emitted by fetch_data_ror.py.
 
-Reads the ROR sample data, and for each RIs ROR id queries OpenAlex works
-filtered by that institution. Each work becomes a rirpdm:ScientificPublication
-linked back to the RI via rirpdm:isOutputOf.
-
 Usage:
-    python3 scripts/fetch_data_openalex.py                 # 5 works per RI
-    python3 scripts/fetch_data_openalex.py --per-page 10   # 10 works per RI
+    python3 scripts/fetch_data_openalex.py                 
+    python3 scripts/fetch_data_openalex.py --per-page 10 # 10 works per RI
 """
 
 import argparse
@@ -87,14 +83,14 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
     g.add((ontology, RDFS.label, Literal("RIRPDM OpenAlex-sourced sample data", lang="en")))
     g.add((ontology, OWL.imports, URIRef("http://www.example.org/rirpdm")))
 
-    researchers: set[str] = set()  # slug -> emit each author once
-    institutions: set[str] = set()  # ror -> emit each ResearchInstitution once
+    researchers: set[str] = set() # slug -> emit each author once
+    institutions: set[str] = set() # ror -> emit each ResearchInstitution once
     # (ri, year) -> publications, to build one NumberOfPublications KPI measurement each
     by_ri_year: dict[tuple[URIRef, int], list[URIRef]] = {}
-    by_ri: dict[URIRef, list[URIRef]] = {}       # ri -> all its publications (top-cited KPI)
-    citations: dict[URIRef, int] = {}            # pub -> cited_by_count, for ranking
-    refs: list[tuple[URIRef, list[str]]] = []    # (pub, referenced OpenAlex ids), resolved after
-    emitted: set[str] = set()                    # OpenAlex ids we actually emitted, to close cito:cites
+    by_ri: dict[URIRef, list[URIRef]] = {} # ri -> all its publications (top-cited KPI)
+    citations: dict[URIRef, int] = {} # pub -> cited_by_count, for ranking
+    refs: list[tuple[URIRef, list[str]]] = [] 
+    emitted: set[str] = set() 
 
     for ri, ror in ris:
         for work in fetch_works(ror, per_page):
@@ -129,7 +125,7 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
             refs.append((pub, [openalex_id(w) for w in work.get("referenced_works", [])]))
 
             # for each authorship in the work, create a researcher individual and link it to the publication
-            work_institutions: set[URIRef] = set()  # co-affiliated on this work -> collaboratesWith
+            work_institutions: set[URIRef] = set()  
             for authorship in work.get("authorships", []):
                 name = authorship.get("author", {}).get("display_name")
                 if not name:
@@ -140,9 +136,8 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
                     g.add((person, RDF.type, OWL.NamedIndividual))
                     g.add((person, RDF.type, RIRPDM.Researcher))
                     g.add((person, RDFS.label, Literal(name, lang="en")))
-                g.add((pub, RIRPDM.hasAuthor, person))  # inverseOf authorOf -> feeds CQ19 chain
+                g.add((pub, RIRPDM.hasAuthor, person)) 
 
-                # author's institutions -> ResearchInstitution agents involved in this RI's output (CQ11)
                 for inst in authorship.get("institutions", []):
                     ror = inst.get("ror")
                     name_inst = inst.get("display_name")
@@ -157,9 +152,8 @@ def build_graph(ris: list[tuple[URIRef, str]], per_page: int) -> Graph:
                     g.add((ri, RIRPDM.involvesAgent, institution))
                     work_institutions.add(institution)
 
-            # institutions that co-authored this work collaborate with each other (CQ11, CQ22)
             for a, b in itertools.combinations(work_institutions, 2):
-                g.add((a, RIRPDM.collaboratesWith, b))  # symmetric -> reasoner infers b->a
+                g.add((a, RIRPDM.collaboratesWith, b))  
 
     # cito:cites, but only between publications we actually emitted (closed graph)
     for pub, targets in refs:
@@ -211,8 +205,7 @@ def add_top_cited_kpi(g: Graph, by_ri: dict[URIRef, list[URIRef]], citations: di
 
 
 def verify_counts(g: Graph) -> None:
-    """CQ21 invariant: a NumberOfPublications measurement's numericValue equals its
-    derivedFromOutput count."""
+    """used for old cq"""
     for m in g.subjects(RIRPDM.measuresKPI, RIRPDM.NumberOfPublications):
         val = next(g.objects(m, RIRPDM.numericValue))
         linked = len(list(g.objects(m, RIRPDM.derivedFromOutput)))

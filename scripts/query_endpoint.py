@@ -1,11 +1,15 @@
 """Run SPARQL queries against the live GraphDB endpoint.
 
-Before running this script, make sure a repository is created in GraphDB (Here it's called "rirpdm").
-As a ruleset choose OWL2-RL (Optimized) so subclass / inverse / functional axioms are inferred).
+Before running this script, make sure a repository is created in GraphDB (rirpdm).
+As a ruleset choose OWL2-RL (Optimized).
 
 Usage:
-    python3 scripts/query_endpoint.py                 # run every sparql/*.rq
-    python3 scripts/query_endpoint.py sparql/cq00.rq  # run one query
+
+    # run every query in sparql/*.rq
+    python3 scripts/query_endpoint.py 
+
+    # run one query only
+    python3 scripts/query_endpoint.py sparql/cq00.rq 
 """
 
 import sys

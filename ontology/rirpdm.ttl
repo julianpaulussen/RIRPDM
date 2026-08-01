@@ -157,11 +157,6 @@ rirpdm:VirtualRI a owl:Class ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
-# Single-sited vs Distributed are mutually exclusive structural types (ESFRI Roadmap 2026). 
-# Virtual is deliberately NOT in this disjoint set: it is an access-modality
-# descriptor from EU Reg 2021 Art ("single sited, virtual or distributed"), not a third
-# structural type with its own criteria. A distributed RI's nodes (or a single-sited RI) can
-# themselves be virtual/remotely-accessed, so VirtualRI can overlap with either.
 rirpdm:SingleSitedRI owl:disjointWith rirpdm:DistributedRI .
 
 rirpdm:CentralHub a owl:Class ;
@@ -246,12 +241,7 @@ rirpdm:Termination    a owl:NamedIndividual , rirpdm:LifecyclePhase ; rdfs:label
     owl:members ( rirpdm:Design rirpdm:Preparation
                   rirpdm:Implementation rirpdm:Operation rirpdm:Termination ) .
 
-#################################################################
-#    Scientific Case  (per-proposal/per-RI assessment object)
-#    The six scientific dimensions are modelled separately as the
-#    enumerated class ScientificDimension; an Evaluation links a
-#    case to a dimension, score and lifecycle phase.
-#################################################################
+# The six scientific dimensions are modelled separately as the enumerated class ScientificDimension; an Evaluation links a case to a dimension, score and lifecycle phase.
 
 rirpdm:ScientificCase a owl:Class ;
     rdfs:label "Scientific Case"@en ;
@@ -281,11 +271,7 @@ rirpdm:EnvironmentalConsiderations a owl:NamedIndividual , rirpdm:ScientificDime
                   rirpdm:SocioEconomicImpact rirpdm:UserStrategyAndAccessPolicy
                   rirpdm:ENeedsAndData rirpdm:EnvironmentalConsiderations ) .
 
-#################################################################
-#    Implementation Case  (per-proposal/per-RI assessment object)
-#    The five implementation dimensions are the enumerated class
-#    ImplementationDimension.
-#################################################################
+# The five implementation dimensions are the enumerated class ImplementationDimension.
 
 rirpdm:ImplementationCase a owl:Class ;
     rdfs:label "Implementation Case"@en ;
@@ -337,12 +323,6 @@ rirpdm:Low      a owl:NamedIndividual , rirpdm:Score ; rdfs:label "Low"@en .
 
 [] a owl:AllDifferent ;
     owl:members ( rirpdm:VeryHigh rirpdm:High rirpdm:Medium rirpdm:Low ) .
-
-#################################################################
-#    KPI Objectives & KPIs  (ESFRI WG Monitoring Report 2019)
-#    9 objectives (Table 1), each with a fixed set of the 21 KPIs;
-#    a KPIMeasurement records one KPI's value for one RI in one year.
-#################################################################
 
 rirpdm:KPIObjective a owl:Class ;
     rdfs:label "KPI Objective"@en ;
@@ -583,8 +563,7 @@ rirpdm:ResearchData a owl:Class ;
     rirpdm:status "New" ;
     dcterms:source "EU Reg 2021 Art 14(1)(b), Art 39(4)" .
 
-#    Publication types (FaBiO) ────────────────────────────────────
-
+# Publication types FaBiO
 fabio:Expression a owl:Class ;
     rdfs:label "Expression"@en ;
     rdfs:comment "A FaBiO/FRBR expression — the intellectual realisation of a work, the bibliographic superclass of all publication types."@en ;
@@ -942,10 +921,6 @@ rirpdm:DistributedRI rdfs:subClassOf [ a owl:Restriction ;
     owl:onProperty rirpdm:hasNode ;
     owl:minCardinality 1 ] .
 
-# --- Agent involvement -------------------------------------------------------
-# Top-level pair, kept explicit so sub-properties inherit a domain/range anchor
-# (prevents a reasoner inferring agent-to-agent participation triples).
-
 rirpdm:involvesAgent a owl:ObjectProperty ;
     rdfs:label "involvesAgent"@en ;
     rdfs:comment "An agent is involved in this research infrastructure."@en ;
@@ -1197,9 +1172,7 @@ fabio:hasDOI a owl:DatatypeProperty , owl:FunctionalProperty ;
     rirpdm:status "Adopted" ;
     dcterms:source "FaBiO" .
 
-# Two ScientificPublication individuals sharing the same DOI are recognised as the
-# same real-world publication, even if asserted under different IRIs (e.g. when
-# merging bibliographic records pulled from CrossRef and OpenAlex).
+# Two ScientificPublication individuals sharing the same DOI are recognised as the same real-world publication.
 rirpdm:ScientificPublication owl:hasKey ( fabio:hasDOI ) .
 
 rirpdm:hasAuthor a owl:ObjectProperty ;
@@ -1230,8 +1203,7 @@ rirpdm:contributesToRI a owl:ObjectProperty ;
     rirpdm:status "New" ;
     dcterms:source "ESFRI Roadmap 2026" .
 
-# --- Citations (CiTO) --------------------------------------------------------
-
+# Citations (CiTO)
 cito:cites a owl:ObjectProperty ;
     rdfs:label "cites"@en ;
     rdfs:comment "The citing entity cites the cited entity."@en ;

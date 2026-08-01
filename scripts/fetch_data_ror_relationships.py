@@ -1,12 +1,5 @@
 """Backfill org:subOrganizationOf for institutions fetch_data_openalex.py emitted.
 
-Prerequisite: fetch_data_openalex.py has already written rirpdm:ResearchInstitution
-individuals (keyed by ROR id, from author affiliations). Here, for each institution
-we look up its ROR record directly and, if it declares a "Parent" relationship,
-emit the parent as an org:Organization and link institution -> parent via the
-imported (transitive) org:subOrganizationOf. Institutions with no ROR parent
-(most standalone universities) simply get no edge.
-
 Usage:
     python3 scripts/fetch_data_ror_relationships.py
     python3 scripts/fetch_data_ror_relationships.py --limit 100
