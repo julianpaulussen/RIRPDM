@@ -1,0 +1,19 @@
+# CQ02: Which funding sources, at any level, support a given RI, directly or indirectly (RI -> Grant -> Programme)?
+#
+# Reasoning: isSupportedBy is owl:TransitiveProperty, 
+# so a single hop out of ?ri also returns funders reached through intermediate Grants/Programmes.
+
+PREFIX rirpdm: <http://www.example.org/rirpdm#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?ri ?riName ?funder ?funderLabel
+WHERE {
+    ?ri a rirpdm:ResearchInfrastructure ;
+        rirpdm:uniqueName ?riName ;
+        rirpdm:isSupportedBy ?funder .
+    OPTIONAL { ?funder rdfs:label ?funderLabel }
+
+    # Narrow to one RI via:
+    # FILTER(STR(?riName) = "Cohort CONSTANCES")
+}
+ORDER BY ?riName ?funderLabel
