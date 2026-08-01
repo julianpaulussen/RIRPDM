@@ -51,3 +51,8 @@ GraphDB must be running with `rirpdm` repository loaded.
 ```bash
 python3 scripts/query_endpoint.py
 ```
+
+## Note
+
+For formatting files and checking grammar and spelling, different popular tools were used like DeepL, Claude, etc., everything that was checked by these tools was then checked manually again. 
+
