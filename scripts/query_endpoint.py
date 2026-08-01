@@ -7,6 +7,7 @@ Usage:
     python3 scripts/query_endpoint.py                 # run every sparql/*.rq
     python3 scripts/query_endpoint.py sparql/cq00.rq  # run one query
 """
+
 import sys
 from pathlib import Path
 from typing import Any, cast
